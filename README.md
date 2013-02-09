@@ -19,6 +19,8 @@ Extensions and bug-fixes added in this repository are described in the Developme
 
 
 The PlotSurface2D Class
+-----------------------
+
 This class implements the IPlotSurface2D interface, and its role is to coordinate the display of axes, title and legend as well as all the data dependent elements of the chart. NPlot provides three such classes:
 
 * Windows.PlotSurface2D - a System.Windows.Forms control that implements IPlotSurface2D. This class also encapsulates an interaction framework which specifies how an application user can interact with the chart.
@@ -29,6 +31,7 @@ This class implements the IPlotSurface2D interface, and its role is to coordinat
 
 Plot Elements
 -------------
+
 With a PlotSurface2D created, it is then necessary to create an instance of a class that implements the IPlot interface (NPlot provides many of these classes). You then point this object to your data, optionally set a few display properties and add it to PlotSurface2D.  Classes that implement IPlot include LinePlot, PointPlot and ImagePlot. The purpose of a â€œplotâ€ class is to wrap data and provide functionality for drawing it against a pair of axes.  The different plot classes display data in different ways (e.g. as a series of points, or a line). Plot classes can also draw a representation of themselves in a legend if present and can also
 â€œsuggestâ€ to the PlotSurface2D the axes they would optimally be drawn against.
 
@@ -44,33 +47,39 @@ A selection of the commonly used plot types are described below:
 
 LinePlot
 --------
+
 Use a line plot when it makes sense to interpolate between successive data points. For example you may
 have measurements of the ambient temperature of a room at various times throughout a day. If the  reading was taken frequently, a line plot of temperature vs time would make sense.
 Tip: You can create lines of any color, thickness or dash pattern by specifying the Pen used for drawing.
 
 PointPlot
 ---------
+
 Use a point plot (scatter chart) when it does not make sense to interpolate between successive data points. For example you might want to visualize the height and weight of a group of people on a chart. You could plot a point for each person with the x position determined by their weight and y position determined by their height.
 Tip: Around 15 different pre-defined marker styles are available.
 
 StepPlot
 --------
+
 Step plots are useful for displaying sample based data (such as PCM audio) where each value can be thought of as representing the value of the measured quantity over a specific time period.
 Tip: You can choose whether the horizontal sections of the step plot are centered on the abscissa values or drawn between successive abscissa values.
 
 CandlePlot
 ----------
+
 This type of plot is often used for displaying financial data. Each bar summarizes a price over a particular time period. The lower and upper positions of the thin sticks indicate the highest and lowest values of the price over the time period. If the filled region is red, the top of the filled region represents the price at the beginning of the time period and the bottom of the filled region the price at the end of the time period. If the filled region is green, the bottom of the filled region is the opening price and
 the top is the closing price.
 Tip: The candle fill colors are configurable. Also, this plot type can generate â€œstickâ€ plots which are similar to candle plots.
 
 BarPlot
 -------
+
 A bar plot is usually used to chart the number of data values belonging to one or more categories. The height of the bar represents the number of values in the given category. For example, you might have a collection of dogs and data on the breed of each. You could create a chart of the number of each type of breed.
 Tips: You will often want to make the lower x axis a LabelAxis (in the above example, the names of the dog breeds). Also, Bar plots can be stacked on top of each other.
 
 ImagePlot
 ---------
+
 This type of chart is often used to display the variation of a value over a spatial area. Each value in the region is mapped to a color.
 Tip: You can specify the color to value mapping using an object of any class that implements IGradient. For example LinearGradient.
 Of course, if the built in IPlot or IDrawable classes donâ€™t provide the functionality you require, it is straight forward to create your own class that implements one of these interfaces. This is perhaps the most common way of extending NPlot.
@@ -79,6 +88,7 @@ You can add as many plots to a PlotSurface2D object as you like and can control 
 
 Specifying Data
 ---------------
+
 The IPlot interface does not enforce how data associated with the specific plot classes should be specified. However where it makes sense, these classes provide a consistent interface for this purpose.
 Data can be provided in one of two forms:
 * In an object of type DataSet, DataTable or DataView from the System.Data namespace.
@@ -108,7 +118,7 @@ You can also replace the default axes with a completely different axis type. NPl
 Developments
 ============
 
-The Gtk# control referred to in NPlot is written by Miguel Icaza (http://tirania.org/blog//index.html) and is based on an early version of NPlot.  The port was straightforward because all drawing in NPlot is by System.Drawing classes, so that by providing a Gtk# implementation of PlotSurface2D, which could be added to any Gtk# container, all drawing classes within NPlot could be left unchanged.  However, this control was never extended to include the interactions added by class Windows.PlotSurface2D, which were very specific to the System.Windows.Forms (Swf) implementation.
+The Gtk# control referred to in NPlot is written by Miguel de Icaza (http://tirania.org/blog//index.html) and is based on an early version of NPlot.  The port was straightforward because all drawing in NPlot is by System.Drawing classes, so that by providing a Gtk# implementation of PlotSurface2D, which could be added to any Gtk# container, all drawing classes within NPlot could be left unchanged.  However, this control was never extended to include the interactions added by class Windows.PlotSurface2D, which were very specific to the System.Windows.Forms (Swf) implementation.
 
 The extensions here remedy that, and provide full demonstrations of interactive plot surfaces that can be used equally well in Windows or Gtk#, and which maximise the use of common code.
 
