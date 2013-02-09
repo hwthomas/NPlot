@@ -131,17 +131,17 @@ Data can be provided in one of two forms:
 * In an object of type DataSet, DataTable or DataView from the System.Data namespace.
 * In any collection that implements the IEnumerable interface where it is valid to cast each of the elements to type
   double. Examples of such collections are:-
-    * Double[]
+    * Double[ ]
     * System.Collections.ArrayList
     * System.Collections.Generic.List<System.Int16>
 If you are working with very large data sets and efficiency is of concern, you should prefer to pass your data to NPlot
-via the built in array type double[], as this case has been highly optimized. The following four properties provided
+via the built in array type double[ ], as this case has been highly optimized. The following four properties provided
 by most plot classes are used to specify your data:
 
-DataSource: If the data is to be taken from a DataSet, DataTable or DataView, this property should be set to that object.
-DataMember: If the data is to be taken from a DataSet, this property should be set to a string containing the name of the
-DataTable in the DataSet to take the data from.
-AbscissaData: The x coordinates of the data to plot. This property is optional - if not specified (or set to null),
+  DataSource: If the data is to be taken from a DataSet, DataTable or DataView, this property should be set to that object.
+  DataMember: If the data is to be taken from a DataSet, this property should be set to a string containing the name of the
+  DataTable in the DataSet to take the data from.
+  AbscissaData: The x coordinates of the data to plot. This property is optional - if not specified (or set to null),
 the abscissa data will be assumed to be 0, 1, 2, ... If data is being read from a DataTable or DataView, this should be
 a string containing the name of the column to take the data from. Otherwise, this can be set to any container that
 implements the IEnumerable interface.
@@ -173,10 +173,11 @@ Developments
 ============
 
 The Gtk# control referred to in NPlot is written by Miguel de Icaza (http://tirania.org/blog//index.html) and is based
-on an early version of NPlot.  The port was straightforward because all drawing in NPlot is by System.Drawing classes,
-so that by providing a Gtk# implementation of PlotSurface2D, which could be added to any Gtk# container, all drawing
-code within NPlot could be left unchanged.  However, this control was never extended to include the interactions added
-by class Windows.PlotSurface2D, which were very specific to the System.Windows.Forms (Swf) implementation.
+on an early version of NPlot.  The port was straightforward because all drawing in NPlot is by System.Drawing classes 
+(implemented in Gtk#), so that by providing a Gtk# implementation of PlotSurface2D, which could be added to any Gtk#
+container, all drawing code within NPlot could be left unchanged.  However, this control was never extended to include
+the interactions added by class Windows.PlotSurface2D, which were very specific to the System.Windows.Forms (Swf)
+implementation.
 
 The extensions here remedy that, and provide full demonstrations of interactive plot surfaces that can be used equally
 well in Windows or Gtk#, and which maximise the use of common code.
