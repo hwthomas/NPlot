@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1BA22AB4-C228-4115-BEA2-1C2548BFCC33}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>SwfTest</RootNamespace>
+    <AssemblyName>SwfTest</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="SwfTest\Swf.AxisTestsForm.cs" />
+    <Compile Include="SwfTest\Swf.FinancialDemo.cs" />
+    <Compile Include="SwfTest\Swf.MenuForm.cs" />
+    <Compile Include="SwfTest\Swf.PlotSurface2DActiveDemo.cs" />
+    <Compile Include="SwfTest\Swf.InteractivePlotSurface2D.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NPlot\NPlot.csproj">
+      <Project>{E4B99177-77A3-4C92-B881-A6CB57E3BF89}</Project>
+      <Name>NPlot</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\light.wav" />
+    <EmbeddedResource Include="Resources\asx_jbh.xml" />
+    <EmbeddedResource Include="Resources\NPlotDemo-icon.ico" />
+    <EmbeddedResource Include="Resources\pattern01.jpg" />
+  </ItemGroup>
+</Project>
