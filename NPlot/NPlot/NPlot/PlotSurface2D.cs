@@ -127,20 +127,17 @@ namespace NPlot
 		{
 			get
 			{
-				if (plotAreaBoundingBoxCache_ == null) 
-				{
+				if (plotAreaBoundingBoxCache_ == null) {
 					return Rectangle.Empty;
 				}
-				else
-				{
+				else {
 					return (Rectangle)plotAreaBoundingBoxCache_;
 				}
 			}
 		}
 
 		/// <summary>
-		/// Performs a hit test with the given point and returns information 
-		/// about the object being hit.
+		/// Performs a hit test with the given point and returns information about the object being hit.
 		/// </summary>
 		/// <param name="p">The point to test.</param>
 		/// <returns></returns>
@@ -150,41 +147,33 @@ namespace NPlot
 			System.Collections.ArrayList a = new System.Collections.ArrayList();
 
 			// this is the case if PlotSurface has been cleared.
-			if (bbXAxis1Cache_ == null)
-			{
+			if (bbXAxis1Cache_ == null) {
 				return a;
 			}
-			else if (bbXAxis1Cache_ != null && ((Rectangle) bbXAxis1Cache_ ).Contains(p))
-			{
+			else if (bbXAxis1Cache_ != null && ((Rectangle) bbXAxis1Cache_).Contains(p)) {
 				a.Add( this.xAxis1_ );
 				return a;
 			}
-			else if (bbYAxis1Cache_ != null && ((Rectangle) bbYAxis1Cache_ ).Contains(p))
-			{
+			else if (bbYAxis1Cache_ != null && ((Rectangle) bbYAxis1Cache_).Contains(p)) {
 				a.Add( this.yAxis1_ );
 				return a;
 			}
-			else if (bbXAxis2Cache_ != null && ((Rectangle) bbXAxis2Cache_ ).Contains(p))
-			{
+			else if (bbXAxis2Cache_ != null && ((Rectangle) bbXAxis2Cache_).Contains(p)) {
 				a.Add( this.xAxis2_ );
 				return a;
 			}
-			else if (bbXAxis2Cache_ != null && ((Rectangle) bbYAxis2Cache_ ).Contains(p))
-			{
+			else if (bbXAxis2Cache_ != null && ((Rectangle) bbYAxis2Cache_).Contains(p)) {
 				a.Add( this.yAxis2_ );
 				return a;
 			}
-			else if (bbTitleCache_ != null && ((Rectangle) bbTitleCache_ ).Contains(p))
-			{
+			else if (bbTitleCache_ != null && ((Rectangle) bbTitleCache_).Contains(p)) {
 				a.Add( this );
 				return a;
 			}
-			else if (plotAreaBoundingBoxCache_ != null && ((Rectangle) plotAreaBoundingBoxCache_ ).Contains(p))
-			{
+			else if (plotAreaBoundingBoxCache_ != null && ((Rectangle)plotAreaBoundingBoxCache_).Contains(p)) {
 				a.Add( this );
 				return a;
 			}
-
 			return a;
 		}
 

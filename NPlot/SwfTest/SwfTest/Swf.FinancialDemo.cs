@@ -91,8 +91,8 @@ namespace NPlotDemo
             costPS.XAxis1.HideTickText = true;
             costPS.SurfacePadding = 5;
  
-            costPS.AddInteraction(new NPlot.InteractivePlotSurface2D.PlotDrag(true,true));
-            costPS.AddInteraction(new NPlot.InteractivePlotSurface2D.AxisDrag());
+            costPS.AddInteraction(new NPlot.PlotDrag(true,true));
+            costPS.AddInteraction(new NPlot.AxisDrag());
             costPS.InteractionOccurred += new NPlot.InteractivePlotSurface2D.InteractionHandler(costPS_InteractionOccurred);
             costPS.AddAxesConstraint(new AxesConstraint.AxisPosition(PlotSurface2D.YAxisPosition.Left, 60));
 
@@ -114,8 +114,8 @@ namespace NPlotDemo
   
 
             volumePS.AddAxesConstraint(new AxesConstraint.AxisPosition(PlotSurface2D.YAxisPosition.Left, 60));
-            volumePS.AddInteraction(new NPlot.InteractivePlotSurface2D.AxisDrag());
-            volumePS.AddInteraction(new NPlot.InteractivePlotSurface2D.PlotDrag(true,false));
+            volumePS.AddInteraction(new NPlot.AxisDrag());
+            volumePS.AddInteraction(new NPlot.PlotDrag(true,false));
             volumePS.InteractionOccurred += new NPlot.InteractivePlotSurface2D.InteractionHandler(volumePS_InteractionOccurred);
  	        volumePS.PreRefresh += new NPlot.InteractivePlotSurface2D.PreRefreshHandler(volumePS_PreRefresh);
 		            

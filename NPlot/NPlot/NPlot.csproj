@@ -80,18 +80,47 @@
     <Compile Include="NPlot\StartStep.cs" />
     <Compile Include="NPlot\StepGradient.cs" />
     <Compile Include="NPlot\StepPlot.cs" />
-    <Compile Include="NPlot\Swf.PlotSurface2D.cs" />
     <Compile Include="NPlot\TextItem.cs" />
     <Compile Include="NPlot\TradingDateTimeAxis.cs" />
     <Compile Include="NPlot\Transform2D.cs" />
     <Compile Include="NPlot\Utils.cs" />
     <Compile Include="NPlot\VerticalLine.cs" />
-    <Compile Include="NPlot\InteractivePlotSurface2D.cs" />
+    <Compile Include="NPlot\Windows.PlotSurface2D.HWT.cs" />
+    <Compile Include="NPlot\CursorType.cs" />
+    <Compile Include="NPlot\Modifier.cs" />
+    <Compile Include="Interactions\KeyActions.cs" />
+    <Compile Include="Interactions\PlotDrag.cs" />
+    <Compile Include="Interactions\AxisDrag.cs" />
+    <Compile Include="Interactions\PlotZoom.cs" />
+    <Compile Include="Interactions\PlotSelection.cs" />
+    <Compile Include="Interactions\Interaction.cs" />
+    <Compile Include="Interactions\InteractivePlotSurface2D.cs" />
+    <Compile Include="Interactions\VerticalGuideline.cs" />
+    <Compile Include="Interactions\HorizontalGuideline.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="glib-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+      <Package>glib-sharp-2.0</Package>
+    </Reference>
+    <Reference Include="atk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
+      <Private>False</Private>
+      <Package>gtk-sharp-2.0</Package>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interactions\" />
   </ItemGroup>
 </Project>

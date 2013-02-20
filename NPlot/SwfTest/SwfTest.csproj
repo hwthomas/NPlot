@@ -35,8 +35,8 @@
     <Compile Include="SwfTest\Swf.AxisTestsForm.cs" />
     <Compile Include="SwfTest\Swf.FinancialDemo.cs" />
     <Compile Include="SwfTest\Swf.MenuForm.cs" />
-    <Compile Include="SwfTest\Swf.PlotSurface2DActiveDemo.cs" />
     <Compile Include="SwfTest\Swf.InteractivePlotSurface2D.cs" />
+    <Compile Include="SwfTest\Swf.PlotSurface2DSamples.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPlot\NPlot.csproj">
