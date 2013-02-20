@@ -1315,6 +1315,7 @@ namespace NPlotDemo
             plotSurface.AddInteraction(new KeyActions());
             plotSurface.AddInteraction(new PlotSelection());
             plotSurface.AddInteraction(new VerticalGuideline(Color.White));
+            plotSurface.AddInteraction(new HorizontalGuideline(Color.White));
   
             plotSurface.Add(new HorizontalLine(0.0, Color.LightBlue));
             
