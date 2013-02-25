@@ -4,58 +4,76 @@ using System.Drawing;
 namespace NPlot
 {
     /// <summary>
-    /// Uses a Rubberband rectangle to select an area of the plot to become the new Plot Range
+    /// Uses a Rubberband rectangle to select an area of the plot for the new Plot Range
     /// </summary>
     public class PlotSelection : Interaction
     {
-        private Point unset_ = new Point(-1, -1);       // any unset point
-        private Point startPoint_ = new Point(-1, -1);
-        private Point endPoint_ = new Point(-1, -1);
+        private bool selectionActive = false;
+        private Point startPoint = Point.Empty;
+        private Point endPoint = Point.Empty;
+        private Rectangle selection = Rectangle.Empty;
+        private Color lineColor = Color.White;
 
-        private bool selectionActive_ = false;
- 
+
+        public PlotSelection ()
+        {
+            lineColor = Color.White;
+        }
+
         /// <summary>
-        /// Mouse Down method for RubberBand selection
+        /// Constructor with specific color
+        /// </summary>
+        public PlotSelection (Color color)
+        {
+            lineColor = color;
+        }
+
+        /// <summary>
+        /// PlotSelection LineColor
+        /// </summary>
+        public Color LineColor
+        {
+            get { return lineColor; }
+            set { lineColor = value; }
+        }
+
+        /// <summary>
+        /// Mouse Down method for Rubberband selection of plot region
         /// </summary>
         public override bool DoMouseDown (int X, int Y, Modifier keys, InteractivePlotSurface2D ps)
         {
             // Only start selection if mouse is inside plot area (excluding axes)
             if (ps.PlotAreaBoundingBoxCache.Contains(X,Y)) {
-                selectionActive_ = true;
-                startPoint_.X = X;
-                startPoint_.Y = Y;
-                // invalidate end point
-                endPoint_ = unset_;
+                selectionActive = true;
+                startPoint.X = X;
+                startPoint.Y = Y;
+                endPoint = startPoint;
             }
             return false;
         }
 
         /// <summary>
-        /// MouseMove method for Rubberband selection
+        /// MouseMove method for Rubberband selection of plot area
         /// </summary>
         public override bool DoMouseMove (int X, int Y, Modifier keys, InteractivePlotSurface2D ps)
         {
-            if (((keys & Modifier.Button1) != 0) && selectionActive_)
-            {
-                // clip X and Y to PlotArea
+            if (((keys & Modifier.Button1) != 0) && selectionActive) {
+                // note last selection rectangle
+                Rectangle lastSelection = selection;
                 Rectangle bounds = ps.PlotAreaBoundingBoxCache;
-                // clip selection rectangle
+                // clip selection rectangle to PlotArea
                 X = Math.Max(X, bounds.Left);
                 X = Math.Min(X, bounds.Right);
                 Y = Math.Max(Y, bounds.Top);
                 Y = Math.Min(Y, bounds.Bottom);
 
-                // normalise previous selection rectangle and delete
-                if (endPoint_ != unset_) {
-                    int x = (int)Math.Min (startPoint_.X, endPoint_.X);
-                    int y = (int)Math.Min (startPoint_.Y, endPoint_.Y);
-                    int w = (int)Math.Abs (startPoint_.X - endPoint_.X);
-                    int h = (int)Math.Abs (startPoint_.Y - endPoint_.Y);
-                    Rectangle extents = new Rectangle (x, y, w+1, h+1);
-                    ps.QueueDraw (extents);
-                }
-                endPoint_.X = X;
-                endPoint_.Y = Y;
+                endPoint.X = X;
+                endPoint.Y = Y;
+                selection = FromPoints (startPoint, endPoint);
+
+                ps.QueueDraw (lastSelection);
+                //Console.WriteLine ("Erase: {0} {1} {2} {3} ", lastSelection.X, lastSelection.Y, lastSelection.Width, lastSelection.Height);
+                ps.QueueDraw (selection);
             }
             return false;
         }
@@ -71,19 +89,13 @@ namespace NPlot
         {
             bool modified = false;
 
-            if (selectionActive_) {
-                // normalise and delete previous overlay rectangle
-                int x = (int)Math.Min (startPoint_.X, endPoint_.X);
-                int y = (int)Math.Min (startPoint_.Y, endPoint_.Y);
-                int w = (int)Math.Abs (startPoint_.X - endPoint_.X);
-                int h = (int)Math.Abs (startPoint_.Y - endPoint_.Y);
-                Rectangle extents = new Rectangle (x, y, w+1, h+1);
-                ps.QueueDraw (extents);
-                endPoint_.X = X;
-                endPoint_.Y = Y;
+            // delete previous overlay rectangle
+            ps.QueueDraw (selection);
+            if (selectionActive) {
 
+                selectionActive = false;
                 Rectangle bounds = ps.PlotAreaBoundingBoxCache;
-                if (!bounds.Contains(endPoint_)) {
+                if (!bounds.Contains(endPoint)) {
                     // MouseUp outside plotArea - cancel selection
                     modified = false;
                 }
@@ -92,11 +104,11 @@ namespace NPlot
                     // Redefine range based on selection. The proportions for
                     // Min and Max do not require Min < Max, since they will
                     // be re-ordered by Axis.DefineRange if necessary
-                    double xMin = startPoint_.X - bounds.Left;
-                    double yMin = bounds.Bottom - startPoint_.Y;
+                    double xMin = startPoint.X - bounds.Left;
+                    double yMin = bounds.Bottom - startPoint.Y;
                 
-                    double xMax = endPoint_.X - bounds.Left;
-                    double yMax = bounds.Bottom - endPoint_.Y;
+                    double xMax = endPoint.X - bounds.Left;
+                    double yMax = bounds.Bottom - endPoint.Y;
                 
                     double xMinProp = xMin/bounds.Width;
                     double xMaxProp = xMax/bounds.Width;
@@ -107,9 +119,6 @@ namespace NPlot
                     ps.DefineYAxes (yMinProp, yMaxProp);
                     modified = true;
                 }
-                selectionActive_ = false;
-                startPoint_ = unset_;
-                endPoint_ = unset_;
             }
             return modified;
         }
@@ -120,35 +129,45 @@ namespace NPlot
         /// <param name="ps">the InteractivePlotSurface2D</param>
         public override bool DoMouseLeave (InteractivePlotSurface2D ps)
         {
-            if (selectionActive_) {
-                selectionActive_ = false;
-                if (endPoint_ != unset_) {
-                    int x = (int)Math.Min (startPoint_.X, endPoint_.X);
-                    int y = (int)Math.Min (startPoint_.Y, endPoint_.Y);
-                    int w = (int)Math.Abs (startPoint_.X-endPoint_.X);
-                    int h = (int)Math.Abs (startPoint_.Y-endPoint_.Y);
-                    Rectangle extents = new Rectangle (x, y, w+1, h+1);
-                    ps.QueueDraw (extents);
-                }
-                startPoint_ = unset_;
-                endPoint_ = unset_;
+            if (selectionActive) {
+                ps.QueueDraw (selection);
+                selectionActive = false;
             }
             return false;
         }
 
         public override void DoDraw (Graphics g, Rectangle dirtyRect)
         {
-            if (startPoint_ != unset_ && endPoint_ != unset_) {
-                // Draw the rectangle defined by (startPoint_, endPoint_)
-                int x = (int)Math.Min (startPoint_.X, endPoint_.X);
-                int y = (int)Math.Min (startPoint_.Y, endPoint_.Y);
-                int w = (int)Math.Abs (startPoint_.X - endPoint_.X);
-                int h = (int)Math.Abs (startPoint_.Y - endPoint_.Y);
-                Rectangle extents = new Rectangle (x, y, w, h);
-                using (Pen rPen = new Pen (Color.White)) {
-                    g.DrawRectangle (rPen, extents);
+            if (selectionActive && selection != Rectangle.Empty) {
+                Rectangle rect = selection;
+                // allow for GDI+ rectangle draw/fill anomaly
+                rect.Width  -= 1;
+                rect.Height -= 1;
+                using (Pen rPen = new Pen (lineColor)) {
+                    g.DrawRectangle (rPen, rect);
                 }
+                //Console.WriteLine ("Draw: {0} {1} {2} {3} ", rect.X, rect.Y, rect.Width, rect.Height);
             }
+        }
+
+        /// <summary>
+        /// Return normalised Rectangle from two diagonal points, reordering if necessary
+        /// </summary>
+        private Rectangle FromPoints (Point start, Point end)
+        {
+            Point tl = start;
+            Point br = end;
+            if (start.X > end.X) {
+                tl.X = end.X;
+                br.X = start.X;
+            }
+            if (start.Y > end.Y) {
+                tl.Y = end.Y;
+                br.Y = start.Y;
+            }
+            int w = br.X - tl.X;
+            int h = br.Y - tl.Y;
+            return new Rectangle (tl.X, tl.Y, w, h);
         }
 
     } // Plot Selection

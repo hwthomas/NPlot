@@ -47,24 +47,23 @@ namespace NPlot
                 return false;
             }
 
-            if (lineExtent != Rectangle.Empty) {
-                // erase previous guideline
-                ps.QueueDraw (lineExtent);
-                //Console.WriteLine ("Erasing: {0} {1} {2} {3} ", lineExtent.X, lineExtent.Y, lineExtent.Width, lineExtent.Height);
-            }
+            // note previous guideline ready to erase it
+            Rectangle prevExtent = lineExtent;
+
             // Only display guideline when mouse is within the plotArea
             if (plotArea.Contains(X,Y)) {
                 int h = 1;
                 int w = plotArea.Right - plotArea.Left + 1;
                 lineExtent = new Rectangle (plotArea.X, Y, w, h);
-                // Invalidate new line extent, then DoDraw will draw line
                 drawPending = true;
-                ps.QueueDraw (lineExtent);
             } 
             else {
                 lineExtent = Rectangle.Empty;
             }
-            // Process any window updates immediately
+
+            ps.QueueDraw (prevExtent);
+            ps.QueueDraw (lineExtent);
+            // Process window updates immediately to ensure responsive interaction
             ps.ProcessUpdates (false);
             return false;
         }

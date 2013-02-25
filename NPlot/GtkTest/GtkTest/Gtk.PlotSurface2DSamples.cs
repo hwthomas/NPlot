@@ -1110,8 +1110,8 @@ namespace NPlotDemo
             //plotSurface.AddAxesConstraint(
             //new AxesConstraint.YPixelWorldLength(0.1f,PlotSurface2D.XAxisPosition.Bottom) );
             //plotSurface.AddAxesConstraint( new AxesConstraint.AspectRatio(1.0,PlotSurface2D.XAxisPosition.Top,PlotSurface2D.YAxisPosition.Left) );
-
-            plotSurface.AddInteraction( new PlotSelection());
+            plotSurface.AddInteraction (new KeyActions());
+            plotSurface.AddInteraction (new PlotSelection(Color.White));
 
             plotSurface.Refresh();
 
