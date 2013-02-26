@@ -1311,11 +1311,11 @@ namespace NPlotDemo
 
             plotSurface.Clear();
           
-            plotSurface.AddInteraction(new AxisDrag ());
-            plotSurface.AddInteraction(new KeyActions ());
-            //plotSurface.AddInteraction(new PlotSelection (Color.White));
-            plotSurface.AddInteraction(new VerticalGuideline (Color.White));
-            plotSurface.AddInteraction(new HorizontalGuideline (Color.White));
+            plotSurface.AddInteraction (new AxisDrag ());
+            plotSurface.AddInteraction (new KeyActions ());
+            plotSurface.AddInteraction (new PlotSelection (Color.White));
+            plotSurface.AddInteraction (new VerticalGuideline (Color.White));
+            plotSurface.AddInteraction (new HorizontalGuideline (Color.White));
   
             plotSurface.Add(new HorizontalLine(0.0, Color.LightBlue));
             

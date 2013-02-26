@@ -60,11 +60,8 @@ namespace NPlot
             else {
                 lineExtent = Rectangle.Empty;
             }
-
             ps.QueueDraw (prevExtent);
             ps.QueueDraw (lineExtent);
-            // Process window updates immediately to ensure responsive interaction
-            ps.ProcessUpdates (false);
             return false;
         }
 
@@ -77,12 +74,10 @@ namespace NPlot
             if (lineExtent != Rectangle.Empty) {
                 // erase previous vertical guideline
                 ps.QueueDraw (lineExtent);
-                ps.ProcessUpdates (false);
             }
             lineExtent = Rectangle.Empty;
             return false;
         }
-
 
         public override void DoDraw (Graphics g, Rectangle dirtyRect)
         {
@@ -97,6 +92,7 @@ namespace NPlot
             }
             drawPending = false;    // clear over-run flag
         }
+
     } // HorizontalGuideline
 
 }
