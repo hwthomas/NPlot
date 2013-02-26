@@ -37,6 +37,23 @@
     <Compile Include="GtkTest\Gtk.MenuForm.cs" />
     <Compile Include="GtkTest\Gtk.InteractivePlotSurface2D.cs" />
     <Compile Include="GtkTest\Gtk.PlotSurface2DSamples.cs" />
+    <Compile Include="Samples\PlotWave.cs" />
+    <Compile Include="Samples\PlotCircular.cs" />
+    <Compile Include="Samples\PlotWavelet.cs" />
+    <Compile Include="Samples\PlotLogLin.cs" />
+    <Compile Include="Samples\PlotLogLog.cs" />
+    <Compile Include="Samples\PlotSinc.cs" />
+    <Compile Include="Samples\PlotSample.cs" />
+    <Compile Include="Samples\PlotGaussian.cs" />
+    <Compile Include="Samples\PlotABC.cs" />
+    <Compile Include="Samples\PlotLabelAxis.cs" />
+    <Compile Include="Samples\PlotParticles.cs" />
+    <Compile Include="Samples\PlotQE.cs" />
+    <Compile Include="Samples\PlotDataset.cs" />
+    <Compile Include="Samples\PlotImage.cs" />
+    <Compile Include="Samples\PlotMarkers.cs" />
+    <Compile Include="Samples\PlotCandle.cs" />
+    <Compile Include="Samples\PlotMockup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
@@ -63,11 +80,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Samples\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\light.wav" />
     <EmbeddedResource Include="Resources\asx_jbh.xml" />
     <EmbeddedResource Include="Resources\NPlotDemo-icon.ico" />
     <EmbeddedResource Include="Resources\pattern01.jpg" />
+    <EmbeddedResource Include="Resources\sound.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="GtkTest\class.png" />
+    <None Include="GtkTest\package.png" />
   </ItemGroup>
 </Project>

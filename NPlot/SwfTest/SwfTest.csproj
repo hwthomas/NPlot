@@ -54,9 +54,9 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\light.wav" />
     <EmbeddedResource Include="Resources\asx_jbh.xml" />
     <EmbeddedResource Include="Resources\NPlotDemo-icon.ico" />
     <EmbeddedResource Include="Resources\pattern01.jpg" />
+    <EmbeddedResource Include="Resources\sound.wav" />
   </ItemGroup>
 </Project>
