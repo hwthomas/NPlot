@@ -932,7 +932,7 @@ namespace NPlotDemo
         void PlotDataSet()
         {
             string text = "";
-                text += "Stock Data Example. Demonstrates - \n";
+                text += "Stock Dataset Sample. Demonstrates - \n";
                 text += " * CandlePlot, FilledRegion, LinePlot and ArrowItem IDrawables \n";
                 text += " * DateTime axes \n";
                 text += " * Horizontal Drag Interaction - try dragging (and Ctrl-dragging) the plot surface \n";
@@ -1009,7 +1009,6 @@ namespace NPlotDemo
             bottom.Pen.Width = 2.0f;
 
             FilledRegion fr = new FilledRegion( top, bottom );
-            //fr.RectangleBrush = new RectangleBrushes.Vertical( Color.FloralWhite, Color.GhostWhite );
             fr.RectangleBrush = new RectangleBrushes.Vertical( Color.FromArgb(255,255,240), Color.FromArgb(240,255,255) );
             plotSurface.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
@@ -1023,11 +1022,11 @@ namespace NPlotDemo
             plotSurface.Add( cp );
 
             // now make an arrow... 
-            ArrowItem arrow = new ArrowItem( new PointD( ((DateTime)dt.Rows[60]["Date"]).Ticks, 2.28 ), -80, "An interesting flat bit" );
+            ArrowItem arrow = new ArrowItem ( new PointD( ((DateTime)dt.Rows[60]["Date"]).Ticks, 2.28 ), -80, "An interesting flat bit" );
             arrow.ArrowColor = Color.DarkBlue;
             arrow.PhysicalLength = 50;
             
-            //plotSurface.Add( arrow );
+            plotSurface.Add (arrow);
 
             plotSurface.Title = "AU:JBH";
             plotSurface.XAxis1.Label = "Date / Time";
@@ -1298,7 +1297,7 @@ namespace NPlotDemo
                 infoBox.Buffer.Text = text;
 
             System.IO.Stream file =
-                Assembly.GetExecutingAssembly().GetManifestResourceStream("GtkTest.Resources.light.wav");
+                Assembly.GetExecutingAssembly().GetManifestResourceStream("GtkTest.Resources.sound.wav");
 
             System.Int16[] w = new short[5000];
             byte[] a = new byte[10000];
@@ -1313,7 +1312,7 @@ namespace NPlotDemo
           
             plotSurface.AddInteraction (new AxisDrag());
             plotSurface.AddInteraction (new KeyActions());
-            plotSurface.AddInteraction(new NPlot.PlotSelection());
+            plotSurface.AddInteraction (new NPlot.PlotSelection());
             plotSurface.AddInteraction (new VerticalGuideline (Color.White));
             plotSurface.AddInteraction (new HorizontalGuideline (Color.Gray));
   

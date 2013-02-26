@@ -930,7 +930,7 @@ namespace NPlotDemo
         void PlotDataSet()
         {
             string text = "";
-                text += "Stock Data Example. Demonstrates - \n";
+                text += "Stock Dataset Sample. Demonstrates - \n";
                 text += " * CandlePlot, FilledRegion, LinePlot and ArrowItem IDrawables \n";
                 text += " * DateTime axes \n";
                 text += " * Horizontal Drag Interaction - try dragging the plot surface \n";
@@ -1007,7 +1007,6 @@ namespace NPlotDemo
             bottom.Pen.Width = 2.0f;
 
             FilledRegion fr = new FilledRegion( top, bottom );
-            //fr.RectangleBrush = new RectangleBrushes.Vertical( Color.FloralWhite, Color.GhostWhite );
             fr.RectangleBrush = new RectangleBrushes.Vertical( Color.FromArgb(255,255,240), Color.FromArgb(240,255,255) );
             plotSurface.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
@@ -1025,7 +1024,7 @@ namespace NPlotDemo
             arrow.ArrowColor = Color.DarkBlue;
             arrow.PhysicalLength = 50;
             
-            //plotSurface.Add( arrow );
+            plotSurface.Add (arrow);
 
             plotSurface.Title = "AU:JBH";
             plotSurface.XAxis1.Label = "Date / Time";
@@ -1297,7 +1296,7 @@ namespace NPlotDemo
                 infoBox.Text = text;
 
             System.IO.Stream file =
-                Assembly.GetExecutingAssembly().GetManifestResourceStream("SwfTest.Resources.light.wav");
+                Assembly.GetExecutingAssembly().GetManifestResourceStream("SwfTest.Resources.sound.wav");
 
             
             System.Int16[] w = new short[5000];
