@@ -165,8 +165,8 @@ namespace NPlot
                 tl.Y = end.Y;
                 br.Y = start.Y;
             }
-            int w = br.X - tl.X;
-            int h = br.Y - tl.Y;
+            int w = br.X - tl.X + 1;
+            int h = br.Y - tl.Y + 1;
             return new Rectangle (tl.X, tl.Y, w, h);
         }
 

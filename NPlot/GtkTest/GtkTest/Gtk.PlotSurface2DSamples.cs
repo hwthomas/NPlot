@@ -1313,7 +1313,7 @@ namespace NPlotDemo
           
             plotSurface.AddInteraction (new AxisDrag());
             plotSurface.AddInteraction (new KeyActions());
-            //plotSurface.AddInteraction(new NPlot.PlotSelection());
+            plotSurface.AddInteraction(new NPlot.PlotSelection());
             plotSurface.AddInteraction (new VerticalGuideline (Color.White));
             plotSurface.AddInteraction (new HorizontalGuideline (Color.Gray));
   
