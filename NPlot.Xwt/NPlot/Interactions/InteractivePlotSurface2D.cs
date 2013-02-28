@@ -3,7 +3,7 @@
 // 
 // InteractivePlotSurface2D.cs
 //
-// Copyright (C) Hywel Thomas, Matt Howlett and others 2003-2013
+// Copyright (C) Hywel Thomas and others.
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without modification,

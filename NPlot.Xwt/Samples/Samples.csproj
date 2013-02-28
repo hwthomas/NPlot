@@ -31,4 +31,13 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="App.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="MainWindow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="class.png" />
+    <None Include="package.png" />
+  </ItemGroup>
 </Project>
