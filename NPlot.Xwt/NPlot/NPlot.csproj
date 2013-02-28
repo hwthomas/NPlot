@@ -31,4 +31,22 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="NPlot\" />
+    <Folder Include="Interactions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NPlot\Utils.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Data" />
+    <Reference Include="Xwt">
+      <HintPath>..\..\..\controlsuite\CSPlot\CSPlot\bin\Debug\Xwt.dll</HintPath>
+    </Reference>
+    <Reference Include="NPlot">
+      <HintPath>..\..\..\NPlot HWT 2013\bin\debug\NPlot.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
