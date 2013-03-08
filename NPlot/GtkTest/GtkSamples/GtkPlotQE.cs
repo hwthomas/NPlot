@@ -6,7 +6,7 @@ using System.Reflection;
 using Gtk;
 using NPlot;
 
-namespace GtkTest
+namespace GtkSamples
 {
     public class PlotQE : PlotSample
     {

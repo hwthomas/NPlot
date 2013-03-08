@@ -3,10 +3,9 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-using Gtk;
 using NPlot;
 
-namespace GtkTest
+namespace SwfSamples
 {
     public class PlotParticles : PlotSample
     {
@@ -114,19 +113,15 @@ namespace GtkTest
             range = max - min;
 
             const int Nbin = 30;
-            float dx = range / Nbin;
             float [] xbin = new float[Nbin+1];
             float [] xh = new float[Nbin+1];
 
-            for (int j=0; j<=Nbin; ++j)
-            {
+            for (int j=0; j<=Nbin; ++j){
                 xbin[j] = min + j * range;
                 if (j < Nbin) xh[j] = 0.0F;
             }
-            for (int i =0; i<Particle_Number; ++i)
-            {
-                if (x[i] >= min && x[i] <= max)
-                {
+            for (int i =0; i<Particle_Number; ++i) {
+                if (x[i] >= min && x[i] <= max) {
                     int j;
                     j = Convert.ToInt32(Nbin * (x[i] - min) / range);
                     xh[j] += 1;

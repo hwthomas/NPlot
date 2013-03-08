@@ -5,10 +5,9 @@ using System.Reflection;
 using System.Data;
 using System.Collections;
 
-using Gtk;
 using NPlot;
 
-namespace GtkTest
+namespace SwfSamples
 {
     public class PlotDataset : PlotSample
     {
@@ -27,10 +26,10 @@ namespace GtkTest
             // obtain stock information from xml file
             DataSet ds = new DataSet();
             System.IO.Stream file =
-                Assembly.GetExecutingAssembly().GetManifestResourceStream( "GtkTest.Resources.asx_jbh.xml" );
+                Assembly.GetExecutingAssembly().GetManifestResourceStream( "SwfTest.Resources.asx_jbh.xml" );
             ds.ReadXml( file, System.Data.XmlReadMode.ReadSchema );
             DataTable dt = ds.Tables[0];
-            DataView dv = new DataView( dt );
+            // DataView dv = new DataView( dt );
 
             // create CandlePlot.
             CandlePlot cp = new CandlePlot();
@@ -123,7 +122,6 @@ namespace GtkTest
             
             // make sure plot surface colors are as we expect - the wave example changes them.
             plotSurface.PlotBackColor = Color.White;
-            plotSurface.Canvas.ModifyBg( StateType.Normal );
             plotSurface.XAxis1.Color = Color.Black;
             plotSurface.YAxis1.Color = Color.Black;
 

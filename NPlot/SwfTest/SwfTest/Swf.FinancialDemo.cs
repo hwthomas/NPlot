@@ -68,7 +68,7 @@ namespace NPlotDemo
                 Assembly.GetExecutingAssembly().GetManifestResourceStream("SwfTest.Resources.asx_jbh.xml");
             ds.ReadXml(file, System.Data.XmlReadMode.ReadSchema);
             DataTable dt = ds.Tables[0];
-            DataView dv = new DataView(dt);
+            //DataView dv = new DataView(dt);
 
             // create CandlePlot.
             CandlePlot cp = new CandlePlot();
@@ -184,8 +184,6 @@ namespace NPlotDemo
             this.costPS.Legend = null;
             this.costPS.Canvas.Location = new System.Drawing.Point(13, 13);
             this.costPS.Canvas.Name = "costPS";
-            // HWT this.costPS.RightMenu = null;
-            // HWT this.costPS.ShowCoordinates = false;
             this.costPS.Canvas.Size = new System.Drawing.Size(606, 285);
             this.costPS.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
             this.costPS.Canvas.TabIndex = 2;

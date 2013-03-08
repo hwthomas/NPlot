@@ -176,7 +176,7 @@ namespace NPlot
 		public virtual void DrawInLegend(Graphics g, Rectangle startEnd)
 		{
 			int smallerHeight = (int)(startEnd.Height * 0.5f);
-			int heightToRemove = (int)(startEnd.Height * 0.5f);
+			//int heightToRemove = (int)(startEnd.Height * 0.5f);
 			Rectangle newRectangle = new Rectangle( startEnd.Left, startEnd.Top + smallerHeight / 2, startEnd.Width, smallerHeight );
 			g.FillRectangle( rectangleBrush_.Get( newRectangle ), newRectangle );
 			g.DrawRectangle( borderPen_, newRectangle );

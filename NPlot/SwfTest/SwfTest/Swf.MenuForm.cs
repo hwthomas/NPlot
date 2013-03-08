@@ -224,16 +224,16 @@ namespace NPlotDemo
 			Application.Run(new MenuForm());
 		}
 
-		private System.Windows.Forms.Form displayForm_ = null;
+		private System.Windows.Forms.Form displayForm = null;
 		private void WindowThread()
 		{
-			displayForm_.ShowDialog();
+			displayForm.ShowDialog();
 		}
 
 		private void runDemoButton_Click(object sender, System.EventArgs e)
 		{
- 			displayForm_ = new FinancialDemo();
- 			displayForm_.ShowDialog();
+ 			displayForm = new FinancialDemo();
+ 			displayForm.ShowDialog();
  		/*
 			System.Threading.Thread t = new Thread( new ThreadStart(WindowThread) );
             //t.ApartmentState = ApartmentState.STA;
@@ -244,8 +244,8 @@ namespace NPlotDemo
 
         private void plotSurface2DDemoButton_Click(object sender, System.EventArgs e)
 		{
-			displayForm_ = new PlotSurface2DDemo();
-			displayForm_.ShowDialog();
+			displayForm = new PlotSurface2DDemo();
+			displayForm.ShowDialog();
 			/*
 			System.Threading.Thread t = new Thread( new ThreadStart(WindowThread) );
             //t.SetApartmentState( ApartmentState.STA ); // necessary for copy to clipboard to work.
@@ -264,7 +264,7 @@ namespace NPlotDemo
 		{
 			TestItem ti = (TestItem)this.TestSelectComboBox.SelectedItem;
 		
-			displayForm_ = ti.Form;
+			displayForm = ti.Form;
 			System.Threading.Thread t = new Thread( new ThreadStart(WindowThread) );
 			t.SetApartmentState( ApartmentState.STA ); // necessary for copy to clipboard to work.
 			//t.ApartmentState = ApartmentState.STA;

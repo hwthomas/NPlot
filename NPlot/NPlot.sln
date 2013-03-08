@@ -33,7 +33,7 @@ Global
 		{E4B99177-77A3-4C92-B881-A6CB57E3BF89}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = GtkTest\GtkTest.csproj
+		StartupItem = SwfTest\SwfTest.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.inheritsSet = null
@@ -44,6 +44,7 @@ Global
 		$2.scope = text/x-csharp
 		$0.TextStylePolicy = $3
 		$3.FileWidth = 120
+		$3.TabsToSpaces = False
 		$3.inheritsSet = VisualStudio
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain

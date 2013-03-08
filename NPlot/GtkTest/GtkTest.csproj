@@ -37,23 +37,23 @@
     <Compile Include="GtkTest\Gtk.MenuForm.cs" />
     <Compile Include="GtkTest\Gtk.InteractivePlotSurface2D.cs" />
     <Compile Include="GtkTest\Gtk.PlotSurface2DSamples.cs" />
-    <Compile Include="Samples\PlotWave.cs" />
-    <Compile Include="Samples\PlotCircular.cs" />
-    <Compile Include="Samples\PlotWavelet.cs" />
-    <Compile Include="Samples\PlotLogLin.cs" />
-    <Compile Include="Samples\PlotLogLog.cs" />
-    <Compile Include="Samples\PlotSinc.cs" />
-    <Compile Include="Samples\PlotSample.cs" />
-    <Compile Include="Samples\PlotGaussian.cs" />
-    <Compile Include="Samples\PlotABC.cs" />
-    <Compile Include="Samples\PlotLabelAxis.cs" />
-    <Compile Include="Samples\PlotParticles.cs" />
-    <Compile Include="Samples\PlotQE.cs" />
-    <Compile Include="Samples\PlotDataset.cs" />
-    <Compile Include="Samples\PlotImage.cs" />
-    <Compile Include="Samples\PlotMarkers.cs" />
-    <Compile Include="Samples\PlotCandle.cs" />
-    <Compile Include="Samples\PlotMockup.cs" />
+    <Compile Include="GtkSamples\PlotCircular.cs" />
+    <Compile Include="GtkSamples\PlotWavelet.cs" />
+    <Compile Include="GtkSamples\PlotLogLin.cs" />
+    <Compile Include="GtkSamples\PlotLogLog.cs" />
+    <Compile Include="GtkSamples\PlotSinc.cs" />
+    <Compile Include="GtkSamples\PlotGaussian.cs" />
+    <Compile Include="GtkSamples\PlotABC.cs" />
+    <Compile Include="GtkSamples\PlotLabelAxis.cs" />
+    <Compile Include="GtkSamples\PlotParticles.cs" />
+    <Compile Include="GtkSamples\PlotDataset.cs" />
+    <Compile Include="GtkSamples\PlotImage.cs" />
+    <Compile Include="GtkSamples\PlotMarkers.cs" />
+    <Compile Include="GtkSamples\PlotCandle.cs" />
+    <Compile Include="GtkSamples\PlotMockup.cs" />
+    <Compile Include="GtkSamples\GtkPlotQE.cs" />
+    <Compile Include="GtkSamples\GtkPlotSample.cs" />
+    <Compile Include="GtkSamples\GtkPlotWave.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f">
@@ -80,7 +80,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="Samples\" />
+    <Folder Include="GtkSamples\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\asx_jbh.xml" />

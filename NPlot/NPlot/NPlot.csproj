@@ -85,7 +85,6 @@
     <Compile Include="NPlot\Transform2D.cs" />
     <Compile Include="NPlot\Utils.cs" />
     <Compile Include="NPlot\VerticalLine.cs" />
-    <Compile Include="NPlot\Windows.PlotSurface2D.HWT.cs" />
     <Compile Include="NPlot\CursorType.cs" />
     <Compile Include="NPlot\Modifier.cs" />
     <Compile Include="Interactions\KeyActions.cs" />
