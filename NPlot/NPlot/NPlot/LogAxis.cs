@@ -141,13 +141,12 @@ namespace NPlot
 			ArrayList smallTickPositions;
 			this.WorldTickPositions( physicalMin, physicalMax, out largeTickPositions, out smallTickPositions );
 
-			Point offset = new Point( 0, 0 );
+			//Point offset = new Point( 0, 0 );
 			object bb = null;
+
 			// Missed this protection
-			if (largeTickPositions.Count > 0)
-			{
-				for (int i=0; i<largeTickPositions.Count; ++i)
-				{
+			if (largeTickPositions.Count > 0) {
+				for (int i=0; i<largeTickPositions.Count; ++i) {
 					StringBuilder label = new StringBuilder();
 					// do google search for "format specifier writeline" for help on this.
 					label.AppendFormat(this.NumberFormat, (double)largeTickPositions[i]);
@@ -157,8 +156,7 @@ namespace NPlot
 					Axis.UpdateOffsetAndBounds( ref labelOffset, ref boundingBox, tLabelOffset, tBoundingBox );
 				}
 			}
-			else
-			{
+			else {
 				// just get the axis bounding box)
 				PointF dir = Utils.UnitVector(physicalMin,physicalMax);
 				Rectangle rr = new Rectangle( physicalMin.X,
@@ -169,10 +167,8 @@ namespace NPlot
 			}
 
 			// missed protection for zero ticks
-			if (smallTickPositions.Count > 0)
-			{
-				for (int i=0; i<smallTickPositions.Count; ++i)
-				{
+			if (smallTickPositions.Count > 0) {
+				for (int i=0; i<smallTickPositions.Count; ++i) {
 					this.DrawTick( g, (double)smallTickPositions[i], this.SmallTickSize,
 						"", new Point(0,0), physicalMin, physicalMax, out tLabelOffset, out tBoundingBox );
 					// ignore r for now - assume bb unchanged by small tick bounds.

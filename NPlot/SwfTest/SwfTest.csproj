@@ -37,6 +37,23 @@
     <Compile Include="SwfTest\Swf.MenuForm.cs" />
     <Compile Include="SwfTest\Swf.InteractivePlotSurface2D.cs" />
     <Compile Include="SwfTest\Swf.PlotSurface2DSamples.cs" />
+    <Compile Include="SwfSamples\PlotABC.cs" />
+    <Compile Include="SwfSamples\SwfPlotSample.cs" />
+    <Compile Include="SwfSamples\PlotCandle.cs" />
+    <Compile Include="SwfSamples\PlotCircular.cs" />
+    <Compile Include="SwfSamples\PlotDataset.cs" />
+    <Compile Include="SwfSamples\PlotGaussian.cs" />
+    <Compile Include="SwfSamples\PlotImage.cs" />
+    <Compile Include="SwfSamples\PlotLabelAxis.cs" />
+    <Compile Include="SwfSamples\PlotLogLin.cs" />
+    <Compile Include="SwfSamples\PlotLogLog.cs" />
+    <Compile Include="SwfSamples\PlotMarkers.cs" />
+    <Compile Include="SwfSamples\PlotMockup.cs" />
+    <Compile Include="SwfSamples\PlotParticles.cs" />
+    <Compile Include="SwfSamples\PlotSinc.cs" />
+    <Compile Include="SwfSamples\PlotWavelet.cs" />
+    <Compile Include="SwfSamples\SwfPlotQE.cs" />
+    <Compile Include="SwfSamples\SwfPlotWave.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\NPlot\NPlot.csproj">

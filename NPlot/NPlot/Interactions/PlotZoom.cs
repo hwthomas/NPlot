@@ -31,6 +31,7 @@
 //
 using System;
 using System.Drawing;
+//using GLib;			// Omit timeout for now
 
 namespace NPlot
 {
@@ -44,13 +45,24 @@ namespace NPlot
     {
         private double sensitivity_ = 1.0;  // default value
         private Rectangle focusRect = Rectangle.Empty;
-        private Point pF = Point.Empty;
-   
+        private Point p = Point.Empty;
+		private bool zoomActive = false;
+		private InteractivePlotSurface2D surface;
+
+		public PlotZoom ()
+		{
+		}
+
         /// <summary>
         /// Mouse Scroll (wheel) method for AxisZoom interaction
         /// </summary>
         public override bool DoMouseScroll (int X, int Y, int direction, Modifier keys, InteractivePlotSurface2D ps)
         {
+			// Add timeout into Gtk loop when scroll starts - Omit for now
+			// GLib.Timeout.Add (500, new GLib.TimeoutHandler (zoomTimeout) );
+			zoomActive = true;
+			surface = ps;
+
             double proportion = 0.1*sensitivity_;   // use initial zoom of 10%
             double focusX = 0.5, focusY = 0.5;      // default focus point
                 
@@ -62,8 +74,8 @@ namespace NPlot
 
             Rectangle area = ps.PlotAreaBoundingBoxCache;
             if (area.Contains(X,Y)) {
-                pF.X = X;
-                pF.Y = Y;
+                p.X = X;
+                p.Y = Y;
                 focusX = (double)(X - area.Left)/(double)area.Width;
                 focusY = (double)(area.Bottom - Y)/(double)area.Height;
             }
@@ -73,11 +85,13 @@ namespace NPlot
             ps.ZoomXAxes (proportion,focusX);
             ps.ZoomYAxes (proportion,focusY);
 
-            int x = pF.X-10;
-            int y = pF.Y-10;
 
-            focusRect = new Rectangle (x, y, 21, 21);
-            // draw new focusRect
+			// Note: r = 16, and Focus extents range from x-2*r-1 to x+2*r+1, y-2*r-1 to y+2*r+1
+			int x = p.X-31;
+			int y = p.Y-31;
+			focusRect = new Rectangle (x, y, 64, 64);
+
+			// draw new focusRect
             ps.QueueDraw (focusRect);
                 
             return (true);
@@ -88,14 +102,15 @@ namespace NPlot
         /// </summary>
         public override bool DoMouseMove (int X, int Y, Modifier keys, InteractivePlotSurface2D ps)
         {
-            // delete previous focusPoint drawing
-            ps.QueueDraw (focusRect);
+			//zoomActive = false;
+			// remove last focusPoint
+			ps.QueueDraw (focusRect);
             return false;
         }
 
         public override void DoDraw (Graphics g, Rectangle dirtyRect)
         {
-            DrawFocus (g);
+            DrawFocus (g, p);
         }
 
         /// <summary>
@@ -108,14 +123,36 @@ namespace NPlot
             set { sensitivity_ = value; }
         }
 
-        private void DrawFocus (Graphics g)
-        {
-            // Draw the Focus-point when zooming
-            if (focusRect != Rectangle.Empty) {
-                using (Pen rPen = new Pen (Color.White)) {
-                    g.DrawRectangle (rPen, focusRect);
-                }
-            }
+		private void DrawFocus (Graphics g, Point p)
+		{
+			// Draw a 'Google-Earth'-type Focus-point when zooming
+			if (zoomActive) {
+				using (Pen rPen = new Pen (Color.White)) {
+					Rectangle r1 = new Rectangle (p.X-15, p.Y-15, 32,32);
+					g.DrawArc (rPen, r1, 0, 360);
+					r1 = new Rectangle (p.X-19, p.Y-19, 40,40);
+					g.DrawArc (rPen, r1, 0, 360);
+					g.DrawLine (rPen, p.X-30, p.Y, p.X-15, p.Y);
+					g.DrawLine (rPen, p.X+30, p.Y, p.X+17, p.Y);
+					g.DrawLine (rPen, p.X, p.Y-30, p.X, p.Y-15);
+					g.DrawLine (rPen, p.X, p.Y+30, p.X, p.Y+17);
+				}
+			}
+		}
+
+
+        /// <summary>
+        /// Callback for zoom timeout - compiled but not active at present
+        /// </summary>
+        private bool zoomTimeout ()
+		{
+			// clear zoom flag and remove last focusPoint
+            zoomActive = false;
+			surface.QueueDraw (focusRect);
+            //returning true means that the timeout routine should be invoked
+            //again after the timeout period expires.  Returning false will 
+            //terminate the timeout (ie until invoked again by Scrolling)
+            return false;
         }
 
     } // Mouse Wheel Zoom

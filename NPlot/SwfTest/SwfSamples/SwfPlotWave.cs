@@ -3,14 +3,13 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-using Gtk;
 using NPlot;
 
-namespace GtkTest
+namespace SwfSamples
 {
     public class PlotWave : PlotSample
     {
-        public PlotWave()
+        public PlotWave() : base ()
         {
             infoText = "";
             infoText += "Sound Wave Example. Demonstrates - \n";
@@ -21,7 +20,7 @@ namespace GtkTest
             infoText += " * Key actions : +,- zoom, left/right/up/down pan, Home restores original scale and origin";
             
             System.IO.Stream file =
-                Assembly.GetExecutingAssembly().GetManifestResourceStream("GtkTest.Resources.light.wav");
+                Assembly.GetExecutingAssembly().GetManifestResourceStream("SwfTest.Resources.sound.wav");
 
             System.Int16[] w = new short[5000];
             byte[] a = new byte[10000];
@@ -34,10 +33,10 @@ namespace GtkTest
 
             plotSurface.Clear();
           
-            plotSurface.AddInteraction (new AxisDrag());
-            plotSurface.AddInteraction (new KeyActions());
-            plotSurface.AddInteraction (new NPlot.PlotSelection());
-            plotSurface.AddInteraction (new VerticalGuideline (Color.White));
+            plotSurface.AddInteraction (new AxisDrag ());
+            plotSurface.AddInteraction (new KeyActions ());
+            plotSurface.AddInteraction (new NPlot.PlotSelection (Color.Gray));
+            plotSurface.AddInteraction (new VerticalGuideline (Color.Gray));
             plotSurface.AddInteraction (new HorizontalGuideline (Color.Gray));
   
             plotSurface.Add(new HorizontalLine(0.0, Color.LightBlue));
@@ -50,14 +49,15 @@ namespace GtkTest
 
             plotSurface.YAxis1.FlipTicksLabel = true;
 
-            plotSurface.PlotBackColor = Color.DarkBlue;
-            plotSurface.Canvas.ModifyBg (StateType.Normal, new Gdk.Color(0,0,0) );
-            plotSurface.XAxis1.Color = Color.White;
-            plotSurface.YAxis1.Color = Color.White;
-            
-            plotSurface.Refresh();
-        
-        }
-    }
+			plotSurface.PlotBackColor = Color.DarkBlue;
+			plotSurface.Canvas.BackColor = Color.FromArgb (100, 100, 100);
+			plotSurface.XAxis1.Color = Color.White;
+			plotSurface.YAxis1.Color = Color.White;
+
+			plotSurface.Refresh();
+
+		}
+
+	}
 }
 

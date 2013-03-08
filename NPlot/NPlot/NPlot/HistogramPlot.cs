@@ -156,7 +156,6 @@ namespace NPlot
                 PointF xPos1 = xAxis.WorldToPhysical( p1.X, false );
 				PointF yPos1 = yAxis.WorldToPhysical( p1.Y, false );
 				PointF xPos2 = xAxis.WorldToPhysical( p2.X, false );
-				PointF yPos2 = yAxis.WorldToPhysical( p2.Y, false );
 
 				if (isStacked_)
 				{

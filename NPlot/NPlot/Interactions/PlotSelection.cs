@@ -45,11 +45,10 @@ namespace NPlot
         private Rectangle selection = Rectangle.Empty;
         private Color lineColor = Color.White;
 
-
-        public PlotSelection ()
-        {
-            lineColor = Color.White;
-        }
+		public PlotSelection ()
+		{
+			lineColor = Color.White;
+		}
 
         /// <summary>
         /// Constructor with specific color

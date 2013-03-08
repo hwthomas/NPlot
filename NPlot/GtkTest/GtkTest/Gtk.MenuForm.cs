@@ -55,7 +55,7 @@ namespace NPlotDemo
 		private Gtk.ComboBox TestSelectComboBox;
 		private Gtk.Button RunTestButton;
 		private Gtk.Button quitButton;
-		private Gtk.Window displayForm_ = null;
+		private Gtk.Window displayForm = null;
 
 		public MenuForm() : base ("Gtk# Demo")
 		{
@@ -136,14 +136,14 @@ namespace NPlotDemo
 		
 		private void runDemoButton_Click(object sender, System.EventArgs e)
 		{
-           	displayForm_ = new FinancialDemo();
-			displayForm_.ShowAll();
+           	displayForm = new FinancialDemo();
+			displayForm.ShowAll();
         }
 
         private void plotSurface2DDemoButton_Click(object sender, System.EventArgs e)
 		{
- 			displayForm_ = new PlotSurface2DDemo();
-			displayForm_.ShowAll();
+ 			displayForm = new PlotSurface2DDemo();
+			displayForm.ShowAll();
 		}
 
 
@@ -164,13 +164,13 @@ namespace NPlotDemo
 				str = (string)TestSelectComboBox.Model.GetValue (iter, 0);
 				if (str.Equals("Axis Test"))
 				{
-				    displayForm_ = new AxisTestsForm();
-					displayForm_.ShowAll();
+				    displayForm = new AxisTestsForm();
+					displayForm.ShowAll();
 				}
 				if (str.Equals("PlotSurface2D"))
 				{
-				    displayForm_ = new PlotSurface2DDemo();
-					displayForm_.ShowAll();
+				    displayForm = new PlotSurface2DDemo();
+					displayForm.ShowAll();
 				}
 			}
 		}

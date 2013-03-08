@@ -67,7 +67,7 @@ namespace NPlotDemo
                 Assembly.GetExecutingAssembly().GetManifestResourceStream("GtkTest.Resources.asx_jbh.xml");
             ds.ReadXml(file, System.Data.XmlReadMode.ReadSchema);
             DataTable dt = ds.Tables[0];
-            DataView dv = new DataView(dt);
+            // DataView dv = new DataView(dt);
 
             // create CandlePlot.
             CandlePlot cp = new CandlePlot();

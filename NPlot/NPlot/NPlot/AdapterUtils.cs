@@ -709,7 +709,7 @@ namespace NPlot
 		public class DataGetter_MultiRows 
 		{
 			DataRowCollection rows_;
-			string abscissaName_;
+			string abscissaName_ = "";
 			int abscissaColumnNumber_;
 
 			/// <summary>

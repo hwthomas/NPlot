@@ -425,7 +425,7 @@ namespace NPlot.Swf {
         /// <summary>
         /// Process window updates immediately
         /// </summary>
-        public virtual void ProcessUpdates (bool updateChildren)
+        public override void ProcessUpdates (bool updateChildren)
         {
             canvas.Update ();
         }

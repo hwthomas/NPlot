@@ -3,10 +3,9 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-using Gtk;
 using NPlot;
 
-namespace GtkTest
+namespace GtkSamples
 {
     public class PlotSinc : PlotSample
     {

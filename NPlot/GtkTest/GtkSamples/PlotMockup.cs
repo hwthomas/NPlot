@@ -4,10 +4,9 @@ using System.IO;
 using System.Reflection;
 using System.Data;
 
-using Gtk;
 using NPlot;
 
-namespace GtkTest
+namespace GtkSamples
 {
     public class PlotMockup : PlotSample
     {

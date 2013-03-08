@@ -154,7 +154,7 @@ namespace NPlot
 		}
 
 		private Brush textBrush_ = new SolidBrush( Color.Black );
-		private Pen pen_ = new Pen( Color.Black );
+		//private Pen pen_ = new Pen( Color.Black );
 		private Font font_;
 	}
 }

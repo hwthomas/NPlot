@@ -3,10 +3,9 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-using Gtk;
 using NPlot;
 
-namespace GtkTest
+namespace SwfSamples
 {
     public class PlotGaussian : PlotSample
     {
@@ -26,11 +25,9 @@ namespace GtkTest
 
             for (int i=0; i<len; ++i) 
             {
-                int j = len-1-i;
                 a[i] = (double)Math.Exp(-(double)(i-len/2)*(double)(i-len/2)/50.0f);
                 b[i] = a[i] + (r.Next(10)/50.0f)-0.05f;
-                if (b[i] < 0.0f) 
-                {
+                if (b[i] < 0.0f) {
                     b[i] = 0;
                 }
             }

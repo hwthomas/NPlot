@@ -3,10 +3,10 @@ using System.Drawing;
 using System.IO;
 using System.Reflection;
 
-using Gtk;
+using System.Windows.Forms;
 using NPlot;
 
-namespace GtkTest
+namespace SwfSamples
 {
     public class PlotABC : PlotSample
     {
@@ -39,7 +39,7 @@ namespace GtkTest
             // Image downloaded from http://squidfingers.com. Thanks!
             Assembly a = Assembly.GetExecutingAssembly();
             System.IO.Stream file =
-                a.GetManifestResourceStream( "GtkTest.Resources.pattern01.jpg" );
+                a.GetManifestResourceStream( "SwfTest.Resources.pattern01.jpg" );
             System.Drawing.Image im = System.Drawing.Image.FromStream( file );
             plotSurface.PlotBackImage = new Bitmap( im );
 
@@ -53,7 +53,6 @@ namespace GtkTest
             
             // make sure plot surface colors are as we expect - the wave example changes them.
             //plotSurface.PlotBackColor = Color.White;
-            plotSurface.Canvas.ModifyBg(StateType.Normal);
             plotSurface.XAxis1.Color = Color.Black;
             plotSurface.YAxis1.Color = Color.Black;
 
