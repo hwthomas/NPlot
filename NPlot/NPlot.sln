@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GtkTest", "GtkTest\GtkTest.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwfTest", "SwfTest\SwfTest.csproj", "{1BA22AB4-C228-4115-BEA2-1C2548BFCC33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Samples", "Samples\Samples.csproj", "{9D0F41B5-B50F-40B5-B319-9668E783B52A}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -23,17 +21,13 @@ Global
 		{5415AE99-2877-4730-AF1F-F94DCD12C31A}.Debug|x86.Build.0 = Debug|x86
 		{5415AE99-2877-4730-AF1F-F94DCD12C31A}.Release|x86.ActiveCfg = Release|x86
 		{5415AE99-2877-4730-AF1F-F94DCD12C31A}.Release|x86.Build.0 = Release|x86
-		{9D0F41B5-B50F-40B5-B319-9668E783B52A}.Debug|x86.ActiveCfg = Debug|x86
-		{9D0F41B5-B50F-40B5-B319-9668E783B52A}.Debug|x86.Build.0 = Debug|x86
-		{9D0F41B5-B50F-40B5-B319-9668E783B52A}.Release|x86.ActiveCfg = Release|x86
-		{9D0F41B5-B50F-40B5-B319-9668E783B52A}.Release|x86.Build.0 = Release|x86
 		{E4B99177-77A3-4C92-B881-A6CB57E3BF89}.Debug|x86.ActiveCfg = Debug|x86
 		{E4B99177-77A3-4C92-B881-A6CB57E3BF89}.Debug|x86.Build.0 = Debug|x86
 		{E4B99177-77A3-4C92-B881-A6CB57E3BF89}.Release|x86.ActiveCfg = Release|x86
 		{E4B99177-77A3-4C92-B881-A6CB57E3BF89}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = SwfTest\SwfTest.csproj
+		StartupItem = GtkTest\GtkTest.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
 		$1.inheritsSet = null

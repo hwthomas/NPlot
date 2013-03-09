@@ -102,8 +102,7 @@ namespace NPlot
         /// </summary>
         public override bool DoMouseMove (int X, int Y, Modifier keys, InteractivePlotSurface2D ps)
         {
-			//zoomActive = false;
-			// remove last focusPoint
+			zoomActive = false;
 			ps.QueueDraw (focusRect);
             return false;
         }
