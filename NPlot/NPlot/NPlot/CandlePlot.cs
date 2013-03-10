@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -37,7 +37,7 @@ using System.Data;
 namespace NPlot
 {
 
-    /// <summary>
+	/// <summary>
 	/// Encapsulates open, low, high and close values useful for specifying financial data
 	/// over a time period, together with a [single] x-value indicating the time [period] the
 	/// data corresponds to. 
@@ -155,43 +155,43 @@ namespace NPlot
 	public class CandlePlot : BasePlot, IPlot
 	{
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public abstract class CandleStyle
-        {
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="d"></param>
-            /// <returns></returns>
-            public abstract CandleStyle Create(CandleDataAdapter d);
-        }
+		/// <summary>
+		/// 
+		/// </summary>
+		public abstract class CandleStyle
+		{
+			/// <summary>
+			/// 
+			/// </summary>
+			/// <param name="d"></param>
+			/// <returns></returns>
+			public abstract CandleStyle Create(CandleDataAdapter d);
+		}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public class Stick : CandleStyle
-        {
-            private Stick() { }
+		/// <summary>
+		/// 
+		/// </summary>
+		public class Stick : CandleStyle
+		{
+			private Stick() { }
 
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="d"></param>
-            /// <returns></returns>
-            public override CandleStyle Create(CandleDataAdapter d)
-            {
-                return new Stick();
-            }
-        }
-        
+			/// <summary>
+			/// 
+			/// </summary>
+			/// <param name="d"></param>
+			/// <returns></returns>
+			public override CandleStyle Create(CandleDataAdapter d)
+			{
+				return new Stick();
+			}
+		}
+		
 
-        /// <summary>
-        /// This class is responsible for interpreting the various ways you can 
-	    /// specify data to CandlePlot objects
-        /// </summary>
-        public class CandleDataAdapter
+		/// <summary>
+		/// This class is responsible for interpreting the various ways you can 
+		/// specify data to CandlePlot objects
+		/// </summary>
+		public class CandleDataAdapter
 		{
 			private object openData_;
 			private object lowData_;
@@ -210,18 +210,18 @@ namespace NPlot
 			private double[] closeDataArray_;
 			private double[] abscissaDataArray_;
 			private bool useDoublesArrays_;
-            
+			
 
 			/// <summary>
-            /// Constructor
-            /// </summary>
-            /// <param name="dataSource"></param>
-            /// <param name="dataMember"></param>
-            /// <param name="abscissaData"></param>
-            /// <param name="openData"></param>
-            /// <param name="lowData"></param>
-            /// <param name="highData"></param>
-            /// <param name="closeData"></param>
+			/// Constructor
+			/// </summary>
+			/// <param name="dataSource"></param>
+			/// <param name="dataMember"></param>
+			/// <param name="abscissaData"></param>
+			/// <param name="openData"></param>
+			/// <param name="lowData"></param>
+			/// <param name="highData"></param>
+			/// <param name="closeData"></param>
 			public CandleDataAdapter( 
 				object dataSource, string dataMember, object abscissaData,
 				object openData, object lowData, object highData, object closeData )
@@ -274,59 +274,59 @@ namespace NPlot
 			}
 
 
-            /// <summary>
-            /// Gets the ith point in the candle adapter
-            /// </summary>
-            /// <param name="i">index of datapoint to get</param>
-            /// <returns>the datapoint.</returns>
+			/// <summary>
+			/// Gets the ith point in the candle adapter
+			/// </summary>
+			/// <param name="i">index of datapoint to get</param>
+			/// <returns>the datapoint.</returns>
 			public PointOLHC this[int i]
 			{
 				get
 				{
 					// try a fast track first
-                    if (useDoublesArrays_)
-                    {
-                        return new PointOLHC(
-                            abscissaDataArray_[i],
-                            openDataArray_[i],
-                            lowDataArray_[i],
-                            highDataArray_[i],
-                            closeDataArray_[i]);
-                    }
-                    // is the data coming from a data source?
-                    else if (rows_ != null)
-                    {
-                        double x = Utils.ToDouble(((DataRow)(rows_[i]))[(string)abscissaData_]);
-                        double open = Utils.ToDouble(((DataRow)(rows_[i]))[(string)openData_]);
-                        double low = Utils.ToDouble(((DataRow)(rows_[i]))[(string)lowData_]);
-                        double high = Utils.ToDouble(((DataRow)(rows_[i]))[(string)highData_]);
-                        double close = Utils.ToDouble(((DataRow)(rows_[i]))[(string)closeData_]);
+					if (useDoublesArrays_)
+					{
+						return new PointOLHC(
+							abscissaDataArray_[i],
+							openDataArray_[i],
+							lowDataArray_[i],
+							highDataArray_[i],
+							closeDataArray_[i]);
+					}
+					// is the data coming from a data source?
+					else if (rows_ != null)
+					{
+						double x = Utils.ToDouble(((DataRow)(rows_[i]))[(string)abscissaData_]);
+						double open = Utils.ToDouble(((DataRow)(rows_[i]))[(string)openData_]);
+						double low = Utils.ToDouble(((DataRow)(rows_[i]))[(string)lowData_]);
+						double high = Utils.ToDouble(((DataRow)(rows_[i]))[(string)highData_]);
+						double close = Utils.ToDouble(((DataRow)(rows_[i]))[(string)closeData_]);
 
-                        return new PointOLHC(x, open, low, high, close);
-                    }
+						return new PointOLHC(x, open, low, high, close);
+					}
 					// the data is coming from individual ILists.
-                    else if (abscissaData_ is IList && openData_ is IList && lowData_ is IList && highData_ is IList && closeData_ is IList)
-                    {
-                        double x = Utils.ToDouble(((IList)abscissaData_)[i]);
-                        double open = Utils.ToDouble(((IList)openData_)[i]);
-                        double low = Utils.ToDouble(((IList)lowData_)[i]);
-                        double high = Utils.ToDouble(((IList)highData_)[i]);
-                        double close = Utils.ToDouble(((IList)closeData_)[i]);
+					else if (abscissaData_ is IList && openData_ is IList && lowData_ is IList && highData_ is IList && closeData_ is IList)
+					{
+						double x = Utils.ToDouble(((IList)abscissaData_)[i]);
+						double open = Utils.ToDouble(((IList)openData_)[i]);
+						double low = Utils.ToDouble(((IList)lowData_)[i]);
+						double high = Utils.ToDouble(((IList)highData_)[i]);
+						double close = Utils.ToDouble(((IList)closeData_)[i]);
 
-                        return new PointOLHC(x, open, low, high, close);
-                    }
-                    else
-                    {
-                        throw new NPlotException("not implemented yet");
-                    }
-                }
+						return new PointOLHC(x, open, low, high, close);
+					}
+					else
+					{
+						throw new NPlotException("not implemented yet");
+					}
+				}
 			}
 
 
-            /// <summary>
-            /// The number of datapoints available via the candle adapter.
-            /// </summary>
-            /// <value>the number of datapoints available.</value>
+			/// <summary>
+			/// The number of datapoints available via the candle adapter.
+			/// </summary>
+			/// <value>the number of datapoints available.</value>
 			public int Count
 			{
 				get
@@ -347,25 +347,25 @@ namespace NPlot
 						return rows_.Count;
 					}
 
-                    if (openData_ is IList)
-                    {
-                        int size = ((IList)openData_).Count;
-                        if (size != ((IList)closeData_).Count)
-                        {
-                            throw new NPlotException("open and close arrays are not of same length");
-                        }
-                        if (size != ((IList)lowData_).Count)
-                        {
-                            throw new NPlotException("open and low arrays are not of same length");
-                        }
-                        if (size != ((IList)highData_).Count)
-                        {
-                            throw new NPlotException("open and high arrays are not of same length");
-                        }
-                        return size;
-                    }
+					if (openData_ is IList)
+					{
+						int size = ((IList)openData_).Count;
+						if (size != ((IList)closeData_).Count)
+						{
+							throw new NPlotException("open and close arrays are not of same length");
+						}
+						if (size != ((IList)lowData_).Count)
+						{
+							throw new NPlotException("open and low arrays are not of same length");
+						}
+						if (size != ((IList)highData_).Count)
+						{
+							throw new NPlotException("open and high arrays are not of same length");
+						}
+						return size;
+					}
 
-                    throw new NPlotException( "data not in correct format" );
+					throw new NPlotException( "data not in correct format" );
 				}
 			}
 
@@ -380,63 +380,63 @@ namespace NPlot
 				double max;
 				double minStep = 0.0;
 
-                if (this.rows_ == null)
-                {
-                    Utils.ArrayMinMax((System.Collections.IList)this.abscissaData_, out min, out max);
+				if (this.rows_ == null)
+				{
+					Utils.ArrayMinMax((System.Collections.IList)this.abscissaData_, out min, out max);
 
-                    if (((System.Collections.IList)abscissaData_).Count > 1)
-                    {
-                        double first = Utils.ToDouble(((IList)abscissaData_)[0]);
-                        double second = Utils.ToDouble(((IList)abscissaData_)[1]);
-                        minStep = Math.Abs(second - first);
-                    }
+					if (((System.Collections.IList)abscissaData_).Count > 1)
+					{
+						double first = Utils.ToDouble(((IList)abscissaData_)[0]);
+						double second = Utils.ToDouble(((IList)abscissaData_)[1]);
+						minStep = Math.Abs(second - first);
+					}
 
-                    if (((System.Collections.IList)abscissaData_).Count > 2)
-                    {
-                        double first = Utils.ToDouble(((IList)abscissaData_)[0]);
-                        double second = Utils.ToDouble(((IList)abscissaData_)[1]);
-                        if (Math.Abs(second - first) < minStep)
-                            minStep = Math.Abs(second - first);
-                    }
+					if (((System.Collections.IList)abscissaData_).Count > 2)
+					{
+						double first = Utils.ToDouble(((IList)abscissaData_)[0]);
+						double second = Utils.ToDouble(((IList)abscissaData_)[1]);
+						if (Math.Abs(second - first) < minStep)
+							minStep = Math.Abs(second - first);
+					}
 
-                    if (((System.Collections.IList)abscissaData_)[0] is DateTime)
-                    {
-                        return new DateTimeAxis(min - minStep / 2.0, max + minStep / 2.0);
-                    }
-                    else
-                    {
-                        return new LinearAxis(min - minStep / 2.0, max + minStep / 2.0);
-                    }
-                }
-                else
-                {
-                    Utils.RowArrayMinMax(this.rows_, out min, out max, (string)this.abscissaData_);
+					if (((System.Collections.IList)abscissaData_)[0] is DateTime)
+					{
+						return new DateTimeAxis(min - minStep / 2.0, max + minStep / 2.0);
+					}
+					else
+					{
+						return new LinearAxis(min - minStep / 2.0, max + minStep / 2.0);
+					}
+				}
+				else
+				{
+					Utils.RowArrayMinMax(this.rows_, out min, out max, (string)this.abscissaData_);
 
-                    if (rows_.Count > 1)
-                    {
-                        double first = Utils.ToDouble(rows_[0][(string)abscissaData_]);
-                        double second = Utils.ToDouble(rows_[1][(string)abscissaData_]);
-                        minStep = Math.Abs(second - first);
-                    }
+					if (rows_.Count > 1)
+					{
+						double first = Utils.ToDouble(rows_[0][(string)abscissaData_]);
+						double second = Utils.ToDouble(rows_[1][(string)abscissaData_]);
+						minStep = Math.Abs(second - first);
+					}
 
-                    if (rows_.Count > 2)
-                    {
-                        double first = Utils.ToDouble(rows_[1][(string)abscissaData_]);
-                        double second = Utils.ToDouble(rows_[2][(string)abscissaData_]);
-                        if (Math.Abs(second - first) < minStep)
-                            minStep = Math.Abs(second - first);
-                    }
+					if (rows_.Count > 2)
+					{
+						double first = Utils.ToDouble(rows_[1][(string)abscissaData_]);
+						double second = Utils.ToDouble(rows_[2][(string)abscissaData_]);
+						if (Math.Abs(second - first) < minStep)
+							minStep = Math.Abs(second - first);
+					}
 
-                    if ((rows_[0])[(string)abscissaData_] is DateTime)
-                    {
-                        return new DateTimeAxis(min - minStep / 2.0, max + minStep / 2.0);
-                    }
-                    else
-                    {
-                        return new LinearAxis(min - minStep / 2.0, max + minStep / 2.0);
-                    }
-                }
-            }
+					if ((rows_[0])[(string)abscissaData_] is DateTime)
+					{
+						return new DateTimeAxis(min - minStep / 2.0, max + minStep / 2.0);
+					}
+					else
+					{
+						return new LinearAxis(min - minStep / 2.0, max + minStep / 2.0);
+					}
+				}
+			}
 
 
 			/// <summary>
@@ -450,18 +450,18 @@ namespace NPlot
 				double min_h;
 				double max_h;
 
-                if (this.rows_ == null)
-                {
-                    Utils.ArrayMinMax((System.Collections.IList)lowData_, out min_l, out max_l);
-                    Utils.ArrayMinMax((System.Collections.IList)highData_, out min_h, out max_h);
-                }
-                else
-                {
-                    Utils.RowArrayMinMax(this.rows_, out min_l, out max_l, (string)this.lowData_);
-                    Utils.RowArrayMinMax(this.rows_, out min_h, out max_h, (string)this.highData_);
-                }
+				if (this.rows_ == null)
+				{
+					Utils.ArrayMinMax((System.Collections.IList)lowData_, out min_l, out max_l);
+					Utils.ArrayMinMax((System.Collections.IList)highData_, out min_h, out max_h);
+				}
+				else
+				{
+					Utils.RowArrayMinMax(this.rows_, out min_l, out max_l, (string)this.lowData_);
+					Utils.RowArrayMinMax(this.rows_, out min_h, out max_h, (string)this.highData_);
+				}
 
-                Axis a = new LinearAxis( min_l, max_h );
+				Axis a = new LinearAxis( min_l, max_h );
 				a.IncreaseRange( 0.08 );
 				return a;
 			}
@@ -476,12 +476,12 @@ namespace NPlot
 		}
 
 
-        /// <summary>
-        /// Calculates the physical (not world) separation between abscissa values.
-        /// </summary>
-        /// <param name="cd">Candle adapter containing data</param>
-        /// <param name="xAxis">Physical x axis the data is plotted against.</param>
-        /// <returns>physical separation between abscissa values.</returns>
+		/// <summary>
+		/// Calculates the physical (not world) separation between abscissa values.
+		/// </summary>
+		/// <param name="cd">Candle adapter containing data</param>
+		/// <param name="xAxis">Physical x axis the data is plotted against.</param>
+		/// <returns>physical separation between abscissa values.</returns>
 		private static float CalculatePhysicalSeparation( CandleDataAdapter cd, PhysicalAxis xAxis )
 		{
 			if (cd.Count > 1)
@@ -493,26 +493,26 @@ namespace NPlot
 				if (cd.Count > 2)
 				{  // to be pretty sure we get the smallest gap.
 					int xPos3 = (int)(xAxis.WorldToPhysical(((PointOLHC)cd[2]).X, false)).X;
-                    if (xPos3 - xPos2 < minDist)
-                    {
-                        minDist = xPos3 - xPos2;
-                    }
+					if (xPos3 - xPos2 < minDist)
+					{
+						minDist = xPos3 - xPos2;
+					}
 
 					if (cd.Count > 3)
 					{
 						int xPos4 = (int)(xAxis.WorldToPhysical(((PointOLHC)cd[3]).X, false)).X;
-                        if (xPos4 - xPos3 < minDist)
-                        {
-                            minDist = xPos4 - xPos3;
-                        }
+						if (xPos4 - xPos3 < minDist)
+						{
+							minDist = xPos4 - xPos3;
+						}
 					}
 				}
 
 				return minDist;
 			}
 
-            return 0.0f;
-        }
+			return 0.0f;
+		}
 
 
 		/// <summary>
@@ -529,13 +529,13 @@ namespace NPlot
 			Brush bearishBrush = new SolidBrush( BearishColor );
 			Brush bullishBrush = new SolidBrush( BullishColor );
 
-            uint offset = 0;
-            if (this.centered_)
-            {
-                offset = (uint)(CalculatePhysicalSeparation(cd,xAxis) / 2.0f);
-            }
+			uint offset = 0;
+			if (this.centered_)
+			{
+				offset = (uint)(CalculatePhysicalSeparation(cd,xAxis) / 2.0f);
+			}
 
-            uint addAmount = (uint)StickWidth/2;
+			uint addAmount = (uint)StickWidth/2;
 			uint stickWidth = (uint)StickWidth;
 
 			if (StickWidth == AutoScaleStickWidth)
@@ -543,12 +543,12 @@ namespace NPlot
 				// default
 				addAmount = 2;
 				stickWidth = 4;
-            
-                float minDist = CalculatePhysicalSeparation( cd, xAxis );
+			
+				float minDist = CalculatePhysicalSeparation( cd, xAxis );
 
-                addAmount = (uint)(minDist / 3);
-                stickWidth = addAmount * 2;
-            }
+				addAmount = (uint)(minDist / 3);
+				stickWidth = addAmount * 2;
+			}
 
 			Pen	p =	new	Pen(this.color_);
 
@@ -557,7 +557,7 @@ namespace NPlot
 			if (this.Style == Styles.Stick)
 			{
 				p.Width = stickWidth;
- 				addAmount = stickWidth + 2;
+				addAmount = stickWidth + 2;
 			}
 			*/
 
@@ -569,10 +569,10 @@ namespace NPlot
 				{
 					int xPos = (int)(xAxis.WorldToPhysical( point.X, false )).X;
 
-                    if (xPos + offset + addAmount < xAxis.PhysicalMin.X || xAxis.PhysicalMax.X < xPos + offset - addAmount)
-                    {
-                        continue;
-                    }
+					if (xPos + offset + addAmount < xAxis.PhysicalMin.X || xAxis.PhysicalMax.X < xPos + offset - addAmount)
+					{
+						continue;
+					}
 
 					int yPos1 = (int)(yAxis.WorldToPhysical( point.Low, false )).Y;
 					int yPos2 = (int)(yAxis.WorldToPhysical( point.High, false )).Y;
@@ -831,27 +831,27 @@ namespace NPlot
 		/// </summary>
 		public const int AutoScaleStickWidth = 0;
 
-        /// <summary>
-        /// If true (default), bars will be centered on the abscissa times. 
-        /// If false, bars will be drawn between the corresponding abscissa time
-        /// and the next abscissa time. 
-        /// </summary>
-        /// <value></value>
-        public bool Centered
-        {
-            get
-            {
-                return centered_;
-            }
-            set
-            {
-                centered_ = value;
-            }
-        }
-        private bool centered_ = true;
+		/// <summary>
+		/// If true (default), bars will be centered on the abscissa times. 
+		/// If false, bars will be drawn between the corresponding abscissa time
+		/// and the next abscissa time. 
+		/// </summary>
+		/// <value></value>
+		public bool Centered
+		{
+			get
+			{
+				return centered_;
+			}
+			set
+			{
+				centered_ = value;
+			}
+		}
+		private bool centered_ = true;
 
 
-        /// <summary>
+		/// <summary>
 		/// Write data associated with the plot as text.
 		/// </summary>
 		/// <param name="sb">the string builder to write to.</param>

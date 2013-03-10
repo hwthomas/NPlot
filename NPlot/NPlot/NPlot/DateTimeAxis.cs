@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -179,16 +179,16 @@ namespace NPlot
 			for (int i=0; i<largeTicks.Count; ++i)
 			{
 				DateTime tickDate = new DateTime( (long)((double)largeTicks[i]) );
-                string label = LargeTickLabel(tickDate);
+				string label = LargeTickLabel(tickDate);
 
-                this.DrawTick( g, (double)largeTicks[i],
-	                            this.LargeTickSize, label, new Point( 0, 0 ),
-                                physicalMin, physicalMax, out tLabelOffset, out tBoundingBox );
+				this.DrawTick( g, (double)largeTicks[i],
+								this.LargeTickSize, label, new Point( 0, 0 ),
+								physicalMin, physicalMax, out tLabelOffset, out tBoundingBox );
 
-                Axis.UpdateOffsetAndBounds( ref labelOffset, ref boundingBox, tLabelOffset, tBoundingBox );
-             }
+				Axis.UpdateOffsetAndBounds( ref labelOffset, ref boundingBox, tLabelOffset, tBoundingBox );
+			 }
 
-        }
+		}
 
 		/// <summary>
 		/// Get the label corresponding to the provided date time
@@ -289,7 +289,7 @@ namespace NPlot
 
 
 		/// <summary>
-		///  this gets set after a get LargeTickPositions.
+		///	 this gets set after a get LargeTickPositions.
 		/// </summary>
 		protected LargeTickLabelType LargeTickLabelType_;
 
@@ -329,26 +329,26 @@ namespace NPlot
 
 					double secondsSkip;
 
-                    if (timeLength < new TimeSpan(0, 0, 0, 10, 0))
-                    {
-                        secondsSkip = 1.0;
-                    }
-                    else if (timeLength < new TimeSpan(0, 0, 0, 20, 0))
-                    {
-                        secondsSkip = 2.0;
-                    }
-                    else if (timeLength < new TimeSpan(0, 0, 0, 50, 0))
-                    {
-                        secondsSkip = 5.0;
-                    }
-                    else if (timeLength < new TimeSpan(0, 0, 2, 30, 0))
-                    {
-                        secondsSkip = 15.0;
-                    }
-                    else
-                    {
-                        secondsSkip = 30.0;
-                    }
+					if (timeLength < new TimeSpan(0, 0, 0, 10, 0))
+					{
+						secondsSkip = 1.0;
+					}
+					else if (timeLength < new TimeSpan(0, 0, 0, 20, 0))
+					{
+						secondsSkip = 2.0;
+					}
+					else if (timeLength < new TimeSpan(0, 0, 0, 50, 0))
+					{
+						secondsSkip = 5.0;
+					}
+					else if (timeLength < new TimeSpan(0, 0, 2, 30, 0))
+					{
+						secondsSkip = 15.0;
+					}
+					else
+					{
+						secondsSkip = 30.0;
+					}
 
 					int second = worldMinDate.Second;
 					second -= second % (int)secondsSkip;					
@@ -380,26 +380,26 @@ namespace NPlot
 
 					double minuteSkip;
 
-                    if (timeLength < new TimeSpan(0, 0, 10, 0, 0))
-                    {
-                        minuteSkip = 1.0;
-                    }
-                    else if (timeLength < new TimeSpan(0, 0, 20, 0, 0))
-                    {
-                        minuteSkip = 2.0;
-                    }
-                    else if (timeLength < new TimeSpan(0, 0, 50, 0, 0))
-                    {
-                        minuteSkip = 5.0;
-                    }
-                    else if (timeLength < new TimeSpan(0, 2, 30, 0, 0))
-                    {
-                        minuteSkip = 15.0;
-                    }
-                    else //( timeLength < new TimeSpan( 0,5,0,0,0) )
-                    {
-                        minuteSkip = 30.0;
-                    }
+					if (timeLength < new TimeSpan(0, 0, 10, 0, 0))
+					{
+						minuteSkip = 1.0;
+					}
+					else if (timeLength < new TimeSpan(0, 0, 20, 0, 0))
+					{
+						minuteSkip = 2.0;
+					}
+					else if (timeLength < new TimeSpan(0, 0, 50, 0, 0))
+					{
+						minuteSkip = 5.0;
+					}
+					else if (timeLength < new TimeSpan(0, 2, 30, 0, 0))
+					{
+						minuteSkip = 15.0;
+					}
+					else //( timeLength < new TimeSpan( 0,5,0,0,0) )
+					{
+						minuteSkip = 30.0;
+					}
 
 					int minute = worldMinDate.Minute;
 					minute -= minute % (int)minuteSkip;					
@@ -430,18 +430,18 @@ namespace NPlot
 					this.LargeTickLabelType_ = LargeTickLabelType.hourMinute;
 
 					double hourSkip;
-                    if (timeLength < new TimeSpan(0, 10, 0, 0, 0))
-                    {
-                        hourSkip = 1.0;
-                    }
-                    else if (timeLength < new TimeSpan(0, 20, 0, 0, 0))
-                    {
-                        hourSkip = 2.0;
-                    }
-                    else
-                    {
-                        hourSkip = 6.0;
-                    }
+					if (timeLength < new TimeSpan(0, 10, 0, 0, 0))
+					{
+						hourSkip = 1.0;
+					}
+					else if (timeLength < new TimeSpan(0, 20, 0, 0, 0))
+					{
+						hourSkip = 2.0;
+					}
+					else
+					{
+						hourSkip = 6.0;
+					}
 
 					int hour = worldMinDate.Hour;
 					hour -= hour % (int)hourSkip;					
@@ -470,79 +470,79 @@ namespace NPlot
 					this.LargeTickLabelType_ = LargeTickLabelType.day;
 
 					double daySkip;
-                    if (timeLength < new TimeSpan(10, 0, 0, 0, 0))
-                    {
-                        daySkip = 1.0;
-                    }
-                    else if (timeLength < new TimeSpan(20, 0, 0, 0, 0))
-                    {
-                        daySkip = 2.0;
-                    }
-                    else if (timeLength < new TimeSpan(7 * 10, 0, 0, 0, 0))
-                    {
-                        daySkip = 7.0;
-                    }
-                    else
-                    {
-                        daySkip = 14.0;
-                    }
+					if (timeLength < new TimeSpan(10, 0, 0, 0, 0))
+					{
+						daySkip = 1.0;
+					}
+					else if (timeLength < new TimeSpan(20, 0, 0, 0, 0))
+					{
+						daySkip = 2.0;
+					}
+					else if (timeLength < new TimeSpan(7 * 10, 0, 0, 0, 0))
+					{
+						daySkip = 7.0;
+					}
+					else
+					{
+						daySkip = 14.0;
+					}
 
 					DateTime currentTickDate = new DateTime( 
 						worldMinDate.Year,
 						worldMinDate.Month, 
 						worldMinDate.Day );
 
-                    if (daySkip == 2.0)
-                    {
-                        TimeSpan timeSinceBeginning = currentTickDate - DateTime.MinValue;
+					if (daySkip == 2.0)
+					{
+						TimeSpan timeSinceBeginning = currentTickDate - DateTime.MinValue;
 
-                        if (timeSinceBeginning.Days % 2 == 1)
-                        {
-                            currentTickDate = currentTickDate.AddDays(-1.0);
-                        }
-                    }
+						if (timeSinceBeginning.Days % 2 == 1)
+						{
+							currentTickDate = currentTickDate.AddDays(-1.0);
+						}
+					}
 
-                    if (daySkip == 7 || daySkip == 14.0)
-                    {
-                        DayOfWeek dow = currentTickDate.DayOfWeek;
-                        switch (dow)
-                        {
-                            case DayOfWeek.Monday:
-                                break;
-                            case DayOfWeek.Tuesday:
-                                currentTickDate = currentTickDate.AddDays(-1.0);
-                                break;
-                            case DayOfWeek.Wednesday:
-                                currentTickDate = currentTickDate.AddDays(-2.0);
-                                break;
-                            case DayOfWeek.Thursday:
-                                currentTickDate = currentTickDate.AddDays(-3.0);
-                                break;
-                            case DayOfWeek.Friday:
-                                currentTickDate = currentTickDate.AddDays(-4.0);
-                                break;
-                            case DayOfWeek.Saturday:
-                                currentTickDate = currentTickDate.AddDays(-5.0);
-                                break;
-                            case DayOfWeek.Sunday:
-                                currentTickDate = currentTickDate.AddDays(-6.0);
-                                break;
-                            default:
-                                break;
-                        }
-                    }
+					if (daySkip == 7 || daySkip == 14.0)
+					{
+						DayOfWeek dow = currentTickDate.DayOfWeek;
+						switch (dow)
+						{
+							case DayOfWeek.Monday:
+								break;
+							case DayOfWeek.Tuesday:
+								currentTickDate = currentTickDate.AddDays(-1.0);
+								break;
+							case DayOfWeek.Wednesday:
+								currentTickDate = currentTickDate.AddDays(-2.0);
+								break;
+							case DayOfWeek.Thursday:
+								currentTickDate = currentTickDate.AddDays(-3.0);
+								break;
+							case DayOfWeek.Friday:
+								currentTickDate = currentTickDate.AddDays(-4.0);
+								break;
+							case DayOfWeek.Saturday:
+								currentTickDate = currentTickDate.AddDays(-5.0);
+								break;
+							case DayOfWeek.Sunday:
+								currentTickDate = currentTickDate.AddDays(-6.0);
+								break;
+							default:
+								break;
+						}
+					}
 
-                    if (daySkip == 14.0f)
-                    {
-                        TimeSpan timeSinceBeginning = currentTickDate - DateTime.MinValue;
+					if (daySkip == 14.0f)
+					{
+						TimeSpan timeSinceBeginning = currentTickDate - DateTime.MinValue;
 
-                        if ((timeSinceBeginning.Days / 7) % 2 == 1)
-                        {
-                            currentTickDate = currentTickDate.AddDays(-7.0);
-                        }
-                    }
+						if ((timeSinceBeginning.Days / 7) % 2 == 1)
+						{
+							currentTickDate = currentTickDate.AddDays(-7.0);
+						}
+					}
 
-                    while ( currentTickDate < worldMaxDate )
+					while ( currentTickDate < worldMaxDate )
 					{
 						double world = (double)currentTickDate.Ticks;
 
@@ -563,40 +563,40 @@ namespace NPlot
 					{
 						LargeTickLabelType_ = LargeTickLabelType.month;
 
-                        if (timeLength.Days < daysInMonth * 10)
-                        {
-                            monthSpacing = 1;
-                        }
-                        else if (timeLength.Days < daysInMonth * (12 * 2))
-                        {
-                            monthSpacing = 3;
-                        }
-                        else // if ( timeLength.Days < daysInMonth*(12*3+6) )
-                        {
-                            monthSpacing = 6;
-                        }
+						if (timeLength.Days < daysInMonth * 10)
+						{
+							monthSpacing = 1;
+						}
+						else if (timeLength.Days < daysInMonth * (12 * 2))
+						{
+							monthSpacing = 3;
+						}
+						else // if ( timeLength.Days < daysInMonth*(12*3+6) )
+						{
+							monthSpacing = 6;
+						}
 					}
 					else
 					{
 						LargeTickLabelType_ = LargeTickLabelType.year;
 
-                        if (timeLength.Days < daysInMonth * (12 * 6))
-                        {
-                            monthSpacing = 12;
-                        }
-                        else if (timeLength.Days < daysInMonth * (12 * 12))
-                        {
-                            monthSpacing = 24;
-                        }
-                        else if (timeLength.Days < daysInMonth * (12 * 30))
-                        {
-                            monthSpacing = 60;
-                        }
-                        else
-                        {
-                            monthSpacing = 120;
-                        }
-                        //LargeTickLabelType_ = LargeTickLabelType.none;
+						if (timeLength.Days < daysInMonth * (12 * 6))
+						{
+							monthSpacing = 12;
+						}
+						else if (timeLength.Days < daysInMonth * (12 * 12))
+						{
+							monthSpacing = 24;
+						}
+						else if (timeLength.Days < daysInMonth * (12 * 30))
+						{
+							monthSpacing = 60;
+						}
+						else
+						{
+							monthSpacing = 120;
+						}
+						//LargeTickLabelType_ = LargeTickLabelType.none;
 					}
 
 					// truncate start
@@ -643,53 +643,53 @@ namespace NPlot
 					largeTickPositions.Add((double)date.Ticks);
 				}
 			}
-        }
+		}
 
 
-        /// <summary>
-        /// Compute the small tick positions for largetick size of one or more years.
-        ///  - inside the domain or the large tick positons, is take the mid-point of pairs of large ticks
-        ///  - outside the large tick range, check if a half tick is inside the world min/max
-        /// This method works only if there are atleast 2 large ticks,
-        /// since we don't know if its minutes, hours, month, or yearly divisor.
-        /// </summary>
-        /// <param name="physicalMin">The physical position corresponding to the world minimum of the axis.</param>
-        /// <param name="physicalMax">The physical position corresponding to the world maximum of the axis.</param>
-        /// <param name="largeTickPositions">Read in the large tick positions</param>
-        /// <param name="smallTickPositions">Fill in the corresponding small tick positions</param>
-        /// <remarks>Added by Rosco Hill</remarks>
-        internal override void WorldTickPositions_SecondPass(
-            Point physicalMin,
-            Point physicalMax,
-            ArrayList largeTickPositions,
-            ref ArrayList smallTickPositions
-          )
-        {
-            if (largeTickPositions.Count < 2 || !(LargeTickLabelType_.Equals(LargeTickLabelType.year)))
-            {
-                smallTickPositions = new ArrayList(); ;
-            }
-            else
-            {
-                smallTickPositions = new ArrayList();
-                double diff = 0.5 * (((double)largeTickPositions[1]) - ((double)largeTickPositions[0]));
-                if (((double)largeTickPositions[0] - diff) > this.WorldMin)
-                {
-                    smallTickPositions.Add((double)largeTickPositions[0] - diff);
-                }
-                for (int i = 0; i < largeTickPositions.Count - 1; i++)
-                {
-                    smallTickPositions.Add(((double)largeTickPositions[i]) + diff);
-                }
-                if (((double)largeTickPositions[largeTickPositions.Count - 1] + diff) < this.WorldMax)
-                {
-                    smallTickPositions.Add((double)largeTickPositions[largeTickPositions.Count - 1] + diff);
-                }
-            }
-        }
+		/// <summary>
+		/// Compute the small tick positions for largetick size of one or more years.
+		///	 - inside the domain or the large tick positons, is take the mid-point of pairs of large ticks
+		///	 - outside the large tick range, check if a half tick is inside the world min/max
+		/// This method works only if there are atleast 2 large ticks,
+		/// since we don't know if its minutes, hours, month, or yearly divisor.
+		/// </summary>
+		/// <param name="physicalMin">The physical position corresponding to the world minimum of the axis.</param>
+		/// <param name="physicalMax">The physical position corresponding to the world maximum of the axis.</param>
+		/// <param name="largeTickPositions">Read in the large tick positions</param>
+		/// <param name="smallTickPositions">Fill in the corresponding small tick positions</param>
+		/// <remarks>Added by Rosco Hill</remarks>
+		internal override void WorldTickPositions_SecondPass(
+			Point physicalMin,
+			Point physicalMax,
+			ArrayList largeTickPositions,
+			ref ArrayList smallTickPositions
+		  )
+		{
+			if (largeTickPositions.Count < 2 || !(LargeTickLabelType_.Equals(LargeTickLabelType.year)))
+			{
+				smallTickPositions = new ArrayList(); ;
+			}
+			else
+			{
+				smallTickPositions = new ArrayList();
+				double diff = 0.5 * (((double)largeTickPositions[1]) - ((double)largeTickPositions[0]));
+				if (((double)largeTickPositions[0] - diff) > this.WorldMin)
+				{
+					smallTickPositions.Add((double)largeTickPositions[0] - diff);
+				}
+				for (int i = 0; i < largeTickPositions.Count - 1; i++)
+				{
+					smallTickPositions.Add(((double)largeTickPositions[i]) + diff);
+				}
+				if (((double)largeTickPositions[largeTickPositions.Count - 1] + diff) < this.WorldMax)
+				{
+					smallTickPositions.Add((double)largeTickPositions[largeTickPositions.Count - 1] + diff);
+				}
+			}
+		}
 
 
-        /// <summary>
+		/// <summary>
 		/// The distance between large ticks. If this is set to Zero [default],
 		/// this distance will be calculated automatically.
 		/// </summary>
@@ -704,6 +704,6 @@ namespace NPlot
 				return largeTickStep_;
 			}
 		}
- 		private TimeSpan largeTickStep_ = TimeSpan.Zero;
+		private TimeSpan largeTickStep_ = TimeSpan.Zero;
 	}
 }

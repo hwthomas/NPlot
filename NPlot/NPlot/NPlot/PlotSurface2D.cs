@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -110,10 +110,10 @@ namespace NPlot
 		private System.Collections.ArrayList drawables_;
 		private System.Collections.ArrayList xAxisPositions_;
 		private System.Collections.ArrayList yAxisPositions_;
-        private System.Collections.ArrayList zPositions_;
-        private System.Collections.SortedList ordering_;
+		private System.Collections.ArrayList zPositions_;
+		private System.Collections.SortedList ordering_;
 
-        private System.Drawing.Drawing2D.SmoothingMode smoothingMode_;
+		private System.Drawing.Drawing2D.SmoothingMode smoothingMode_;
 
 		private ArrayList axesConstraints_ = null;
 
@@ -323,7 +323,7 @@ namespace NPlot
 		}
 
 
-        /// <summary>
+		/// <summary>
 		/// The distance in pixels to leave between of the edge of the bounding rectangle
 		/// supplied to the Draw method, and the markings that make up the plot.
 		/// </summary>
@@ -431,18 +431,18 @@ namespace NPlot
 			drawables_ = new ArrayList();
 			xAxisPositions_ = new ArrayList();
 			yAxisPositions_ = new ArrayList();
-            zPositions_ = new ArrayList();
-            ordering_ = new SortedList();
+			zPositions_ = new ArrayList();
+			ordering_ = new SortedList();
 
-            try
-            {
-                FontFamily fontFamily = new FontFamily("Arial");
-                TitleFont = new Font(fontFamily, 14, FontStyle.Regular, GraphicsUnit.Pixel);
-            }
-            catch (System.ArgumentException)
-            {
-                throw new NPlotException("Error: Arial font is not installed on this system");
-            }
+			try
+			{
+				FontFamily fontFamily = new FontFamily("Arial");
+				TitleFont = new Font(fontFamily, 14, FontStyle.Regular, GraphicsUnit.Pixel);
+			}
+			catch (System.ArgumentException)
+			{
+				throw new NPlotException("Error: Arial font is not installed on this system");
+			}
 
 			padding_ = 10;
 			title_ = "";
@@ -496,18 +496,18 @@ namespace NPlot
 		}
 
 
-        /// <summary>
-        /// Adds a drawable object to the plot surface with z-order 0. If the object is an IPlot,
-        /// the PlotSurface2D axes will also be updated. 
-        /// </summary>
-        /// <param name="p">The IDrawable object to add to the plot surface.</param>
-        public void Add(IDrawable p)
-        {
-            Add(p, 0);
-        }
+		/// <summary>
+		/// Adds a drawable object to the plot surface with z-order 0. If the object is an IPlot,
+		/// the PlotSurface2D axes will also be updated. 
+		/// </summary>
+		/// <param name="p">The IDrawable object to add to the plot surface.</param>
+		public void Add(IDrawable p)
+		{
+			Add(p, 0);
+		}
 
 
-        /// <summary>
+		/// <summary>
 		/// Adds a drawable object to the plot surface. If the object is an IPlot, 
 		/// the PlotSurface2D axes will also be updated.
 		/// </summary>
@@ -519,22 +519,22 @@ namespace NPlot
 		}
 
 
-        /// <summary>
-        /// Adds a drawable object to the plot surface against the specified axes with
-        /// z-order of 0. If the object is an IPlot, the PlotSurface2D axes will also
-        /// be updated.
-        /// </summary>
-        /// <param name="p">the IDrawable object to add to the plot surface</param>
-        /// <param name="xp">the x-axis to add the plot against.</param>
-        /// <param name="yp">the y-axis to add the plot against.</param>
-        public void Add(IDrawable p, XAxisPosition xp, YAxisPosition yp)
-        {
-            Add(p, xp, yp, 0);
-        }
-        
-        
-        /// <summary>
-        /// Adds a drawable object to the plot surface against the specified axes. If
+		/// <summary>
+		/// Adds a drawable object to the plot surface against the specified axes with
+		/// z-order of 0. If the object is an IPlot, the PlotSurface2D axes will also
+		/// be updated.
+		/// </summary>
+		/// <param name="p">the IDrawable object to add to the plot surface</param>
+		/// <param name="xp">the x-axis to add the plot against.</param>
+		/// <param name="yp">the y-axis to add the plot against.</param>
+		public void Add(IDrawable p, XAxisPosition xp, YAxisPosition yp)
+		{
+			Add(p, xp, yp, 0);
+		}
+		
+		
+		/// <summary>
+		/// Adds a drawable object to the plot surface against the specified axes. If
 		/// the object is an IPlot, the PlotSurface2D axes will also be updated.
 		/// </summary>
 		/// <param name="p">the IDrawable object to add to the plot surface</param>
@@ -546,189 +546,189 @@ namespace NPlot
 			drawables_.Add( p );
 			xAxisPositions_.Add( xp );
 			yAxisPositions_.Add( yp );
-            zPositions_.Add((double)zOrder);
-            // fraction is to make key unique. With 10 million plots at same z, this buggers up.. 
-            double fraction = (double)(++uniqueCounter_)/10000000.0f; 
-            ordering_.Add( (double)zOrder + fraction, drawables_.Count - 1 );
-            
-            // if p is just an IDrawable, then it can't affect the axes.
+			zPositions_.Add((double)zOrder);
+			// fraction is to make key unique. With 10 million plots at same z, this buggers up.. 
+			double fraction = (double)(++uniqueCounter_)/10000000.0f; 
+			ordering_.Add( (double)zOrder + fraction, drawables_.Count - 1 );
+			
+			// if p is just an IDrawable, then it can't affect the axes.
 			if ( p is IPlot )
 			{
 				UpdateAxes( false );
 			}
 		}
 
-        private int uniqueCounter_ = 0;
+		private int uniqueCounter_ = 0;
 
 
-        private void UpdateAxes( bool recalculateAll )
+		private void UpdateAxes( bool recalculateAll )
 		{
-            if (drawables_.Count != xAxisPositions_.Count || drawables_.Count != yAxisPositions_.Count)
-            {
-                throw new NPlotException("plots and axis position arrays our of sync");
-            }
+			if (drawables_.Count != xAxisPositions_.Count || drawables_.Count != yAxisPositions_.Count)
+			{
+				throw new NPlotException("plots and axis position arrays our of sync");
+			}
 
-            int position = 0;
+			int position = 0;
 
-            // if we're not recalculating axes using all iplots then set
-            // position to last one in list.
-            if (!recalculateAll)
-            {
-                position = drawables_.Count - 1;
-                if (position < 0) position = 0;
-            }
+			// if we're not recalculating axes using all iplots then set
+			// position to last one in list.
+			if (!recalculateAll)
+			{
+				position = drawables_.Count - 1;
+				if (position < 0) position = 0;
+			}
 
-            if (recalculateAll)
-            {
-                this.xAxis1_ = null;
-                this.yAxis1_ = null;
-                this.xAxis2_ = null;
-                this.yAxis2_ = null;
-            }
+			if (recalculateAll)
+			{
+				this.xAxis1_ = null;
+				this.yAxis1_ = null;
+				this.xAxis2_ = null;
+				this.yAxis2_ = null;
+			}
 
-            for (int i = position; i < drawables_.Count; ++i)
-            {
-                // only update axes if this drawable is an IPlot.
-                if (!(drawables_[i] is IPlot))
-                    continue;
+			for (int i = position; i < drawables_.Count; ++i)
+			{
+				// only update axes if this drawable is an IPlot.
+				if (!(drawables_[i] is IPlot))
+					continue;
 
-                IPlot p = (IPlot)drawables_[i];
-                XAxisPosition xap = (XAxisPosition)xAxisPositions_[i];
-                YAxisPosition yap = (YAxisPosition)yAxisPositions_[i];
+				IPlot p = (IPlot)drawables_[i];
+				XAxisPosition xap = (XAxisPosition)xAxisPositions_[i];
+				YAxisPosition yap = (YAxisPosition)yAxisPositions_[i];
 
-                if (xap == XAxisPosition.Bottom)
-                {
-                    if (this.xAxis1_ == null)
-                    {
-                        this.xAxis1_ = p.SuggestXAxis();
-                        if (this.xAxis1_ != null)
-                        {
-                            this.xAxis1_.TicksAngle = -(float)Math.PI / 2.0f;
-                        }
-                    }
-                    else
-                    {
-                        this.xAxis1_.LUB(p.SuggestXAxis());
-                    }
+				if (xap == XAxisPosition.Bottom)
+				{
+					if (this.xAxis1_ == null)
+					{
+						this.xAxis1_ = p.SuggestXAxis();
+						if (this.xAxis1_ != null)
+						{
+							this.xAxis1_.TicksAngle = -(float)Math.PI / 2.0f;
+						}
+					}
+					else
+					{
+						this.xAxis1_.LUB(p.SuggestXAxis());
+					}
 
-                    if (this.xAxis1_ != null)
-                    {
-                        this.xAxis1_.MinPhysicalLargeTickStep = 50;
+					if (this.xAxis1_ != null)
+					{
+						this.xAxis1_.MinPhysicalLargeTickStep = 50;
 
-                        if (this.AutoScaleAutoGeneratedAxes)
-                        {
-                            this.xAxis1_.AutoScaleText = true;
-                            this.xAxis1_.AutoScaleTicks = true;
-                            this.xAxis1_.TicksIndependentOfPhysicalExtent = true;
-                        }
-                        else
-                        {
-                            this.xAxis1_.AutoScaleText = false;
-                            this.xAxis1_.AutoScaleTicks = false;
-                            this.xAxis1_.TicksIndependentOfPhysicalExtent = false;
-                        }
-                    }
-                }
+						if (this.AutoScaleAutoGeneratedAxes)
+						{
+							this.xAxis1_.AutoScaleText = true;
+							this.xAxis1_.AutoScaleTicks = true;
+							this.xAxis1_.TicksIndependentOfPhysicalExtent = true;
+						}
+						else
+						{
+							this.xAxis1_.AutoScaleText = false;
+							this.xAxis1_.AutoScaleTicks = false;
+							this.xAxis1_.TicksIndependentOfPhysicalExtent = false;
+						}
+					}
+				}
 
-                if (xap == XAxisPosition.Top)
-                {
-                    if (this.xAxis2_ == null)
-                    {
-                        this.xAxis2_ = p.SuggestXAxis();
-                        if (this.xAxis2_ != null)
-                        {
-                            this.xAxis2_.TicksAngle = (float)Math.PI / 2.0f;
-                        }
-                    }
-                    else
-                    {
-                        this.xAxis2_.LUB(p.SuggestXAxis());
-                    }
+				if (xap == XAxisPosition.Top)
+				{
+					if (this.xAxis2_ == null)
+					{
+						this.xAxis2_ = p.SuggestXAxis();
+						if (this.xAxis2_ != null)
+						{
+							this.xAxis2_.TicksAngle = (float)Math.PI / 2.0f;
+						}
+					}
+					else
+					{
+						this.xAxis2_.LUB(p.SuggestXAxis());
+					}
 
-                    if (this.xAxis2_ != null)
-                    {
-                        this.xAxis2_.MinPhysicalLargeTickStep = 50;
+					if (this.xAxis2_ != null)
+					{
+						this.xAxis2_.MinPhysicalLargeTickStep = 50;
 
-                        if (this.AutoScaleAutoGeneratedAxes)
-                        {
-                            this.xAxis2_.AutoScaleText = true;
-                            this.xAxis2_.AutoScaleTicks = true;
-                            this.xAxis2_.TicksIndependentOfPhysicalExtent = true;
-                        }
-                        else
-                        {
-                            this.xAxis2_.AutoScaleText = false;
-                            this.xAxis2_.AutoScaleTicks = false;
-                            this.xAxis2_.TicksIndependentOfPhysicalExtent = false;
-                        }
-                    }
-                }
+						if (this.AutoScaleAutoGeneratedAxes)
+						{
+							this.xAxis2_.AutoScaleText = true;
+							this.xAxis2_.AutoScaleTicks = true;
+							this.xAxis2_.TicksIndependentOfPhysicalExtent = true;
+						}
+						else
+						{
+							this.xAxis2_.AutoScaleText = false;
+							this.xAxis2_.AutoScaleTicks = false;
+							this.xAxis2_.TicksIndependentOfPhysicalExtent = false;
+						}
+					}
+				}
 
-                if (yap == YAxisPosition.Left)
-                {
-                    if (this.yAxis1_ == null)
-                    {
-                        this.yAxis1_ = p.SuggestYAxis();
-                        if (this.yAxis1_ != null)
-                        {
-                            this.yAxis1_.TicksAngle = (float)Math.PI / 2.0f;
-                        }
-                    }
-                    else
-                    {
-                        this.yAxis1_.LUB(p.SuggestYAxis());
-                    }
+				if (yap == YAxisPosition.Left)
+				{
+					if (this.yAxis1_ == null)
+					{
+						this.yAxis1_ = p.SuggestYAxis();
+						if (this.yAxis1_ != null)
+						{
+							this.yAxis1_.TicksAngle = (float)Math.PI / 2.0f;
+						}
+					}
+					else
+					{
+						this.yAxis1_.LUB(p.SuggestYAxis());
+					}
 
-                    if (this.yAxis1_ != null)
-                    {
-                        if (this.AutoScaleAutoGeneratedAxes)
-                        {
-                            this.yAxis1_.AutoScaleText = true;
-                            this.yAxis1_.AutoScaleTicks = true;
-                            this.yAxis1_.TicksIndependentOfPhysicalExtent = true;
-                        }
-                        else
-                        {
-                            this.yAxis1_.AutoScaleText = false;
-                            this.yAxis1_.AutoScaleTicks = false;
-                            this.yAxis1_.TicksIndependentOfPhysicalExtent = false;
-                        }
-                    }
-                }
+					if (this.yAxis1_ != null)
+					{
+						if (this.AutoScaleAutoGeneratedAxes)
+						{
+							this.yAxis1_.AutoScaleText = true;
+							this.yAxis1_.AutoScaleTicks = true;
+							this.yAxis1_.TicksIndependentOfPhysicalExtent = true;
+						}
+						else
+						{
+							this.yAxis1_.AutoScaleText = false;
+							this.yAxis1_.AutoScaleTicks = false;
+							this.yAxis1_.TicksIndependentOfPhysicalExtent = false;
+						}
+					}
+				}
 
-                if (yap == YAxisPosition.Right)
-                {
-                    if (this.yAxis2_ == null)
-                    {
-                        this.yAxis2_ = p.SuggestYAxis();
-                        if (this.yAxis2_ != null)
-                        {
-                            this.yAxis2_.TicksAngle = -(float)Math.PI / 2.0f;
-                        }
-                    }
-                    else
-                    {
-                        this.yAxis2_.LUB(p.SuggestYAxis());
-                    }
+				if (yap == YAxisPosition.Right)
+				{
+					if (this.yAxis2_ == null)
+					{
+						this.yAxis2_ = p.SuggestYAxis();
+						if (this.yAxis2_ != null)
+						{
+							this.yAxis2_.TicksAngle = -(float)Math.PI / 2.0f;
+						}
+					}
+					else
+					{
+						this.yAxis2_.LUB(p.SuggestYAxis());
+					}
 
-                    if (this.yAxis2_ != null)
-                    {
-                        if (this.AutoScaleAutoGeneratedAxes)
-                        {
-                            this.yAxis2_.AutoScaleText = true;
-                            this.yAxis2_.AutoScaleTicks = true;
-                            this.yAxis2_.TicksIndependentOfPhysicalExtent = true;
-                        }
-                        else
-                        {
-                            this.yAxis2_.AutoScaleText = false;
-                            this.yAxis2_.AutoScaleTicks = false;
-                            this.yAxis2_.TicksIndependentOfPhysicalExtent = false;
-                        }
-                    }
-                }
-            }
-        }
+					if (this.yAxis2_ != null)
+					{
+						if (this.AutoScaleAutoGeneratedAxes)
+						{
+							this.yAxis2_.AutoScaleText = true;
+							this.yAxis2_.AutoScaleTicks = true;
+							this.yAxis2_.TicksIndependentOfPhysicalExtent = true;
+						}
+						else
+						{
+							this.yAxis2_.AutoScaleText = false;
+							this.yAxis2_.AutoScaleTicks = false;
+							this.yAxis2_.TicksIndependentOfPhysicalExtent = false;
+						}
+					}
+				}
+			}
+		}
 
 
 		private void DetermineAxesToDraw( out Axis xAxis1, out Axis xAxis2, out Axis yAxis1, out Axis yAxis2 )
@@ -916,38 +916,38 @@ namespace NPlot
 
 			// apply scale factor to axes as desired.
 
-            if (xAxis1.AutoScaleTicks)
-            {
-                xAxis1.TickScale = scale;
-            }
-            if (xAxis1.AutoScaleText)
-            {
-                xAxis1.FontScale = scale;
-            }
-            if (yAxis1.AutoScaleTicks)
-            {
-                yAxis1.TickScale = scale;
-            }
-            if (yAxis1.AutoScaleText)
-            {
-                yAxis1.FontScale = scale;
-            }
-            if (xAxis2.AutoScaleTicks)
-            {
-                xAxis2.TickScale = scale;
-            }
-            if (xAxis2.AutoScaleText)
-            {
-                xAxis2.FontScale = scale;
-            }
-            if (yAxis2.AutoScaleTicks)
-            {
-                yAxis2.TickScale = scale;
-            }
-            if (yAxis2.AutoScaleText)
-            {
-                yAxis2.FontScale = scale;
-            }
+			if (xAxis1.AutoScaleTicks)
+			{
+				xAxis1.TickScale = scale;
+			}
+			if (xAxis1.AutoScaleText)
+			{
+				xAxis1.FontScale = scale;
+			}
+			if (yAxis1.AutoScaleTicks)
+			{
+				yAxis1.TickScale = scale;
+			}
+			if (yAxis1.AutoScaleText)
+			{
+				yAxis1.FontScale = scale;
+			}
+			if (xAxis2.AutoScaleTicks)
+			{
+				xAxis2.TickScale = scale;
+			}
+			if (xAxis2.AutoScaleText)
+			{
+				xAxis2.FontScale = scale;
+			}
+			if (yAxis2.AutoScaleTicks)
+			{
+				yAxis2.TickScale = scale;
+			}
+			if (yAxis2.AutoScaleText)
+			{
+				yAxis2.FontScale = scale;
+			}
 
 			// determine the default physical positioning of those axes.
 			PhysicalAxis pXAxis1 = null;
@@ -1052,7 +1052,7 @@ namespace NPlot
 			for ( int i_o = 0; i_o < ordering_.Count; ++i_o )
 			{
 	
-                int i = (int)ordering_.GetByIndex(i_o);
+				int i = (int)ordering_.GetByIndex(i_o);
 				double zOrder = (double)ordering_.GetKey( i_o );
 				if (zOrder > this.legendZOrder_)
 				{
@@ -1064,7 +1064,7 @@ namespace NPlot
 					}
 				}
 
-                IDrawable drawable = (IDrawable)drawables_[i];
+				IDrawable drawable = (IDrawable)drawables_[i];
 				XAxisPosition xap = (XAxisPosition)xAxisPositions_[i];
 				YAxisPosition yap = (YAxisPosition)yAxisPositions_[i];
 
@@ -1219,15 +1219,15 @@ namespace NPlot
 			drawables_.RemoveAt( index );
 			xAxisPositions_.RemoveAt( index );
 			yAxisPositions_.RemoveAt( index );
-            zPositions_.RemoveAt(index);
+			zPositions_.RemoveAt(index);
 
-            if (updateAxes)
-            {
-                this.UpdateAxes(true);
-            }
+			if (updateAxes)
+			{
+				this.UpdateAxes(true);
+			}
 
-            this.RefreshZOrdering();
-        }
+			this.RefreshZOrdering();
+		}
 
 
 		/// <summary>
@@ -1248,11 +1248,11 @@ namespace NPlot
 		}
 
 
-        /// <summary>
-        /// Gets an array list containing all drawables currently added to the PlotSurface2D.
-        /// </summary>
-        public ArrayList Drawables
-        {
+		/// <summary>
+		/// Gets an array list containing all drawables currently added to the PlotSurface2D.
+		/// </summary>
+		public ArrayList Drawables
+		{
 			get
 			{
 				return this.drawables_;
@@ -1308,7 +1308,7 @@ namespace NPlot
 			}
 		}
 		int legendZOrder_ = -1;
-    } 
+	} 
 } 
 
 

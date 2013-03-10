@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -54,31 +54,31 @@ namespace NPlot
 		}
 
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="l1">Vertical line to provide bounds for filled region</param>
-        /// <param name="l2">The other Vertical line to provide bounds for filled region</param>
-        public FilledRegion(VerticalLine l1, VerticalLine l2)
-        {
-            vl1_ = l1;
-            vl2_ = l2;
-        }
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="l1">Vertical line to provide bounds for filled region</param>
+		/// <param name="l2">The other Vertical line to provide bounds for filled region</param>
+		public FilledRegion(VerticalLine l1, VerticalLine l2)
+		{
+			vl1_ = l1;
+			vl2_ = l2;
+		}
 
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        /// <param name="l1">Vertical line to provide bounds for filled region</param>
-        /// <param name="l2">The other Vertical line to provide bounds for filled region</param>
-        public FilledRegion(HorizontalLine l1, HorizontalLine l2)
-        {
-            hl1_ = l1;
-            hl2_ = l2;
-        }
+		/// <summary>
+		/// Constructor
+		/// </summary>
+		/// <param name="l1">Vertical line to provide bounds for filled region</param>
+		/// <param name="l2">The other Vertical line to provide bounds for filled region</param>
+		public FilledRegion(HorizontalLine l1, HorizontalLine l2)
+		{
+			hl1_ = l1;
+			hl2_ = l2;
+		}
 
 
-        /// <summary>
+		/// <summary>
 		/// Draw the filled region
 		/// </summary>
 		/// <param name="g">The GDI+ surface on which to draw.</param>
@@ -86,57 +86,57 @@ namespace NPlot
 		/// <param name="yAxis">The Y-Axis to draw against.</param>
 		public void Draw( System.Drawing.Graphics g, PhysicalAxis xAxis, PhysicalAxis yAxis )
 		{
-            ITransform2D t = Transform2D.GetTransformer(xAxis, yAxis);
+			ITransform2D t = Transform2D.GetTransformer(xAxis, yAxis);
 
-            Brush b = brush_;
-            if (b == null)
-            {
-                b = areaBrush_.Get(new Rectangle(xAxis.PhysicalMin.X, yAxis.PhysicalMax.Y, xAxis.PhysicalLength, yAxis.PhysicalLength));
-            }
+			Brush b = brush_;
+			if (b == null)
+			{
+				b = areaBrush_.Get(new Rectangle(xAxis.PhysicalMin.X, yAxis.PhysicalMax.Y, xAxis.PhysicalLength, yAxis.PhysicalLength));
+			}
 
-            if (hl1_ != null && hl2_ != null)
-            {
-                PointF[] points = new PointF[4];
-                points[0] = t.Transform(xAxis.Axis.WorldMin, hl1_.OrdinateValue);
-                points[1] = t.Transform(xAxis.Axis.WorldMax, hl1_.OrdinateValue);
-                points[2] = t.Transform(xAxis.Axis.WorldMax, hl2_.OrdinateValue);
-                points[3] = t.Transform(xAxis.Axis.WorldMin, hl2_.OrdinateValue);
+			if (hl1_ != null && hl2_ != null)
+			{
+				PointF[] points = new PointF[4];
+				points[0] = t.Transform(xAxis.Axis.WorldMin, hl1_.OrdinateValue);
+				points[1] = t.Transform(xAxis.Axis.WorldMax, hl1_.OrdinateValue);
+				points[2] = t.Transform(xAxis.Axis.WorldMax, hl2_.OrdinateValue);
+				points[3] = t.Transform(xAxis.Axis.WorldMin, hl2_.OrdinateValue);
 
-                g.FillPolygon(b, points);
-            }   
-            else if (vl1_ != null && vl2_ != null)
-            {
-                PointF[] points = new PointF[4];
-                points[0] = t.Transform(vl1_.AbscissaValue, yAxis.Axis.WorldMin);
-                points[1] = t.Transform(vl1_.AbscissaValue, yAxis.Axis.WorldMax);
-                points[2] = t.Transform(vl2_.AbscissaValue, yAxis.Axis.WorldMax);
-                points[3] = t.Transform(vl2_.AbscissaValue, yAxis.Axis.WorldMin);
+				g.FillPolygon(b, points);
+			}	
+			else if (vl1_ != null && vl2_ != null)
+			{
+				PointF[] points = new PointF[4];
+				points[0] = t.Transform(vl1_.AbscissaValue, yAxis.Axis.WorldMin);
+				points[1] = t.Transform(vl1_.AbscissaValue, yAxis.Axis.WorldMax);
+				points[2] = t.Transform(vl2_.AbscissaValue, yAxis.Axis.WorldMax);
+				points[3] = t.Transform(vl2_.AbscissaValue, yAxis.Axis.WorldMin);
 
-                g.FillPolygon(b, points);
-            }
-            else if (lp1_ != null && lp2_ != null)
-            {
-                SequenceAdapter a1 = new SequenceAdapter(lp1_.DataSource, lp1_.DataMember, lp1_.OrdinateData, lp1_.AbscissaData);
-                SequenceAdapter a2 = new SequenceAdapter(lp2_.DataSource, lp2_.DataMember, lp2_.OrdinateData, lp2_.AbscissaData);
+				g.FillPolygon(b, points);
+			}
+			else if (lp1_ != null && lp2_ != null)
+			{
+				SequenceAdapter a1 = new SequenceAdapter(lp1_.DataSource, lp1_.DataMember, lp1_.OrdinateData, lp1_.AbscissaData);
+				SequenceAdapter a2 = new SequenceAdapter(lp2_.DataSource, lp2_.DataMember, lp2_.OrdinateData, lp2_.AbscissaData);
 
-                int count = a1.Count + a2.Count;
-                PointF[] points = new PointF[count];
-                for (int i = 0; i < a1.Count; ++i)
-                {
-                    points[i] = t.Transform(a1[i]);
-                }
-                for (int i = 0; i < a2.Count; ++i)
-                {
-                    points[i + a1.Count] = t.Transform(a2[a2.Count - i - 1]);
-                }
+				int count = a1.Count + a2.Count;
+				PointF[] points = new PointF[count];
+				for (int i = 0; i < a1.Count; ++i)
+				{
+					points[i] = t.Transform(a1[i]);
+				}
+				for (int i = 0; i < a2.Count; ++i)
+				{
+					points[i + a1.Count] = t.Transform(a2[a2.Count - i - 1]);
+				}
 
-                g.FillPolygon(b, points);
-            }
-            else
-            {
-                throw new NPlotException("One of bounds was set to null");
-            }
-        }
+				g.FillPolygon(b, points);
+			}
+			else
+			{
+				throw new NPlotException("One of bounds was set to null");
+			}
+		}
 
 
 		/// <summary>
@@ -165,13 +165,13 @@ namespace NPlot
 		}
 
 
-        private VerticalLine vl1_;
-        private VerticalLine vl2_;
+		private VerticalLine vl1_;
+		private VerticalLine vl2_;
 
-        private HorizontalLine hl1_;
-        private HorizontalLine hl2_;
+		private HorizontalLine hl1_;
+		private HorizontalLine hl2_;
 
-        private LinePlot lp1_;
+		private LinePlot lp1_;
 		private LinePlot lp2_;
 
 		private Brush brush_ = new SolidBrush( Color.GhostWhite );

@@ -40,4 +40,14 @@
     <None Include="class.png" />
     <None Include="package.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xwt">
+      <HintPath>..\..\..\controlsuite\CSPlot\CSPlot\bin\Debug\Xwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System" />
+    <Reference Include="NPlot">
+      <HintPath>..\..\..\NPlot HWT 2013\bin\debug\NPlot.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>

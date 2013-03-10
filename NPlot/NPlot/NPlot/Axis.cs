@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -73,8 +73,8 @@ namespace NPlot
 		/// this - use the Axis.Reversed property instead to achieve the same
 		/// result.
 		/// 
-        /// Setting this raises the WorldMinChanged event and the WorldExtentsChanged event.
-        /// </summary>
+		/// Setting this raises the WorldMinChanged event and the WorldExtentsChanged event.
+		/// </summary>
 		public virtual double WorldMax
 		{
 			get
@@ -84,13 +84,13 @@ namespace NPlot
 			set
 			{
 				this.worldMax_ = value;
-                /*
-                if (this.WorldExtentsChanged != null)
-                    this.WorldExtentsChanged(this, new WorldValueChangedArgs(worldMax_, WorldValueChangedArgs.MinMaxType.Max));
-                if (this.WorldMaxChanged != null)
-                    this.WorldMaxChanged(this, new WorldValueChangedArgs(worldMax_, WorldValueChangedArgs.MinMaxType.Max));
-                */
-            }
+				/*
+				if (this.WorldExtentsChanged != null)
+					this.WorldExtentsChanged(this, new WorldValueChangedArgs(worldMax_, WorldValueChangedArgs.MinMaxType.Max));
+				if (this.WorldMaxChanged != null)
+					this.WorldMaxChanged(this, new WorldValueChangedArgs(worldMax_, WorldValueChangedArgs.MinMaxType.Max));
+				*/
+			}
 		}
 		private double worldMax_;
 		
@@ -113,13 +113,13 @@ namespace NPlot
 			set
 			{
 				this.worldMin_ = value;
-                /*
-                if (this.WorldExtentsChanged != null)
-                    this.WorldExtentsChanged( this, new WorldValueChangedArgs( worldMin_, WorldValueChangedArgs.MinMaxType.Min) );
-                if (this.WorldMinChanged != null)
-                    this.WorldMinChanged( this, new WorldValueChangedArgs(worldMin_, WorldValueChangedArgs.MinMaxType.Min) );
-                */
-            }
+				/*
+				if (this.WorldExtentsChanged != null)
+					this.WorldExtentsChanged( this, new WorldValueChangedArgs( worldMin_, WorldValueChangedArgs.MinMaxType.Min) );
+				if (this.WorldMinChanged != null)
+					this.WorldMinChanged( this, new WorldValueChangedArgs(worldMin_, WorldValueChangedArgs.MinMaxType.Min) );
+				*/
+			}
 		}
 		private double worldMin_;
 
@@ -396,7 +396,7 @@ namespace NPlot
 				flipTicksLabel_ = value; 
 			}
 		}
- 		private bool flipTicksLabel_ = false;
+		private bool flipTicksLabel_ = false;
 
 
 		/// <summary>
@@ -581,8 +581,8 @@ namespace NPlot
 			a.smallTickSize_ = b.smallTickSize_;
 			a.ticksCrossAxis_ = b.ticksCrossAxis_;
 			a.labelOffset_ = b.labelOffset_;
-            a.labelOffsetAbsolute_ = b.labelOffsetAbsolute_;
-            a.labelOffsetScaled_ = b.labelOffsetScaled_;
+			a.labelOffsetAbsolute_ = b.labelOffsetAbsolute_;
+			a.labelOffsetScaled_ = b.labelOffsetScaled_;
 
 			// reference items.
 			a.tickTextFont_ = (Font)b.tickTextFont_.Clone();
@@ -626,8 +626,8 @@ namespace NPlot
 			this.HideTickText = false;
 			this.TicksCrossAxis = false;
 			this.LabelOffset = 0.0f;
-            this.LabelOffsetAbsolute = false;
-            this.LabelOffsetScaled = true;
+			this.LabelOffsetAbsolute = false;
+			this.LabelOffsetScaled = true;
 
 			this.Label = "" ;
 			this.NumberFormat = null;
@@ -825,26 +825,26 @@ namespace NPlot
 			// anyway. This is effectively at infinity.
 			double largeClip = 100.0; // don't use 'const double' - Mono bug #475578
 
-            if (prop > largeClip && clip)
-            {
-                prop = largeClip;
-            }
+			if (prop > largeClip && clip)
+			{
+				prop = largeClip;
+			}
 
-            if (prop < -largeClip && clip)
-            {
-                prop = -largeClip;
-            }
+			if (prop < -largeClip && clip)
+			{
+				prop = -largeClip;
+			}
 
 			if (range == 0)
 			{
-                if (coord >= WorldMin)
-                {
-                    prop = largeClip;
-                }
-                else
-                {
-                    prop = -largeClip;
-                }
+				if (coord >= WorldMin)
+				{
+					prop = largeClip;
+				}
+				else
+				{
+					prop = -largeClip;
+				}
 			}
 
 			// calculate the physical coordinate.
@@ -955,17 +955,17 @@ namespace NPlot
 					x_component *= extraOffsetAmount;
 					y_component *= extraOffsetAmount;
 
-                    if (this.LabelOffsetAbsolute)
-                    {
-                        offset.X = (int)x_component;
-                        offset.Y = (int)y_component;
-                    }
-                    else
-                    {
-                        offset.X += (int)x_component;
-                        offset.Y += (int)y_component;
-                    }
-                }
+					if (this.LabelOffsetAbsolute)
+					{
+						offset.X = (int)x_component;
+						offset.Y = (int)y_component;
+					}
+					else
+					{
+						offset.X += (int)x_component;
+						offset.Y += (int)y_component;
+					}
+				}
 				
 				// determine angle of axis in degrees
 				double theta = Math.Atan2(
@@ -1069,10 +1069,10 @@ namespace NPlot
 			PointF tickEnd = new PointF( tickStart.X + tickVector.X, tickStart.Y + tickVector.Y );
 
 			// and draw it!
-            if (g != null)
-            {
-                g.DrawLine(this.linePen_, (int)tickStart.X, (int)tickStart.Y, (int)tickEnd.X, (int)tickEnd.Y);
-            }
+			if (g != null)
+			{
+				g.DrawLine(this.linePen_, (int)tickStart.X, (int)tickStart.Y, (int)tickEnd.X, (int)tickEnd.Y);
+			}
 			// note: casting to int for tick positions was necessary to ensure ticks drawn where we wanted
 			// them. Not sure of the reason.
 
@@ -1140,27 +1140,27 @@ namespace NPlot
 					
 					PointF textScaledTickVector = new PointF( this.TickScale * x1 * (textSize.Height/2.0f), this.TickScale * y1 * (textSize.Height/2.0f) );
 
- 					PointF rotatePoint;
- 					if (this.TickTextNextToAxis) 
+					PointF rotatePoint;
+					if (this.TickTextNextToAxis) 
 					{
- 						rotatePoint = new PointF( tickStart.X - textScaledTickVector.X, tickStart.Y - textScaledTickVector.Y );
- 					}
- 					else 
+						rotatePoint = new PointF( tickStart.X - textScaledTickVector.X, tickStart.Y - textScaledTickVector.Y );
+					}
+					else 
 					{
- 						rotatePoint = new PointF( tickEnd.X + textScaledTickVector.X, tickEnd.Y + textScaledTickVector.Y );
- 					}
+						rotatePoint = new PointF( tickEnd.X + textScaledTickVector.X, tickEnd.Y + textScaledTickVector.Y );
+					}
  
- 					float actualAngle;
+					float actualAngle;
 					if (flipTicksLabel_) 
 					{
- 						double radAngle = (Math.PI / 180) * this.TicksLabelAngle;
- 						rotatePoint.X += textSize.Width * (float)Math.Cos(radAngle);
- 						rotatePoint.Y += textSize.Width * (float)Math.Sin(radAngle);
- 						actualAngle = this.TicksLabelAngle + 180;
- 					}
- 					else 
+						double radAngle = (Math.PI / 180) * this.TicksLabelAngle;
+						rotatePoint.X += textSize.Width * (float)Math.Cos(radAngle);
+						rotatePoint.Y += textSize.Width * (float)Math.Sin(radAngle);
+						actualAngle = this.TicksLabelAngle + 180;
+					}
+					else 
 					{
- 						actualAngle = this.TicksLabelAngle;
+						actualAngle = this.TicksLabelAngle;
 					}
 					
 
@@ -1236,9 +1236,9 @@ namespace NPlot
 
 		/// <summary>
 		/// Draw the axis. This involves three steps:
-		///  (1) Draw the axis line.
-		///  (2) Draw the tick marks.
-		///  (3) Draw the label.
+		///	 (1) Draw the axis line.
+		///	 (2) Draw the tick marks.
+		///	 (3) Draw the label.
 		/// </summary>
 		/// <param name="g">The drawing surface on which to draw.</param>
 		/// <param name="physicalMin">The physical position corresponding to the world minimum of the axis.</param>
@@ -1276,15 +1276,15 @@ namespace NPlot
 				}
 
 				// (4) merge bounds and return.
-                if (labelBounds != null)
-                {
-                    bounds = Rectangle.Union(bounds, (Rectangle)labelBounds);
-                }
+				if (labelBounds != null)
+				{
+					bounds = Rectangle.Union(bounds, (Rectangle)labelBounds);
+				}
 
-                if (tickBounds != null)
-                {
-                    bounds = Rectangle.Union(bounds, (Rectangle)tickBounds);
-                }
+				if (tickBounds != null)
+				{
+					bounds = Rectangle.Union(bounds, (Rectangle)tickBounds);
+				}
 			}
 
 			boundingBox = bounds;
@@ -1403,10 +1403,10 @@ namespace NPlot
 			ArrayList largeTickPositions, 
 			ref ArrayList smallTickPositions )
 		{
-            if (smallTickPositions == null)
-            {
-                smallTickPositions = new ArrayList();
-            }
+			if (smallTickPositions == null)
+			{
+				smallTickPositions = new ArrayList();
+			}
 		}
 
 
@@ -1431,12 +1431,12 @@ namespace NPlot
 		#region Axis Range Utilities
 		//
 		// The following utilities are provided to simplify expansion, contraction, and
-		// translation of the Axis.  They are all based on modifying the WorldRange by a
+		// translation of the Axis.	 They are all based on modifying the WorldRange by a
 		// given proportion, which is convenient for those user-interactions which move
 		// or re-range the plot based on mouse movements in the plot's Physical space.
 		// In order to handle non-linear axes correctly, it is not possible to simply
 		// adjust the WorldMin and WorldMax values directly, since this may result in
-		// invalid endpoints (eg LogAxis).  Instead, the notional physical axis is 
+		// invalid endpoints (eg LogAxis).	Instead, the notional physical axis is 
 		// modified by the appropriate amounts, and the new physicalMin and physicalMax
 		// are then re-mapped to World coordinates using the specific Axis transforms.
 		// Since an Axis does not depend on the physical size or orientation to which it
@@ -1509,7 +1509,7 @@ namespace NPlot
 		/// Modifies the WorldMin and WorldMax values so that the world axis length is
 		/// [proportion] bigger (eg 0.1 increases range by 10%). WorldMax and WorldMin
 		/// are changed so that the expansion/contraction of the axis is symmetrical
-		/// about its midpoint. If the  current WorldMax and WorldMin are the same,
+		/// about its midpoint. If the	current WorldMax and WorldMin are the same,
 		/// they are (currently) moved apart by an arbitrary amount (epsilon). This
 		/// condition seems arbitrary, and may be removed at some stage.
 		/// </summary>
@@ -1575,7 +1575,7 @@ namespace NPlot
 		
 		/// <summary>
 		/// Modifies the WorldMin and WorldMax values so that the world axis is
-		/// translated by the specified [shiftProportion].  If [shiftProportion] is
+		/// translated by the specified [shiftProportion].	If [shiftProportion] is
 		/// positive, WorldMin and WorldMax are both increased, so that the range is
 		/// shifted to the right (assuming WorldMin to the left of WorldMax), while
 		/// negative values of [shiftProportion] decrease both WorldMin and WorldMax.
@@ -1632,13 +1632,13 @@ namespace NPlot
 
 		private void UpdateScale()	
 		{
-            if (labelFont_ != null) {
-                this.labelFontScaled_ = Utils.ScaleFont(labelFont_, FontScale);
-            }
+			if (labelFont_ != null) {
+				this.labelFontScaled_ = Utils.ScaleFont(labelFont_, FontScale);
+			}
 
-            if (tickTextFont_ != null) {
-                this.tickTextFontScaled_ = Utils.ScaleFont(tickTextFont_, FontScale);
-            }
+			if (tickTextFont_ != null) {
+				this.tickTextFontScaled_ = Utils.ScaleFont(tickTextFont_, FontScale);
+			}
 		}
 
 
@@ -1665,21 +1665,21 @@ namespace NPlot
 			set { labelOffset_ = value; }
 		}
 
-        private bool labelOffsetAbsolute_ = false;
-        /// <summary>
-        /// If true, the value specified by LabelOffset is the absolute distance
-        /// away from the axis that the label is drawn. If false, the value 
-        /// specified by LabelOffset is added to the pre-calculated value to 
-        /// determine the axis label position.
-        /// </summary>
-        /// <value></value>
-        public bool LabelOffsetAbsolute
-        {
-            get { return labelOffsetAbsolute_; }
-            set { labelOffsetAbsolute_ = value; }
-        }
+		private bool labelOffsetAbsolute_ = false;
+		/// <summary>
+		/// If true, the value specified by LabelOffset is the absolute distance
+		/// away from the axis that the label is drawn. If false, the value 
+		/// specified by LabelOffset is added to the pre-calculated value to 
+		/// determine the axis label position.
+		/// </summary>
+		/// <value></value>
+		public bool LabelOffsetAbsolute
+		{
+			get { return labelOffsetAbsolute_; }
+			set { labelOffsetAbsolute_ = value; }
+		}
 
-        private bool labelOffsetScaled_ = true;
+		private bool labelOffsetScaled_ = true;
 		/// <summary>
 		/// Whether or not the supplied LabelOffset should be scaled by 
 		/// a factor as specified by FontScale.
@@ -1719,51 +1719,51 @@ namespace NPlot
 		}
 
 
-        /// <summary>
-        /// Set the Axis color (sets all of axis line color, Tick text color, and label color).
-        /// </summary>
-        public Color Color
-        {
-            set
-            {
-                this.AxisColor = value;
-                this.TickTextColor = value;
-                this.LabelColor = value;
-            }
-        }
+		/// <summary>
+		/// Set the Axis color (sets all of axis line color, Tick text color, and label color).
+		/// </summary>
+		public Color Color
+		{
+			set
+			{
+				this.AxisColor = value;
+				this.TickTextColor = value;
+				this.LabelColor = value;
+			}
+		}
 
 
-        /*
+		/*
 
-        // TODO: finish implementation of this at some point.
+		// TODO: finish implementation of this at some point.
 
-        public class WorldValueChangedArgs
-        {
-            public WorldValueChangedArgs( double value, MinMaxType minOrMax )
-            {
-                Value = value;
-                MinOrMax = minOrMax;
-            }
+		public class WorldValueChangedArgs
+		{
+			public WorldValueChangedArgs( double value, MinMaxType minOrMax )
+			{
+				Value = value;
+				MinOrMax = minOrMax;
+			}
 
-            public double Value;
+			public double Value;
 
-            public enum MinMaxType
-            {
-                Min = 0,
-                Max = 1
-            }
+			public enum MinMaxType
+			{
+				Min = 0,
+				Max = 1
+			}
 
-            public MinMaxType MinOrMax;
-        }
+			public MinMaxType MinOrMax;
+		}
 
 
-        public delegate void WorldValueChangedHandler( object sender, WorldValueChangedArgs e );
+		public delegate void WorldValueChangedHandler( object sender, WorldValueChangedArgs e );
 
-        public event WorldValueChangedHandler WorldMinChanged;
-        public event WorldValueChangedHandler WorldMaxChanged;
-        public event WorldValueChangedHandler WorldExtentsChanged;
+		public event WorldValueChangedHandler WorldMinChanged;
+		public event WorldValueChangedHandler WorldMaxChanged;
+		public event WorldValueChangedHandler WorldExtentsChanged;
 
-        */
+		*/
 
-    }
+	}
 }

@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -72,18 +72,18 @@ namespace NPlot
 			SequenceAdapter data_ = 
 				new SequenceAdapter( this.DataSource, this.DataMember, this.OrdinateData, this.AbscissaData );
 
-            float leftCutoff_ = xAxis.PhysicalMin.X - marker_.Size;
-            float rightCutoff_ = xAxis.PhysicalMax.X + marker_.Size;
+			float leftCutoff_ = xAxis.PhysicalMin.X - marker_.Size;
+			float rightCutoff_ = xAxis.PhysicalMax.X + marker_.Size;
 
 			for (int i=0; i<data_.Count; ++i)
 			{
 				if ( !Double.IsNaN(data_[i].X) && !Double.IsNaN(data_[i].Y) )
 				{
 					PointF xPos = xAxis.WorldToPhysical( data_[i].X, false);
-                    if (xPos.X < leftCutoff_ || rightCutoff_ < xPos.X)
-                    {
-                        continue;
-                    }
+					if (xPos.X < leftCutoff_ || rightCutoff_ < xPos.X)
+					{
+						continue;
+					}
 
 					PointF yPos = yAxis.WorldToPhysical( data_[i].Y, false);
 					marker_.Draw( g, (int)xPos.X, (int)yPos.Y );
@@ -132,15 +132,15 @@ namespace NPlot
 		public void DrawInLegend( Graphics g, Rectangle startEnd )
 		{
 			if (marker_.Size > 0)
-            {
-                marker_.Draw(g, (startEnd.Left + startEnd.Right) / 2, (startEnd.Top + startEnd.Bottom) / 2);
-            }
-            else if (marker_.Pen.Width > 0)
-            {
-                g.DrawLine(marker_.Pen,
-                    (startEnd.Left + startEnd.Right) / 2, (startEnd.Top + startEnd.Bottom - marker_.Pen.Width) / 2,
-                    (startEnd.Left + startEnd.Right) / 2, (startEnd.Top + startEnd.Bottom + marker_.Pen.Width) / 2);
-            }
+			{
+				marker_.Draw(g, (startEnd.Left + startEnd.Right) / 2, (startEnd.Top + startEnd.Bottom) / 2);
+			}
+			else if (marker_.Pen.Width > 0)
+			{
+				g.DrawLine(marker_.Pen,
+					(startEnd.Left + startEnd.Right) / 2, (startEnd.Top + startEnd.Bottom - marker_.Pen.Width) / 2,
+					(startEnd.Left + startEnd.Right) / 2, (startEnd.Top + startEnd.Bottom + marker_.Pen.Width) / 2);
+			}
 		}
 
 

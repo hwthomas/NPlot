@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -86,18 +86,18 @@ namespace NPlot
 				}
 				else
 				{
-                    // Check that we are not dealing with a DataSource of 1 point.
-                    // This check is done here so it is only checked on the end
-                    // condition and not for every point in the DataSource.
-                    if (data.Count > 1)
-                    {
-                        p2 = data[i - 1];
-                    }
-                    else
-                    {
-                        // TODO: Once log4net is set up post a message to the user that a step-plot of 1 really does not make any sense.
-                        p2 = p1;
-                    }
+					// Check that we are not dealing with a DataSource of 1 point.
+					// This check is done here so it is only checked on the end
+					// condition and not for every point in the DataSource.
+					if (data.Count > 1)
+					{
+						p2 = data[i - 1];
+					}
+					else
+					{
+						// TODO: Once log4net is set up post a message to the user that a step-plot of 1 really does not make any sense.
+						p2 = p1;
+					}
 
 					double offset = p1.X - p2.X;
 					p2.X = p1.X + offset;
@@ -121,8 +121,8 @@ namespace NPlot
 				PointF yPos3 = yAxis.WorldToPhysical( p3.Y, false );
 
 				// do horizontal clipping here, to speed up
-                if ((p1.X < leftCutoff && p2.X < leftCutoff && p3.X < leftCutoff) ||
-                    (p1.X > rightCutoff && p2.X > rightCutoff && p3.X > rightCutoff))
+				if ((p1.X < leftCutoff && p2.X < leftCutoff && p3.X < leftCutoff) ||
+					(p1.X > rightCutoff && p2.X > rightCutoff && p3.X > rightCutoff))
 				{
 					continue;
 				}
@@ -228,56 +228,56 @@ namespace NPlot
 		private bool center_;
 
 
-        /// <summary>
-        /// Draws a representation of this plot in the legend.
-        /// </summary>
-        /// <param name="g">The graphics surface on which to draw.</param>
-        /// <param name="startEnd">A rectangle specifying the bounds of the area in the legend set aside for drawing.</param>
-        public virtual void DrawInLegend(Graphics g, Rectangle startEnd)
-        {
-            g.DrawLine(pen_, startEnd.Left, (startEnd.Top + startEnd.Bottom) / 2,
-                startEnd.Right, (startEnd.Top + startEnd.Bottom) / 2);
-        }
+		/// <summary>
+		/// Draws a representation of this plot in the legend.
+		/// </summary>
+		/// <param name="g">The graphics surface on which to draw.</param>
+		/// <param name="startEnd">A rectangle specifying the bounds of the area in the legend set aside for drawing.</param>
+		public virtual void DrawInLegend(Graphics g, Rectangle startEnd)
+		{
+			g.DrawLine(pen_, startEnd.Left, (startEnd.Top + startEnd.Bottom) / 2,
+				startEnd.Right, (startEnd.Top + startEnd.Bottom) / 2);
+		}
 
 
-        /// <summary>
-        /// The pen used to draw the plot
-        /// </summary>
-        public System.Drawing.Pen Pen
-        {
-            get
-            {
-                return pen_;
-            }
-            set
-            {
-                pen_ = value;
-            }
-        }
-        private System.Drawing.Pen pen_ = new Pen(Color.Black);
+		/// <summary>
+		/// The pen used to draw the plot
+		/// </summary>
+		public System.Drawing.Pen Pen
+		{
+			get
+			{
+				return pen_;
+			}
+			set
+			{
+				pen_ = value;
+			}
+		}
+		private System.Drawing.Pen pen_ = new Pen(Color.Black);
 
 
-        /// <summary>
-        /// The color of the pen used to draw lines in this plot.
-        /// </summary>
-        public System.Drawing.Color Color
-        {
-            set
-            {
-                if (pen_ != null)
-                {
-                    pen_.Color = value;
-                }
-                else
-                {
-                    pen_ = new Pen(value);
-                }
-            }
-            get
-            {
-                return pen_.Color;
-            }
-        }
+		/// <summary>
+		/// The color of the pen used to draw lines in this plot.
+		/// </summary>
+		public System.Drawing.Color Color
+		{
+			set
+			{
+				if (pen_ != null)
+				{
+					pen_.Color = value;
+				}
+				else
+				{
+					pen_ = new Pen(value);
+				}
+			}
+			get
+			{
+				return pen_.Color;
+			}
+		}
 
 
 		/// <summary>
@@ -330,5 +330,5 @@ namespace NPlot
 			}
 		}
 		private float scale_ = 1.0f;
-    }
+	}
 }

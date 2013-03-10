@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -121,23 +121,23 @@ namespace NPlot
 			}
 			else
 			{
-                // prepare for clipping
-                double leftCutoff = xAxis.PhysicalToWorld(xAxis.PhysicalMin, false);
-                double rightCutoff = xAxis.PhysicalToWorld(xAxis.PhysicalMax, false);
+				// prepare for clipping
+				double leftCutoff = xAxis.PhysicalToWorld(xAxis.PhysicalMin, false);
+				double rightCutoff = xAxis.PhysicalToWorld(xAxis.PhysicalMax, false);
 				if (leftCutoff > rightCutoff)
 				{
 					Utils.Swap(ref leftCutoff, ref rightCutoff);
 				}
 				if (drawShadow)
-                {
-                    // correct cut-offs
-                    double shadowCorrection =
-                        xAxis.PhysicalToWorld(ShadowOffset, false) - xAxis.PhysicalToWorld(new Point(0,0), false);
-                    leftCutoff -= shadowCorrection;
-                    rightCutoff -= shadowCorrection;
-                }
+				{
+					// correct cut-offs
+					double shadowCorrection =
+						xAxis.PhysicalToWorld(ShadowOffset, false) - xAxis.PhysicalToWorld(new Point(0,0), false);
+					leftCutoff -= shadowCorrection;
+					rightCutoff -= shadowCorrection;
+				}
 
-                for (int i = 1; i < numberPoints; ++i)
+				for (int i = 1; i < numberPoints; ++i)
 				{
 					// check to see if any values null. If so, then continue.
 					double dx1 = data[i-1].X;
@@ -150,23 +150,23 @@ namespace NPlot
 						continue;
 					}
 
-                    // do horizontal clipping here, to speed up
-                    if ((dx1 < leftCutoff && dx2 < leftCutoff) ||
-                        (rightCutoff < dx1 && rightCutoff < dx2))
-                    {
-                        continue;
-                    }
+					// do horizontal clipping here, to speed up
+					if ((dx1 < leftCutoff && dx2 < leftCutoff) ||
+						(rightCutoff < dx1 && rightCutoff < dx2))
+					{
+						continue;
+					}
 
-					// else draw line.  
+					// else draw line.	
 					PointF p1 = t.Transform( data[i-1] );
 					PointF p2 = t.Transform( data[i] );
-                    
-                    // when very far zoomed in, points can fall ontop of each other,
-                    // and g.DrawLine throws an overflow exception
-                    if (p1.Equals(p2))
-                    {
-                        continue;
-                    }
+					
+					// when very far zoomed in, points can fall ontop of each other,
+					// and g.DrawLine throws an overflow exception
+					if (p1.Equals(p2))
+					{
+						continue;
+					}
 
 					if (drawShadow)
 					{
@@ -279,55 +279,55 @@ namespace NPlot
 		private Point shadowOffset_ = new Point( 1, 1 );
 
 
-        /// <summary>
-        /// Draws a representation of this plot in the legend.
-        /// </summary>
-        /// <param name="g">The graphics surface on which to draw.</param>
-        /// <param name="startEnd">A rectangle specifying the bounds of the area in the legend set aside for drawing.</param>
-        public virtual void DrawInLegend(Graphics g, Rectangle startEnd)
-        {
-            g.DrawLine(pen_, startEnd.Left, (startEnd.Top + startEnd.Bottom) / 2,
-                startEnd.Right, (startEnd.Top + startEnd.Bottom) / 2);
-        }
+		/// <summary>
+		/// Draws a representation of this plot in the legend.
+		/// </summary>
+		/// <param name="g">The graphics surface on which to draw.</param>
+		/// <param name="startEnd">A rectangle specifying the bounds of the area in the legend set aside for drawing.</param>
+		public virtual void DrawInLegend(Graphics g, Rectangle startEnd)
+		{
+			g.DrawLine(pen_, startEnd.Left, (startEnd.Top + startEnd.Bottom) / 2,
+				startEnd.Right, (startEnd.Top + startEnd.Bottom) / 2);
+		}
 
 
-        /// <summary>
-        /// The pen used to draw the plot
-        /// </summary>
-        public System.Drawing.Pen Pen
-        {
-            get
-            {
-                return pen_;
-            }
-            set
-            {
-                pen_ = value;
-            }
-        }
-        private System.Drawing.Pen pen_ = new Pen(Color.Black);
+		/// <summary>
+		/// The pen used to draw the plot
+		/// </summary>
+		public System.Drawing.Pen Pen
+		{
+			get
+			{
+				return pen_;
+			}
+			set
+			{
+				pen_ = value;
+			}
+		}
+		private System.Drawing.Pen pen_ = new Pen(Color.Black);
 
 
-        /// <summary>
-        /// The color of the pen used to draw lines in this plot.
-        /// </summary>
-        public System.Drawing.Color Color
-        {
-            set
-            {
-                if (pen_ != null)
-                {
-                    pen_.Color = value;
-                }
-                else
-                {
-                    pen_ = new Pen(value);
-                }
-            }
-            get
-            {
-                return pen_.Color;
-            }
-        }
-    }
+		/// <summary>
+		/// The color of the pen used to draw lines in this plot.
+		/// </summary>
+		public System.Drawing.Color Color
+		{
+			set
+			{
+				if (pen_ != null)
+				{
+					pen_.Color = value;
+				}
+				else
+				{
+					pen_ = new Pen(value);
+				}
+			}
+			get
+			{
+				return pen_.Color;
+			}
+		}
+	}
 }

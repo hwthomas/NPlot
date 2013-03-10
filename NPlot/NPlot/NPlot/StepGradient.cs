@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -104,46 +104,46 @@ namespace NPlot
 			{
 				case Type.RGB:
 				{
-                    if (prop < 1.0 / 3.0)
-                    {
-                        return Color.Red;
-                    }
-                    if (prop < 2.0 / 3.0)
-                    {
-                        return Color.Green;
-                    }
+					if (prop < 1.0 / 3.0)
+					{
+						return Color.Red;
+					}
+					if (prop < 2.0 / 3.0)
+					{
+						return Color.Green;
+					}
 					return Color.Blue;
 				}
 				case Type.Rainbow:
 				{
-                    if (prop < 0.125) 
-                    { 
-                        return Color.Red; 
-                    }
+					if (prop < 0.125) 
+					{ 
+						return Color.Red; 
+					}
 					if (prop < 0.25)
-                    { 
-                        return Color.Orange;
-                    }
+					{ 
+						return Color.Orange;
+					}
 					if (prop < 0.375)
-                    { 
-                        return Color.Yellow;
-                    }
+					{ 
+						return Color.Yellow;
+					}
 					if (prop < 0.5)
-                    { 
-                        return Color.Green;
-                    }
+					{ 
+						return Color.Green;
+					}
 					if (prop < 0.625)
-                    { 
-                        return Color.Cyan;
-                    }
+					{ 
+						return Color.Cyan;
+					}
 					if (prop < 0.75)
-                    { 
-                        return Color.Blue;
-                    }
+					{ 
+						return Color.Blue;
+					}
 					if (prop < 0.825)
-                    { 
-                        return Color.Purple;
-                    }
+					{ 
+						return Color.Purple;
+					}
 					return Color.Pink;
 				}
 				default:

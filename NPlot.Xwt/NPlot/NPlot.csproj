@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{761A7039-8E4E-43B9-B14D-7CA96B3B569C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>NPlot</RootNamespace>
+    <RootNamespace>NPlot.Xwt</RootNamespace>
     <AssemblyName>NPlot</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -37,10 +37,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="NPlot\Utils.cs" />
+    <Compile Include="NPlot\Transform2D.cs" />
+    <Compile Include="NPlot\ITransform2D.cs" />
+    <Compile Include="NPlot\IDrawable.cs" />
+    <Compile Include="NPlot\IGradient.cs" />
+    <Compile Include="NPlot\IPlot.cs" />
+    <Compile Include="NPlot\IPlotSurface2D.cs" />
+    <Compile Include="NPlot\ISequencePlot.cs" />
+    <Compile Include="NPlot\Axis.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Data" />
     <Reference Include="Xwt">
       <HintPath>..\..\..\controlsuite\CSPlot\CSPlot\bin\Debug\Xwt.dll</HintPath>

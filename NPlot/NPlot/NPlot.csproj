@@ -53,7 +53,6 @@
     <Compile Include="NPlot\IPlot.cs" />
     <Compile Include="NPlot\IPlotSurface2D.cs" />
     <Compile Include="NPlot\ISequencePlot.cs" />
-    <Compile Include="NPlot\ISurface.cs" />
     <Compile Include="NPlot\ITransform2D.cs" />
     <Compile Include="NPlot\ImagePlot.cs" />
     <Compile Include="NPlot\LabelAxis.cs" />

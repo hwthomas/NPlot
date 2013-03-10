@@ -10,13 +10,13 @@
 // are permitted provided that the following conditions are met:
 // 
 // 1. Redistributions of source code must retain the above copyright notice, this
-//    list of conditions and the following disclaimer.
+//	  list of conditions and the following disclaimer.
 // 2. Redistributions in binary form must reproduce the above copyright notice,
-//    this list of conditions and the following disclaimer in the documentation
-//    and/or other materials provided with the distribution.
+//	  this list of conditions and the following disclaimer in the documentation
+//	  and/or other materials provided with the distribution.
 // 3. Neither the name of NPlot nor the names of its contributors may
-//    be used to endorse or promote products derived from this software without
-//    specific prior written permission.
+//	  be used to endorse or promote products derived from this software without
+//	  specific prior written permission.
 // 
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 // ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -38,16 +38,16 @@ using System.Drawing;
 
 namespace NPlot {
  
-    /// <summary>
-    /// Interactive plot surface2 d.
-    /// </summary> <summary>
-    /// Extends PlotSurface2D with Interactions which allow the user to change
-    /// the plot using mouse and keyboard inputs.  A common mechanism for mouse
-    /// and keyboard inputs is used, so that the platform-specific input handlers
-    /// convert to this common format and then call the interaction code here.
-    /// This maximises the amount of common code that can be used.
-    /// </summary>
-   	public class InteractivePlotSurface2D : PlotSurface2D
+	/// <summary>
+	/// Interactive plot surface2 d.
+	/// </summary> <summary>
+	/// Extends PlotSurface2D with Interactions which allow the user to change
+	/// the plot using mouse and keyboard inputs.  A common mechanism for mouse
+	/// and keyboard inputs is used, so that the platform-specific input handlers
+	/// convert to this common format and then call the interaction code here.
+	/// This maximises the amount of common code that can be used.
+	/// </summary>
+	public class InteractivePlotSurface2D : PlotSurface2D
 	{
 	/// <summary>
 		/// Default constructor.
@@ -55,8 +55,8 @@ namespace NPlot {
 		public InteractivePlotSurface2D() : base()
 		{
 			// Create empty InteractionOccurred and PreRefresh Event handlers
-	        this.InteractionOccurred += new InteractionHandler( OnInteractionOccurred );
-   		    this.PreRefresh += new PreRefreshHandler( OnPreRefresh );
+			this.InteractionOccurred += new InteractionHandler( OnInteractionOccurred );
+			this.PreRefresh += new PreRefreshHandler( OnPreRefresh );
 		}
 
 		/// <summary>
@@ -66,7 +66,7 @@ namespace NPlot {
 		{
 			ClearAxisCache();
 			interactions.Clear();
-            base.Clear();
+			base.Clear();
 		}
 
 		/// <summary>
@@ -79,15 +79,15 @@ namespace NPlot {
 			Refresh();
 		}
 
-        private CursorType plotcursor;  
-    
-        public CursorType plotCursor
-        {
-            get { return plotcursor; }
-            set { plotcursor = value; }
-        }
+		private CursorType plotcursor;	
+	
+		public CursorType plotCursor
+		{
+			get { return plotcursor; }
+			set { plotcursor = value; }
+		}
 
-        #region Axis Cache and Range utilities
+		#region Axis Cache and Range utilities
 
 		private Axis xAxis1ZoomCache_;		// copies of current axes,
 		private Axis yAxis1ZoomCache_;		// saved for restoring the
@@ -123,106 +123,106 @@ namespace NPlot {
 		public void SetOriginalDimensions()
 		{
 			if (xAxis1ZoomCache_ != null) {
-                this.XAxis1 = xAxis1ZoomCache_;
-                this.XAxis2 = xAxis2ZoomCache_;
-                this.YAxis1 = yAxis1ZoomCache_;
-                this.YAxis2 = yAxis2ZoomCache_;
+				this.XAxis1 = xAxis1ZoomCache_;
+				this.XAxis2 = xAxis2ZoomCache_;
+				this.YAxis1 = yAxis1ZoomCache_;
+				this.YAxis2 = yAxis2ZoomCache_;
 
-                xAxis1ZoomCache_ = null;
-                xAxis2ZoomCache_ = null;
-                yAxis1ZoomCache_ = null;
-                yAxis2ZoomCache_ = null;
-            }					
+				xAxis1ZoomCache_ = null;
+				xAxis2ZoomCache_ = null;
+				yAxis1ZoomCache_ = null;
+				yAxis2ZoomCache_ = null;
+			}					
 		}
 
-        protected void ClearAxisCache()
-        {
-            xAxis1ZoomCache_ = null;
-            yAxis1ZoomCache_ = null;
-            xAxis2ZoomCache_ = null;
-            yAxis2ZoomCache_ = null;
-        }
-        
-        /// <summary>
-        /// Translate all PlotSurface X-Axes by shiftProportion
-        /// </summary>
-        public void TranslateXAxes (double shiftProportion )
-        {
-            if (XAxis1 != null) {
-                XAxis1.TranslateRange (shiftProportion);
-            }
-            if (XAxis2 != null) {
-                XAxis2.TranslateRange (shiftProportion);
-            }
-        }
-        
-        /// <summary>
-        /// Translate all PlotSurface Y-Axes by shiftProportion
-        /// </summary>
-        public void TranslateYAxes (double shiftProportion )
-        {
-            if (YAxis1 != null) {
-                YAxis1.TranslateRange (shiftProportion);
-            }
-            if (YAxis2 != null) {
-                YAxis2.TranslateRange (shiftProportion);
-            }
-        }
-        
-        /// <summary>
-        /// Zoom all PlotSurface X-Axes about focusPoint by zoomProportion 
-        /// </summary>
-        public void ZoomXAxes (double zoomProportion, double focusRatio)
-        {
-            if (XAxis1 != null) {
-                XAxis1.IncreaseRange(zoomProportion,focusRatio);
-            }
-            if (XAxis2 != null) {
-                XAxis2.IncreaseRange(zoomProportion,focusRatio);
-            }
-        }
+		protected void ClearAxisCache()
+		{
+			xAxis1ZoomCache_ = null;
+			yAxis1ZoomCache_ = null;
+			xAxis2ZoomCache_ = null;
+			yAxis2ZoomCache_ = null;
+		}
+		
+		/// <summary>
+		/// Translate all PlotSurface X-Axes by shiftProportion
+		/// </summary>
+		public void TranslateXAxes (double shiftProportion )
+		{
+			if (XAxis1 != null) {
+				XAxis1.TranslateRange (shiftProportion);
+			}
+			if (XAxis2 != null) {
+				XAxis2.TranslateRange (shiftProportion);
+			}
+		}
+		
+		/// <summary>
+		/// Translate all PlotSurface Y-Axes by shiftProportion
+		/// </summary>
+		public void TranslateYAxes (double shiftProportion )
+		{
+			if (YAxis1 != null) {
+				YAxis1.TranslateRange (shiftProportion);
+			}
+			if (YAxis2 != null) {
+				YAxis2.TranslateRange (shiftProportion);
+			}
+		}
+		
+		/// <summary>
+		/// Zoom all PlotSurface X-Axes about focusPoint by zoomProportion 
+		/// </summary>
+		public void ZoomXAxes (double zoomProportion, double focusRatio)
+		{
+			if (XAxis1 != null) {
+				XAxis1.IncreaseRange(zoomProportion,focusRatio);
+			}
+			if (XAxis2 != null) {
+				XAxis2.IncreaseRange(zoomProportion,focusRatio);
+			}
+		}
 
-        /// <summary>
-        /// Zoom all PlotSurface Y-Axes about focusPoint by zoomProportion 
-        /// </summary>
-        public void ZoomYAxes (double zoomProportion, double focusRatio)
-        {
-            if (YAxis1 != null) {
-                YAxis1.IncreaseRange(zoomProportion,focusRatio);
-            }
-            if (YAxis2 != null) {
-                YAxis2.IncreaseRange(zoomProportion,focusRatio);
-            }
-        }
+		/// <summary>
+		/// Zoom all PlotSurface Y-Axes about focusPoint by zoomProportion 
+		/// </summary>
+		public void ZoomYAxes (double zoomProportion, double focusRatio)
+		{
+			if (YAxis1 != null) {
+				YAxis1.IncreaseRange(zoomProportion,focusRatio);
+			}
+			if (YAxis2 != null) {
+				YAxis2.IncreaseRange(zoomProportion,focusRatio);
+			}
+		}
 
-        /// <summary>
-        /// Define all PlotSurface X-Axes to minProportion, maxProportion
-        /// </summary>
-        public void DefineXAxes (double minProportion, double maxProportion)
-        {
-            if (XAxis1 != null) {
-                XAxis1.DefineRange(minProportion, maxProportion, true);
-            }
-            if (XAxis2 != null) {
-                XAxis2.DefineRange(minProportion, maxProportion, true);
-            }
-        }
+		/// <summary>
+		/// Define all PlotSurface X-Axes to minProportion, maxProportion
+		/// </summary>
+		public void DefineXAxes (double minProportion, double maxProportion)
+		{
+			if (XAxis1 != null) {
+				XAxis1.DefineRange(minProportion, maxProportion, true);
+			}
+			if (XAxis2 != null) {
+				XAxis2.DefineRange(minProportion, maxProportion, true);
+			}
+		}
 
-        /// <summary>
-        /// Define all PlotSurface Y-Axes to minProportion, maxProportion
-        /// </summary>
-        public void DefineYAxes (double minProportion, double maxProportion)
-        {
-            if (YAxis1 != null) {
-                YAxis1.DefineRange(minProportion, maxProportion, true);
-            }
-            if (YAxis2 != null) {
-                YAxis2.DefineRange(minProportion, maxProportion, true);
-            }
-        }
-        #endregion
+		/// <summary>
+		/// Define all PlotSurface Y-Axes to minProportion, maxProportion
+		/// </summary>
+		public void DefineYAxes (double minProportion, double maxProportion)
+		{
+			if (YAxis1 != null) {
+				YAxis1.DefineRange(minProportion, maxProportion, true);
+			}
+			if (YAxis2 != null) {
+				YAxis2.DefineRange(minProportion, maxProportion, true);
+			}
+		}
+		#endregion
 
-        #region Add/Remove Interaction
+		#region Add/Remove Interaction
 
 		private ArrayList interactions = new ArrayList();
 
@@ -239,84 +239,84 @@ namespace NPlot {
 		/// Remove a previously added interaction
 		/// </summary>
 		/// <param name="i">interaction to remove</param>
-		public void RemoveInteraction(Interaction i)             
+		public void RemoveInteraction(Interaction i)			 
 		{
 			interactions.Remove(i);
 		}
 
-        #endregion Add/Remove Interaction
+		#endregion Add/Remove Interaction
 
-        #region InteractivePlotSurface Events
+		#region InteractivePlotSurface Events
 
-        /// An Event is raised to notify clients that an Interaction has modified
-        /// the PlotSurface, and a separate Event is also raised prior to a call
-        /// to refresh the PlotSurface.  Currently, the conditions for raising
-        /// both Events are the same (ie the PlotSurface has been modified)
+		/// An Event is raised to notify clients that an Interaction has modified
+		/// the PlotSurface, and a separate Event is also raised prior to a call
+		/// to refresh the PlotSurface.	 Currently, the conditions for raising
+		/// both Events are the same (ie the PlotSurface has been modified)
 
-        /// <summary>
-        /// InteractionOccurred event signature
-        /// TODO: expand this to include information about the event. 
-        /// </summary>
-        /// <param name="sender"></param>
-        public delegate void InteractionHandler(object sender);
-        
+		/// <summary>
+		/// InteractionOccurred event signature
+		/// TODO: expand this to include information about the event. 
+		/// </summary>
+		/// <param name="sender"></param>
+		public delegate void InteractionHandler(object sender);
+		
 
-        /// <summary>
-        /// Event raised when an interaction modifies the PlotSurface
-        /// </summary>
-        public event InteractionHandler InteractionOccurred;
-
-
-        /// <summary>
-        /// Default handler called when Interaction modifies PlotSurface
-        /// Override this, or add handler to InteractionOccurred event.
-        /// </summary>
-        /// <param name="sender"></param>
-        protected void OnInteractionOccurred(object sender)
-        {
-        }
-        
-
-        /// <summary>
-        /// PreRefresh event handler signature
-        /// </summary>
-        /// <param name="sender"></param>
-        public delegate void PreRefreshHandler(object sender);
+		/// <summary>
+		/// Event raised when an interaction modifies the PlotSurface
+		/// </summary>
+		public event InteractionHandler InteractionOccurred;
 
 
-        /// <summary>
-        /// Event raised prior to Refresh call
-        /// </summary>
-        public event PreRefreshHandler PreRefresh;
+		/// <summary>
+		/// Default handler called when Interaction modifies PlotSurface
+		/// Override this, or add handler to InteractionOccurred event.
+		/// </summary>
+		/// <param name="sender"></param>
+		protected void OnInteractionOccurred(object sender)
+		{
+		}
+		
+
+		/// <summary>
+		/// PreRefresh event handler signature
+		/// </summary>
+		/// <param name="sender"></param>
+		public delegate void PreRefreshHandler(object sender);
 
 
-        /// <summary>
-        /// Default handler for PreRefresh
-        /// Override this, or add handler to PreRefresh event.
-        /// </summary>
-        /// <param name="sender"></param>
-        protected void OnPreRefresh(object sender)
-        {
-        }
-        
-        #endregion
+		/// <summary>
+		/// Event raised prior to Refresh call
+		/// </summary>
+		public event PreRefreshHandler PreRefresh;
 
-        #region PlotSurface Interaction handlers
 
-        // The methods which are called by the platform-specific event handlers and which in turn
-        // call the individual Interaction handlers for those events. Note that a reference to the
-        // PlotSurface is passed as well as the event details, so that Interactions can call the
-        // PlotSurface public methods if required (eg to redraw an area of the plotSurface)
+		/// <summary>
+		/// Default handler for PreRefresh
+		/// Override this, or add handler to PreRefresh event.
+		/// </summary>
+		/// <param name="sender"></param>
+		protected void OnPreRefresh(object sender)
+		{
+		}
+		
+		#endregion
 
-        /// <summary>
-        /// Handle Draw event for all interactions. Called by platform-specific OnDraw/Paint
-        /// </summary>
-        protected void DoDraw (Graphics g, Rectangle clip)
-        {
-            foreach (Interaction i in interactions) {
-                i.DoDraw (g, clip);
-            }
-        }
+		#region PlotSurface Interaction handlers
+
+		// The methods which are called by the platform-specific event handlers and which in turn
+		// call the individual Interaction handlers for those events. Note that a reference to the
+		// PlotSurface is passed as well as the event details, so that Interactions can call the
+		// PlotSurface public methods if required (eg to redraw an area of the plotSurface)
+
+		/// <summary>
+		/// Handle Draw event for all interactions. Called by platform-specific OnDraw/Paint
+		/// </summary>
+		protected void DoDraw (Graphics g, Rectangle clip)
+		{
+			foreach (Interaction i in interactions) {
+				i.DoDraw (g, clip);
+			}
+		}
 
 		/// <summary>
 		/// Handle MouseEnter for all PlotSurface interactions
@@ -471,43 +471,43 @@ namespace NPlot {
 			}
 			return(modified);
 		}
-        #endregion
+		#endregion
 
-        #region PlotSurface virtual methods
+		#region PlotSurface virtual methods
 
-        /// <summary>
-        /// Displays the current plotCursor, set in each interaction
-        /// This must be overridden by each implementation so that
-        /// the appropriate platform cursor type can be displayed
-        /// </summary>
-        public virtual void ShowCursor (CursorType plotCursor )
-        {
-        }
+		/// <summary>
+		/// Displays the current plotCursor, set in each interaction
+		/// This must be overridden by each implementation so that
+		/// the appropriate platform cursor type can be displayed
+		/// </summary>
+		public virtual void ShowCursor (CursorType plotCursor )
+		{
+		}
 
-        /// <summary>
-        /// Update the entire plot area on the platform-specific output
-        /// Override this method for each implementation (Swf, Gtk)
-        /// </summary>
-        public virtual void Refresh()
-        {
-        }
+		/// <summary>
+		/// Update the entire plot area on the platform-specific output
+		/// Override this method for each implementation (Swf, Gtk)
+		/// </summary>
+		public virtual void Refresh()
+		{
+		}
 
-        /// <summary>
-        /// Invalidate rectangle specified. The Paint/OnDraw handler will then to redraw the area
-        /// </summary>
-        public virtual void QueueDraw (Rectangle dirtyRect)
-        {
-        }
+		/// <summary>
+		/// Invalidate rectangle specified. The Paint/OnDraw handler will then to redraw the area
+		/// </summary>
+		public virtual void QueueDraw (Rectangle dirtyRect)
+		{
+		}
 
-        /// <summary>
-        /// Process window updates immediately
-        /// </summary>
-        public virtual void ProcessUpdates (bool updateChildren)
-        {
-        }
+		/// <summary>
+		/// Process window updates immediately
+		/// </summary>
+		public virtual void ProcessUpdates (bool updateChildren)
+		{
+		}
 
-        #endregion
+		#endregion
 
-    } // class InteractivePlotSurface2D
+	} // class InteractivePlotSurface2D
   
 } // namespace NPlot

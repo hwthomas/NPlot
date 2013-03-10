@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -47,11 +47,11 @@ namespace NPlot
 
 		private AdapterUtils.IAxisSuggester XAxisSuggester_;
 		private AdapterUtils.IAxisSuggester YAxisSuggester_;
-        private AdapterUtils.ICounter counter_;
-        private AdapterUtils.IDataGetter xDataGetter_;
-        private AdapterUtils.IDataGetter yDataGetter_;
+		private AdapterUtils.ICounter counter_;
+		private AdapterUtils.IDataGetter xDataGetter_;
+		private AdapterUtils.IDataGetter yDataGetter_;
 
-        /// <summary>
+		/// <summary>
 		/// Constructor. The data source specifiers must be specified here.
 		/// </summary>
 		/// <param name="dataSource">The source containing a list of values to plot.</param>
@@ -64,68 +64,68 @@ namespace NPlot
 			{
 				if (ordinateData is IList) 
 				{
-                    this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)ordinateData);
-                    if (ordinateData is Double[])
-                    {
-                        this.yDataGetter_ = new AdapterUtils.DataGetter_DoublesArray((Double[])ordinateData);
-                    }
-                    else
-                    {
-                        this.yDataGetter_ = new AdapterUtils.DataGetter_IList((IList)ordinateData);
-                    }
-
-                    this.counter_ = new AdapterUtils.Counter_IList((IList)ordinateData);
-
-                    if (abscissaData is IList)
+					this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)ordinateData);
+					if (ordinateData is Double[])
 					{
-                        this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)abscissaData);
-                        if (abscissaData is Double[])
-                        {
-                            this.xDataGetter_ = new AdapterUtils.DataGetter_DoublesArray((Double[])abscissaData);
-                        }
-                        else
-                        {
-                            this.xDataGetter_ = new AdapterUtils.DataGetter_IList((IList)abscissaData);
-                        }
+						this.yDataGetter_ = new AdapterUtils.DataGetter_DoublesArray((Double[])ordinateData);
+					}
+					else
+					{
+						this.yDataGetter_ = new AdapterUtils.DataGetter_IList((IList)ordinateData);
+					}
 
-                        return;
+					this.counter_ = new AdapterUtils.Counter_IList((IList)ordinateData);
+
+					if (abscissaData is IList)
+					{
+						this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)abscissaData);
+						if (abscissaData is Double[])
+						{
+							this.xDataGetter_ = new AdapterUtils.DataGetter_DoublesArray((Double[])abscissaData);
+						}
+						else
+						{
+							this.xDataGetter_ = new AdapterUtils.DataGetter_IList((IList)abscissaData);
+						}
+
+						return;
 					}
 					else if (abscissaData is StartStep)
 					{
-                        this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_StartStep((StartStep)abscissaData, (IList)ordinateData);
-                        this.xDataGetter_ = new AdapterUtils.DataGetter_StartStep((StartStep)abscissaData);
-                        return;
+						this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_StartStep((StartStep)abscissaData, (IList)ordinateData);
+						this.xDataGetter_ = new AdapterUtils.DataGetter_StartStep((StartStep)abscissaData);
+						return;
 					}
 					else if (abscissaData == null)
 					{
-                        this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_Auto((IList)ordinateData);
-                        this.xDataGetter_ = new AdapterUtils.DataGetter_Count();
-                        return;
+						this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_Auto((IList)ordinateData);
+						this.xDataGetter_ = new AdapterUtils.DataGetter_Count();
+						return;
 					}
 				}
 				else if (ordinateData == null)
 				{
 					if (abscissaData == null)
 					{
-                        this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_Null();
-                        this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_Null();
-                        this.counter_ = new AdapterUtils.Counter_Null();
-                        this.xDataGetter_ = new AdapterUtils.DataGetter_Null();
-                        this.yDataGetter_ = new AdapterUtils.DataGetter_Null();
-                        return;
+						this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_Null();
+						this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_Null();
+						this.counter_ = new AdapterUtils.Counter_Null();
+						this.xDataGetter_ = new AdapterUtils.DataGetter_Null();
+						this.yDataGetter_ = new AdapterUtils.DataGetter_Null();
+						return;
 					}
 					else if (abscissaData is IList)
 					{
-                        this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)abscissaData);
-                        this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_Auto((IList)abscissaData);
-                        this.counter_ = new AdapterUtils.Counter_IList((IList)abscissaData);
-                        if (abscissaData is Double[])
-                            this.xDataGetter_ = new AdapterUtils.DataGetter_DoublesArray((Double[])abscissaData);
-                        else
-                            this.xDataGetter_ = new AdapterUtils.DataGetter_IList((IList)abscissaData);
+						this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)abscissaData);
+						this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_Auto((IList)abscissaData);
+						this.counter_ = new AdapterUtils.Counter_IList((IList)abscissaData);
+						if (abscissaData is Double[])
+							this.xDataGetter_ = new AdapterUtils.DataGetter_DoublesArray((Double[])abscissaData);
+						else
+							this.xDataGetter_ = new AdapterUtils.DataGetter_IList((IList)abscissaData);
 
-                        this.yDataGetter_ = new AdapterUtils.DataGetter_Count();
-                        return;
+						this.yDataGetter_ = new AdapterUtils.DataGetter_Count();
+						return;
 					}
 					else
 					{
@@ -143,36 +143,36 @@ namespace NPlot
 				{
 					DataView data = (DataView)dataSource;
 
-                    this.counter_ = new AdapterUtils.Counter_DataView(data);
-                    this.xDataGetter_ = new AdapterUtils.DataGetter_DataView(data, (string)abscissaData);
-                    this.yDataGetter_ = new AdapterUtils.DataGetter_DataView(data, (string)ordinateData);
-                    this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_DataView(data, (string)abscissaData);
-                    this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_DataView(data, (string)ordinateData);
-                    return;
+					this.counter_ = new AdapterUtils.Counter_DataView(data);
+					this.xDataGetter_ = new AdapterUtils.DataGetter_DataView(data, (string)abscissaData);
+					this.yDataGetter_ = new AdapterUtils.DataGetter_DataView(data, (string)ordinateData);
+					this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_DataView(data, (string)abscissaData);
+					this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_DataView(data, (string)ordinateData);
+					return;
 				}
 				else
 				{
-                    this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)dataSource);
-                    this.counter_ = new AdapterUtils.Counter_IList((IList)dataSource);
-                    this.yDataGetter_ = new AdapterUtils.DataGetter_IList((IList)dataSource);
+					this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)dataSource);
+					this.counter_ = new AdapterUtils.Counter_IList((IList)dataSource);
+					this.yDataGetter_ = new AdapterUtils.DataGetter_IList((IList)dataSource);
 
-                    if ((ordinateData == null) && (abscissaData == null))
+					if ((ordinateData == null) && (abscissaData == null))
 					{
-                        this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_Auto((IList)dataSource);
-                        this.xDataGetter_ = new AdapterUtils.DataGetter_Count();
-                        return;
+						this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_Auto((IList)dataSource);
+						this.xDataGetter_ = new AdapterUtils.DataGetter_Count();
+						return;
 					}
 					else if ((ordinateData == null) && (abscissaData is StartStep))
 					{
-                        this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_StartStep((StartStep)abscissaData, (IList)ordinateData);
-                        this.xDataGetter_ = new AdapterUtils.DataGetter_StartStep((StartStep)abscissaData);
-                        return;
+						this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_StartStep((StartStep)abscissaData, (IList)ordinateData);
+						this.xDataGetter_ = new AdapterUtils.DataGetter_StartStep((StartStep)abscissaData);
+						return;
 					}
 					else if ((ordinateData == null) && (abscissaData is IList))
 					{
-                        this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)abscissaData);
-                        this.xDataGetter_ = new AdapterUtils.DataGetter_IList((IList)abscissaData);
-                        return;
+						this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_IList((IList)abscissaData);
+						this.xDataGetter_ = new AdapterUtils.DataGetter_IList((IList)abscissaData);
+						return;
 					}
 					else
 					{
@@ -200,21 +200,21 @@ namespace NPlot
 					rows = ((DataTable)dataSource).Rows;
 				}
 
-                this.yDataGetter_ = new AdapterUtils.DataGetter_Rows(rows, (string)ordinateData);
-                this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_Rows(rows, (string)ordinateData);
-                this.counter_ = new AdapterUtils.Counter_Rows(rows);
+				this.yDataGetter_ = new AdapterUtils.DataGetter_Rows(rows, (string)ordinateData);
+				this.YAxisSuggester_ = new AdapterUtils.AxisSuggester_Rows(rows, (string)ordinateData);
+				this.counter_ = new AdapterUtils.Counter_Rows(rows);
 
-                if ((abscissaData is string) && (ordinateData is string))
+				if ((abscissaData is string) && (ordinateData is string))
 				{
-                    this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_Rows(rows, (string)abscissaData);
-                    this.xDataGetter_ = new AdapterUtils.DataGetter_Rows(rows, (string)abscissaData);
-                    return;
+					this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_Rows(rows, (string)abscissaData);
+					this.xDataGetter_ = new AdapterUtils.DataGetter_Rows(rows, (string)abscissaData);
+					return;
 				}
 				else if ((abscissaData == null) && (ordinateData is string))
 				{
-                    this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_RowAuto(rows);
-                    this.xDataGetter_ = new AdapterUtils.DataGetter_Count();
-                    return;
+					this.XAxisSuggester_ = new AdapterUtils.AxisSuggester_RowAuto(rows);
+					this.xDataGetter_ = new AdapterUtils.DataGetter_Count();
+					return;
 				}
 				else
 				{
@@ -260,17 +260,17 @@ namespace NPlot
 		/// <returns>A suitable x-axis.</returns>
 		public Axis SuggestXAxis()
 		{
-            Axis a = this.XAxisSuggester_.Get();
+			Axis a = this.XAxisSuggester_.Get();
 
-            // The world length should never be returned as 0
-            // This would result in an axis with a span of 0 units
-            // which can not be properly displayed.
-            if (a.WorldLength == 0.0)
-            {
-                // TODO make 0.08 a parameter.
-                a.IncreaseRange(0.08);
-            }
-            return a;
+			// The world length should never be returned as 0
+			// This would result in an axis with a span of 0 units
+			// which can not be properly displayed.
+			if (a.WorldLength == 0.0)
+			{
+				// TODO make 0.08 a parameter.
+				a.IncreaseRange(0.08);
+			}
+			return a;
 		}
 
 
@@ -297,12 +297,12 @@ namespace NPlot
 		{
 			for (int i=0; i<this.Count;	++i)
 			{
-                if (!(onlyInRegion &&
-                       (this[i].X >= region.X && this[i].X <= region.X + region.Width) &&
-                       (this[i].Y >= region.Y && this[i].Y <= region.Y + region.Height)))
-                {
-                    continue;
-                }
+				if (!(onlyInRegion &&
+					   (this[i].X >= region.X && this[i].X <= region.X + region.Width) &&
+					   (this[i].Y >= region.Y && this[i].Y <= region.Y + region.Height)))
+				{
+					continue;
+				}
 
 				sb.Append( this[i].ToString() );
 				sb.Append( "\r\n" );

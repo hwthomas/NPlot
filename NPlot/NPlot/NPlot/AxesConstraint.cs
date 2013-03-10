@@ -9,13 +9,13 @@
  * are permitted provided that the following conditions are met:
  * 
  * 1. Redistributions of source code must retain the above copyright notice, this
- *    list of conditions and the following disclaimer.
+ *	  list of conditions and the following disclaimer.
  * 2. Redistributions in binary form must reproduce the above copyright notice,
- *    this list of conditions and the following disclaimer in the documentation
- *    and/or other materials provided with the distribution.
+ *	  this list of conditions and the following disclaimer in the documentation
+ *	  and/or other materials provided with the distribution.
  * 3. Neither the name of NPlot nor the names of its contributors may
- *    be used to endorse or promote products derived from this software without
- *    specific prior written permission.
+ *	  be used to endorse or promote products derived from this software without
+ *	  specific prior written permission.
  * 
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -390,11 +390,11 @@ namespace NPlot
 			{
 				double xWorldRange = Math.Abs( pXAxis1.Axis.WorldMax - pXAxis1.Axis.WorldMin );
 				double xPhysicalRange = Math.Abs( pXAxis1.PhysicalMax.X - pXAxis1.PhysicalMin.X );
-				double xDirPixelSize =  xWorldRange / xPhysicalRange;
+				double xDirPixelSize =	xWorldRange / xPhysicalRange;
 			
 				double yWorldRange = Math.Abs( pYAxis1.Axis.WorldMax - pYAxis1.Axis.WorldMin );
 				double yPhysicalRange = Math.Abs( pYAxis1.PhysicalMax.Y - pYAxis1.PhysicalMin.Y );
-				double yDirPixelSize =  yWorldRange / yPhysicalRange;
+				double yDirPixelSize =	yWorldRange / yPhysicalRange;
 
 				double currentAspectRatio = yDirPixelSize / xDirPixelSize;
 
