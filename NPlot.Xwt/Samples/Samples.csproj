@@ -50,4 +50,7 @@
       <HintPath>..\..\..\NPlot HWT 2013\bin\debug\NPlot.dll</HintPath>
     </Reference>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Samples\" />
+  </ItemGroup>
 </Project>

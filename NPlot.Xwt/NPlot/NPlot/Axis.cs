@@ -12,13 +12,13 @@
 // are permitted provided that the following conditions are met:
 // 
 // 1. Redistributions of source code must retain the above copyright notice, this
-//    list of conditions and the following disclaimer.
+//	  list of conditions and the following disclaimer.
 // 2. Redistributions in binary form must reproduce the above copyright notice,
-//    this list of conditions and the following disclaimer in the documentation
-//    and/or other materials provided with the distribution.
+//	  this list of conditions and the following disclaimer in the documentation
+//	  and/or other materials provided with the distribution.
 // 3. Neither the name of NPlot nor the names of its contributors may
-//    be used to endorse or promote products derived from this software without
-//    specific prior written permission.
+//	  be used to endorse or promote products derived from this software without
+//	  specific prior written permission.
 // 
 // THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
 // ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -34,6 +34,7 @@
 
 using System;
 using System.Collections;
+
 using Xwt;
 using Xwt.Drawing;
 
@@ -63,30 +64,26 @@ namespace NPlot.Xwt
 		bool ticksCrossAxis_ = false;
 
 		/// <summary>
-		/// The maximum world extent of the axis. Note that it is sensible if 
-		/// WorldMax is less than WorldMin - the axis would just be descending
-		/// not ascending. Currently Axes won't display properly if you do 
-		/// this - use the Axis.Reversed property instead to achieve the same
-		/// result.
-		/// 
-        /// Setting this raises the WorldMinChanged event and the WorldExtentsChanged event.
-        /// </summary>
+		/// The maximum world extent of the axis. Note that it is sensible for WorldMax to
+		/// less than WorldMin - the axis would just be descending rather than ascending.
+		/// Currently, however, Axes won't display properly if you do this - use the
+		/// Axis.Reversed property instead to achieve the same result.
+		/// </summary>
+		/// <remarks>
+		/// Setting this raises the WorldMinChanged event and the WorldExtentsChanged event.
+		/// </remarks>
 		public virtual double WorldMax
 		{
-			get
-			{
-				return worldMax_;
+			get { return worldMax_; }
+			set {
+				worldMax_ = value;
+				//
+				// if (WorldExtentsChanged != null)
+				// WorldExtentsChanged (this, new WorldValueChangedArgs(worldMax_, WorldValueChangedArgs.MinMaxType.Max));
+				// if (WorldMaxChanged != null)
+				//		WorldMaxChanged(this, new WorldValueChangedArgs(worldMax_, WorldValueChangedArgs.MinMaxType.Max));
+				//
 			}
-			set
-			{
-				this.worldMax_ = value;
-                /*
-                if (this.WorldExtentsChanged != null)
-                    this.WorldExtentsChanged(this, new WorldValueChangedArgs(worldMax_, WorldValueChangedArgs.MinMaxType.Max));
-                if (this.WorldMaxChanged != null)
-                    this.WorldMaxChanged(this, new WorldValueChangedArgs(worldMax_, WorldValueChangedArgs.MinMaxType.Max));
-                */
-            }
 		}
 		private double worldMax_;
 		
@@ -102,57 +99,40 @@ namespace NPlot.Xwt
 		/// </summary>
 		public virtual double WorldMin
 		{
-			get
-			{
-				return this.worldMin_;
+			get { return worldMin_; }
+			set {
+				worldMin_ = value;
+				// if (WorldExtentsChanged != null)
+				// 	WorldExtentsChanged( this, new WorldValueChangedArgs( worldMin_, WorldValueChangedArgs.MinMaxType.Min) );
+				// if (WorldMinChanged != null)
+				// WorldMinChanged( this, new WorldValueChangedArgs(worldMin_, WorldValueChangedArgs.MinMaxType.Min) );
+				//
 			}
-			set
-			{
-				this.worldMin_ = value;
-                /*
-                if (this.WorldExtentsChanged != null)
-                    this.WorldExtentsChanged( this, new WorldValueChangedArgs( worldMin_, WorldValueChangedArgs.MinMaxType.Min) );
-                if (this.WorldMinChanged != null)
-                    this.WorldMinChanged( this, new WorldValueChangedArgs(worldMin_, WorldValueChangedArgs.MinMaxType.Min) );
-                */
-            }
 		}
 		private double worldMin_;
 
 
 		/// <summary>
-		/// Length (in pixels) of a large tick. <b>Not</b> the distance 
-		/// between large ticks. The length of the tick itself.
+		/// Length (in pixels) of a large tick. Not the distance 
+		/// between large ticks, but the length of the tick itself
 		/// </summary>
-		public int LargeTickSize
+		public double LargeTickSize
 		{
-			get
-			{
-				return largeTickSize_;
-			}
-			set
-			{
-				largeTickSize_ = value;
-			}
+			get { return largeTickSize_; }
+			set { largeTickSize_ = value; }
 		}
-		private int largeTickSize_;
+		private double largeTickSize_;
 
 
 		/// <summary>
 		/// Length (in pixels) of the small ticks.
 		/// </summary>
-		public int SmallTickSize
+		public double SmallTickSize
 		{
-			get
-			{
-				return smallTickSize_;
-			}
-			set
-			{
-				smallTickSize_ = value;
-			}
+			get { return smallTickSize_; }
+			set { smallTickSize_ = value; }
 		}
-		private int smallTickSize_;
+		private double smallTickSize_;
 
 
 		/// <summary>
@@ -160,14 +140,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public string Label
 		{
-			get
-			{
-				return label_;
-			}
-			set
-			{
-				label_ = value;
-			}
+			get { return label_; }
+			set { label_ = value; }
 		}
 		private string label_;
 
@@ -179,14 +153,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public bool TickTextNextToAxis
 		{
-			get
-			{
-				return tickTextNextToAxis_;
-			}
-			set
-			{
-				tickTextNextToAxis_ = value;
-			}
+			get { return tickTextNextToAxis_; }
+			set { tickTextNextToAxis_ = value; }
 		}
 		bool tickTextNextToAxis_;
 
@@ -197,14 +165,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public bool Hidden
 		{
-			get
-			{
-				return hidden_;
-			}
-			set
-			{
-				hidden_ = value;
-			}
+			get { return hidden_; }
+			set { hidden_ = value; }
 		}
 		private bool hidden_;
 
@@ -215,14 +177,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public bool Reversed
 		{
-			get
-			{
-				return reversed_;
-			}
-			set
-			{
-				reversed_ = value;
-			}
+			get { return reversed_; }
+			set { reversed_ = value; }
 		}
 		private bool reversed_;
 
@@ -232,14 +188,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public bool HideTickText
 		{
-			get
-			{
-				return hideTickText_;
-			}
-			set
-			{
-				hideTickText_ = value;
-			}
+			get { return hideTickText_; }
+			set { hideTickText_ = value; }
 		}
 		private bool hideTickText_;
 
@@ -249,13 +199,9 @@ namespace NPlot.Xwt
 		/// </summary>
 		public Font TickTextFont
 		{
-			get
-			{
-				return this.tickTextFont_;
-			}
-			set
-			{
-				this.tickTextFont_ = value;
+			get { return tickTextFont_; }
+			set { 
+				tickTextFont_ = value;
 				UpdateScale();
 			}
 		}
@@ -268,12 +214,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public Font LabelFont
 		{
-			get
-			{
-				return labelFont_;
-			}
-			set
-			{
+			get { return labelFont_; }
+			set {
 				labelFont_ = value;
 				UpdateScale();
 			}
@@ -289,14 +231,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public string NumberFormat
 		{
-			get
-			{
-				return numberFormat_;
-			}
-			set
-			{
-				numberFormat_ = value;
-			}
+			get { return numberFormat_; }
+			set { numberFormat_ = value; }
 		}
 		private string numberFormat_;
 
@@ -306,51 +242,12 @@ namespace NPlot.Xwt
 		/// automatically. The calculated value will not be less than this
 		/// amount.
 		/// </summary>
-		public int MinPhysicalLargeTickStep
+		public double MinPhysicalLargeTickStep
 		{
-			get
-			{
-				return minPhysicalLargeTickStep_;
-			}
-			set
-			{
-				minPhysicalLargeTickStep_ = value;
-			}
+			get { return minPhysicalLargeTickStep_; }
+			set { minPhysicalLargeTickStep_ = value; }
 		}
-		private int minPhysicalLargeTickStep_ = 30;
-
-
-		/// <summary>
-		/// The color of the pen used to draw the ticks and the axis line.
-		/// </summary>
-		public System.Drawing.Color AxisColor
-		{
-			get
-			{
-				return linePen_.Color;
-			}
-			set
-			{
-				linePen_ = new Pen( (Color)value );
-			}
-		}
-
-
-		/// <summary>
-		/// The pen used to draw the ticks and the axis line.
-		/// </summary>
-		public System.Drawing.Pen AxisPen
-		{
-			get
-			{
-				return linePen_;
-			}
-			set
-			{
-				linePen_ = value;
-			}
-		}
-		private System.Drawing.Pen linePen_;
+		private double minPhysicalLargeTickStep_ = 30;
 
 
 		/// <summary>
@@ -366,14 +263,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public bool TicksIndependentOfPhysicalExtent
 		{
-			get
-			{
-				return ticksIndependentOfPhysicalExtent_;
-			}
-			set
-			{
-				ticksIndependentOfPhysicalExtent_ = value;
-			}
+			get { return ticksIndependentOfPhysicalExtent_; }
+			set { ticksIndependentOfPhysicalExtent_ = value; }
 		}
 		private bool ticksIndependentOfPhysicalExtent_ = false;
 
@@ -383,16 +274,10 @@ namespace NPlot.Xwt
 		/// </summary>
 		public bool FlipTicksLabel
 		{
-			get 
-			{
-				return flipTicksLabel_; 
-			}
-			set 
-			{ 
-				flipTicksLabel_ = value; 
-			}
+			get { return flipTicksLabel_; }
+			set { flipTicksLabel_ = value; }
 		}
- 		private bool flipTicksLabel_ = false;
+		private bool flipTicksLabel_ = false;
 
 
 		/// <summary>
@@ -400,94 +285,68 @@ namespace NPlot.Xwt
 		/// The default of 3*PI/2 places X-axis ticks below the axis, and Y-axis
 		/// ticks to the left of the axis, ie outside the actual plotting area
 		/// </summary>
-		public float TicksAngle
+		public double TicksAngle
 		{
-			get
-			{
-				return ticksAngle_;
-			}
-			set
-			{
-				ticksAngle_ = value;
-			}
+			get { return ticksAngle_; }
+			set { ticksAngle_ = value; }
 		}
-		private float ticksAngle_ = (float)Math.PI * 3.0f / 2.0f;
+		private double ticksAngle_ = Math.PI * 3.0 / 2.0;
 
 
 		/// <summary>
 		/// Angle to draw large tick labels at (clockwise from horizontal). Note: 
 		/// this is currently only implemented well for the lower x-axis. 
 		/// </summary>
-		public float TicksLabelAngle
+		public double TicksLabelAngle
 		{
-			get
-			{
-				return ticksLabelAngle_;
-			}
-			set
-			{
-				ticksLabelAngle_ = value;
-			}
+			get { return ticksLabelAngle_; }
+			set { ticksLabelAngle_ = value; }
 		}
-		private float ticksLabelAngle_ = 0.0f;
+		private double ticksLabelAngle_ = 0;
 
 
 		/// <summary>
-		/// The color of the brush used to draw the axis label.
+		/// The color used to draw the ticks and the axis line.
+		/// </summary>
+		public Color LineColor
+		{
+			get { return lineColor_; }
+			set { lineColor_ = value; }
+		}
+		private Color lineColor_ = Colors.Black;
+
+
+		/// <summary>
+		/// The color used to draw the axis label.
 		/// </summary>
 		public Color LabelColor
 		{
-			set
-			{
-				labelBrush_ = new SolidBrush( value );
-			}
+			get { return labelColor_; }
+			set { labelColor_ = value; }
 		}
+		private Color labelColor_ = Colors.Black;
 		
-		
-		/// <summary>
-		/// The brush used to draw the axis label.
-		/// </summary>
-		public Brush LabelBrush
-		{
-			get
-			{
-				return labelBrush_;
-			}
-			set
-			{
-				labelBrush_ = value;
-			}
-		}
-		private Brush labelBrush_;
 
-		
 		/// <summary>
-		/// The color of the brush used to draw the axis tick labels.
+		/// The color used to draw the axis tick labels.
 		/// </summary>
 		public Color TickTextColor
 		{
-			set
-			{
-				tickTextBrush_ = new SolidBrush( value );
-			}
+			get { return TickTextColor; }
+			set { tickTextColor_ = value; }
 		}
+		private Color tickTextColor_ = Colors.Black;
 
 
 		/// <summary>
-		/// The brush used to draw the tick text.
+		/// Set the Axis color (sets all of axis Line color, Tick text color, and abel color).
 		/// </summary>
-		public Brush TickTextBrush
+		public void SetColor (Color color)
 		{
-			get
-			{
-				return tickTextBrush_;
-			}
-			set
-			{
-				tickTextBrush_ = value;
-			}
+			LineColor = color;
+			TickTextColor = color;
+			LabelColor = color;
 		}
-		private Brush tickTextBrush_;
 
 
 		/// <summary>
@@ -497,35 +356,132 @@ namespace NPlot.Xwt
 		/// <remarks>Could also be argued this belongs in PlotSurface2D</remarks>
 		public bool AutoScaleText
 		{
-			get
-			{
-				return autoScaleText_;
-			}
-			set
-			{
-				autoScaleText_ = value;
-			}
+			get { return autoScaleText_; }
+			set { autoScaleText_ = value; }
 		}
 		private bool autoScaleText_;
 
 
 		/// <summary>
-		/// If true, tick lengths will be scaled to match size
-		/// of PlotSurface2D. If false, they won't be.
+		/// If true, tick lengths will be scaled to match size of PlotSurface2D.
 		/// </summary>
 		/// <remarks>Could also be argued this belongs in PlotSurface2D</remarks>
 		public bool AutoScaleTicks
 		{
-			get
-			{
-				return autoScaleTicks_;
-			}
-			set
-			{
-				autoScaleTicks_ = value;
-			}
+			get { return autoScaleTicks_; }
+			set { autoScaleTicks_ = value; }
 		}
 		private bool autoScaleTicks_;
+
+
+		/// <summary>
+		/// Scale label and tick fonts by this factor. Set by PlotSurface2D 
+		/// Draw method.
+		/// </summary>
+		internal double FontScale 
+		{
+			get { return fontScale_; }
+			set { 
+				fontScale_ = value;
+				UpdateScale();
+			}
+		}
+		private double fontScale_;
+
+
+		/// <summary>
+		/// Scale tick mark lengths by this factor. Set by PlotSurface2D
+		/// Draw method.
+		/// </summary>		
+		internal double TickScale 
+		{
+			get { return tickScale_; }
+			set { tickScale_ = value; }
+		}
+		private double tickScale_;
+
+
+		private void UpdateScale()	
+		{
+			if (labelFont_ != null) {
+				labelFontScaled_ = Utils.ScaleFont (labelFont_, FontScale);
+			}
+
+			if (tickTextFont_ != null) {
+				tickTextFontScaled_ = Utils.ScaleFont (tickTextFont_, FontScale);
+			}
+		}
+
+
+		/// <summary>
+		/// Get whether or not this axis is linear.
+		/// </summary>
+		public virtual bool IsLinear
+		{
+			get { return true; }
+		}
+
+		/// <summary>
+		/// If LabelOffsetAbsolute is false (default) then this is the offset 
+		/// added to default axis label position. If LabelOffsetAbsolute is 
+		/// true, then this is the absolute offset of the label from the axis.
+		/// 
+		/// If positive, offset is further away from axis, if negative, towards
+		/// the axis.
+		/// </summary>
+		public double LabelOffset
+		{
+			get { return labelOffset_; }
+			set { labelOffset_ = value; }
+		}
+		private double labelOffset_ = 0;
+
+		/// <summary>
+		/// If true, the value specified by LabelOffset is the absolute distance
+		/// away from the axis that the label is drawn. If false, the value 
+		/// specified by LabelOffset is added to the pre-calculated value to 
+		/// determine the axis label position.
+		/// </summary>
+		/// <value></value>
+		public bool LabelOffsetAbsolute
+		{
+			get { return labelOffsetAbsolute_; }
+			set { labelOffsetAbsolute_ = value; }
+		}
+		private bool labelOffsetAbsolute_ = false;
+
+		/// <summary>
+		/// Whether or not the supplied LabelOffset should be scaled by 
+		/// a factor as specified by FontScale.
+		/// </summary>
+		public bool LabelOffsetScaled
+		{
+			get { return labelOffsetScaled_; }
+			set { labelOffsetScaled_ = value; }
+		}
+		private bool labelOffsetScaled_ = true;
+
+
+		/// <summary>
+		/// returns a suitable offset for the axis label in the case that there are no
+		/// ticks or tick text in the way.
+		/// </summary>
+		/// <param name="physicalMin">physical point corresponding to the axis world maximum.</param>
+		/// <param name="physicalMax">physical point corresponding to the axis world minimum.</param>
+		/// <returns>axis label offset</returns>
+		protected Point getDefaultLabelOffset( Point physicalMin, Point physicalMax )
+		{
+			Rectangle tBoundingBox;
+			Point tLabelOffset;
+
+			DrawTick (null, WorldMax, LargeTickSize, 
+				"",
+				new Point (0,0),
+				physicalMin, physicalMax,
+				out tLabelOffset, out tBoundingBox );
+
+			return tLabelOffset;
+		}
 
 
 		/// <summary>
@@ -535,20 +491,19 @@ namespace NPlot.Xwt
 		/// This method includes a check that guards against derived classes forgetting
 		/// to implement their own Clone method. If Clone is called on a object derived
 		/// from Axis, and the Clone method hasn't been overridden by that object, then
-		/// the test this.GetType == typeof(Axis) will fail.
+		/// the test GetType == typeof(Axis) will fail.
 		/// </remarks>
 		/// <returns>A copy of the Axis Class</returns>
 		public virtual object Clone()
 		{
 			// ensure that this isn't being called on a derived type. If that is the case
 			// then the derived type didn't override this method as it should have.
-			if (this.GetType() != typeof(Axis))
-			{
+			if (GetType() != typeof(Axis)) {
 				throw new NPlotException( "Clone not defined in derived type." );
 			}
 			
-			Axis a = new Axis();
-			DoClone( this, a );
+			Axis a = new Axis ();
+			DoClone (this, a);
 			return a;
 		}
 
@@ -558,47 +513,38 @@ namespace NPlot.Xwt
 		/// types so they don't need to implement this part of the copying themselves.
 		/// also useful in constructor of derived types that takes Axis class.
 		/// </summary>
-		protected static void DoClone( Axis b, Axis a )
+		protected static void DoClone (Axis src, Axis dest)
 		{
 			// value items
-			a.autoScaleText_ = b.autoScaleText_;
-			a.autoScaleTicks_ = b.autoScaleTicks_;
-			a.worldMax_ = b.worldMax_;
-			a.worldMin_ = b.worldMin_;
-			a.tickTextNextToAxis_ = b.tickTextNextToAxis_;
-			a.hidden_ = b.hidden_;
-			a.hideTickText_ = b.hideTickText_;
-			a.reversed_ = b.reversed_;
-			a.ticksAngle_ = b.ticksAngle_;
-			a.ticksLabelAngle_ = b.ticksLabelAngle_;
-			a.minPhysicalLargeTickStep_ = b.minPhysicalLargeTickStep_;
-			a.ticksIndependentOfPhysicalExtent_ = b.ticksIndependentOfPhysicalExtent_;
-			a.largeTickSize_ = b.largeTickSize_;
-			a.smallTickSize_ = b.smallTickSize_;
-			a.ticksCrossAxis_ = b.ticksCrossAxis_;
-			a.labelOffset_ = b.labelOffset_;
-            a.labelOffsetAbsolute_ = b.labelOffsetAbsolute_;
-            a.labelOffsetScaled_ = b.labelOffsetScaled_;
+			dest.autoScaleText_ = src.autoScaleText_;
+			dest.autoScaleTicks_ = src.autoScaleTicks_;
+			dest.worldMax_ = src.worldMax_;
+			dest.worldMin_ = src.worldMin_;
+			dest.tickTextNextToAxis_ = src.tickTextNextToAxis_;
+			dest.hidden_ = src.hidden_;
+			dest.hideTickText_ = src.hideTickText_;
+			dest.reversed_ = src.reversed_;
+			dest.ticksAngle_ = src.ticksAngle_;
+			dest.ticksLabelAngle_ = src.ticksLabelAngle_;
+			dest.minPhysicalLargeTickStep_ = src.minPhysicalLargeTickStep_;
+			dest.ticksIndependentOfPhysicalExtent_ = src.ticksIndependentOfPhysicalExtent_;
+			dest.largeTickSize_ = src.largeTickSize_;
+			dest.smallTickSize_ = src.smallTickSize_;
+			dest.ticksCrossAxis_ = src.ticksCrossAxis_;
+			dest.labelOffset_ = src.labelOffset_;
+			dest.labelOffsetAbsolute_ = src.labelOffsetAbsolute_;
+			dest.labelOffsetScaled_ = src.labelOffsetScaled_;
+			dest.lineColor_ = src.lineColor_;
+			dest.tickTextColor_ = src.tickTextColor_;
+			dest.labelColor_ = src.labelColor_;
+			dest.fontScale_ = src.fontScale_;
+			dest.tickScale_ = src.tickScale_;
 
 			// reference items.
-			a.tickTextFont_ = (Font)b.tickTextFont_.Clone();
-			a.label_ = (string)b.label_.Clone();
-			if (b.numberFormat_ != null) 
-			{
-				a.numberFormat_ = (string)b.numberFormat_.Clone();
-			}
-			else
-			{
-				a.numberFormat_ = null;
-			}
+			dest.tickTextFont_ = src.tickTextFont_.WithScaledSize (1.0);
+			dest.labelFont_ = src.labelFont_.WithScaledSize (1.0);
+			dest.label_ = (string)src.label_.Clone();
 
-			a.labelFont_ = (Font)b.labelFont_.Clone();
-			a.linePen_ = (Pen)b.linePen_.Clone();
-			a.tickTextBrush_ = (Brush)b.tickTextBrush_.Clone();
-			a.labelBrush_ = (Brush)b.labelBrush_.Clone();
-
-			a.FontScale = b.FontScale;
-			a.TickScale = b.TickScale;
 		}
 
 
@@ -609,41 +555,37 @@ namespace NPlot.Xwt
 		/// </summary>
 		private void Init()
 		{
-			this.worldMax_ = double.NaN;
-			this.worldMin_ = double.NaN;
-			this.Hidden = false;
-			this.SmallTickSize = 2;
-			this.LargeTickSize = 6;
-			this.FontScale = 1.0f;
-			this.TickScale = 1.0f;
-			this.AutoScaleTicks = false;
-			this.AutoScaleText = false;
-			this.TickTextNextToAxis = false;
-			this.HideTickText = false;
-			this.TicksCrossAxis = false;
-			this.LabelOffset = 0.0f;
-            this.LabelOffsetAbsolute = false;
-            this.LabelOffsetScaled = true;
+			worldMax_ = double.NaN;
+			worldMin_ = double.NaN;
+			Hidden = false;
+			SmallTickSize = 2;
+			LargeTickSize = 6;
+			FontScale = 1.0;
+			TickScale = 1.0;
+			AutoScaleTicks = false;
+			AutoScaleText = false;
+			TickTextNextToAxis = false;
+			HideTickText = false;
+			TicksCrossAxis = false;
+			LabelOffset = 0.0f;
+			LabelOffsetAbsolute = false;
+			LabelOffsetScaled = true;
 
-			this.Label = "" ;
-			this.NumberFormat = null;
-			this.Reversed = false;
+			Label = "" ;
+			NumberFormat = null;
+			Reversed = false;
 
-			FontFamily fontFamily = new FontFamily( "Arial" );
-			this.TickTextFont = new Font( fontFamily, 10, FontStyle.Regular, GraphicsUnit.Pixel );
-			this.LabelFont = new Font( fontFamily, 12, FontStyle.Regular, GraphicsUnit.Pixel );
-			this.LabelColor = System.Drawing.Color.Black;
-			this.TickTextColor = System.Drawing.Color.Black;
-			this.linePen_ = new Pen( System.Drawing.Color.Black );
-			this.linePen_.Width = 1.0f;
-			this.FontScale = 1.0f;
+			TickTextFont = Font.FromName ("Arial 10px");
+			LabelFont = Font.FromName ("Arial 12px");
+			LabelColor = Colors.Black;
+			TickTextColor = Colors.Black;
+			LineColor = Colors.Black;
+			FontScale = 1.0;
 
 			// saves constructing these in draw method.
-			drawFormat_ = new StringFormat();
-			drawFormat_.Alignment = StringAlignment.Center;
+			// TODO: check for textLayout  drawFormat_ = new StringFormat();
+			// drawFormat_.Alignment = StringAlignment.Center;
 		}
-
-		StringFormat drawFormat_;
 
 
 		/// <summary>
@@ -651,7 +593,7 @@ namespace NPlot.Xwt
 		/// </summary>
 		public Axis( )
 		{
-			this.Init();
+			Init();
 		}
 
 
@@ -660,21 +602,21 @@ namespace NPlot.Xwt
 		/// </summary>
 		/// <param name="worldMin">The minimum world coordinate.</param>
 		/// <param name="worldMax">The maximum world coordinate.</param>
-		public Axis( double worldMin, double worldMax )
+		public Axis (double worldMin, double worldMax)
 		{
-			this.Init();
-			this.WorldMin = worldMin;
-			this.WorldMax = worldMax;
+			Init();
+			WorldMin = worldMin;
+			WorldMax = worldMax;
 		}
 
 
 		/// <summary>
 		/// Copy constructor.
 		/// </summary>
-		/// <param name="a">The Axis to clone.</param>
-		public Axis( Axis a )
+		/// <param name="src">The Axis to clone.</param>
+		public Axis (Axis src )
 		{
-			Axis.DoClone( a, this );
+			Axis.DoClone (src, this);
 		}
 
 
@@ -685,62 +627,47 @@ namespace NPlot.Xwt
 		/// <returns>true if outside limits, false otherwise</returns>
 		public bool OutOfRange( double coord )
 		{
-			if (double.IsNaN(WorldMin) || double.IsNaN(WorldMax))
-			{
+			if (double.IsNaN(WorldMin) || double.IsNaN(WorldMax)) {
 				throw new NPlotException( "world min / max not set" );
 			}
 
-			if (coord > this.WorldMax || coord < this.WorldMin)
-			{
+			if (coord > WorldMax || coord < WorldMin) {
 				return true;
 			}
-			else
-			{
+			else {
 				return false;
 			}
 		}
 
 
 		/// <summary>
-		/// Sets the world extent of the current axis to be just large enough
-		/// to encompas the current world extent of the axis, and the world
-		/// extent of the passed in axis
+		/// Sets the world extent of the current axis to be just large enough (Least Upper Bound) to
+		/// encompass the current world extent of the axis, and the extent of the specified axis
 		/// </summary>
 		/// <param name="a">The other Axis instance.</param>
-		public void LUB( Axis a )
-		{
-			if (a == null)
-			{
+		public void LUB (Axis a)
+		{ 
+			if (a == null) {
 				return;
 			}
-
-			// mins
-			if (!double.IsNaN(a.worldMin_))
-			{
-				if (double.IsNaN(worldMin_))
-				{
+			// minima
+			if (!double.IsNaN(a.worldMin_)) {
+				if (double.IsNaN(worldMin_)) {
 					WorldMin = a.WorldMin;
 				}
-				else
-				{
-					if (a.WorldMin < WorldMin)
-					{
+				else  {
+					if (a.WorldMin < WorldMin) {
 						WorldMin = a.WorldMin;
 					}
 				}
 			}
-
-			// maxs.
-			if (!double.IsNaN(a.worldMax_))
-			{
-				if (double.IsNaN(worldMax_))
-				{
+			// maxima
+			if (!double.IsNaN(a.worldMax_)) {
+				if (double.IsNaN(worldMax_)) {
 					WorldMax = a.WorldMax;
 				}
-				else
-				{
-					if (a.WorldMax > WorldMax)
-					{
+				else {
+					if (a.WorldMax > WorldMax) {
 						WorldMax = a.WorldMax;
 					}
 				}
@@ -758,97 +685,73 @@ namespace NPlot.Xwt
 		/// <returns>The transformed coordinates.</returns>
 		/// <remarks>Not sure how much time is spent in this often called function. If it's lots, then
 		/// worth optimizing (there is scope to do so).</remarks>
-		public virtual PointF WorldToPhysical( 
+		public virtual Point WorldToPhysical( 
 			double coord, 
-			PointF physicalMin, 
-			PointF physicalMax, 
+			Point physicalMin, 
+			Point physicalMax, 
 			bool clip )
 		{
-
 			// (1) account for reversed axis. Could be tricky and move
 			// this out, but would be a little messy.
+			Point _physicalMin;
+			Point _physicalMax;
 
-			PointF _physicalMin;
-			PointF _physicalMax;
-
-			if ( this.Reversed )
-			{
+			if (Reversed) {
 				_physicalMin = physicalMax;
 				_physicalMax = physicalMin;
 			}
-			else
-			{
+			else {
 				_physicalMin = physicalMin;
 				_physicalMax = physicalMax;
 			}
 
-
 			// (2) if want clipped value, return extrema if outside range.
-			
-			if ( clip )
-			{
-				if ( WorldMin < WorldMax )
-				{
-					if ( coord > WorldMax )
-					{
+			if (clip) {
+				if (WorldMin < WorldMax) {
+					if (coord > WorldMax) {
 						return _physicalMax;
 					}
-					if ( coord < WorldMin )
-					{
+					if (coord < WorldMin) {
 						return _physicalMin;
 					}
 				}
-				else
-				{
-					if ( coord < WorldMax )
-					{
+				else {
+					if (coord < WorldMax) {
 						return _physicalMax;
 					}
-					if ( coord > WorldMin )
-					{
+					if (coord > WorldMin) {
 						return _physicalMin;
 					}
 				}
 			}
 
-
 			// (3) we are inside range or don't want to clip.
-
 			double range = WorldMax - WorldMin;
-			double prop = (double)((coord - WorldMin) / range);
+			double prop = (coord - WorldMin)/range;
 
 			// Force clipping at bounding box largeClip times that of real bounding box 
 			// anyway. This is effectively at infinity.
-			double largeClip = 100.0; // don't use 'const double' - Mono bug #475578
-
-            if (prop > largeClip && clip)
-            {
-                prop = largeClip;
-            }
-
-            if (prop < -largeClip && clip)
-            {
-                prop = -largeClip;
-            }
-
-			if (range == 0)
-			{
-                if (coord >= WorldMin)
-                {
-                    prop = largeClip;
-                }
-                else
-                {
-                    prop = -largeClip;
-                }
+			double largeClip = 100.0;
+			if (prop > largeClip && clip) {
+				prop = largeClip;
 			}
-
+			if (prop < -largeClip && clip) {
+				prop = -largeClip;
+			}
+			if (range == 0) {
+				if (coord >= WorldMin) {
+					prop = largeClip;
+				}
+				else {
+					prop = -largeClip;
+				}
+			}
 			// calculate the physical coordinate.
-			PointF offset = new PointF( 
-				(float)(prop * (_physicalMax.X - _physicalMin.X)),
-				(float)(prop * (_physicalMax.Y - _physicalMin.Y)) );
+			Point offset = new Point ( 
+				prop * (_physicalMax.X - _physicalMin.X),
+				prop * (_physicalMax.Y - _physicalMin.Y) );
 
-			return new PointF( (_physicalMin.X + offset.X), (_physicalMin.Y + offset.Y) );
+			return new Point (_physicalMin.X+offset.X, _physicalMin.Y+offset.Y);
 		}
 
 
@@ -861,52 +764,45 @@ namespace NPlot.Xwt
 		/// <param name="physicalMax">The physical position corresponding to the world maximum of the axis.</param>
 		/// <param name="clip">If true, the world value will be clipped to WorldMin or WorldMax as appropriate if it lies outside this range.</param>
 		/// <returns>The world value corresponding to the projection of the point p onto the axis.</returns>
-		public virtual double PhysicalToWorld( 
-			PointF p, 
-			PointF physicalMin, 
-			PointF physicalMax,
+		public virtual double PhysicalToWorld ( 
+			Point p, 
+			Point physicalMin, 
+			Point physicalMax,
 			bool clip )
 		{
-
 			// (1) account for reversed axis. Could be tricky and move
 			// this out, but would be a little messy.
+			Point _physicalMin;
+			Point _physicalMax;
 
-			PointF _physicalMin;
-			PointF _physicalMax;
-
-			if ( this.Reversed )
-			{
+			if (Reversed) {
 				_physicalMin = physicalMax;
 				_physicalMax = physicalMin;
 			}
-			else
-			{
+			else {
 				_physicalMin = physicalMin;
 				_physicalMax = physicalMax;
 			}
 
 			// normalised axis dir vector
-			float axis_X = _physicalMax.X - _physicalMin.X;
-			float axis_Y = _physicalMax.Y - _physicalMin.Y;
-			float len = (float)Math.Sqrt( axis_X * axis_X + axis_Y * axis_Y );
+			double axis_X = _physicalMax.X - _physicalMin.X;
+			double axis_Y = _physicalMax.Y - _physicalMin.Y;
+			double len = Math.Sqrt (axis_X * axis_X + axis_Y * axis_Y);
 			axis_X /= len;
 			axis_Y /= len;
 
 			// point relative to axis physical minimum.
-			PointF posRel = new PointF( p.X - _physicalMin.X, p.Y - _physicalMin.Y );
+			Point posRel = new Point (p.X - _physicalMin.X, p.Y - _physicalMin.Y);
 
 			// dist of point projection on axis, normalised.
-			float prop = ( axis_X * posRel.X + axis_Y * posRel.Y ) / len;
-
-			double world = prop * (this.WorldMax - this.WorldMin) + this.WorldMin;
+			double prop = (axis_X * posRel.X + axis_Y * posRel.Y) / len;
+			double world = prop * (WorldMax - WorldMin) + WorldMin;
 
 			// if want clipped value, return extrema if outside range.
-			if (clip)
-			{
-				world = Math.Max( world, this.WorldMin );
-				world = Math.Min( world, this.WorldMax );
+			if (clip) {
+				world = Math.Max( world, WorldMin );
+				world = Math.Min( world, WorldMax );
 			}
-
 			return world;
 		}
 
@@ -914,103 +810,82 @@ namespace NPlot.Xwt
 		/// <summary>
 		/// Draw the Axis Label
 		/// </summary>
-		/// <param name="g">The GDI+ drawing surface on which to draw.</param>
+		/// <param name="ctx>The Drawing Context with which to draw.</param>
 		/// <param name="offset">offset from axis. Should be calculated so as to make sure axis label misses tick labels.</param>
 		/// <param name="axisPhysicalMin">The physical position corresponding to the world minimum of the axis.</param>
 		/// <param name="axisPhysicalMax">The physical position corresponding to the world maximum of the axis.</param>
 		/// <returns>boxed Rectangle indicating bounding box of label. null if no label printed.</returns>
-		public object DrawLabel( 
-			Graphics g, 
+		public object DrawLabel ( 
+			Context ctx, 
 			Point offset, 
 			Point axisPhysicalMin, 
 			Point axisPhysicalMax )
 		{
-
-			if ( Label != "" )
-			{
+			if (Label != "") {
 	
 				// first calculate any extra offset for axis label spacing.
-				float extraOffsetAmount = this.LabelOffset;
-				extraOffsetAmount += 2.0f; // empirically determed - text was too close to axis before this.
-				
-				if (this.AutoScaleText)
-				{
-					if (this.LabelOffsetScaled)
-					{
-						extraOffsetAmount *= this.FontScale;
-					}
+				double extraOffsetAmount = LabelOffset;
+				extraOffsetAmount += 2; // empirically determed - text was too close to axis before this.
+				if (AutoScaleText && LabelOffsetScaled) {
+					extraOffsetAmount *= FontScale;
 				}
-
 				// now extend offset.
-				float offsetLength = (float)Math.Sqrt( offset.X*offset.X + offset.Y*offset.Y );
-				if (offsetLength > 0.01)
-				{
-					float x_component = offset.X / offsetLength;
-					float y_component = offset.Y / offsetLength;
+				double offsetLength = Math.Sqrt (offset.X*offset.X + offset.Y*offset.Y);
+				if (offsetLength > 0.01) {
+					double x_component = offset.X / offsetLength;
+					double y_component = offset.Y / offsetLength;
 
 					x_component *= extraOffsetAmount;
 					y_component *= extraOffsetAmount;
 
-                    if (this.LabelOffsetAbsolute)
-                    {
-                        offset.X = (int)x_component;
-                        offset.Y = (int)y_component;
-                    }
-                    else
-                    {
-                        offset.X += (int)x_component;
-                        offset.Y += (int)y_component;
-                    }
-                }
+					if (LabelOffsetAbsolute) {
+						offset.X = x_component;
+						offset.Y = y_component;
+					}
+					else {
+						offset.X += x_component;
+						offset.Y += y_component;
+					}
+				}
 				
 				// determine angle of axis in degrees
-				double theta = Math.Atan2(
+				double theta = Math.Atan2 (
 					axisPhysicalMax.Y - axisPhysicalMin.Y,
-					axisPhysicalMax.X - axisPhysicalMin.X );
-				theta = theta * 180.0f / Math.PI;
+					axisPhysicalMax.X - axisPhysicalMin.X);
+				theta = theta * 180.0 / Math.PI;
 
-				PointF average = new PointF(
-					(axisPhysicalMax.X + axisPhysicalMin.X)/2.0f,
-					(axisPhysicalMax.Y + axisPhysicalMin.Y)/2.0f );
+				Point average = new Point (
+					(axisPhysicalMax.X + axisPhysicalMin.X)/2,
+					(axisPhysicalMax.Y + axisPhysicalMin.Y)/2);
 
-				g.TranslateTransform( offset.X , offset.Y );	// this is done last.
-				g.TranslateTransform( average.X, average.Y );
-				g.RotateTransform( (float)theta );				// this is done first.
+				ctx.Save ();
+				ctx.Translate (average.X + offset.X , average.Y + offset.Y);	// this is done last.
+				ctx.Rotate (theta);												// this is done first.
 
-				SizeF labelSize = g.MeasureString( Label, labelFontScaled_);
+				TextLayout layout = new TextLayout (ctx);
+				layout.Font = labelFontScaled_;
+				layout.Text = Label;
+				Size labelSize = layout.GetSize ();
 
-				//bounding box for label centered around zero.
-				RectangleF drawRect = new RectangleF( 
-					-labelSize.Width/2.0f,
-					-labelSize.Height/2.0f,
-					labelSize.Width,
-					labelSize.Height );
-				
-				g.DrawString( 
-					Label, 
-					labelFontScaled_,
-					labelBrush_, 
-					drawRect,
-					drawFormat_ );
+				//Draw label centered around zero.
+				ctx.DrawTextLayout (layout, -labelSize.Width/2, -labelSize.Height/2);
 
-				// now work out physical bounds of label. 
-				Matrix m = g.Transform;
-				PointF[] recPoints = new PointF[2];
-				recPoints[0] = new PointF( -labelSize.Width/2.0f, -labelSize.Height/2.0f );
-				recPoints[1] = new PointF( labelSize.Width/2.0f, labelSize.Height/2.0f );
-				m.TransformPoints( recPoints );
+				// now work out physical bounds of Rotated and Translated label. 
+				Point [] recPoints = new Point [2];
+				recPoints[0] = new Point (-labelSize.Width/2, -labelSize.Height/2);
+				recPoints[1] = new Point ( labelSize.Width/2, labelSize.Height/2);
+				ctx.TransformPoints (recPoints);
 
-				int x1 = (int)Math.Min( recPoints[0].X, recPoints[1].X );
-				int x2 = (int)Math.Max( recPoints[0].X, recPoints[1].X );
-				int y1 = (int)Math.Min( recPoints[0].Y, recPoints[1].Y );
-				int y2 = (int)Math.Max( recPoints[0].Y, recPoints[1].Y );
+				double x1 = Math.Min (recPoints[0].X, recPoints[1].X);
+				double x2 = Math.Max (recPoints[0].X, recPoints[1].X);
+				double y1 = Math.Min (recPoints[0].Y, recPoints[1].Y);
+				double y2 = Math.Max (recPoints[0].Y, recPoints[1].Y);
 
-				g.ResetTransform();
+				ctx.Restore ();
 
 				// and return label bounding box.
-				return new Rectangle( x1, y1, (x2-x1), (y2-y1) );
+				return new Rectangle (x1, y1, (x2-x1), (y2-y1));
 			}
-
 			return null;
 		}
 
@@ -1018,7 +893,7 @@ namespace NPlot.Xwt
 		/// <summary>
 		/// Draw a tick on the axis.
 		/// </summary>
-		/// <param name="g">The graphics surface on which to draw.</param>
+		/// <param name="ctx">The Drawing Context with on which to draw.</param>
 		/// <param name="w">The tick position in world coordinates.</param>
 		/// <param name="size">The size of the tick (in pixels)</param>
 		/// <param name="text">The text associated with the tick</param>
@@ -1027,10 +902,10 @@ namespace NPlot.Xwt
 		/// <param name="axisPhysMax">The maximum physical extent of the axis</param>
 		/// <param name="boundingBox">out: The bounding rectangle for the tick and tickLabel drawn</param>
 		/// <param name="labelOffset">out: offset from the axies required for axis label</param>
-		public virtual void DrawTick( 
-			Graphics g, 
+		public virtual void DrawTick ( 
+			Context ctx, 
 			double w,
-			float size,
+			double size,
 			string text,
 			Point textOffset,
 			Point axisPhysMin,
@@ -1040,49 +915,48 @@ namespace NPlot.Xwt
 		{
 
 			// determine physical location where tick touches axis. 
-			PointF tickStart = WorldToPhysical( w, axisPhysMin, axisPhysMax, true );
+			Point tickStart = WorldToPhysical (w, axisPhysMin, axisPhysMax, true);
 
 			// determine offset from start point.
-			PointF axisDir = Utils.UnitVector( axisPhysMin, axisPhysMax );
+			Point  axisDir = Utils.UnitVector (axisPhysMin, axisPhysMax);
 
 			// rotate axisDir anti-clockwise by TicksAngle radians to get tick direction. Note that because
 			// the physical (pixel) origin is at the top left, a RotationTransform by a positive angle will
 			// be clockwise.  Consequently, for anti-clockwise rotations, use cos(A-B), sin(A-B) formulae
-			float x1 = (float)(Math.Cos( this.TicksAngle ) * axisDir.X + Math.Sin( this.TicksAngle ) * axisDir.Y);
-			float y1 = (float)(Math.Cos( this.TicksAngle ) * axisDir.Y - Math.Sin( this.TicksAngle ) * axisDir.X);
+			double x1 = Math.Cos (TicksAngle) * axisDir.X + Math.Sin (TicksAngle) * axisDir.Y;
+			double y1 = Math.Cos (TicksAngle) * axisDir.Y - Math.Sin (TicksAngle) * axisDir.X;
 
 			// now get the scaled tick vector.
-			PointF tickVector = new PointF( this.TickScale * size * x1, this.TickScale * size * y1 );
+			Point tickVector = new Point (TickScale * size * x1, TickScale * size * y1);
 
-			if (this.TicksCrossAxis)
-			{
-				tickStart = new PointF(
-					tickStart.X - tickVector.X / 2.0f,
-					tickStart.Y - tickVector.Y / 2.0f );
+			if (TicksCrossAxis) {
+				tickStart = new Point (
+					tickStart.X - tickVector.X / 2,
+					tickStart.Y - tickVector.Y / 2);
 			}
 
 			// and the end point [point off axis] of tick mark.
-			PointF tickEnd = new PointF( tickStart.X + tickVector.X, tickStart.Y + tickVector.Y );
+			Point  tickEnd = new Point (tickStart.X + tickVector.X, tickStart.Y + tickVector.Y);
 
-			// and draw it!
-            if (g != null)
-            {
-                g.DrawLine(this.linePen_, (int)tickStart.X, (int)tickStart.Y, (int)tickEnd.X, (int)tickEnd.Y);
-            }
-			// note: casting to int for tick positions was necessary to ensure ticks drawn where we wanted
-			// them. Not sure of the reason.
+			// and draw it
+			ctx.Save ();
+			ctx.SetLineWidth (1);
+			ctx.SetColor (lineColor_);
+			ctx.MoveTo (tickStart.X, tickStart.Y);
+			ctx.LineTo (tickEnd.X, tickEnd.Y);
+			ctx.Stroke ();
 
 			// calculate bounds of tick.
-			int minX = (int)Math.Min( tickStart.X, tickEnd.X );
-			int minY = (int)Math.Min( tickStart.Y, tickEnd.Y );
-			int maxX = (int)Math.Max( tickStart.X, tickEnd.X );
-			int maxY = (int)Math.Max( tickStart.Y, tickEnd.Y );
-			boundingBox = new Rectangle( minX, minY, maxX-minX, maxY-minY );
+			double minX = Math.Min (tickStart.X, tickEnd.X);
+			double minY = Math.Min (tickStart.Y, tickEnd.Y);
+			double maxX = Math.Max (tickStart.X, tickEnd.X);
+			double maxY = Math.Max (tickStart.Y, tickEnd.Y);
+			boundingBox = new Rectangle (minX, minY, maxX-minX, maxY-minY);
 			
 			// by default, label offset from axis is 0. TODO: revise this.
 			labelOffset = new Point( 
-				-(int)tickVector.X, 
-				-(int)tickVector.Y );
+				-tickVector.X, 
+				-tickVector.Y );
 
 			// ------------------------
 
@@ -1093,138 +967,123 @@ namespace NPlot.Xwt
 			// they should not be. Also, angled tick text currently just works for
 			// the bottom x-axis. Also, it's a bit hacky.
 
-			if (text != "" && !HideTickText && g != null )
-			{
-				SizeF textSize = g.MeasureString( text, tickTextFontScaled_ );
+			if (text != "" && !HideTickText) {
+				TextLayout layout = new TextLayout (ctx);
+				layout.Font = tickTextFontScaled_;
+				layout.Text = text;
+				Size textSize = layout.GetSize ();
 
 				// determine the center point of the tick text.
-				float textCenterX;
-				float textCenterY;
+				double textCenterX;
+				double textCenterY;
 
 				// if text is at pointy end of tick.
-				if (!this.TickTextNextToAxis)
-				{
+				if (!TickTextNextToAxis) {
 					// offset due to tick.
-					textCenterX = tickStart.X + tickVector.X*1.2f;
-					textCenterY = tickStart.Y + tickVector.Y*1.2f;
+					textCenterX = tickStart.X + tickVector.X*1.2;
+					textCenterY = tickStart.Y + tickVector.Y*1.2;
 
 					// offset due to text box size.
-					textCenterX += 0.5f * x1 * textSize.Width;
-					textCenterY += 0.5f * y1 * textSize.Height;
+					textCenterX += 0.5 * x1 * textSize.Width;
+					textCenterY += 0.5 * y1 * textSize.Height;
 				}
 					// else it's next to the axis.
-				else
-				{
+				else {
 					// start location.
 					textCenterX = tickStart.X;
 					textCenterY = tickStart.Y;
 
 					// offset due to text box size.
-					textCenterX -= 0.5f * x1 * textSize.Width;
-					textCenterY -= 0.5f * y1 * textSize.Height;
+					textCenterX -= 0.5 * x1 * textSize.Width;
+					textCenterY -= 0.5 * y1 * textSize.Height;
 
 					// bring text away from the axis a little bit.
-					textCenterX -= x1*(2.0f+FontScale);
-					textCenterY -= y1*(2.0f+FontScale);
+					textCenterX -= x1*(2.0+FontScale);
+					textCenterY -= y1*(2.0+FontScale);
 				}
 
 				// If tick text is angled.. 
-				if (this.TicksLabelAngle != 0.0f)
-				{
+				if (TicksLabelAngle != 0) {
 
 					// determine the point we want to rotate text about.
-					
-					PointF textScaledTickVector = new PointF( this.TickScale * x1 * (textSize.Height/2.0f), this.TickScale * y1 * (textSize.Height/2.0f) );
-
- 					PointF rotatePoint;
- 					if (this.TickTextNextToAxis) 
-					{
- 						rotatePoint = new PointF( tickStart.X - textScaledTickVector.X, tickStart.Y - textScaledTickVector.Y );
- 					}
- 					else 
-					{
- 						rotatePoint = new PointF( tickEnd.X + textScaledTickVector.X, tickEnd.Y + textScaledTickVector.Y );
- 					}
+					Point textScaledTickVector = new Point (
+												TickScale * x1 * (textSize.Height/2),
+												TickScale * y1 * (textSize.Height/2) );
+					Point rotatePoint;
+					if (TickTextNextToAxis) {
+						rotatePoint = new Point (
+											tickStart.X - textScaledTickVector.X,
+											tickStart.Y - textScaledTickVector.Y);
+					}
+					else {
+						rotatePoint = new Point (
+											tickEnd.X + textScaledTickVector.X,
+											tickEnd.Y + textScaledTickVector.Y);
+					}
  
- 					float actualAngle;
-					if (flipTicksLabel_) 
-					{
- 						double radAngle = (Math.PI / 180) * this.TicksLabelAngle;
- 						rotatePoint.X += textSize.Width * (float)Math.Cos(radAngle);
- 						rotatePoint.Y += textSize.Width * (float)Math.Sin(radAngle);
- 						actualAngle = this.TicksLabelAngle + 180;
- 					}
- 					else 
-					{
- 						actualAngle = this.TicksLabelAngle;
+					double actualAngle;
+					if (flipTicksLabel_) {
+						double radAngle = TicksLabelAngle * Math.PI / 180;
+						rotatePoint.X += textSize.Width * Math.Cos (radAngle);
+						rotatePoint.Y += textSize.Width * Math.Sin (radAngle);
+						actualAngle = TicksLabelAngle + 180;
+					}
+					else {
+						actualAngle = TicksLabelAngle;
 					}
 					
-
-					g.TranslateTransform( rotatePoint.X, rotatePoint.Y );
-
-					g.RotateTransform( actualAngle );
+					ctx.Save ();
+					ctx.Translate (rotatePoint.X, rotatePoint.Y);
+					ctx.Rotate (actualAngle);
 					
-					Matrix m = g.Transform;
-					PointF[] recPoints = new PointF[2];
-					recPoints[0] = new PointF( 0.0f, -(textSize.Height / 2) );
-					recPoints[1] = new PointF( textSize.Width, textSize.Height );
-					m.TransformPoints( recPoints );
+					Point [] recPoints = new Point [2];
+					recPoints[0] = new Point (0.0, -textSize.Height/2);
+					recPoints[1] = new Point (textSize.Width, textSize.Height);
+					ctx.TransformPoints (recPoints);
 
-					float t_x1 = Math.Min( recPoints[0].X, recPoints[1].X );
-					float t_x2 = Math.Max( recPoints[0].X, recPoints[1].X );
-					float t_y1 = Math.Min( recPoints[0].Y, recPoints[1].Y );
-					float t_y2 = Math.Max( recPoints[0].Y, recPoints[1].Y );
+					double t_x1 = Math.Min (recPoints[0].X, recPoints[1].X);
+					double t_x2 = Math.Max (recPoints[0].X, recPoints[1].X);
+					double t_y1 = Math.Min (recPoints[0].Y, recPoints[1].Y);
+					double t_y2 = Math.Max (recPoints[0].Y, recPoints[1].Y);
 					
-					boundingBox = Rectangle.Union(boundingBox, new Rectangle( (int)t_x1, (int)t_y1, (int)(t_x2-t_x1), (int)(t_y2-t_y1) ) );
-					RectangleF drawRect = new RectangleF( 0.0f, -(textSize.Height / 2), textSize.Width, textSize.Height );
+					boundingBox = Rectangle.Union (boundingBox, new Rectangle (t_x1, t_y1, (t_x2-t_x1), (t_y2-t_y1)));
 
-					g.DrawString( 
-						text,
-						tickTextFontScaled_,
-						tickTextBrush_, 
-						drawRect,
-						drawFormat_ );
+					ctx.DrawTextLayout (layout, 0, -textSize.Height/2);
 
 					t_x2 -= tickStart.X;
 					t_y2 -= tickStart.Y;
-					t_x2 *= 1.25f;
-					t_y2 *= 1.25f;
+					t_x2 *= 1.25;
+					t_y2 *= 1.25;
 
-					labelOffset = new Point( (int)t_x2, (int)t_y2 );
+					labelOffset = new Point (t_x2, t_y2);
 
-					g.ResetTransform();
+					ctx.Restore ();
 
-					//g.DrawRectangle( new Pen(Color.Purple), boundingBox.X, boundingBox.Y, boundingBox.Width, boundingBox.Height );
+					//ctx.Rectangle (boundingBox.X, boundingBox.Y, boundingBox.Width, boundingBox.Height);
+					//ctx.Stroke ();
 
 				}
-				else
-				{
-					float bx1 = (textCenterX - textSize.Width/2.0f);
-					float by1 = (textCenterY - textSize.Height/2.0f);
-					float bx2 = textSize.Width;
-					float by2 = textSize.Height;
+				else 				{
+					double bx1 = (textCenterX - textSize.Width/2);
+					double by1 = (textCenterY - textSize.Height/2);
+					double bx2 = textSize.Width;
+					double by2 = textSize.Height;
 
-					RectangleF drawRect = new RectangleF( bx1, by1, bx2, by2 );
-					Rectangle drawRect_int = new Rectangle( (int)bx1, (int)by1, (int)bx2, (int)by2 );
-					// g.DrawRectangle( new Pen(Color.Green), bx1, by1, bx2, by2 );
+					Rectangle drawRect = new Rectangle (bx1, by1, bx2, by2);
+					// ctx.Rectangle (drawRect);
 
-					boundingBox = Rectangle.Union( boundingBox, drawRect_int );
+					boundingBox = Rectangle.Union (boundingBox, drawRect);
 
-					// g.DrawRectangle( new Pen(Color.Purple), boundingBox.X, boundingBox.Y, boundingBox.Width, boundingBox.Height );
+					// ctx.Rectangle (boundingBox);
 
-					g.DrawString( 
-						text,
-						tickTextFontScaled_,
-						tickTextBrush_,
-						drawRect,
-						drawFormat_ );
+					ctx.DrawTextLayout (layout, bx1, by1);
 
 					textCenterX -= tickStart.X;
 					textCenterY -= tickStart.Y;
-					textCenterX *= 2.3f;
-					textCenterY *= 2.3f;
+					textCenterX *= 2.3;
+					textCenterY *= 2.3;
 
-					labelOffset = new Point( (int)textCenterX, (int)textCenterY );
+					labelOffset = new Point (textCenterX, textCenterY);
 				}
 			} 
 		}
@@ -1232,57 +1091,58 @@ namespace NPlot.Xwt
 
 		/// <summary>
 		/// Draw the axis. This involves three steps:
-		///  (1) Draw the axis line.
-		///  (2) Draw the tick marks.
-		///  (3) Draw the label.
+		///	 (1) Draw the axis line.
+		///	 (2) Draw the tick marks.
+		///	 (3) Draw the label.
 		/// </summary>
-		/// <param name="g">The drawing surface on which to draw.</param>
+		/// <param name="ctx">The Drawing Context with which to draw.</param>
 		/// <param name="physicalMin">The physical position corresponding to the world minimum of the axis.</param>
 		/// <param name="physicalMax">The physical position corresponding to the world maximum of the axis.</param>
 		/// <param name="boundingBox">out The bounding rectangle of the axis including axis line, label, tick marks and tick mark labels</param>
-		public virtual void Draw( 
-			System.Drawing.Graphics g,
+		public virtual void Draw ( 
+			Context ctx,
 			Point physicalMin,
 			Point physicalMax, 
 			out Rectangle boundingBox )
 		{
 			// calculate the bounds of the axis line only.
-			int x1 = Math.Min( physicalMin.X, physicalMax.X );
-			int x2 = Math.Max( physicalMin.X, physicalMax.X );
-			int y1 = Math.Min( physicalMin.Y, physicalMax.Y );
-			int y2 = Math.Max( physicalMin.Y, physicalMax.Y );
-			Rectangle bounds = new Rectangle( x1, y1, x2-x1, y2-y1 );
+			double x1 = Math.Min (physicalMin.X, physicalMax.X);
+			double x2 = Math.Max (physicalMin.X, physicalMax.X);
+			double y1 = Math.Min (physicalMin.Y, physicalMax.Y);
+			double y2 = Math.Max (physicalMin.Y, physicalMax.Y);
+			Rectangle bounds = new Rectangle (x1, y1, x2-x1, y2-y1);
 
-			if (!Hidden)
-			{
+			if (!Hidden) {
 				// (1) Draw the axis line.
-				g.DrawLine( this.linePen_, physicalMin.X, physicalMin.Y, physicalMax.X, physicalMax.Y );
+				ctx.Save ();
+				ctx.SetLineWidth (1);
+				ctx.SetColor (lineColor_);
+				ctx.MoveTo (physicalMin.X, physicalMin.Y);
+				ctx.LineTo (physicalMax.X, physicalMax.Y);
+				ctx.Stroke ();
+				ctx.Restore ();
 
 				// (2) draw tick marks (subclass responsibility). 
 
 				object labelOffset;
 				object tickBounds;
-				this.DrawTicks( g, physicalMin, physicalMax, out labelOffset, out tickBounds );
+				DrawTicks (ctx, physicalMin, physicalMax, out labelOffset, out tickBounds);
 
 				// (3) draw the axis label
 				object labelBounds = null;
-				if (!this.HideTickText)
-				{
-					labelBounds = this.DrawLabel( g, (Point)labelOffset, physicalMin, physicalMax );
+				if (!HideTickText) {
+					labelBounds = DrawLabel (ctx, (Point)labelOffset, physicalMin, physicalMax);
 				}
 
 				// (4) merge bounds and return.
-                if (labelBounds != null)
-                {
-                    bounds = Rectangle.Union(bounds, (Rectangle)labelBounds);
-                }
+				if (labelBounds != null) {
+					bounds = Rectangle.Union (bounds, (Rectangle)labelBounds);
+				}
 
-                if (tickBounds != null)
-                {
-                    bounds = Rectangle.Union(bounds, (Rectangle)tickBounds);
-                }
+				if (tickBounds != null) {
+					bounds = Rectangle.Union (bounds, (Rectangle)tickBounds);
+				}
 			}
-
 			boundingBox = bounds;
 		}
 
@@ -1296,7 +1156,7 @@ namespace NPlot.Xwt
 		/// <param name="boundingBox">Current axis bounding box.</param>
 		/// <param name="mergeLabelOffset">the label offset to merge. The current label offset will be replaced by this if it's norm is larger.</param>
 		/// <param name="mergeBoundingBox">the bounding box to merge. The current bounding box will be replaced by this if null, or by the least upper bound of bother bounding boxes otherwise.</param>
-		protected static void UpdateOffsetAndBounds( 
+		protected static void UpdateOffsetAndBounds ( 
 			ref object labelOffset, ref object boundingBox, 
 			Point mergeLabelOffset, Rectangle mergeBoundingBox )
 		{
@@ -1304,20 +1164,16 @@ namespace NPlot.Xwt
 			Point lo = (Point)labelOffset;
 			double norm1 = Math.Sqrt( lo.X*lo.X + lo.Y*lo.Y );
 			double norm2 = Math.Sqrt( mergeLabelOffset.X*mergeLabelOffset.X + mergeLabelOffset.Y*mergeLabelOffset.Y );
-			if (norm1 < norm2)
-			{
+			if (norm1 < norm2) {
 				labelOffset = mergeLabelOffset;
 			}
-
 			// determining bounding box.
 			Rectangle b = mergeBoundingBox;
-			if (boundingBox == null)
-			{
+			if (boundingBox == null) {
 				boundingBox = b;
 			}
-			else
-			{
-				boundingBox = Rectangle.Union( (Rectangle)boundingBox, b );
+			else {
+				boundingBox = Rectangle.Union ((Rectangle)boundingBox, b);
 			}
 		}
 
@@ -1325,13 +1181,13 @@ namespace NPlot.Xwt
 		/// <summary>
 		/// DrawTicks method. In base axis class this does nothing.
 		/// </summary>
-		/// <param name="g">The graphics surface on which to draw</param>
+		/// <param name="ctx">The Drawing Context with which to draw</param>
 		/// <param name="physicalMin">The physical position corresponding to the world minimum of the axis.</param>
 		/// <param name="physicalMax">The physical position corresponding to the world maximum of the axis.</param>
 		/// <param name="labelOffset">is set to a suitable offset from the axis to draw the axis label. In this base method, set to null.</param>
 		/// <param name="boundingBox">is set to the smallest box that bounds the ticks and the tick text. In this base method, set to null.</param>
 		protected virtual void DrawTicks( 
-			Graphics g, 
+			Context ctx, 
 			Point physicalMin, 
 			Point physicalMax, 
 			out object labelOffset,
@@ -1351,10 +1207,7 @@ namespace NPlot.Xwt
 		/// </summary>
 		public double WorldLength
 		{
-			get
-			{
-				return Math.Abs( worldMax_ - worldMin_ );
-			}
+			get { return Math.Abs (worldMax_ - worldMin_); }
 		}
 
 		/// <summary>
@@ -1399,10 +1252,9 @@ namespace NPlot.Xwt
 			ArrayList largeTickPositions, 
 			ref ArrayList smallTickPositions )
 		{
-            if (smallTickPositions == null)
-            {
-                smallTickPositions = new ArrayList();
-            }
+			if (smallTickPositions == null) {
+				smallTickPositions = new ArrayList();
+			}
 		}
 
 
@@ -1413,57 +1265,52 @@ namespace NPlot.Xwt
 		/// <param name="physicalMax">The physical position corresponding to the world maximum of the axis.</param>
 		/// <param name="largeTickPositions">ArrayList containing the positions of the large ticks.</param>
 		/// <param name="smallTickPositions">ArrayList containing the positions of the small ticks.</param>
-		public void WorldTickPositions(
+		public void WorldTickPositions (
 			Point physicalMin,
 			Point physicalMax,
 			out ArrayList largeTickPositions,
-			out ArrayList smallTickPositions
-			)
+			out ArrayList smallTickPositions )
 		{
-			WorldTickPositions_FirstPass( physicalMin, physicalMax, out largeTickPositions, out smallTickPositions );
-			WorldTickPositions_SecondPass( physicalMin, physicalMax, largeTickPositions, ref smallTickPositions );
+			WorldTickPositions_FirstPass (physicalMin, physicalMax, out largeTickPositions, out smallTickPositions);
+			WorldTickPositions_SecondPass (physicalMin, physicalMax, largeTickPositions, ref smallTickPositions);
 		}
 
 		#region Axis Range Utilities
 		//
-		// The following utilities are provided to simplify expansion, contraction, and
-		// translation of the Axis.  They are all based on modifying the WorldRange by a
-		// given proportion, which is convenient for those user-interactions which move
-		// or re-range the plot based on mouse movements in the plot's Physical space.
-		// In order to handle non-linear axes correctly, it is not possible to simply
-		// adjust the WorldMin and WorldMax values directly, since this may result in
-		// invalid endpoints (eg LogAxis).  Instead, the notional physical axis is 
-		// modified by the appropriate amounts, and the new physicalMin and physicalMax
-		// are then re-mapped to World coordinates using the specific Axis transforms.
-		// Since an Axis does not depend on the physical size or orientation to which it
-		// is drawn, the World limits may for convenience be mapped to a nominal unit
-		// vector on the real axis, then transformed to their new values after adjustment.
+		// The following utilities are provided to simplify expansion, contraction and translation of the Axis.
+		// They are all based on modifying the WorldRange by a given proportion, which is convenient for those
+		// user-interactions which move/re-range the plot based on mouse movements in the plot's Physical space.
+		// In order to handle non-linear axes correctly, it is not possible to simply adjust the WorldMin and
+		// WorldMax values directly, since this may result in invalid endpoints (eg LogAxis).	Instead, the
+		// notional physical axis is modified by the appropriate amounts, and the new physicalMin and physicalMax
+		// are then re-mapped to World coordinates using the specific Axis transforms. Since an Axis does not
+		// depend on the physical size or orientation to which it is drawn, the World limits may for convenience
+		// be mapped to the unit vector on the real axis, then transformed to their new values after adjustment.
 		//
 		
 		/// <summary>
-		/// Modifies WorldMin and WorldMax by the respective increments, specified as
-		/// proportions of the existing range. Typically, to restrict the range, deltaWorldMin
-		/// should be +ve, and deltaWorldMax -ve, while increments of the opposite sign will
-		/// extend the range. This is a private helper routine used by the public interface,
+		/// Modifies WorldMin and WorldMax by the respective increments, specified as proportions of the existing range
+		/// Typically, to restrict the range, deltaWorldMin should be +ve, and deltaWorldMax -ve, while increments of
+		/// the opposite sign will extend the range. This is a private helper routine used by the public interface,
 		/// which assumes all parameter validation and clipping has already been done.
 		/// </summary>
 		/// <param name="deltaWorldMin"></param>
 		/// <param name="deltaWorldMax"></param>
-		private void ModifyRange(double deltaWorldMin, double deltaWorldMax)
+		private void ModifyRange (double deltaWorldMin, double deltaWorldMax)
 		{
-			PointF origin = new PointF (0,0);	// Unit vector origin
-			PointF vector = new PointF (1,0);	// ...and endpoint
+			Point origin = new Point (0,0);	// Unit vector origin
+			Point vector = new Point (1,0);	// ...and endpoint
 			
-			PointF newMin = origin;	// copy unit vector, since original
-			PointF newMax = vector;	// will be used in final transform
+			Point newMin = origin;	// copy unit vector, since original
+			Point newMax = vector;	// will be used in final transform
 			
 			// Adjust unit vector by WorldMin/Max increments
-			newMin.X += (float)(deltaWorldMin);
-			newMax.X += (float)(deltaWorldMax);
+			newMin.X += deltaWorldMin;
+			newMax.X += deltaWorldMax;
 			
 			// map new physical axis to World coordinates, then update WorldMin/Max
-			double newWorldMin = PhysicalToWorld (newMin, origin, vector, false );
-			double newWorldMax = PhysicalToWorld (newMax, origin, vector, false );
+			double newWorldMin = PhysicalToWorld (newMin, origin, vector, false);
+			double newWorldMax = PhysicalToWorld (newMax, origin, vector, false);
 			WorldMin = newWorldMin;
 			WorldMax = newWorldMax;
 		}
@@ -1484,33 +1331,32 @@ namespace NPlot.Xwt
 		/// axis range will not be reduced to less than 0.01 (1%) of its original value.
 		/// This arbitrary amount may be made configurable at some stage.
 		/// </remarks>
-		public void IncreaseRange(double proportion, double focusRatio)
+		public void IncreaseRange (double proportion, double focusRatio)
 		{
 			double lo = -0.99;
 			
 			// clip proportion and focusRatio
-			proportion = Math.Max(proportion,lo);
-			focusRatio = Math.Max(focusRatio,0.0);
-			focusRatio = Math.Min(focusRatio,1.0);
+			proportion = Math.Max (proportion,lo);
+			focusRatio = Math.Max (focusRatio,0.0);
+			focusRatio = Math.Min (focusRatio,1.0);
 			
 			// calculate WorldMin/Max increments, preserving focusRatio
 			double deltaWorldMin = -proportion*focusRatio;
 			double deltaWorldMax = +proportion*(1.0-focusRatio);
 			
-			ModifyRange(deltaWorldMin, deltaWorldMax);
-
+			ModifyRange (deltaWorldMin, deltaWorldMax);
 		}
 
 		/// <summary>
 		/// Modifies the WorldMin and WorldMax values so that the world axis length is
 		/// [proportion] bigger (eg 0.1 increases range by 10%). WorldMax and WorldMin
 		/// are changed so that the expansion/contraction of the axis is symmetrical
-		/// about its midpoint. If the  current WorldMax and WorldMin are the same,
+		/// about its midpoint. If the	current WorldMax and WorldMin are the same,
 		/// they are (currently) moved apart by an arbitrary amount (epsilon). This
 		/// condition seems arbitrary, and may be removed at some stage.
 		/// </summary>
 		/// <param name="proportion">Proportion to increase world length by.</param>
-		public void IncreaseRange( double proportion )
+		public void IncreaseRange (double proportion)
 		{
 			double epsilon = 0.01;
 			double range = WorldMax - WorldMin;
@@ -1542,7 +1388,7 @@ namespace NPlot.Xwt
 			
 			// order the min and max values
 			if (newWorldMin > newWorldMax) {
-				Utils.Swap(ref newWorldMin, ref newWorldMax);
+				Utils.Swap (ref newWorldMin, ref newWorldMax);
 			}
 			// clip to existing range if requested
 			if (clipToWorld) {
@@ -1565,13 +1411,13 @@ namespace NPlot.Xwt
 			double deltaWorldMin = newWorldMin;
 			double deltaWorldMax = newWorldMax - 1.0;
 			
-			ModifyRange(deltaWorldMin, deltaWorldMax);
+			ModifyRange (deltaWorldMin, deltaWorldMax);
 			
 		}
 		
 		/// <summary>
 		/// Modifies the WorldMin and WorldMax values so that the world axis is
-		/// translated by the specified [shiftProportion].  If [shiftProportion] is
+		/// translated by the specified [shiftProportion].	If [shiftProportion] is
 		/// positive, WorldMin and WorldMax are both increased, so that the range is
 		/// shifted to the right (assuming WorldMin to the left of WorldMax), while
 		/// negative values of [shiftProportion] decrease both WorldMin and WorldMax.
@@ -1589,177 +1435,32 @@ namespace NPlot.Xwt
 
 		#endregion Axis Utilities
 
-		/// <summary>
-		/// Scale label and tick fonts by this factor. Set by PlotSurface2D 
-		/// Draw method.
-		/// </summary>
-		internal float FontScale 
-		{
-			get 
-			{
-				return fontScale_;
-			}
-			set 
-			{
-				fontScale_ = value;
-				UpdateScale();
-			}
-		}
-		private float fontScale_;
+		// TODO: finish implementation of this at some point.
 
+		//public class WorldValueChangedArgs
+		//{
+		//	public WorldValueChangedArgs( double value, MinMaxType minOrMax )
+		//	{
+		//		Value = value;
+		//		MinOrMax = minOrMax;
+		//	}
 
-		/// <summary>
-		/// Scale tick mark lengths by this factor. Set by PlotSurface2D
-		/// Draw method.
-		/// </summary>		
-		internal float TickScale 
-		{
-			get 
-			{
-				return tickScale_;
-			}
-			set 
-			{
-				tickScale_ = value;
-			}
-		}
-		private float tickScale_;
+		//	public double Value;
 
+		//	public enum MinMaxType
+		//	{
+		//		Min = 0,
+		//		Max = 1
+		//	}
 
-		private void UpdateScale()	
-		{
-            if (labelFont_ != null) {
-                this.labelFontScaled_ = Utils.ScaleFont(labelFont_, FontScale);
-            }
+		//	public MinMaxType MinOrMax;
+		//}
 
-            if (tickTextFont_ != null) {
-                this.tickTextFontScaled_ = Utils.ScaleFont(tickTextFont_, FontScale);
-            }
-		}
+		//public delegate void WorldValueChangedHandler (object sender, WorldValueChangedArgs e);
 
+		//public event WorldValueChangedHandler WorldMinChanged;
+		//public event WorldValueChangedHandler WorldMaxChanged;
+		//public event WorldValueChangedHandler WorldExtentsChanged;
 
-		/// <summary>
-		/// Get whether or not this axis is linear.
-		/// </summary>
-		public virtual bool IsLinear
-		{
-			get { return true; }
-		}
-
-		private float labelOffset_ = 0;
-		/// <summary>
-		/// If LabelOffsetAbsolute is false (default) then this is the offset 
-		/// added to default axis label position. If LabelOffsetAbsolute is 
-		/// true, then this is the absolute offset of the label from the axis.
-		/// 
-		/// If positive, offset is further away from axis, if negative, towards
-		/// the axis.
-		/// </summary>
-		public float LabelOffset
-		{
-			get { return labelOffset_; }
-			set { labelOffset_ = value; }
-		}
-
-        private bool labelOffsetAbsolute_ = false;
-        /// <summary>
-        /// If true, the value specified by LabelOffset is the absolute distance
-        /// away from the axis that the label is drawn. If false, the value 
-        /// specified by LabelOffset is added to the pre-calculated value to 
-        /// determine the axis label position.
-        /// </summary>
-        /// <value></value>
-        public bool LabelOffsetAbsolute
-        {
-            get { return labelOffsetAbsolute_; }
-            set { labelOffsetAbsolute_ = value; }
-        }
-
-        private bool labelOffsetScaled_ = true;
-		/// <summary>
-		/// Whether or not the supplied LabelOffset should be scaled by 
-		/// a factor as specified by FontScale.
-		/// </summary>
-		public bool LabelOffsetScaled
-		{
-			get
-			{
-				return labelOffsetScaled_;
-			}
-			set
-			{
-				labelOffsetScaled_ = value;
-			}
-		}
-
-
-		/// <summary>
-		/// returns a suitable offset for the axis label in the case that there are no
-		/// ticks or tick text in the way.
-		/// </summary>
-		/// <param name="physicalMin">physical point corresponding to the axis world maximum.</param>
-		/// <param name="physicalMax">physical point corresponding to the axis world minimum.</param>
-		/// <returns>axis label offset</returns>
-		protected Point getDefaultLabelOffset( Point physicalMin, Point physicalMax )
-		{
-			System.Drawing.Rectangle tBoundingBox;
-			System.Drawing.Point tLabelOffset;
-
-			this.DrawTick( null, this.WorldMax, this.LargeTickSize, 
-				"",
-				new Point(0,0),
-				physicalMin, physicalMax,
-				out tLabelOffset, out tBoundingBox );
-
-			return tLabelOffset;
-		}
-
-
-        /// <summary>
-        /// Set the Axis color (sets all of axis line color, Tick text color, and label color).
-        /// </summary>
-        public Color Color
-        {
-            set
-            {
-                this.AxisColor = value;
-                this.TickTextColor = value;
-                this.LabelColor = value;
-            }
-        }
-
-
-        /*
-
-        // TODO: finish implementation of this at some point.
-
-        public class WorldValueChangedArgs
-        {
-            public WorldValueChangedArgs( double value, MinMaxType minOrMax )
-            {
-                Value = value;
-                MinOrMax = minOrMax;
-            }
-
-            public double Value;
-
-            public enum MinMaxType
-            {
-                Min = 0,
-                Max = 1
-            }
-
-            public MinMaxType MinOrMax;
-        }
-
-
-        public delegate void WorldValueChangedHandler( object sender, WorldValueChangedArgs e );
-
-        public event WorldValueChangedHandler WorldMinChanged;
-        public event WorldValueChangedHandler WorldMaxChanged;
-        public event WorldValueChangedHandler WorldExtentsChanged;
-
-        */
-
-    }
+	}
 }
