@@ -40,7 +40,7 @@ namespace GtkSamples
             plotSurface.XAxis1.WorldMax += 1.0f;
 
             Legend legend = new Legend();
-            legend.AttachTo( PlotSurface2D.XAxisPosition.Top, PlotSurface2D.YAxisPosition.Right );
+            legend.AttachTo( XAxisPosition.Top, YAxisPosition.Right );
             legend.VerticalEdgePlacement = Legend.Placement.Outside;
             legend.HorizontalEdgePlacement = Legend.Placement.Inside;
             legend.XOffset = 5; // note that these numbers can be negative.

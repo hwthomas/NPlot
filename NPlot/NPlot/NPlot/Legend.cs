@@ -60,8 +60,8 @@ namespace NPlot
 
 		private int xOffset_;
 		private int yOffset_;
-		private PlotSurface2D.XAxisPosition xAttach_;
-		private PlotSurface2D.YAxisPosition yAttach_;
+		private XAxisPosition xAttach_;
+		private YAxisPosition yAttach_;
 		private Placement horizontalEdgePlacement_;
 		private Placement verticalEdgePlacement_;
 		private bool neverShiftAxes_;
@@ -156,7 +156,7 @@ namespace NPlot
 		/// </summary>
 		/// <param name="xa">Specify which horizontal axis the legend should be attached to.</param>
 		/// <param name="ya">Specify which vertical axis the legend should be attached to.</param>
-		public void AttachTo( PlotSurface2D.XAxisPosition xa, PlotSurface2D.YAxisPosition ya )
+		public void AttachTo( XAxisPosition xa, YAxisPosition ya )
 		{
 			xAttach_ = xa;
 			yAttach_ = ya; 
@@ -168,8 +168,8 @@ namespace NPlot
 		/// </summary>
 		public Legend()
 		{
-			xAttach_ = PlotSurface2D.XAxisPosition.Top;
-			yAttach_ = PlotSurface2D.YAxisPosition.Right;
+			xAttach_ = XAxisPosition.Top;
+			yAttach_ = YAxisPosition.Right;
 			xOffset_ = 10;
 			yOffset_ = 1;
 			verticalEdgePlacement_ = Placement.Outside;
@@ -222,7 +222,7 @@ namespace NPlot
 			// y
 			position.Y = this.yOffset_;
 			
-			if ( this.xAttach_ == PlotSurface2D.XAxisPosition.Bottom )
+			if ( this.xAttach_ == XAxisPosition.Bottom )
 			{
 				position.Y += pYAxis1.PhysicalMin.Y;
 				if ( this.horizontalEdgePlacement_ == Legend.Placement.Inside )
@@ -242,7 +242,7 @@ namespace NPlot
 			// x
 			position.X = this.xOffset_;
 		
-			if ( this.yAttach_ == PlotSurface2D.YAxisPosition.Left )
+			if ( this.yAttach_ == YAxisPosition.Left )
 			{
 				if ( this.verticalEdgePlacement_ == Legend.Placement.Outside ) 
 				{

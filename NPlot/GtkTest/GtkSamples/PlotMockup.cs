@@ -139,7 +139,7 @@ namespace GtkSamples
 
             Legend l = new Legend();
             l.NumberItemsVertically = 2;
-            l.AttachTo( NPlot.PlotSurface2D.XAxisPosition.Bottom, NPlot.PlotSurface2D.YAxisPosition.Left );
+            l.AttachTo( XAxisPosition.Bottom, YAxisPosition.Left );
             l.HorizontalEdgePlacement = NPlot.Legend.Placement.Outside;
             l.VerticalEdgePlacement = NPlot.Legend.Placement.Inside;
             l.XOffset = 5;

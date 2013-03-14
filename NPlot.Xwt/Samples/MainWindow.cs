@@ -21,19 +21,10 @@ namespace Samples
 		
 		public MainWindow ()
 		{
-			Title = "Xwt Demo Application";
-			Width = 500;
-			Height = 400;
+			Title = "NPlot.Xwt Samples Application";
+			Width = 600;
+			Height = 500;
 
-			try {
-				statusIcon = Application.CreateStatusIcon ();
-				statusIcon.Menu = new Menu ();
-				statusIcon.Menu.Items.Add (new MenuItem ("Test"));
-				statusIcon.Image = Image.FromResource (GetType (), "package.png");
-			} catch {
-				Console.WriteLine ("Status icon could not be shown");
-			}
-			
 			Menu menu = new Menu ();
 			
 			var file = new MenuItem ("File");
@@ -65,51 +56,21 @@ namespace Samples
 			samplesTree = new TreeView ();
 			samplesTree.Columns.Add ("Name", iconCol, nameCol);
 			
-			AddSample (null, "Boxes", typeof(Boxes));
-			AddSample (null, "Buttons", typeof(ButtonSample));
-			AddSample (null, "CheckBox", typeof(Checkboxes));
-			AddSample (null, "Clipboard", typeof(ClipboardSample));
-			AddSample (null, "ColorSelector", typeof(ColorSelectorSample));
-			AddSample (null, "ComboBox", typeof(ComboBoxes));
-//			AddSample (null, "Designer", typeof(Designer));
-			AddSample (null, "Drag & Drop", typeof(DragDrop));
-			
-			var n = AddSample (null, "Drawing", null);
-			AddSample (n, "Canvas with Widget (Linear)", typeof (CanvasWithWidget_Linear));
-			AddSample (n, "Canvas with Widget (Radial)", typeof (CanvasWithWidget_Radial));
-			AddSample (n, "Chart", typeof (ChartSample));
-			AddSample (n, "Colors", typeof(ColorsSample));
-			AddSample (n, "Figures", typeof(DrawingFigures));
-			AddSample (n, "Transformations", typeof(DrawingTransforms));
-			AddSample (n, "Images and Patterns", typeof(DrawingPatternsAndImages));
-			AddSample (n, "Text", typeof(DrawingText));
-			AddSample (n, "Partial Images", typeof (PartialImages));
-			AddSample (n, "Custom Drawn Image", typeof (ImageScaling));
+			//AddSample (null, "Boxes", typeof(Boxes));
+			//AddSample (null, "Buttons", typeof(ButtonSample));
+			//AddSample (null, "CheckBox", typeof(Checkboxes));
+			//AddSample (null, "Clipboard", typeof(ClipboardSample));
+			//AddSample (null, "ColorSelector", typeof(ColorSelectorSample));
+			//AddSample (null, "ComboBox", typeof(ComboBoxes));
 
-			AddSample (null, "Expander", typeof (ExpanderSample));
-			AddSample (null, "Progress bars", typeof(ProgressBarSample));
-			AddSample (null, "Frames", typeof(Frames));
-			AddSample (null, "Images", typeof(Images));
-			AddSample (null, "Labels", typeof(Labels));
-			AddSample (null, "ListBox", typeof(ListBoxSample));
-			AddSample (null, "LinkLabels", typeof(LinkLabels));
-			AddSample (null, "ListView", typeof(ListView1));
-			AddSample (null, "Markdown", typeof (MarkDownSample));
-			AddSample (null, "Menu", typeof(MenuSamples));
-			AddSample (null, "Notebook", typeof(NotebookSample));
-			AddSample (null, "Paneds", typeof(PanedViews));
-			AddSample (null, "Popover", typeof(PopoverSample));
-			AddSample (null, "ReliefFrame", typeof (ReliefFrameSample));
-			AddSample (null, "Screens", typeof (ScreensSample));
-			AddSample (null, "Scroll View", typeof(ScrollWindowSample));
-			AddSample (null, "Spinners", typeof (Spinners));
-			AddSample (null, "Tables", typeof (Tables));
-			AddSample (null, "Text Entry", typeof (TextEntries));
-			AddSample (null, "Tooltips", typeof(Tooltips));
-			AddSample (null, "TreeView", typeof(TreeViews));
-			AddSample (null, "WidgetEvents", typeof(WidgetEvents));
-			AddSample (null, "Windows", typeof(Windows));
-			
+			var plots = AddSample (null, "PlotSamples", null);
+			//AddSample (plots, "Chart", typeof (ChartSample));
+			//AddSample (plots, "Colors", typeof(ColorsSample));
+
+			var tests = AddSample (null, "Tests", null);
+			AddSample (tests, "AxisTests", typeof (AxisTests));
+			//AddSample (tests, "Colors", typeof(ColorsSample));
+
 			samplesTree.DataSource = store;
 			
 			box.Panel1.Content = samplesTree;

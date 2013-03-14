@@ -108,7 +108,7 @@ namespace NPlot.Xwt
 			else if (o is IConvertible) {
 				return System.Convert.ToDouble(o);
 			}
-			throw new NPlotException( "Invalid datatype" );
+			throw new NPlotException ("Invalid datatype");
 		}
 
 		/// <summary>

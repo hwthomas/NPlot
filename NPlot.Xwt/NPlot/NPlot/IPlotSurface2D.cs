@@ -62,7 +62,8 @@ namespace NPlot.Xwt
 		/// <param name="xp">the x-axis to add the plot against.</param>
 		/// <param name="yp">the y-axis to add the plot against.</param>
 		/// <param name="zOrder">The z-ordering when drawing (objects with lower numbers are drawn first)</param>
-		void Add (IDrawable p, NPlot.PlotSurface2D.XAxisPosition xp, NPlot.PlotSurface2D.YAxisPosition yp, int zOrder);
+
+		/// TODO: void Add (IDrawable p, NPlot.PlotSurface2D.XAxisPosition xp, NPlot.PlotSurface2D.YAxisPosition yp, int zOrder);
 
 		/// <summary>
 		/// Adds a drawable object to the plot surface. If the object is an IPlot, 
@@ -78,7 +79,8 @@ namespace NPlot.Xwt
 		/// <param name="p">the IDrawable object to add to the plot surface</param>
 		/// <param name="xax">the x-axis to add the plot against.</param>
 		/// <param name="yax">the y-axis to add the plot against.</param>
-		void Add(IDrawable p, NPlot.PlotSurface2D.XAxisPosition xp, NPlot.PlotSurface2D.YAxisPosition yp);
+
+		void Add (IDrawable p, XAxisPosition xp, YAxisPosition yp);
 
 		/// <summary>
 		/// Remove a drawable object from the plot surface.
@@ -95,7 +97,8 @@ namespace NPlot.Xwt
 		/// <summary>
 		/// Gets or Sets the legend to use with this plot surface.
 		/// </summary>
-		NPlot.Legend Legend { get; set; }
+
+		// TODO: NPlot.Legend Legend { get; set; }
 
 		/// <summary>
 		/// Setting this value determines the order (relative to IDrawables added to the plot surface)

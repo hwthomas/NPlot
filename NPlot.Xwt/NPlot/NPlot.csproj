@@ -45,15 +45,18 @@
     <Compile Include="NPlot\IPlotSurface2D.cs" />
     <Compile Include="NPlot\ISequencePlot.cs" />
     <Compile Include="NPlot\Axis.cs" />
+    <Compile Include="NPlot\LinearAxis.cs" />
+    <Compile Include="NPlot\PhysicalAxis.cs" />
+    <Compile Include="NPlot\PageAlignedPhysicalAxis.cs" />
+    <Compile Include="NPlot\AxesConstraint.cs" />
+    <Compile Include="NPlot\NPlotException.cs" />
+    <Compile Include="NPlot\AxisPosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="Xwt">
       <HintPath>..\..\..\controlsuite\CSPlot\CSPlot\bin\Debug\Xwt.dll</HintPath>
-    </Reference>
-    <Reference Include="NPlot">
-      <HintPath>..\..\..\NPlot HWT 2013\bin\debug\NPlot.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

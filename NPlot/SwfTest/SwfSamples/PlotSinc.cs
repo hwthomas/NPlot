@@ -52,7 +52,7 @@ namespace SwfSamples
             plotSurface.XAxis1.Label = "Position";
 
             Legend legend = new Legend();
-            legend.AttachTo( PlotSurface2D.XAxisPosition.Top, PlotSurface2D.YAxisPosition.Left );
+            legend.AttachTo( XAxisPosition.Top, YAxisPosition.Left );
             legend.VerticalEdgePlacement = Legend.Placement.Inside;
             legend.HorizontalEdgePlacement = Legend.Placement.Inside;
             legend.YOffset = 8;

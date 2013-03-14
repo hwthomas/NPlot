@@ -57,7 +57,7 @@ namespace GtkSamples
             lp1.OrdinateData = y;
             lp1.AbscissaData = x;
             lp1.Pen = new Pen( Color.Blue );
-            plotSurface.Add( lp1, PlotSurface2D.XAxisPosition.Bottom, PlotSurface2D.YAxisPosition.Right );
+            plotSurface.Add( lp1, XAxisPosition.Bottom, YAxisPosition.Right );
             LinearAxis lin = new LinearAxis( plotSurface.YAxis2 );
             lin.WorldMin = ymin;
             lin.WorldMax = ymax;

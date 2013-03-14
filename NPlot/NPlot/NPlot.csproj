@@ -95,6 +95,7 @@
     <Compile Include="Interactions\InteractivePlotSurface2D.cs" />
     <Compile Include="Interactions\VerticalGuideline.cs" />
     <Compile Include="Interactions\HorizontalGuideline.cs" />
+    <Compile Include="NPlot\AxisPosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

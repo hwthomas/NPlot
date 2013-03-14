@@ -45,40 +45,6 @@ namespace NPlot
 	public class PlotSurface2D : IPlotSurface2D
 	{
 
-		/// <summary>
-		/// Possible positions of the X axis.
-		/// </summary>
-		public enum XAxisPosition
-		{
-			/// <summary>
-			/// X axis is on the top.
-			/// </summary>
-			Top = 1,
-			//Center = 2,
-			/// <summary>
-			/// X axis is on the bottom.
-			/// </summary>
-			Bottom = 3,
-		}
-
-
-		/// <summary>
-		/// Possible positions of the Y axis.
-		/// </summary>
-		public enum YAxisPosition
-		{
-			/// <summary>
-			/// Y axis on the left.
-			/// </summary>
-			Left = 1,
-			// Center
-			/// <summary>
-			/// Y axis on the right.
-			/// </summary>
-			Right = 3,
-		}
-
-
 		private System.Drawing.StringFormat titleDrawFormat_;
 
 		private Font titleFont_;

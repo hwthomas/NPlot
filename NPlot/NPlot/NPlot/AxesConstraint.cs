@@ -1,33 +1,33 @@
-/*
- * NPlot - A charting library for .NET
- * 
- * AxesConstraint.cs
- * Copyright (C) 2003-2006 Matt Howlett and others.
- * All rights reserved.
- * 
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
- * 
- * 1. Redistributions of source code must retain the above copyright notice, this
- *	  list of conditions and the following disclaimer.
- * 2. Redistributions in binary form must reproduce the above copyright notice,
- *	  this list of conditions and the following disclaimer in the documentation
- *	  and/or other materials provided with the distribution.
- * 3. Neither the name of NPlot nor the names of its contributors may
- *	  be used to endorse or promote products derived from this software without
- *	  specific prior written permission.
- * 
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
- * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
- * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
- * IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
- * INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
- * BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
- * DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
- * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
- * OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
- * OF THE POSSIBILITY OF SUCH DAMAGE.
- */
+//
+// NPlot - A charting library for .NET
+// 
+// AxesConstraint.cs
+// Copyright (C) 2003-2006 Matt Howlett and others.
+// All rights reserved.
+// 
+// Redistribution and use in source and binary forms, with or without modification,
+// are permitted provided that the following conditions are met:
+// 
+// 1. Redistributions of source code must retain the above copyright notice, this
+//	  list of conditions and the following disclaimer.
+// 2. Redistributions in binary form must reproduce the above copyright notice,
+//	  this list of conditions and the following disclaimer in the documentation
+//	  and/or other materials provided with the distribution.
+// 3. Neither the name of NPlot nor the names of its contributors may
+//	  be used to endorse or promote products derived from this software without
+//	  specific prior written permission.
+// 
+// THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+// ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+// IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+// INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+// BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+// DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+// LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+// OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+// OF THE POSSIBILITY OF SUCH DAMAGE.
+//
 
 using System;
 using System.Drawing;
@@ -61,7 +61,7 @@ namespace NPlot
 			/// constraint.
 			/// </summary>
 			/// <param name="p">The world pixel length</param>
-			public XPixelWorldLength( double p )
+			public XPixelWorldLength ( double p )
 			{
 				this.pWorldLength_ = p;
 			}
@@ -75,7 +75,7 @@ namespace NPlot
 			/// <param name="holdFixedY">The position of this y-axis will be 
 			/// held constant. The other y-axis will be moved in order to 
 			/// force the constraint.</param>
-			public XPixelWorldLength( double p, PlotSurface2D.YAxisPosition holdFixedY )
+			public XPixelWorldLength (double p, YAxisPosition holdFixedY )
 			{
 				this.pWorldLength_ = p;
 				this.holdFixedY_ = holdFixedY;
@@ -100,7 +100,7 @@ namespace NPlot
 				int changeRight = delta / 2;
 				if (this.holdFixedY_ != null)
 				{
-					if ( (PlotSurface2D.YAxisPosition)this.holdFixedY_ == PlotSurface2D.YAxisPosition.Left )
+					if ( (YAxisPosition)this.holdFixedY_ == YAxisPosition.Left )
 					{
 						changeLeft = 0;
 						changeRight = delta;
@@ -155,7 +155,7 @@ namespace NPlot
 			/// </summary>
 			/// <param name="p">The world pixel length</param>
 			/// <param name="holdFixedX">The position of this x-axis will be held constant. The other x-axis will be moved in order to force the constraint.</param>
-			public YPixelWorldLength( double p, PlotSurface2D.XAxisPosition holdFixedX )
+			public YPixelWorldLength( double p, XAxisPosition holdFixedX )
 			{
 				this.pWorldLength_ = p;
 				this.holdFixedX_ = holdFixedX;
@@ -182,7 +182,7 @@ namespace NPlot
 				int changeTop = -delta / 2;
 				if (this.holdFixedX_ != null)
 				{
-					if ( (PlotSurface2D.XAxisPosition)this.holdFixedX_ == PlotSurface2D.XAxisPosition.Bottom )
+					if ( (XAxisPosition)holdFixedX_ == XAxisPosition.Bottom)
 					{
 						changeBottom = 0;
 						changeTop = -delta;
@@ -213,7 +213,7 @@ namespace NPlot
 		/// specific physical position. The position of the axis opposite is held 
 		/// constant.
 		/// </summary>
-		public class AxisPosition : AxesConstraint
+		public class Position : AxesConstraint
 		{
 			private object xAxisPosition_;
 			private object yAxisPosition_;
@@ -226,7 +226,7 @@ namespace NPlot
 			/// </summary>
 			/// <param name="axis">The x-axis for which the y position is to be specified.</param>
 			/// <param name="yPosition">The [physical] y position of the axis.</param>
-			public AxisPosition( PlotSurface2D.XAxisPosition axis, int yPosition )
+			public Position (XAxisPosition axis, int yPosition)
 			{
 				position_ = yPosition;
 				xAxisPosition_ = axis;
@@ -239,7 +239,7 @@ namespace NPlot
 			/// </summary>
 			/// <param name="axis">The y-axis for which the x position is to be specified.</param>
 			/// <param name="xPosition">The [physical] x position of the axis.</param>
-			public AxisPosition( PlotSurface2D.YAxisPosition axis, int xPosition )
+			public Position (YAxisPosition axis, int xPosition)
 			{
 				position_ = xPosition;
 				yAxisPosition_ = axis;
@@ -260,7 +260,7 @@ namespace NPlot
 				if ( xAxisPosition_ != null )
 				{
 
-					if ((PlotSurface2D.XAxisPosition)xAxisPosition_ == PlotSurface2D.XAxisPosition.Bottom)
+					if ((XAxisPosition)xAxisPosition_ == XAxisPosition.Bottom)
 					{
 						pXAxis1.PhysicalMin = new Point( pXAxis1.PhysicalMin.X, position_ );
 						pXAxis1.PhysicalMax = new Point( pXAxis1.PhysicalMax.X, position_ );
@@ -281,7 +281,7 @@ namespace NPlot
 				else if (yAxisPosition_ != null )
 				{
 
-					if ((PlotSurface2D.YAxisPosition)yAxisPosition_ == PlotSurface2D.YAxisPosition.Left)
+					if ((YAxisPosition)yAxisPosition_ == YAxisPosition.Left)
 					{
 						pYAxis1.PhysicalMin = new Point( position_, pYAxis1.PhysicalMin.Y );
 						pYAxis1.PhysicalMax = new Point( position_, pYAxis1.PhysicalMax.Y );
@@ -341,7 +341,7 @@ namespace NPlot
 			/// When adjusting the position of axes, the specified axis will never
 			/// be moved.
 			/// </param>
-			public AspectRatio( double a, PlotSurface2D.XAxisPosition holdFixedX )
+			public AspectRatio( double a, XAxisPosition holdFixedX )
 			{
 				this.a_ = a;
 				this.holdFixedX_ = holdFixedX;
@@ -355,7 +355,7 @@ namespace NPlot
 			/// When adjusting the position of axes, the 
 			/// specified axis will never be moved.
 			/// </param>
-			public AspectRatio( double a, PlotSurface2D.YAxisPosition holdFixedY )
+			public AspectRatio( double a, YAxisPosition holdFixedY )
 			{
 				this.a_ = a;
 				this.holdFixedY_ = holdFixedY;
@@ -367,10 +367,7 @@ namespace NPlot
 			/// <param name="a">Aspect Ratio</param>
 			/// <param name="holdFixedX">When adjusting the position of axes, the specified axis will never be moved.</param>
 			/// <param name="holdFixedY">When adjusting the position of axes, the specified axis will never be moved.</param>
-			public AspectRatio( 
-				double a,
-				PlotSurface2D.XAxisPosition holdFixedX, 
-				PlotSurface2D.YAxisPosition holdFixedY )
+			public AspectRatio (double a, XAxisPosition holdFixedX, YAxisPosition holdFixedY)
 			{
 				this.a_ = a;
 				this.holdFixedX_ = holdFixedX;
@@ -415,7 +412,7 @@ namespace NPlot
 					int changeTop = changeInHeight/2;
 					if (this.holdFixedX_ != null)
 					{
-						if ( (PlotSurface2D.XAxisPosition)this.holdFixedX_ == PlotSurface2D.XAxisPosition.Bottom )
+						if ( (XAxisPosition)this.holdFixedX_ == XAxisPosition.Bottom )
 						{
 							changeBottom = 0;
 							changeTop = changeInHeight;
@@ -453,7 +450,7 @@ namespace NPlot
 					int changeRight = changeInWidth / 2;
 					if (this.holdFixedY_ != null)
 					{
-						if ( (PlotSurface2D.YAxisPosition)this.holdFixedY_ == PlotSurface2D.YAxisPosition.Left )
+						if ( (YAxisPosition)this.holdFixedY_ == YAxisPosition.Left )
 						{
 							changeLeft = 0;
 							changeRight = changeInWidth;

@@ -73,7 +73,7 @@ namespace SwfSamples
             lp1.OrdinateData = y;
             lp1.AbscissaData = x;
             lp1.Pen = new Pen( Color.Blue );
-            plotSurface.Add( lp1, PlotSurface2D.XAxisPosition.Top, PlotSurface2D.YAxisPosition.Right );
+            plotSurface.Add( lp1, XAxisPosition.Top, YAxisPosition.Right );
             // axes
             // x axis (lin)
             LinearAxis linx = (LinearAxis) plotSurface.XAxis2;

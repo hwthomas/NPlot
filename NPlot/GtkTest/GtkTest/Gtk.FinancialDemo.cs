@@ -93,7 +93,7 @@ namespace NPlotDemo
             costPS.AddInteraction(new NPlot.PlotDrag(true,true));
             costPS.AddInteraction(new NPlot.AxisDrag());
             costPS.InteractionOccurred += new NPlot.InteractivePlotSurface2D.InteractionHandler(costPS_InteractionOccurred);
-            costPS.AddAxesConstraint(new AxesConstraint.AxisPosition(PlotSurface2D.YAxisPosition.Left, 60));
+            costPS.AddAxesConstraint(new AxesConstraint.Position(YAxisPosition.Left, 60));
 
             costPS.Refresh();
             
@@ -110,7 +110,7 @@ namespace NPlotDemo
             volumePS.YAxis1.LabelOffset = 40;
             volumePS.SurfacePadding = 5;
             
-            volumePS.AddAxesConstraint(new AxesConstraint.AxisPosition(PlotSurface2D.YAxisPosition.Left, 60));
+            volumePS.AddAxesConstraint(new AxesConstraint.Position(YAxisPosition.Left, 60));
             volumePS.AddInteraction(new NPlot.AxisDrag());
             volumePS.AddInteraction(new NPlot.PlotDrag(true,false));
             volumePS.InteractionOccurred += new NPlot.InteractivePlotSurface2D.InteractionHandler(volumePS_InteractionOccurred);

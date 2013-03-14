@@ -67,7 +67,7 @@ namespace GtkSamples
             pp.OrdinateData = y;
             pp.AbscissaData = x;
             pp.Marker = new Marker(Marker.MarkerType.FilledCircle ,4, new Pen(Color.Blue));
-            plotSurface.Add(pp, PlotSurface2D.XAxisPosition.Bottom, PlotSurface2D.YAxisPosition.Left);
+            plotSurface.Add(pp, XAxisPosition.Bottom, YAxisPosition.Left);
 
             // set axes
             LinearAxis lx = (LinearAxis) plotSurface.XAxis1;
@@ -89,7 +89,7 @@ namespace GtkSamples
             LinePlot lp = new LinePlot();
             lp.OrdinateData = yeli;
             lp.AbscissaData = xeli;
-            plotSurface.Add(lp, PlotSurface2D.XAxisPosition.Bottom, PlotSurface2D.YAxisPosition.Left);
+            plotSurface.Add(lp, XAxisPosition.Bottom, YAxisPosition.Left);
             lp.Pen = new Pen( Color.Red, 2.0f );
             // Draws the ellipse containing 100% of the particles
             // for a uniform distribution in 2D the area is 4 times the rms
@@ -100,7 +100,7 @@ namespace GtkSamples
             LinePlot lp2 = new LinePlot();
             lp2.OrdinateData = yeli2;
             lp2.AbscissaData = xeli2;
-            plotSurface.Add( lp2, PlotSurface2D.XAxisPosition.Bottom, PlotSurface2D.YAxisPosition.Left );
+            plotSurface.Add( lp2, XAxisPosition.Bottom, YAxisPosition.Left );
             Pen p2 = new Pen( Color.Red, 2.0f );
             float [] pattern = { 5.0f, 40.0f };
             p2.DashPattern = pattern;
@@ -131,7 +131,7 @@ namespace GtkSamples
             sp.OrdinateData = xh;
             sp.AbscissaData = new StartStep( min, range / Nbin );
             sp.Center = true;
-            plotSurface.Add(sp, PlotSurface2D.XAxisPosition.Bottom, PlotSurface2D.YAxisPosition.Right);
+            plotSurface.Add(sp, XAxisPosition.Bottom, YAxisPosition.Right);
             // axis formatting
             LinearAxis ly2 = (LinearAxis)plotSurface.YAxis2;
             ly2.WorldMin = 0.0f;

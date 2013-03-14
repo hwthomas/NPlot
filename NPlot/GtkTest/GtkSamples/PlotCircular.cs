@@ -44,7 +44,7 @@ namespace GtkSamples
             plotSurface.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
 
             plotSurface.Legend = new Legend();
-            plotSurface.Legend.AttachTo( PlotSurface2D.XAxisPosition.Bottom, PlotSurface2D.YAxisPosition.Right);
+            plotSurface.Legend.AttachTo( XAxisPosition.Bottom, YAxisPosition.Right);
             plotSurface.Legend.HorizontalEdgePlacement = Legend.Placement.Inside;
             plotSurface.Legend.VerticalEdgePlacement = Legend.Placement.Inside;
             plotSurface.Legend.XOffset = -10;

@@ -38,8 +38,6 @@ using System.Collections;
 using Xwt;
 using Xwt.Drawing;
 
-using NPlot;
-
 namespace NPlot.Xwt
 {
 	/// <summary>

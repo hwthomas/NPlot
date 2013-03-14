@@ -44,7 +44,7 @@ namespace GtkSamples
 
             plotSurface.AddInteraction (new PlotZoom());
             plotSurface.AddInteraction (new KeyActions());
-            plotSurface.AddAxesConstraint (new AxesConstraint.AspectRatio( 1.0, PlotSurface2D.XAxisPosition.Top, PlotSurface2D.YAxisPosition.Left ) );
+            plotSurface.AddAxesConstraint (new AxesConstraint.AspectRatio( 1.0, XAxisPosition.Top, YAxisPosition.Left ) );
             
             plotSurface.XAxis1.WorldMin = plotSurface.YAxis1.WorldMin;
             plotSurface.XAxis1.WorldMax = plotSurface.YAxis1.WorldMax;

@@ -104,7 +104,7 @@ namespace NPlot.Bitmap
 		/// <param name="p">the IDrawable object to add to the plot surface</param>
 		/// <param name="xp">the x-axis to add the plot against.</param>
 		/// <param name="yp">the y-axis to add the plot against.</param>
-		public void Add( IDrawable p, NPlot.PlotSurface2D.XAxisPosition xp, NPlot.PlotSurface2D.YAxisPosition yp )
+		public void Add( IDrawable p, XAxisPosition xp, YAxisPosition yp )
 		{
 			ps_.Add( p, xp, yp );
 		}
@@ -130,8 +130,8 @@ namespace NPlot.Bitmap
 		/// <param name="xp">the x-axis to add the plot against.</param>
 		/// <param name="yp">the y-axis to add the plot against.</param>
 		/// <param name="zOrder">The z-ordering when drawing (objects with lower numbers are drawn first)</param>
-		public void Add( IDrawable p, NPlot.PlotSurface2D.XAxisPosition xp,
-			NPlot.PlotSurface2D.YAxisPosition yp, int zOrder )
+		public void Add( IDrawable p, XAxisPosition xp,
+			YAxisPosition yp, int zOrder )
 		{
 			ps_.Add( p, xp, yp , zOrder);
 		}
