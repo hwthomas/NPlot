@@ -31,7 +31,7 @@
 //
 using System;
 using System.Drawing;
-//using GLib;			// Omit timeout for now
+//using GLib;			// Omit timeout for now clear focus on MouseMove
 
 namespace NPlot
 {

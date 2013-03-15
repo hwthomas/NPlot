@@ -50,9 +50,9 @@ namespace NPlot.Xwt
 		public LegendBase()
 		{
 			Font = Font.FromName ("Arial 10px");
-			BackgroundColor = Color.White;
-			BorderColor = Color.Black;
-			TextColor = Color.Black;
+			BackgroundColor = Colors.White;
+			BorderColor = Colors.Black;
+			TextColor = Colors.Black;
 			borderStyle_ = BorderType.Shadow;
 			autoScaleText_ = false;
 		}
@@ -95,12 +95,17 @@ namespace NPlot.Xwt
 				textFont = font_;
 			}
 
+			ctx.Save ();
+
 			// determine max width and max height of label strings and
 			// count the labels. 
 			int labelCount = 0;
 			int unnamedCount = 0;
 			double maxHt = 0;
 			double maxWd = 0;
+			TextLayout layout = new TextLayout (ctx);
+			layout.Font = textFont;
+
 			for (int i=0; i<plots.Count; ++i) {
 				if (!(plots[i] is IPlot)) {
 					continue;
@@ -116,7 +121,8 @@ namespace NPlot.Xwt
 					unnamedCount += 1;
 					label = "Series " + unnamedCount.ToString();
 				}
-				Size labelSize = g.MeasureString( label, textFont );
+				layout.Text = label;
+				Size labelSize = layout.GetSize ();
 				if (labelSize.Height > maxHt) {
 					maxHt = labelSize.Height;
 				}
@@ -164,26 +170,35 @@ namespace NPlot.Xwt
 					heightInItemCount += 1;
 			}
 
-			int lineLength = 20;
-			int hSpacing = (int)(5.0f * scale);
-			int vSpacing = (int)(3.0f * scale);
-			int boxWidth = (int) ((float)widthInItemCount * (lineLength + maxWd + hSpacing * 2.0f ) + hSpacing); 
-			int boxHeight = (int)((float)heightInItemCount * (maxHt + vSpacing) + vSpacing);
+			double lineLength = 20;
+			double hSpacing = (int)(5.0f * scale);
+			double vSpacing = (int)(3.0f * scale);
+			double boxWidth = (int) ((float)widthInItemCount * (lineLength + maxWd + hSpacing * 2.0f ) + hSpacing); 
+			double boxHeight = (int)((float)heightInItemCount * (maxHt + vSpacing) + vSpacing);
 
-			int totalWidth = boxWidth;
-			int totalHeight = boxHeight;
+			double totalWidth = boxWidth;
+			double totalHeight = boxHeight;
 
 			// draw box around the legend.
-
 			if (BorderStyle == BorderType.Line) {
-				g.FillRectangle( new SolidBrush( this.bgColor_ ), position.X, position.Y, boxWidth, boxHeight );
-				g.DrawRectangle( new Pen( this.borderColor_ ), position.X, position.Y, boxWidth, boxHeight );
+				ctx.SetColor (bgColor_);
+				ctx.Rectangle (position.X, position.Y, boxWidth, boxHeight);
+				ctx.FillPreserve ();
+				ctx.SetColor (borderColor_);
+				ctx.Stroke ();
 			}
 			else if (BorderStyle == BorderType.Shadow) {
-				int offset = (int)(4.0f * scale);
-				g.FillRectangle( new SolidBrush( Color.FromArgb(128, Color.Gray) ), position.X+offset, position.Y+offset, boxWidth, boxHeight );
-				g.FillRectangle( new SolidBrush( this.bgColor_ ), position.X, position.Y, boxWidth, boxHeight );
-				g.DrawRectangle( new Pen( this.borderColor_ ), position.X, position.Y, boxWidth, boxHeight );
+				double offset = (4.0 * scale);
+				Color shade = Colors.Gray;
+				shade.Alpha = 0.5;
+				ctx.SetColor (Colors.Gray);
+				ctx.Rectangle (position.X+offset, position.Y+offset, boxWidth, boxHeight);
+				ctx.Fill ();
+				ctx.SetColor (bgColor_);
+				ctx.Rectangle (position.X, position.Y, boxWidth, boxHeight);
+				ctx.FillPreserve ();
+				ctx.SetColor (borderColor_);
+				ctx.Stroke ();
 
 				totalWidth += offset;
 				totalHeight += offset;
@@ -239,11 +254,12 @@ namespace NPlot.Xwt
 					label = "Series " + unnamedCount.ToString();
 				}
 
-				g.DrawString ( label, textFont,
-					new SolidBrush( this.textColor_ ), textXPos, textYPos );
+				layout.Text = label;
+				ctx.DrawTextLayout (layout, textXPos, textYPos);
 
 				++labelCount;
 			}
+			ctx.Restore ();
 			return new Rectangle (position.X, position.Y, totalWidth, totalHeight);
 		}
 
@@ -353,7 +369,7 @@ namespace NPlot.Xwt
 				borderStyle_ = value;
 			}
 		}
-		private NPlot.Legend.BorderType borderStyle_;
+		private Legend.BorderType borderStyle_;
 
 
 		/// <summary>

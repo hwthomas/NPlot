@@ -108,7 +108,7 @@ namespace NPlot.Xwt
 
 		private void Init() 
 		{
-			//this.NumberFormat = "{0:g5}";
+			NumberFormat = "{0:g5}";
 		}
 
 
@@ -150,7 +150,7 @@ namespace NPlot.Xwt
 					}
 
 					StringBuilder label = new StringBuilder();
-					//label.AppendFormat(this.NumberFormat, labelNumber);
+					label.AppendFormat (NumberFormat, labelNumber);
 
 					DrawTick (ctx, ((double)(largeTickPositions[i])/scale_- offset_), 
 						LargeTickSize, label.ToString(),
@@ -277,27 +277,23 @@ namespace NPlot.Xwt
 			// (3) determine starting position.
 			double first = 0.0f;
 
-			if (!double.IsNaN(largeTickValue_)) 
-			{
+			if (!double.IsNaN(largeTickValue_)) {
 				// this works for both case when largTickValue_ lt or gt adjustedMin.
 				first = largeTickValue_ + (Math.Ceiling((adjustedMin-largeTickValue_)/tickDist))*tickDist;
 			}
 			else
 			{
-				if( adjustedMin > 0.0 )
-				{
-					double nToFirst = Math.Floor(adjustedMin / tickDist) + 1.0f;
+				if (adjustedMin > 0.0) {
+					double nToFirst = Math.Floor(adjustedMin / tickDist) + 1.0;
 					first = nToFirst * tickDist;
 				}
-				else
-				{
-					double nToFirst = Math.Floor(-adjustedMin/tickDist) - 1.0f;
+				else {
+					double nToFirst = Math.Floor(-adjustedMin/tickDist) - 1.0;
 					first = -nToFirst * tickDist;
 				}
 
 				// could miss one, if first is just below zero.
-				if ((first - tickDist) >= adjustedMin)
-				{
+				if ((first - tickDist) >= adjustedMin) {
 					first -= tickDist;
 				}
 			}
@@ -310,10 +306,7 @@ namespace NPlot.Xwt
 
 			double position = first;
 			int safetyCount = 0;
-			while (
-				(position <= adjustedMax) && 
-				(++safetyCount < 5000) )
-			{
+			while ((position <= adjustedMax) && (++safetyCount < 5000)) {
 				largeTickPositions.Add( position );
 				position += tickDist;
 			}
@@ -440,26 +433,21 @@ namespace NPlot.Xwt
 		/// <returns>the number of small ticks to place between large ticks.</returns>
 		private int DetermineNumberSmallTicks( double bigTickDist )
 		{
-			if (this.numberSmallTicks_ != null)
-			{
+			if (this.numberSmallTicks_ != null) {
 				return (int)this.numberSmallTicks_+1;
 			}
 
-			if (this.SmallTickCounts.Length != this.Mantissas.Length)
-			{
+			if (this.SmallTickCounts.Length != this.Mantissas.Length) {
 				throw new NPlotException( "Mantissa.Length != SmallTickCounts.Length" );
 			}
 
-			if (bigTickDist > 0.0f)
-			{
+			if (bigTickDist > 0.0) {
 
 				double exponent = Math.Floor( Math.Log10( bigTickDist ) );
 				double mantissa = Math.Pow( 10.0, Math.Log10( bigTickDist ) - exponent );
 
-				for (int i=0; i<Mantissas.Length; ++i)
-				{
-					if ( Math.Abs(mantissa-Mantissas[i]) < 0.001 )
-					{
+				for (int i=0; i<Mantissas.Length; ++i) {
+					if (Math.Abs(mantissa-Mantissas[i]) < 0.001) {
 						return SmallTickCounts[i]+1;
 					}
 				}
@@ -475,14 +463,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public double LargeTickStep
 		{
-			set
-			{
-				largeTickStep_ = value;
-			}
-			get
-			{
-				return largeTickStep_;
-			}
+			get { return largeTickStep_; }
+			set { largeTickStep_ = value; }
 		}
 		/// <summary>
 		/// If set !NaN, gives the distance between large ticks.

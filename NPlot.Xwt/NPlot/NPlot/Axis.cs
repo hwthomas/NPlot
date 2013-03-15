@@ -472,7 +472,9 @@ namespace NPlot.Xwt
 			Rectangle tBoundingBox;
 			Point tLabelOffset;
 
-			DrawTick (null, WorldMax, LargeTickSize, 
+			ImageBuilder ib = new ImageBuilder (1,1);
+			Context ctx = ib.Context;
+			DrawTick (ctx, WorldMax, LargeTickSize, 
 				"",
 				new Point (0,0),
 				physicalMin, physicalMax,
@@ -928,9 +930,8 @@ namespace NPlot.Xwt
 			Point tickVector = new Point (TickScale * size * x1, TickScale * size * y1);
 
 			if (TicksCrossAxis) {
-				tickStart = new Point (
-					tickStart.X - tickVector.X / 2,
-					tickStart.Y - tickVector.Y / 2);
+				tickStart.X -= tickVector.X / 2;
+				tickStart.Y -= tickVector.Y / 2;
 			}
 
 			// and the end point [point off axis] of tick mark.
@@ -940,8 +941,8 @@ namespace NPlot.Xwt
 			ctx.Save ();
 			ctx.SetLineWidth (1);
 			ctx.SetColor (lineColor_);
-			ctx.MoveTo (tickStart.X, tickStart.Y);
-			ctx.LineTo (tickEnd.X, tickEnd.Y);
+			ctx.MoveTo (tickStart.X+0.5, tickStart.Y+0.5);
+			ctx.LineTo (tickEnd.X+0.5, tickEnd.Y+0.5);
 			ctx.Stroke ();
 
 			// calculate bounds of tick.
@@ -1115,8 +1116,8 @@ namespace NPlot.Xwt
 				ctx.Save ();
 				ctx.SetLineWidth (1);
 				ctx.SetColor (lineColor_);
-				ctx.MoveTo (physicalMin.X, physicalMin.Y);
-				ctx.LineTo (physicalMax.X, physicalMax.Y);
+				ctx.MoveTo (physicalMin.X+0.5, physicalMin.Y+0.5);
+				ctx.LineTo (physicalMax.X+0.5, physicalMax.Y+0.5);
 				ctx.Stroke ();
 				ctx.Restore ();
 
@@ -1184,7 +1185,7 @@ namespace NPlot.Xwt
 		/// <param name="physicalMax">The physical position corresponding to the world maximum of the axis.</param>
 		/// <param name="labelOffset">is set to a suitable offset from the axis to draw the axis label. In this base method, set to null.</param>
 		/// <param name="boundingBox">is set to the smallest box that bounds the ticks and the tick text. In this base method, set to null.</param>
-		protected virtual void DrawTicks( 
+		protected virtual void DrawTicks ( 
 			Context ctx, 
 			Point physicalMin, 
 			Point physicalMax, 

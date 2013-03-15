@@ -58,9 +58,9 @@ namespace NPlot.Xwt
 		}
 
 		private double xOffset_;
-		private double Offset_;
-		private PlotSurface2D.XAxisPosition xAttach_;
-		private PlotSurface2D.YAxisPosition yAttach_;
+		private double yOffset_;
+		private XAxisPosition xAttach_;
+		private YAxisPosition yAttach_;
 		private Placement horizontalEdgePlacement_;
 		private Placement verticalEdgePlacement_;
 		private bool neverShiftAxes_;
@@ -79,7 +79,7 @@ namespace NPlot.Xwt
 		/// <summary>
 		/// Offset from the chosen Y-Axis. TODO: better description.
 		/// </summary>
-		public int XOffset
+		public double XOffset
 		{
 			get { return xOffset_; }
 			set { xOffset_ = value; }
@@ -89,7 +89,7 @@ namespace NPlot.Xwt
 		/// <summary>
 		/// Offset from the X-Axis. TODO: better description.
 		/// </summary>
-		public int YOffset
+		public double YOffset
 		{
 			get { return yOffset_; }
 			set { yOffset_ = value; }
@@ -125,7 +125,7 @@ namespace NPlot.Xwt
 		/// </summary>
 		/// <param name="xa">Specify which horizontal axis the legend should be attached to.</param>
 		/// <param name="ya">Specify which vertical axis the legend should be attached to.</param>
-		public void AttachTo (PlotSurface2D.XAxisPosition xa, PlotSurface2D.YAxisPosition ya)
+		public void AttachTo (XAxisPosition xa, YAxisPosition ya)
 		{
 			xAttach_ = xa;
 			yAttach_ = ya; 
@@ -137,8 +137,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public Legend()
 		{
-			xAttach_ = PlotSurface2D.XAxisPosition.Top;
-			yAttach_ = PlotSurface2D.YAxisPosition.Right;
+			xAttach_ = XAxisPosition.Top;
+			yAttach_ = YAxisPosition.Right;
 			xOffset_ = 10;
 			yOffset_ = 1;
 			verticalEdgePlacement_ = Placement.Outside;
@@ -181,7 +181,7 @@ namespace NPlot.Xwt
 			// now determine if legend should change any of these (legend should be fully 
 			// visible at all times), and draw legend.
 
-			Rectangle legendWidthHeight = this.GetBoundingBox( new Point(0,0), plots, scale );
+			Rectangle legendWidthHeight = GetBoundingBox (new Point(0,0), plots, scale);
 
 			if (legendWidthHeight.Width > bounds.Width) {
 				legendWidthHeight.Width = bounds.Width;
@@ -192,7 +192,7 @@ namespace NPlot.Xwt
 			// y
 			position.Y = this.yOffset_;
 			
-			if (xAttach_ == PlotSurface2D.XAxisPosition.Bottom) {
+			if (xAttach_ == XAxisPosition.Bottom) {
 				position.Y += pYAxis1.PhysicalMin.Y;
 				if (horizontalEdgePlacement_ == Legend.Placement.Inside) {
 					position.Y -= legendWidthHeight.Height;
@@ -208,7 +208,7 @@ namespace NPlot.Xwt
 			// x
 			position.X = xOffset_;
 		
-			if (yAttach_ == PlotSurface2D.YAxisPosition.Left) {
+			if (yAttach_ == YAxisPosition.Left) {
 				if (verticalEdgePlacement_ == Legend.Placement.Outside)  {
 					position.X -= legendWidthHeight.Width;
 				}

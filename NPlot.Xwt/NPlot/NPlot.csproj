@@ -51,6 +51,8 @@
     <Compile Include="NPlot\AxesConstraint.cs" />
     <Compile Include="NPlot\NPlotException.cs" />
     <Compile Include="NPlot\AxisPosition.cs" />
+    <Compile Include="NPlot\LegendBase.cs" />
+    <Compile Include="NPlot\Legend.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

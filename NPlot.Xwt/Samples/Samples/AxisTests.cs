@@ -80,10 +80,10 @@ namespace Samples
 			a.SmallTickSize = 2;
 			a.Draw (ctx, new Point(150,10), new Point(150,200), out boundingBox);
 
-			a.LineColor = Colors.Cyan;
+			a.LineColor = Colors.DarkBlue;
 			a.Draw (ctx, new Point(180,10), new Point(180,200), out boundingBox);
 
-			a.TickTextColor= Colors.Cyan;
+			a.TickTextColor= Colors.DarkBlue;
 			a.Draw (ctx, new Point(210,10), new Point(210,200), out boundingBox);
 
 			a.TickTextColor = Colors.Black;
