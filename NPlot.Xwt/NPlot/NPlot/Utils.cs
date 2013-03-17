@@ -287,12 +287,13 @@ namespace NPlot.Xwt
 		{
 			Image tiled;
 			using (ImageBuilder ib = new ImageBuilder ((int)final.Width, (int)final.Height)) {
-				Context ctx = ib.Context;
-				double w = tile.Size.Width;
-				double h = tile.Size.Height;
-				for (double x = 0; x < final.Width; x += w) {
-					for (double y = 0; y < final.Height; y += h) {
-						ctx.DrawImage (tile, x, y);
+				using (Context ctx = ib.Context) {
+					double w = tile.Size.Width;
+					double h = tile.Size.Height;
+					for (double x = 0; x < final.Width; x += w) {
+						for (double y = 0; y < final.Height; y += h) {
+							ctx.DrawImage (tile, x, y);
+						}
 					}
 				}
 				tiled = ib.ToImage ();

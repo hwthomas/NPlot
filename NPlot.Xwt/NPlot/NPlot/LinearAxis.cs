@@ -478,14 +478,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public double LargeTickValue
 		{
-			set
-			{
-				largeTickValue_ = value;
-			}
-			get
-			{
-				return largeTickValue_;
-			}
+			get { return largeTickValue_; }
+			set { largeTickValue_ = value; }
 		}
 		private double largeTickValue_ = double.NaN;
 
@@ -495,15 +489,9 @@ namespace NPlot.Xwt
 		/// </summary>
 		public int NumberOfSmallTicks
 		{
-			set
-			{
-				numberSmallTicks_ = value;
-			}
-			get
-			{
-				// TODO: something better here.
-				return (int)numberSmallTicks_;
-			}
+			// TODO: something better here.
+			get { return (int)numberSmallTicks_; }
+			set { numberSmallTicks_ = value; }
 		}
 		private object numberSmallTicks_ = null;
 
@@ -515,15 +503,10 @@ namespace NPlot.Xwt
 		/// </summary>
 		public double Scale
 		{
-			get
-			{
-				return scale_;
-			}
-			set
-			{
-				scale_ = value;
-			}
+			get { return scale_; }
+			set { scale_ = value; }
 		}
+		private double scale_ = 1.0;
 
 
 		/// <summary>
@@ -533,15 +516,10 @@ namespace NPlot.Xwt
 		/// </summary>
 		public double Offset
 		{
-			get
-			{
-				return offset_;
-			}
-			set
-			{
-				offset_ = value;
-			}
+			get { return offset_; }
+			set { offset_ = value; }
 		}
+		private double offset_ = 0.0;
 
 
 		/// <summary>
@@ -569,9 +547,5 @@ namespace NPlot.Xwt
 		/// </summary>
 		public int[] SmallTickCounts = {4, 1, 4};
 
-
-		private double offset_ = 0.0;
-
-		private double scale_ = 1.0;
 	}
 }

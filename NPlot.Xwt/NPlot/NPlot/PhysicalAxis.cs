@@ -86,8 +86,9 @@ namespace NPlot.Xwt
 		{
 			Rectangle bounds;
 			using (ImageBuilder ib = new ImageBuilder (1,1)) {
-				Context ctx = ib.Context;
-				Draw (ctx, out bounds);
+				using (Context ctx = ib.Context) {
+					Draw (ctx, out bounds);
+				}
 			}
 			return bounds;
 		}

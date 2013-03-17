@@ -49,7 +49,6 @@ namespace Samples
 			InitializeComponent();	// Setup Axis Tests Window
 		}
 		
-		#region Window Setup code
 		/// <summary>
 		/// Axis Tests Form setup - all done in base ()
 		/// </summary>
@@ -57,7 +56,21 @@ namespace Samples
 		{
 		}
 		
-		#endregion
+
+		/// <summary>
+		/// Handles OnDraw Events by drawing AxisTests to the canvas
+		/// </summary>
+		protected override void OnDraw (Context ctx, Rectangle dirtyRect)
+		{
+			// Get Canvas Bounds as region to draw into
+			Rectangle bounds = this.Bounds;
+
+			DrawAxisTests (ctx, bounds);
+
+			base.OnDraw (ctx, dirtyRect);
+
+		}
+
 		#region Axis Tests
 
 		private void DrawAxisTests (Context ctx, Rectangle bounds)
@@ -107,22 +120,6 @@ namespace Samples
 			
 		}
 		#endregion
-		
-
-		/// <summary>
-		/// Handles OnDraw Events by drawing AxisTests to the canvas
-		/// </summary>
-		protected override void OnDraw (Context ctx, Rectangle dirtyRect)
-		{
-			// Get Canvas Bounds as region to draw into
-			Rectangle bounds = this.Bounds;
-
-			DrawAxisTests (ctx, bounds);
-			// Dispose of context - only us needs it
-			((IDisposable)ctx).Dispose ();
-
-		}
-
 
 	} // class AxisTests
 	

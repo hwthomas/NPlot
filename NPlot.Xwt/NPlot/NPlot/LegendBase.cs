@@ -70,8 +70,9 @@ namespace NPlot.Xwt
 		{
 			Rectangle bounds;
 			using (ImageBuilder ib = new ImageBuilder (1,1)) {
-				Context ctx = ib.Context;
-				bounds = Draw (ctx, position, plots, scale);
+				using (Context ctx = ib.Context) {
+					bounds = Draw (ctx, position, plots, scale);
+				}
 			}
 			return bounds;
 		}
@@ -269,14 +270,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public Font Font
 		{
-			get
-			{
-				return this.font_;
-			}
-			set
-			{
-				this.font_ = value;
-			}
+			get { return font_; }
+			set { font_ = value; }
 		}
 		private Font font_;
 
@@ -286,14 +281,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public Color TextColor
 		{
-			get
-			{
-				return this.textColor_;
-			}
-			set
-			{
-				this.textColor_ = value;
-			}
+			get { return textColor_; }
+			set { textColor_ = value; }
 		}
 		Color textColor_;
 
@@ -303,14 +292,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public Color BackgroundColor
 		{
-			get
-			{
-				return bgColor_;
-			}
-			set
-			{
-				bgColor_ = value;
-			}
+			get { return bgColor_; }
+			set { bgColor_ = value; }
 		}
 		Color bgColor_;
 
@@ -320,14 +303,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public Color BorderColor
 		{
-			get
-			{
-				return borderColor_;
-			}
-			set
-			{
-				borderColor_ = value;
-			}
+			get { return borderColor_; }
+			set { borderColor_ = value; }
 		}
 		Color borderColor_;
 
@@ -360,14 +337,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public Legend.BorderType BorderStyle
 		{
-			get
-			{
-				return borderStyle_;
-			}
-			set
-			{
-				borderStyle_ = value;
-			}
+			get { return borderStyle_; }
+			set { borderStyle_ = value; }
 		}
 		private Legend.BorderType borderStyle_;
 
@@ -378,14 +349,8 @@ namespace NPlot.Xwt
 		/// </summary>
 		public bool AutoScaleText
 		{
-			get
-			{
-				return autoScaleText_;
-			}
-			set
-			{
-				autoScaleText_ = value;
-			}
+			get { return autoScaleText_; }
+			set { autoScaleText_ = value; }
 		}
 		bool autoScaleText_;
 
@@ -397,10 +362,9 @@ namespace NPlot.Xwt
 		/// </summary>
 		public int NumberItemsVertically
 		{
-			set
-			{
-				this.numberItemsVertically_ = value;
-				this.numberItemsHorizontally_ = -1;
+			set {
+				numberItemsVertically_ = value;
+				numberItemsHorizontally_ = -1;
 			}
 		}
 		int numberItemsVertically_ = -1;
@@ -413,10 +377,9 @@ namespace NPlot.Xwt
 		/// </summary>
 		public int NumberItemsHorizontally
 		{
-			set
-			{
-				this.numberItemsHorizontally_ = value;
-				this.numberItemsVertically_ = -1;
+			set {
+				numberItemsHorizontally_ = value;
+				numberItemsVertically_ = -1;
 			}
 		}
 		int numberItemsHorizontally_ = 1;

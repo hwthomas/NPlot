@@ -472,14 +472,15 @@ namespace NPlot.Xwt
 			Rectangle tBoundingBox;
 			Point tLabelOffset;
 
-			ImageBuilder ib = new ImageBuilder (1,1);
-			Context ctx = ib.Context;
-			DrawTick (ctx, WorldMax, LargeTickSize, 
-				"",
-				new Point (0,0),
-				physicalMin, physicalMax,
-				out tLabelOffset, out tBoundingBox );
-
+			using (ImageBuilder ib = new ImageBuilder (1,1)) {
+				using (Context ctx = ib.Context) {
+					DrawTick (ctx, WorldMax, LargeTickSize, 
+						"",
+						new Point (0,0),
+						physicalMin, physicalMax,
+						out tLabelOffset, out tBoundingBox );
+				}
+			}
 			return tLabelOffset;
 		}
 
@@ -859,6 +860,7 @@ namespace NPlot.Xwt
 					(axisPhysicalMax.Y + axisPhysicalMin.Y)/2);
 
 				ctx.Save ();
+
 				ctx.Translate (average.X + offset.X , average.Y + offset.Y);	// this is done last.
 				ctx.Rotate (theta);												// this is done first.
 
@@ -938,7 +940,6 @@ namespace NPlot.Xwt
 			Point  tickEnd = new Point (tickStart.X + tickVector.X, tickStart.Y + tickVector.Y);
 
 			// and draw it
-			ctx.Save ();
 			ctx.SetLineWidth (1);
 			ctx.SetColor (lineColor_);
 			ctx.MoveTo (tickStart.X+0.5, tickStart.Y+0.5);
@@ -1032,6 +1033,7 @@ namespace NPlot.Xwt
 					}
 					
 					ctx.Save ();
+
 					ctx.Translate (rotatePoint.X, rotatePoint.Y);
 					ctx.Rotate (actualAngle);
 					
