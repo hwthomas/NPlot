@@ -53,6 +53,8 @@
     <Compile Include="NPlot\AxisPosition.cs" />
     <Compile Include="NPlot\LegendBase.cs" />
     <Compile Include="NPlot\Legend.cs" />
+    <Compile Include="NPlot\PointD.cs" />
+    <Compile Include="NPlot\PlotSurface2D.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
