@@ -53,8 +53,14 @@
     <Compile Include="NPlot\AxisPosition.cs" />
     <Compile Include="NPlot\LegendBase.cs" />
     <Compile Include="NPlot\Legend.cs" />
-    <Compile Include="NPlot\PointD.cs" />
     <Compile Include="NPlot\PlotSurface2D.cs" />
+    <Compile Include="NPlot\BasePlot.cs" />
+    <Compile Include="NPlot\StepPlot.cs" />
+    <Compile Include="NPlot\BaseSequencePlot.cs" />
+    <Compile Include="NPlot\SequenceAdapter.cs" />
+    <Compile Include="NPlot\AdapterUtils.cs" />
+    <Compile Include="NPlot\StartStep.cs" />
+    <Compile Include="NPlot\DateTimeAxis.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
