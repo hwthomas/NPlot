@@ -43,7 +43,6 @@ using Xwt.Drawing;
 
 namespace NPlot.Xwt
 {
-
 	/// <summary>
 	/// Implements the surface on which IDrawables are drawn. Is extended
 	/// by Bitmap.PlotSurface2D, Windows.PlotSurface2D etc. TODO: better explanation.

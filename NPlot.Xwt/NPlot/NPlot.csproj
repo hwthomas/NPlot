@@ -61,6 +61,8 @@
     <Compile Include="NPlot\AdapterUtils.cs" />
     <Compile Include="NPlot\StartStep.cs" />
     <Compile Include="NPlot\DateTimeAxis.cs" />
+    <Compile Include="NPlot\ArrowItem.cs" />
+    <Compile Include="NPlot\LogAxis.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

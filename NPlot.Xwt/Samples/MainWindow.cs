@@ -17,8 +17,6 @@ namespace Samples
 		DataField<Sample> widgetCol = new DataField<Sample> ();
 		DataField<Image> iconCol = new DataField<Image> ();
 		
-		StatusIcon statusIcon;
-		
 		public MainWindow ()
 		{
 			Title = "NPlot.Xwt Samples Application";
@@ -46,7 +44,6 @@ namespace Samples
 			menu.Items.Add (edit);
 			
 			MainMenu = menu;
-			
 			
 			HPaned box = new HPaned ();
 			
@@ -98,10 +95,6 @@ namespace Samples
 		protected override void Dispose (bool disposing)
 		{
 			base.Dispose (disposing);
-			
-			if (statusIcon != null) {
-				statusIcon.Dispose ();
-			}
 		}
 
 		void HandleSamplesTreeSelectionChanged (object sender, EventArgs e)
