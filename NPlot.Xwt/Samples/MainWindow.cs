@@ -65,8 +65,9 @@ namespace Samples
 			//AddSample (plots, "Colors", typeof(ColorsSample));
 
 			var tests = AddSample (null, "Tests", null);
-			AddSample (tests, "AxisTests", typeof (AxisTests));
-			//AddSample (tests, "Colors", typeof(ColorsSample));
+			AddSample (tests, "Linear Axis", typeof (LinearAxisTest));
+			AddSample (tests, "Log Axis", typeof (LogAxisTest));
+			AddSample (tests, "DateTime Axis", typeof (DateTimeAxisTest));
 
 			samplesTree.DataSource = store;
 			

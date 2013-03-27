@@ -34,7 +34,9 @@
   <ItemGroup>
     <Compile Include="App.cs" />
     <Compile Include="MainWindow.cs" />
-    <Compile Include="Samples\AxisTests.cs" />
+    <Compile Include="Samples\LinearAxisTest.cs" />
+    <Compile Include="Samples\LogAxisTest.cs" />
+    <Compile Include="Samples\DateTimeAxisTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xwt">
