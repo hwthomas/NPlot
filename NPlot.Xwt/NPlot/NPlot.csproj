@@ -63,6 +63,7 @@
     <Compile Include="NPlot\DateTimeAxis.cs" />
     <Compile Include="NPlot\ArrowItem.cs" />
     <Compile Include="NPlot\LogAxis.cs" />
+    <Compile Include="NPlot\LinePlot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
