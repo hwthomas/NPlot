@@ -50,7 +50,7 @@ namespace NPlot.Xwt
 
 		private void Init()
 		{
-			textFont_ = Font.FromName ("Arial 10px");
+			textFont_ = Font.FromName ("Tahoma 10");
 		}
 
 		/// <summary>
@@ -218,7 +218,7 @@ namespace NPlot.Xwt
 
 			ctx.Save ();
 
-			TextLayout layout = new TextLayout (ctx);
+			TextLayout layout = new TextLayout ();
 			layout.Font = textFont_;
 			layout.Text = text_;
 

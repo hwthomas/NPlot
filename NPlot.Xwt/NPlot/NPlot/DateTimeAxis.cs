@@ -50,7 +50,6 @@ namespace NPlot.Xwt
 	public class DateTimeAxis : Axis
 	{
 
-		#region Clone implementation
 		/// <summary>
 		/// Deep copy of DateTimeAxis.
 		/// </summary>
@@ -59,10 +58,10 @@ namespace NPlot.Xwt
 		{
 			DateTimeAxis a = new DateTimeAxis ();
 			// ensure that this isn't being called on a derived type. If it is, then oh no!
-			if (this.GetType() != a.GetType()) {
+			if (GetType() != a.GetType()) {
 				throw new NPlotException( "Clone not defined in derived type. Help!" );
 			}
-			DoClone( this, a );
+			DoClone (this, a);
 			return a;
 		}
 
@@ -72,13 +71,12 @@ namespace NPlot.Xwt
 		/// </summary>
 		/// <param name="a">The original object to clone.</param>
 		/// <param name="b">The cloned object.</param>
-		protected static void DoClone( DateTimeAxis b, DateTimeAxis a )
+		protected static void DoClone (DateTimeAxis b, DateTimeAxis a)
 		{
-			Axis.DoClone( b, a );
+			Axis.DoClone (b, a);
 		}
-		#endregion
 
-		private void Init()
+		private void Init ()
 		{
 		}
 
@@ -87,21 +85,19 @@ namespace NPlot.Xwt
 		/// Constructor
 		/// </summary>
 		/// <param name="a">Axis to construct from</param>
-		public DateTimeAxis( Axis a )
-			: base( a )
+		public DateTimeAxis (Axis a) : base( a )
 		{
-			this.Init();
-			this.NumberFormat = null;
+			Init ();
+			NumberFormat = null;
 		}
 
 
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
-		public DateTimeAxis()
-			: base()
+		public DateTimeAxis () : base()
 		{
-			this.Init();
+			Init();
 		}
 
 
@@ -110,10 +106,9 @@ namespace NPlot.Xwt
 		/// </summary>
 		/// <param name="worldMin">World min of axis</param>
 		/// <param name="worldMax">World max of axis</param>
-		public DateTimeAxis( double worldMin, double worldMax )
-			: base( worldMin, worldMax )
+		public DateTimeAxis (double worldMin, double worldMax) : base (worldMin, worldMax)
 		{
-			this.Init();
+			Init();
 		}
 
 
@@ -122,10 +117,9 @@ namespace NPlot.Xwt
 		/// </summary>
 		/// <param name="worldMin">World min of axis</param>
 		/// <param name="worldMax">World max of axis</param>
-		public DateTimeAxis( long worldMin, long worldMax )
-			: base( (double)worldMin, (double)worldMax )
+		public DateTimeAxis (long worldMin, long worldMax) : base ((double)worldMin, (double)worldMax)
 		{
-			this.Init();
+			Init();
 		}
 
 
@@ -134,10 +128,9 @@ namespace NPlot.Xwt
 		/// </summary>
 		/// <param name="worldMin">World min of axis</param>
 		/// <param name="worldMax">World max of axis</param>
-		public DateTimeAxis( DateTime worldMin, DateTime worldMax )
-			: base( (double)worldMin.Ticks, (double)worldMax.Ticks )
+		public DateTimeAxis (DateTime worldMin, DateTime worldMax) : base ((double)worldMin.Ticks, (double)worldMax.Ticks)
 		{
-			this.Init();
+			Init();
 		}
 
 
@@ -161,12 +154,12 @@ namespace NPlot.Xwt
 			Point tLabelOffset;
 			Rectangle tBoundingBox;
 
-			labelOffset = this.getDefaultLabelOffset( physicalMin, physicalMax );
+			labelOffset = getDefaultLabelOffset (physicalMin, physicalMax);
 			boundingBox = null;
 		
 			ArrayList largeTicks;
 			ArrayList smallTicks;
-			this.WorldTickPositions( physicalMin, physicalMax, out largeTicks, out smallTicks );
+			WorldTickPositions (physicalMin, physicalMax, out largeTicks, out smallTicks);
 
 			// draw small ticks.
 			for (int i=0; i<smallTicks.Count; ++i) {
@@ -179,7 +172,7 @@ namespace NPlot.Xwt
 
 			// draw large ticks.
 			for (int i=0; i<largeTicks.Count; ++i) {
-				DateTime tickDate = new DateTime ((long)largeTicks[i]);
+				DateTime tickDate = new DateTime( (long)((double)largeTicks[i]) );
 				string label = LargeTickLabel (tickDate);
 
 				DrawTick (ctx, (double)largeTicks[i],
@@ -221,7 +214,7 @@ namespace NPlot.Xwt
 					}
 					label = tickDate.Hour.ToString () + ":" + minutes;
 				}
-				else if ( this.LargeTickLabelType_ == LargeTickLabelType.hourMinuteSeconds )
+				else if ( LargeTickLabelType_ == LargeTickLabelType.hourMinuteSeconds )
 				{
 					string minutes = tickDate.Minute.ToString ();
 					string seconds = tickDate.Second.ToString ();
@@ -307,7 +300,7 @@ namespace NPlot.Xwt
 			DateTime worldMinDate = new DateTime ((long)WorldMin);
 			DateTime worldMaxDate = new DateTime ((long)WorldMax);
 
-			if(largeTickStep_ == TimeSpan.Zero) {
+			if (largeTickStep_ == TimeSpan.Zero) {
 				// if less than 10 minutes, then large ticks on second spacings. 
 				if (timeLength < new TimeSpan(0,0,2,0,0)) {
 					LargeTickLabelType_ = LargeTickLabelType.hourMinuteSeconds;
@@ -344,7 +337,7 @@ namespace NPlot.Xwt
 					while (currentTickDate < worldMaxDate) {
 						double world = (double)currentTickDate.Ticks;
 
-						if (world >= this.WorldMin && world <= this.WorldMax) {
+						if (world >= WorldMin && world <= WorldMax) {
 							largeTickPositions.Add( world );
 						}
 						currentTickDate = currentTickDate.AddSeconds( secondsSkip );
@@ -352,7 +345,7 @@ namespace NPlot.Xwt
 				}
 				// Less than 2 hours, then large ticks on minute spacings.
 				else if (timeLength < new TimeSpan(0,2,0,0,0)) {
-					this.LargeTickLabelType_ = LargeTickLabelType.hourMinute;
+					LargeTickLabelType_ = LargeTickLabelType.hourMinute;
 
 					double minuteSkip;
 
@@ -419,7 +412,7 @@ namespace NPlot.Xwt
 					while (currentTickDate < worldMaxDate) {
 						double world = (double)currentTickDate.Ticks;
 
-						if (world >= this.WorldMin && world <= this.WorldMax) {
+						if (world >= WorldMin && world <= WorldMax) {
 							largeTickPositions.Add( world );
 						}
 						currentTickDate = currentTickDate.AddHours( hourSkip );
@@ -594,14 +587,14 @@ namespace NPlot.Xwt
 			else {
 				smallTickPositions = new ArrayList ();
 				double diff = 0.5 * (((double)largeTickPositions[1]) - ((double)largeTickPositions[0]));
-				if (((double)largeTickPositions[0] - diff) > this.WorldMin) {
-					smallTickPositions.Add((double)largeTickPositions[0] - diff);
+				if (((double)largeTickPositions[0] - diff) > WorldMin) {
+					smallTickPositions.Add ((double)largeTickPositions[0] - diff);
 				}
 				for (int i = 0; i < largeTickPositions.Count - 1; i++) {
-					smallTickPositions.Add(((double)largeTickPositions[i]) + diff);
+					smallTickPositions.Add (((double)largeTickPositions[i]) + diff);
 				}
-				if (((double)largeTickPositions[largeTickPositions.Count - 1] + diff) < this.WorldMax) {
-					smallTickPositions.Add((double)largeTickPositions[largeTickPositions.Count - 1] + diff);
+				if (((double)largeTickPositions[largeTickPositions.Count - 1] + diff) < WorldMax) {
+					smallTickPositions.Add ((double)largeTickPositions[largeTickPositions.Count - 1] + diff);
 				}
 			}
 		}

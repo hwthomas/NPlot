@@ -576,8 +576,8 @@ namespace NPlot.Xwt
 			NumberFormat = null;
 			Reversed = false;
 
-			TickTextFont = Font.FromName ("Arial 10px");
-			LabelFont = Font.FromName ("Arial 12px");
+			TickTextFont = Font.FromName ("Tahoma 10");
+			LabelFont = Font.FromName ("Tahoma 12");
 			LabelColor = Colors.Black;
 			TickTextColor = Colors.Black;
 			LineColor = Colors.Black;
@@ -864,7 +864,7 @@ namespace NPlot.Xwt
 				ctx.Translate (average.X + offset.X , average.Y + offset.Y);	// this is done last.
 				ctx.Rotate (theta);												// this is done first.
 
-				TextLayout layout = new TextLayout (ctx);
+				TextLayout layout = new TextLayout ();
 				layout.Font = labelFontScaled_;
 				layout.Text = Label;
 				Size labelSize = layout.GetSize ();
@@ -968,7 +968,7 @@ namespace NPlot.Xwt
 			// the bottom x-axis. Also, it's a bit hacky.
 
 			if (text != "" && !HideTickText) {
-				TextLayout layout = new TextLayout (ctx);
+				TextLayout layout = new TextLayout ();
 				layout.Font = tickTextFontScaled_;
 				layout.Text = text;
 				Size textSize = layout.GetSize ();

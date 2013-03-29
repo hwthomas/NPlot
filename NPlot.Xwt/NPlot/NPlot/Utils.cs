@@ -278,15 +278,15 @@ namespace NPlot.Xwt
 		}
 
 		/// <summary>
-		/// Creates an Image from a tile repeated in each direction as required
+		/// Creates a BitmapImage from a tile repeated in each direction as required
 		/// </summary>
-		/// <param name="tile">image to tile</param>
+		/// <param name="tile">Bitmap image to tile</param>
 		/// <param name="final">final image size</param>
 		/// <returns>the tiled image</returns>
-		public static Image TiledImage (Image tile, Size final)
+		public static BitmapImage TiledImage (BitmapImage tile, Size final)
 		{
-			Image tiled;
-			using (ImageBuilder ib = new ImageBuilder ((int)final.Width, (int)final.Height)) {
+			BitmapImage tiled = null;
+			using (ImageBuilder ib = new ImageBuilder (final.Width, final.Height)) {
 				using (Context ctx = ib.Context) {
 					double w = tile.Size.Width;
 					double h = tile.Size.Height;
@@ -296,7 +296,7 @@ namespace NPlot.Xwt
 						}
 					}
 				}
-				tiled = ib.ToImage ();
+				tiled = ib.ToBitmap ();
 			}
 			return tiled;
 		}

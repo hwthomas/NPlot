@@ -73,7 +73,7 @@ namespace NPlot.Xwt
 		private object bbTitleCache_;
 
 		private Color plotBackColor_ = Colors.Gray;
-		private Image plotBackImage_ = null;
+		private BitmapImage plotBackImage_ = null;
 
 		private ArrayList drawables_;
 		private ArrayList xAxisPositions_;
@@ -271,7 +271,7 @@ namespace NPlot.Xwt
 		/// <summary>
 		/// An imaged used to paint the plot background. Mutually exclusive with PlotBackColor and PlotBackBrush
 		/// </summary>
-		public Image PlotBackImage
+		public BitmapImage PlotBackImage
 		{
 			get { return plotBackImage_; }
 			set { plotBackImage_ = value; }
@@ -287,11 +287,11 @@ namespace NPlot.Xwt
 
 			try
 			{
-				TitleFont = Font.FromName ("Arial 14px");
+				TitleFont = Font.FromName ("Tahoma 14");
 			}
 			catch (System.ArgumentException)
 			{
-				throw new NPlotException("Error: Arial font is not installed on this system");
+				throw new NPlotException("Error: Tahoma font is not installed on this system");
 			}
 
 			padding_ = 10;
@@ -879,7 +879,7 @@ namespace NPlot.Xwt
 				scaled_font = titleFont_;
 			}
 
-			TextLayout layout = new TextLayout (ctx);
+			TextLayout layout = new TextLayout ();
 			layout.Font = scaled_font;
 			layout.Text = title_;
 			ctx.DrawTextLayout (layout, x_center, y_center);

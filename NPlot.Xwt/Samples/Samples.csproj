@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xwt">
-      <HintPath>..\..\..\controlsuite\CSPlot\CSPlot\bin\Debug\Xwt.dll</HintPath>
+      <HintPath>..\..\..\xwt\Xwt\bin\Debug\Xwt.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System" />

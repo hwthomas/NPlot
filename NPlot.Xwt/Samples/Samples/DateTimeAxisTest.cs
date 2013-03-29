@@ -83,10 +83,19 @@ namespace Samples
 			tl.X = bounds.Left + 30;	tl.Y = bounds.Top + 20;
 			br.X = bounds.Right - 30;	br.Y = bounds.Top + 20;
 
-			DateTimeAxis dta = new DateTimeAxis (1, 10000);
+			DateTime timeMin = new DateTime (2013, 1, 1, 12, 30, 0);
+			DateTime timeMax = new DateTime (2013, 2, 2, 12, 30, 0);
 
+			DateTimeAxis dta = new DateTimeAxis (timeMin, timeMax);
 			dta.Draw (ctx, tl, br, out boundingBox);
 
+			timeMin = new DateTime (2013, 1, 1, 12, 30, 0);
+			timeMax = new DateTime (2013, 1, 1, 12, 59, 30);
+			dta.WorldMin = (double)timeMin.Ticks;
+			dta.WorldMax = (double)timeMax.Ticks;
+
+			tl.Y += 50;		br.Y += 50;
+			dta.Draw (ctx, tl, br, out boundingBox);
 
 		}
 		#endregion

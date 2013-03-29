@@ -68,7 +68,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="Xwt">
-      <HintPath>..\..\..\controlsuite\CSPlot\CSPlot\bin\Debug\Xwt.dll</HintPath>
+      <HintPath>..\..\..\xwt\Xwt\bin\Debug\Xwt.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>

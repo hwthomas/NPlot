@@ -49,7 +49,7 @@ namespace NPlot.Xwt
 		/// </summary>
 		public LegendBase()
 		{
-			Font = Font.FromName ("Arial 10px");
+			Font = Font.FromName ("Arial 10");
 			BackgroundColor = Colors.White;
 			BorderColor = Colors.Black;
 			TextColor = Colors.Black;
@@ -104,7 +104,7 @@ namespace NPlot.Xwt
 			int unnamedCount = 0;
 			double maxHt = 0;
 			double maxWd = 0;
-			TextLayout layout = new TextLayout (ctx);
+			TextLayout layout = new TextLayout ();
 			layout.Font = textFont;
 
 			for (int i=0; i<plots.Count; ++i) {

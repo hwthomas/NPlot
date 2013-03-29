@@ -121,7 +121,7 @@ namespace NPlot.Xwt
 		/// An imaged used to paint the plot background.
 		/// Mutually exclusive with PlotBackColor and PlotBackBrush
 		/// </summary>
-		Image PlotBackImage { set; }
+		BitmapImage PlotBackImage { set; }
 
 		/// <summary>
 		/// The plot surface title.

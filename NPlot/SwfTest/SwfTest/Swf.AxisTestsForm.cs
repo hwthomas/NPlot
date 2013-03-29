@@ -59,7 +59,6 @@ namespace NPlotDemo
 			//
 			// TODO: Add any constructor code after InitializeComponent call
 			//
-
 			this.Paint += new PaintEventHandler(Tests_Paint);
 
 		}
@@ -89,30 +88,37 @@ namespace NPlotDemo
 			// AxisTestsForm
 			// 
 			this.AutoScaleBaseSize = new System.Drawing.Size(5, 13);
-			this.ClientSize = new System.Drawing.Size(480, 320);
+			this.ClientSize = new System.Drawing.Size(600, 400);
 			this.Name = "AxisTestsForm";
 			this.Text = "Tests";
 
 		}
 		#endregion
+
 		#region Axis Tests
 		//
 		// The actual Axis tests
 		//
-		private void Tests_Paint(object sender, PaintEventArgs e)
+		private void Tests_Paint (object sender, PaintEventArgs e)
 		{
-			System.Drawing.Rectangle boundingBox;
 			Graphics g = e.Graphics;
-			
-			NPlot.LinearAxis a = new LinearAxis(0, 10);
+			Rectangle bounds = e.ClipRectangle;
 
-			a.Draw( g, new Point(30,10), new Point(30, 200), out boundingBox );
+			Rectangle boundingBox;
+			Point tl, br;
+
+			tl.X = bounds.Left + 20;	tl.Y = bounds.Top + 10;
+			br.X = bounds.Left + 20;	br.Y = bounds.Bottom - 50;
+
+			NPlot.LinearAxis a = new LinearAxis (0, 10);
+			a.Draw (g, tl, br, out boundingBox );
 
 			a.Reversed = true;
-			a.Draw( g, new Point(60,10), new Point(60, 200), out boundingBox );
+			tl.X += 30;	br.X += 30;
+			a.Draw (g, tl, br, out boundingBox );
 
 			a.SmallTickSize = 0;
-			a.Draw( g, new Point(90,10), new Point(90, 200), out boundingBox );
+			a.Draw (g, new Point(90,10), new Point(90, 200), out boundingBox );
 
 			a.LargeTickStep = 2.5;
 			a.Draw( g, new Point(120,10), new Point(120,200), out boundingBox );
@@ -141,12 +147,34 @@ namespace NPlotDemo
 			
 			// Test for default TicksAngle on positive X-axis, ie Ticks below X-axis
 			NPlot.LinearAxis aX = new LinearAxis(0, 10);
-			aX.Draw( g, new Point(30,240), new Point(380, 240), out boundingBox );
+
+			tl.X = bounds.Left  + 90;	tl.Y = bounds.Bottom - 150;
+			br.X = bounds.Right - 30;	br.Y = bounds.Bottom - 150;
+
+			aX.Draw (g, tl, br, out boundingBox );
 			
 			// Set TicksAngle to PI/4 anti-clockwise from positive X-axis direction
 			aX.TicksAngle = (float)Math.PI / 4.0f;
-			aX.Draw( g, new Point(30,280), new Point(380, 280), out boundingBox );
-			
+			tl.Y += 40;		br.Y += 40;
+			aX.Draw (g, tl, br, out boundingBox );
+
+			DateTime timeMin = new DateTime (2013, 1, 1, 12, 30, 0);
+			DateTime timeMax = new DateTime (2013, 2, 2, 12, 30, 0);
+
+			DateTimeAxis dta = new DateTimeAxis (timeMin, timeMax);
+
+			tl.Y += 30;		br.Y += 30;
+			dta.Draw (g, tl, br, out boundingBox);
+
+			timeMin = new DateTime (2013, 1, 1, 12, 30, 0);
+			timeMax = new DateTime (2013, 1, 1, 12, 59, 30);
+
+			dta.WorldMin = (double)timeMin.Ticks;
+			dta.WorldMax = (double)timeMax.Ticks;
+
+			tl.Y += 30;		br.Y += 30;
+			dta.Draw (g, tl, br, out boundingBox);
+
 		}
 		#endregion
 	
