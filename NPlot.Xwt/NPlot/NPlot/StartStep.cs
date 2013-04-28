@@ -34,7 +34,7 @@
 
 using System;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 	/// <summary>
 	/// Encapsulates a Start and Step value. This is useful for specifying a regularly spaced set of 

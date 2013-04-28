@@ -33,7 +33,7 @@
 
 using System;
 
-using NPlot.Xwt;
+using NPlot;
 
 using Xwt;
 using Xwt.Drawing;

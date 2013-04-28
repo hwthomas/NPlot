@@ -27,7 +27,7 @@ using System;
 using Samples;
 using Xwt;
 
-namespace WpfTest
+namespace WpfHost
 {
 	class MainClass
 	{

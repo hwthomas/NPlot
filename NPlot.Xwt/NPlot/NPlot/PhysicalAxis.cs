@@ -34,7 +34,7 @@ using System.Collections;
 using Xwt;
 using Xwt.Drawing;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 	/// <summary>
 	/// This class adds physical positioning information [PhysicalMin, PhysicalMax]

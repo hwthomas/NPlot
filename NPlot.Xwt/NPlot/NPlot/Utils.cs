@@ -39,7 +39,7 @@ using System.Collections;
 using Xwt;
 using Xwt.Drawing;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 
 	/// <summary>

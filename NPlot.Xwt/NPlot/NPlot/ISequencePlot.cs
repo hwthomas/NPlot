@@ -36,7 +36,7 @@ using System;
 
 using NPlot;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 	/// <summary>
 	/// Defines a mix-in style interface for plots that use SequenceAdapter to interpret supplied data.

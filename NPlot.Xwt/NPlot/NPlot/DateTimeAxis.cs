@@ -42,7 +42,7 @@ using Xwt.Drawing;
 // TODO: SkipWeekends property.
 // TODO: Make a relative (as opposed to absolute) TimeAxis.
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 	/// <summary>
 	/// The DateTimeAxis class

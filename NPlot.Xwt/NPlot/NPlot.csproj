@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{761A7039-8E4E-43B9-B14D-7CA96B3B569C}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>NPlot.Xwt</RootNamespace>
+    <RootNamespace>NPlot</RootNamespace>
     <AssemblyName>NPlot</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -64,6 +64,7 @@
     <Compile Include="NPlot\ArrowItem.cs" />
     <Compile Include="NPlot\LogAxis.cs" />
     <Compile Include="NPlot\LinePlot.cs" />
+    <Compile Include="NPlot\HorizontalLine.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

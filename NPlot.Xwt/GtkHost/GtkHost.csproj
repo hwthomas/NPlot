@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{5415AE99-2877-4730-AF1F-F94DCD12C31A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GtkTest</RootNamespace>
+    <RootNamespace>GtkHost</RootNamespace>
     <AssemblyName>GtkTest</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

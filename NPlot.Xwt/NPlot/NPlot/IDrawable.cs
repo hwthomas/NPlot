@@ -39,7 +39,7 @@ using Xwt.Drawing;
 using NPlot;
 
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 	/// <summary>
 	/// Defines a Draw method for drawing objects against x and y Physical Axes

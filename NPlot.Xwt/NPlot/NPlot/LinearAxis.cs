@@ -37,7 +37,7 @@ using System.Diagnostics;
 using Xwt;
 using Xwt.Drawing;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 	/// <summary>
 	/// Provides functionality for drawing axes with a linear numeric scale.

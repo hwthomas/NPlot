@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{1BA22AB4-C228-4115-BEA2-1C2548BFCC33}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>SwfHost</RootNamespace>
+    <RootNamespace>WpfHost</RootNamespace>
     <AssemblyName>SwfHost</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

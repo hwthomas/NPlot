@@ -38,7 +38,7 @@ using System.Collections;
 using Xwt;
 using Xwt.Drawing;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 	/// <summary>
 	/// Defines the PlotSurface2D interface - All specific PlotSurface2D classes that

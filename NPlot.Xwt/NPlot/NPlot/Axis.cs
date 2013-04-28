@@ -38,7 +38,7 @@ using System.Collections;
 using Xwt;
 using Xwt.Drawing;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 	/// <summary>
 	/// Encapsulates functionality common to all axis classes. All specific axis classes

@@ -37,7 +37,7 @@ using System.Collections;
 using System.Data;
 using Xwt;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 
 	/// <summary>

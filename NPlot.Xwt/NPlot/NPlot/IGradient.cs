@@ -38,7 +38,7 @@ using Xwt.Drawing;
 
 using NPlot;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 	/// <summary>
 	/// Defines a gradient.

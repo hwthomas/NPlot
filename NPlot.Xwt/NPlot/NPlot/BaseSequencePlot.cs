@@ -35,7 +35,7 @@
 using System;
 using Xwt;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 
 	/// <summary>

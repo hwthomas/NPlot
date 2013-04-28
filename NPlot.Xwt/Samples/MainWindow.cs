@@ -53,16 +53,11 @@ namespace Samples
 			samplesTree = new TreeView ();
 			samplesTree.Columns.Add ("Name", iconCol, nameCol);
 			
-			//AddSample (null, "Boxes", typeof(Boxes));
-			//AddSample (null, "Buttons", typeof(ButtonSample));
-			//AddSample (null, "CheckBox", typeof(Checkboxes));
-			//AddSample (null, "Clipboard", typeof(ClipboardSample));
-			//AddSample (null, "ColorSelector", typeof(ColorSelectorSample));
-			//AddSample (null, "ComboBox", typeof(ComboBoxes));
+			var staticPlots = AddSample (null, "Static Plots", null);
+			AddSample (staticPlots, "PlotWave", typeof (PlotWave));
 
-			var plots = AddSample (null, "PlotSamples", null);
-			//AddSample (plots, "Chart", typeof (ChartSample));
-			//AddSample (plots, "Colors", typeof(ColorsSample));
+			var interactivePlots = AddSample (null, "Interactive Plots", null);
+			AddSample (interactivePlots, "PlotWave", typeof (PlotWave));
 
 			var tests = AddSample (null, "Tests", null);
 			AddSample (tests, "Linear Axis", typeof (LinearAxisTest));
@@ -74,9 +69,7 @@ namespace Samples
 			box.Panel1.Content = samplesTree;
 			
 			sampleBox = new VBox ();
-			title = new Label ("Sample:");
-			sampleBox.PackStart (title, BoxMode.None);
-			
+
 			box.Panel2.Content = sampleBox;
 			box.Panel2.Resize = true;
 			box.Position = 160;
@@ -105,8 +98,9 @@ namespace Samples
 					sampleBox.Remove (currentSample);
 				Sample s = store.GetNavigatorAt (samplesTree.SelectedRow).GetValue (widgetCol);
 				if (s.Type != null) {
-					if (s.Widget == null)
+					if (s.Widget == null) {
 						s.Widget = (Widget)Activator.CreateInstance (s.Type);
+					}
 					sampleBox.PackStart (s.Widget, BoxMode.FillAndExpand);
 				}
 				

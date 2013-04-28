@@ -32,7 +32,7 @@
 using System;
 using System.Collections;
 
-namespace NPlot.Xwt
+namespace NPlot
 {
 
 	/// <summary>
