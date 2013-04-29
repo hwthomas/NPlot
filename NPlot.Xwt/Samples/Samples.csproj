@@ -39,6 +39,7 @@
     <Compile Include="Samples\DateTimeAxisTest.cs" />
     <Compile Include="Samples\PlotWave.cs" />
     <Compile Include="Samples\PlotSample.cs" />
+    <Compile Include="Samples\PlotMarkers.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xwt">

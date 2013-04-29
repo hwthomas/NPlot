@@ -55,6 +55,7 @@ namespace Samples
 			
 			var staticPlots = AddSample (null, "Static Plots", null);
 			AddSample (staticPlots, "PlotWave", typeof (PlotWave));
+			AddSample (staticPlots, "PlotMarkers", typeof (PlotMarkers));
 
 			var interactivePlots = AddSample (null, "Interactive Plots", null);
 			AddSample (interactivePlots, "PlotWave", typeof (PlotWave));

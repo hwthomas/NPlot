@@ -65,6 +65,9 @@
     <Compile Include="NPlot\LogAxis.cs" />
     <Compile Include="NPlot\LinePlot.cs" />
     <Compile Include="NPlot\HorizontalLine.cs" />
+    <Compile Include="NPlot\Marker.cs" />
+    <Compile Include="NPlot\MarkerItem.cs" />
+    <Compile Include="NPlot\PointPlot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
