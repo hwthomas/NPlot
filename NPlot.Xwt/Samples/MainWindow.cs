@@ -20,8 +20,8 @@ namespace Samples
 		public MainWindow ()
 		{
 			Title = "NPlot.Xwt Samples Application";
-			Width = 600;
-			Height = 500;
+			Width = 800;
+			Height = 600;
 
 			Menu menu = new Menu ();
 			
@@ -73,7 +73,7 @@ namespace Samples
 
 			box.Panel2.Content = sampleBox;
 			box.Panel2.Resize = true;
-			box.Position = 160;
+			box.Position = 200;
 			
 			Content = box;
 			

@@ -41,7 +41,7 @@ namespace Samples
             //plotSurface.AddInteraction (new VerticalGuideline (Color.Gray));
             //plotSurface.AddInteraction (new HorizontalGuideline (Color.Gray));
   
-            plotSurface.Add (new HorizontalLine (0.0, Colors.LightBlue));
+            plotSurface.Add (new HorizontalLine (2500.0, Colors.LightBlue));
             
             StepPlot sp = new StepPlot ();
             sp.DataSource = w;
@@ -51,7 +51,7 @@ namespace Samples
 
             plotSurface.YAxis1.FlipTicksLabel = true;
 
-			plotSurface.Canvas.BackgroundColor = Colors.Black;
+			plotSurface.Canvas.BackgroundColor = new Color (0.375, 0.375, 0.375);
             plotSurface.PlotBackColor = Colors.DarkBlue;
             plotSurface.XAxis1.LineColor = Colors.White;
             plotSurface.YAxis1.LineColor = Colors.White;
