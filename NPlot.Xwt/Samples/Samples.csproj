@@ -40,6 +40,7 @@
     <Compile Include="Samples\PlotWave.cs" />
     <Compile Include="Samples\PlotSample.cs" />
     <Compile Include="Samples\PlotMarkers.cs" />
+    <Compile Include="Samples\PlotSinc.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xwt">

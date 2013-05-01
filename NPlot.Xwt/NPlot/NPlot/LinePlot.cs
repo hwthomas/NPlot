@@ -90,7 +90,7 @@ namespace NPlot
 			}
 
 			ctx.Save ();
-			ctx.SetLineWidth (1);
+			ctx.SetLineWidth (lineWidth_);
 
 			// clipping is now handled assigning a clip region in the
 			// graphic object before this call
@@ -104,7 +104,7 @@ namespace NPlot
 					ctx.Stroke ();
 				}
 				else {
-					ctx.SetColor (color_);
+					ctx.SetColor (lineColor_);
 					ctx.MoveTo (physical.X-0.5, physical.Y);
 					ctx.LineTo (physical.X+0.5, physical.Y);
 					ctx.Stroke ();
@@ -157,7 +157,7 @@ namespace NPlot
 						ctx.Stroke ();
 					}
 					else {
-						ctx.SetColor (color_);
+						ctx.SetColor (lineColor_);
 						ctx.MoveTo (p1.X, p1.Y);
 						ctx.LineTo (p2.X, p2.Y);
 						ctx.Stroke ();
@@ -221,14 +221,24 @@ namespace NPlot
 	
 
 		/// <summary>
-		/// The color of the pen used to draw lines in this plot.
+		/// The color used to draw lines in this plot.
 		/// </summary>
-		public Color Color
+		public Color LineColor
 		{
-			get { return color_; }
-			set { color_ = value; }
+			get { return lineColor_; }
+			set { lineColor_ = value; }
 		}
-		private Color color_ = Colors.Black;
+		private Color lineColor_ = Colors.Black;
+
+		/// <summary>
+		/// The line width used in this plot.
+		/// </summary>
+		public double LineWidth
+		{
+			get { return lineWidth_; }
+			set { lineWidth_ = value; }
+		}
+		private double lineWidth_ = 1;
 
 		/// <summary>
 		/// Color of line shadow if drawn. Use Shadow method to turn shadow on and off.
@@ -260,8 +270,8 @@ namespace NPlot
 		public virtual void DrawInLegend (Context ctx, Rectangle startEnd)
 		{
 			ctx.Save ();
-			ctx.SetLineWidth (1);
-			ctx.SetColor (color_);
+			ctx.SetLineWidth (lineWidth_);
+			ctx.SetColor (lineColor_);
 			ctx.MoveTo (startEnd.Left, (startEnd.Top + startEnd.Bottom)/2);
 			ctx.LineTo (startEnd.Right, (startEnd.Top + startEnd.Bottom)/2);
 			ctx.Stroke ();
