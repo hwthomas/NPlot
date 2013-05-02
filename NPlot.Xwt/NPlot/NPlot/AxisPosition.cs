@@ -1,7 +1,7 @@
 //
 // NPlot - A charting library for .NET
 // 
-// Axis.cs
+// AxisPosition.cs
 // Copyright (C) 2003-2009 Matt Howlett and others.
 // All rights reserved.
 // 
