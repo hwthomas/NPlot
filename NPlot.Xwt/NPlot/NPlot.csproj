@@ -70,6 +70,7 @@
     <Compile Include="NPlot\PointPlot.cs" />
     <Compile Include="NPlot\BarPlot.cs" />
     <Compile Include="NPlot\HistogramPlot.cs" />
+    <Compile Include="NPlot\InteractivePlotSurface2D.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
