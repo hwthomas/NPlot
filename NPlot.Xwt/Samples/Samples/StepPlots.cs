@@ -8,9 +8,9 @@ using NPlot;
 
 namespace Samples
 {
-	public class PlotWave : PlotSample
+	public class StepPlotSample : PlotSample
 	{
-		public PlotWave() : base ()
+		public StepPlotSample () : base ()
 		{
 			infoText = "";
 			infoText += "Sound Wave Example. Demonstrates - \n";

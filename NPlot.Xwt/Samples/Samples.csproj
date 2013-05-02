@@ -37,10 +37,11 @@
     <Compile Include="Samples\LinearAxisTest.cs" />
     <Compile Include="Samples\LogAxisTest.cs" />
     <Compile Include="Samples\DateTimeAxisTest.cs" />
-    <Compile Include="Samples\PlotWave.cs" />
     <Compile Include="Samples\PlotSample.cs" />
     <Compile Include="Samples\PlotMarkers.cs" />
-    <Compile Include="Samples\PlotSinc.cs" />
+    <Compile Include="Samples\PointPlots.cs" />
+    <Compile Include="Samples\StepPlots.cs" />
+    <Compile Include="Samples\HistogramSample.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xwt">

@@ -9,13 +9,13 @@ using NPlot;
 
 namespace Samples
 {
-	public class PlotSinc : PlotSample
+	public class PointPlots : PlotSample
 	{
-		public PlotSinc () : base ()
+		public PointPlots () : base ()
 		{
 			infoText = "";
 			infoText += "Sinc Function Example. Demonstrates - \n";
-			infoText += " * Charting line and point plot at the same time. \n";
+			infoText += " * Charting LinePlot and PointPlot at the same time. \n";
 			infoText += " * Adding a legend.";
 
 			plotSurface.Clear(); // clear everything. reset fonts. remove plot components etc.

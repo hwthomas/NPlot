@@ -68,6 +68,8 @@
     <Compile Include="NPlot\Marker.cs" />
     <Compile Include="NPlot\MarkerItem.cs" />
     <Compile Include="NPlot\PointPlot.cs" />
+    <Compile Include="NPlot\BarPlot.cs" />
+    <Compile Include="NPlot\HistogramPlot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
