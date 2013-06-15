@@ -45,7 +45,7 @@ namespace NPlot {
 	/// Extends PlotSurface2D with Interactions which allow the user
 	/// to change the plot using mouse and keyboard inputs.
 	/// </summary>
-	public class InteractivePlotSurface2D : PlotSurface2D
+	public class InteractivePlotSurface2D : NPlot.Xwt.PlotSurface2D
 	{
 	/// <summary>
 		/// Default constructor.
@@ -301,18 +301,18 @@ namespace NPlot {
 
 		#region PlotSurface Interaction handlers
 
-		// The methods which are called by the platform-specific event handlers and which in turn
-		// call the individual Interaction handlers for those events. Note that a reference to the
-		// PlotSurface is passed as well as the event details, so that Interactions can call the
+		// The methods which are called by the Canvas event handlers and which in turn call
+		// the individual Interaction handlers for those events. Note that a reference to the
+		// PlotSurface is passed as well as the event details, so that Interactions can call
 		// PlotSurface public methods if required (eg to redraw an area of the plotSurface)
 
 		/// <summary>
 		/// Handle Draw event for all interactions. Called by platform-specific OnDraw/Paint
 		/// </summary>
-		protected void DoDraw (Graphics g, Rectangle clip)
+		protected void DoDraw (Context ctx, Rectangle clip)
 		{
 			foreach (Interaction i in interactions) {
-				i.DoDraw (g, clip);
+				i.DoDraw (ctx, clip);
 			}
 		}
 
@@ -324,14 +324,14 @@ namespace NPlot {
 		{
 			bool modified = false;
 			foreach (Interaction i in interactions) {
-				modified |= i.DoMouseEnter(this);
+				modified |= i.DoMouseEnter (this);
 			}
-			ShowCursor(plotCursor);	//set by each Interaction
+			ShowCursor (plotCursor);	//set by each Interaction
 			if (modified) {
 				InteractionOccurred (this);
 				ReDraw ();
 			}
-			return(modified);
+			return (modified);
 		}
 
 		/// <summary>
@@ -342,14 +342,14 @@ namespace NPlot {
 		{
 			bool modified = false;
 			foreach (Interaction i in interactions) {
-				modified |= i.DoMouseLeave(this);
+				modified |= i.DoMouseLeave (this);
 			}
 			ShowCursor(plotCursor);
-			if (modified){
+			if (modified) {
 				InteractionOccurred (this);
 				ReDraw ();
 			}
-			return(modified);
+			return (modified);
 		}
 
 		/// <summary>
@@ -359,18 +359,18 @@ namespace NPlot {
 		/// <param name="Y"> mouse Y position</param>
 		/// <param name="keys"> mouse and keyboard modifiers</param>
 		/// <returns>true if plot has been modified</returns>
-		protected bool DoMouseDown (int X, int Y, Modifier keys)
+		protected bool DoMouseDown (double X, double Y, Modifier keys)
 		{
 			bool modified = false;
 			foreach (Interaction i in interactions) {
 				modified |= i.DoMouseDown (X, Y, keys, this);
 			}
 			ShowCursor(plotCursor);
-			if (modified){
+			if (modified) {
 				InteractionOccurred (this);
-				ReDraw();
+				ReDraw ();
 			}
-			return(modified) ;
+			return (modified) ;
 		}
 
 		/// <summary>
@@ -380,16 +380,16 @@ namespace NPlot {
 		/// <param name="Y"> mouse Y position</param>
 		/// <param name="keys"> mouse and keyboard modifiers</param>
 		/// <returns>true if plot has been modified</returns>
-		protected bool DoMouseUp (int X, int Y, Modifier keys)
+		protected bool DoMouseUp (double X, double Y, Modifier keys)
 		{
 			bool modified = false;
 			foreach (Interaction i in interactions) {
 				modified |= i.DoMouseUp (X, Y, keys, this);
 			}
-			ShowCursor(plotCursor);
+			ShowCursor (plotCursor);
 			if (modified){
 				InteractionOccurred (this);
-				ReDraw();
+				ReDraw ();
 			}
 			return(modified);
 		}
@@ -401,18 +401,18 @@ namespace NPlot {
 		/// <param name="Y"> mouse Y position</param>
 		/// <param name="keys"> mouse and keyboard modifiers</param>
 		/// <returns>true if plot has been modified</returns>
-		protected bool DoMouseMove (int X, int Y, Modifier keys)
+		protected bool DoMouseMove (double X, double Y, Modifier keys)
 		{
 			bool modified = false;
 			foreach (Interaction i in interactions) {
-				modified |= i.DoMouseMove( X, Y, keys, this);
+				modified |= i.DoMouseMove (X, Y, keys, this);
 			}
-			ShowCursor(plotCursor);
+			ShowCursor (plotCursor);
 			if (modified) {
-				InteractionOccurred(this);
-				ReDraw();
+				InteractionOccurred (this);
+				ReDraw ();
 			}
-			return(modified);
+			return (modified);
 		}
 
 		/// <summary>
@@ -423,18 +423,18 @@ namespace NPlot {
 		/// <param name="direction"> scroll direction</param>
 		/// <param name="keys"> mouse and keyboard modifiers</param>
 		/// <returns>true if plot has been modified</returns>
-		protected bool DoMouseScroll (int X, int Y, int direction, Modifier keys)
+		protected bool DoMouseScroll (double X, double Y, int direction, Modifier keys)
 		{
 			bool modified = false;
 			foreach (Interaction i in interactions) {
-				modified |= i.DoMouseScroll ( X, Y, direction, keys, this );
+				modified |= i.DoMouseScroll (X, Y, direction, keys, this);
 			}
 			ShowCursor(plotCursor);
 			if (modified) {
-				InteractionOccurred(this);
-				ReDraw();
+				InteractionOccurred (this);
+				ReDraw ();
 			}
-			return(modified);
+			return (modified);
 		}
 	
 		/// <summary>
@@ -444,11 +444,11 @@ namespace NPlot {
 		{
 			bool modified = false;
 			foreach (Interaction i in interactions) {
-				modified |= i.DoKeyPress(keys,this);
+				modified |= i.DoKeyPress (keys,this);
 			}
 			if (modified) {
-				InteractionOccurred(this);
-				ReDraw();
+				InteractionOccurred (this);
+				ReDraw ();
 			}
 			return(modified);
 		}
@@ -461,13 +461,13 @@ namespace NPlot {
 		{
 			bool modified = false;
 			foreach (Interaction i in interactions) {
-				modified |= i.DoKeyRelease(keys,this);
+				modified |= i.DoKeyRelease (keys,this);
 			}
 			if (modified) {
-				InteractionOccurred(this);
-				ReDraw();
+				InteractionOccurred (this);
+				ReDraw ();
 			}
-			return(modified);
+			return (modified);
 		}
 		#endregion
 
@@ -486,7 +486,7 @@ namespace NPlot {
 		/// Update the entire plot area on the platform-specific output
 		/// Override this method for each implementation (Swf, Gtk)
 		/// </summary>
-		public virtual void Refresh()
+		public virtual void Refresh ()
 		{
 		}
 

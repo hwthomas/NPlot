@@ -71,6 +71,8 @@
     <Compile Include="NPlot\BarPlot.cs" />
     <Compile Include="NPlot\HistogramPlot.cs" />
     <Compile Include="NPlot\InteractivePlotSurface2D.cs" />
+    <Compile Include="Interactions\Interaction.cs" />
+    <Compile Include="NPlot\Modifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
