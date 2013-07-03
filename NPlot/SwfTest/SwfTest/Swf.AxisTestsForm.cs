@@ -105,7 +105,8 @@ namespace NPlotDemo
 			Rectangle bounds = e.ClipRectangle;
 
 			Rectangle boundingBox;
-			Point tl, br;
+			Point tl = Point.Empty;
+			Point br = Point.Empty;
 
 			tl.X = bounds.Left + 20;	tl.Y = bounds.Top + 10;
 			br.X = bounds.Left + 20;	br.Y = bounds.Bottom - 50;
