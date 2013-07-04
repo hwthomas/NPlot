@@ -48,9 +48,9 @@ namespace Samples
 			legend.YOffset = 0;
 			plotSurface.Legend = legend;
 
-			PackStart (plotSurface.Canvas, BoxMode.FillAndExpand);
+			PackStart (plotSurface.Canvas, true);
 			Label la = new Label (infoText);
-			PackStart (la, BoxMode.None);
+			PackStart (la);
 		
 		}
 	}

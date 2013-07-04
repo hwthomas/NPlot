@@ -63,9 +63,9 @@ namespace Samples
 			plotSurface.Legend = legend;
 			plotSurface.LegendZOrder = 1; // default zorder for adding idrawables is 0, so this puts legend on top.
 
-			PackStart (plotSurface.Canvas, BoxMode.FillAndExpand);
+			PackStart (plotSurface.Canvas, true);
 			Label la = new Label (infoText);
-			PackStart (la, BoxMode.None);
+			PackStart (la);
 		}
 	}
 }

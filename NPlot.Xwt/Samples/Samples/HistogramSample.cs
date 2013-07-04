@@ -51,9 +51,9 @@ namespace Samples
 			plotSurface.YAxis1.WorldMin = 0.0;
 			plotSurface.Title = "Histogram Plot";
 
-			PackStart (plotSurface.Canvas, BoxMode.FillAndExpand);
+			PackStart (plotSurface.Canvas, true);
 			Label la = new Label (infoText);
-			PackStart (la, BoxMode.None);
+			PackStart (la);
 		}
 	}
 }

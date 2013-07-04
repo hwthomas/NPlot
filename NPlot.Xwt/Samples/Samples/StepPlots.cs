@@ -56,9 +56,9 @@ namespace Samples
 			plotSurface.XAxis1.LineColor = Colors.White;
 			plotSurface.YAxis1.LineColor = Colors.White;
 			
-			PackStart (plotSurface.Canvas, BoxMode.FillAndExpand);
+			PackStart (plotSurface.Canvas, true);
 			Label la = new Label (infoText);
-			PackStart (la, BoxMode.None);
+			PackStart (la);
 		
 		}
 	}
