@@ -10,7 +10,6 @@ namespace Samples
 		TreeStore store;
 		Image icon;
 		VBox sampleBox;
-		Label title;
 		Widget currentSample;
 		
 		DataField<string> nameCol = new DataField<string> ();

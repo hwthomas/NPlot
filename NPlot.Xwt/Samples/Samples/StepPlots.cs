@@ -33,30 +33,30 @@ namespace Samples
 			}
 			file.Close();
 
-			plotSurface.Clear();
+			plotCanvas.Clear();
 		  
-			//plotSurface.AddInteraction (new AxisDrag ());
-			//plotSurface.AddInteraction (new KeyActions ());
-			//plotSurface.AddInteraction (new NPlot.PlotSelection (Color.Gray));
-			//plotSurface.AddInteraction (new VerticalGuideline (Color.Gray));
-			//plotSurface.AddInteraction (new HorizontalGuideline (Color.Gray));
+			//plotCanvas.AddInteraction (new AxisDrag ());
+			//plotCanvas.AddInteraction (new KeyActions ());
+			//plotCanvas.AddInteraction (new NPlot.PlotSelection (Color.Gray));
+			//plotCanvas.AddInteraction (new VerticalGuideline (Color.Gray));
+			//plotCanvas.AddInteraction (new HorizontalGuideline (Color.Gray));
   
-			plotSurface.Add (new HorizontalLine (2500.0, Colors.LightBlue));
+			plotCanvas.Add (new HorizontalLine (2500.0, Colors.LightBlue));
 			
 			StepPlot sp = new StepPlot ();
 			sp.DataSource = w;
 			sp.Color = Colors.Yellow;
 			sp.Center = true;
-			plotSurface.Add( sp );
+			plotCanvas.Add( sp );
 
-			plotSurface.YAxis1.FlipTicksLabel = true;
+			plotCanvas.YAxis1.FlipTicksLabel = true;
 
-			plotSurface.Canvas.BackgroundColor = new Color (0.375, 0.375, 0.375);
-			plotSurface.PlotBackColor = Colors.DarkBlue;
-			plotSurface.XAxis1.LineColor = Colors.White;
-			plotSurface.YAxis1.LineColor = Colors.White;
+			plotCanvas.Canvas.BackgroundColor = new Color (0.375, 0.375, 0.375);
+			plotCanvas.PlotBackColor = Colors.DarkBlue;
+			plotCanvas.XAxis1.LineColor = Colors.White;
+			plotCanvas.YAxis1.LineColor = Colors.White;
 			
-			PackStart (plotSurface.Canvas, true);
+			PackStart (plotCanvas.Canvas, true);
 			Label la = new Label (infoText);
 			PackStart (la);
 		

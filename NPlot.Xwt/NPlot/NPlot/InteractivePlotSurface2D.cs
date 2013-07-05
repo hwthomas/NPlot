@@ -45,7 +45,7 @@ namespace NPlot {
 	/// Extends PlotSurface2D with Interactions which allow the user
 	/// to change the plot using mouse and keyboard inputs.
 	/// </summary>
-	public class InteractivePlotSurface2D : NPlot.Xwt.PlotSurface2D
+	public class InteractivePlotSurface2D : NPlot.PlotSurface2D
 	{
 	/// <summary>
 		/// Default constructor.

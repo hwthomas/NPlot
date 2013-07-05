@@ -18,7 +18,7 @@ namespace Samples
 			infoText += " * Charting LinePlot and PointPlot at the same time. \n";
 			infoText += " * Adding a legend.";
 
-			plotSurface.Clear(); // clear everything. reset fonts. remove plot components etc.
+			plotCanvas.Clear(); // clear everything. reset fonts. remove plot components etc.
 
 			System.Random r = new Random();
 			double[] a = new double[100];
@@ -41,18 +41,18 @@ namespace Samples
 			pp.OrdinateData = a;
 			pp.AbscissaData = new StartStep (-500.0, 10.0);
 			pp.Label = "Random";
-			plotSurface.Add (pp); 
+			plotCanvas.Add (pp); 
 
 			LinePlot lp = new LinePlot ();
 			lp.OrdinateData = b;
 			lp.AbscissaData = new StartStep( -500.0, 10.0 );
 			lp.LineColor = Colors.Red;
 			lp.LineWidth = 2;
-			plotSurface.Add (lp);
+			plotCanvas.Add (lp);
 
-			plotSurface.Title = "Sinc Function";
-			plotSurface.YAxis1.Label = "Magnitude";
-			plotSurface.XAxis1.Label = "Position";
+			plotCanvas.Title = "Sinc Function";
+			plotCanvas.YAxis1.Label = "Magnitude";
+			plotCanvas.XAxis1.Label = "Position";
 
 			Legend legend = new Legend();
 			legend.AttachTo (XAxisPosition.Top, YAxisPosition.Left);
@@ -60,10 +60,10 @@ namespace Samples
 			legend.HorizontalEdgePlacement = Legend.Placement.Inside;
 			legend.YOffset = 8;
 
-			plotSurface.Legend = legend;
-			plotSurface.LegendZOrder = 1; // default zorder for adding idrawables is 0, so this puts legend on top.
+			plotCanvas.Legend = legend;
+			plotCanvas.LegendZOrder = 1; // default zorder for adding idrawables is 0, so this puts legend on top.
 
-			PackStart (plotSurface.Canvas, true);
+			PackStart (plotCanvas.Canvas, true);
 			Label la = new Label (infoText);
 			PackStart (la);
 		}

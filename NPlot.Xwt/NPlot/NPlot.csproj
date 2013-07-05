@@ -73,6 +73,7 @@
     <Compile Include="NPlot\InteractivePlotSurface2D.cs" />
     <Compile Include="Interactions\Interaction.cs" />
     <Compile Include="NPlot\Modifier.cs" />
+    <Compile Include="NPlot\PlotCanvas.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

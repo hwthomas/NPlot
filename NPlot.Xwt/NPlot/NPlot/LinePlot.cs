@@ -3,6 +3,7 @@
 // 
 // LinePlot.cs
 // Copyright (C) 2003-2006 Matt Howlett and others.
+// Port to Xwt 2012-2013 : Hywel Thomas <hywel.w.thomas@gmail.com>
 // All rights reserved.
 // 
 // Redistribution and use in source and binary forms, with or without modification,

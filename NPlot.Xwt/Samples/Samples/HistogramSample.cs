@@ -16,7 +16,7 @@ namespace Samples
 			infoText += "Gaussian Example. Demonstrates - \n";
 			infoText += "  * HistogramPlot and LinePlot" ;
 
-			plotSurface.Clear();
+			plotCanvas.Clear();
 	
 			System.Random r = new Random ();
 			
@@ -45,13 +45,13 @@ namespace Samples
 			lp.LineColor = Colors.Blue;
 			lp.LineWidth = 3;
 			lp.Label = "Gaussian Function";
-			plotSurface.Add (sp);
-			plotSurface.Add (lp);
-			plotSurface.Legend = new Legend ();
-			plotSurface.YAxis1.WorldMin = 0.0;
-			plotSurface.Title = "Histogram Plot";
+			plotCanvas.Add (sp);
+			plotCanvas.Add (lp);
+			plotCanvas.Legend = new Legend ();
+			plotCanvas.YAxis1.WorldMin = 0.0;
+			plotCanvas.Title = "Histogram Plot";
 
-			PackStart (plotSurface.Canvas, true);
+			PackStart (plotCanvas.Canvas, true);
 			Label la = new Label (infoText);
 			PackStart (la);
 		}

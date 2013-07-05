@@ -17,7 +17,7 @@ namespace Samples
 			infoText += " * PointPlot and the available marker types \n";
 			infoText += " * Legends, and how to place them.";
 
-			plotSurface.Clear();
+			plotCanvas.Clear();
 			
 			double[] y = new double[1] {1.0};
 			foreach (object i in Enum.GetValues (typeof(Marker.MarkerType))) {
@@ -30,15 +30,15 @@ namespace Samples
 				pp.AbscissaData = x;
 				pp.Marker = m;
 				pp.Label = m.Type.ToString();
-				plotSurface.Add (pp);
+				plotCanvas.Add (pp);
 			}
-			plotSurface.Title = "Markers";
-			plotSurface.YAxis1.Label = "Index";
-			plotSurface.XAxis1.Label = "Marker";
-			plotSurface.YAxis1.WorldMin = 0.0;
-			plotSurface.YAxis1.WorldMax = 2.0;
-			plotSurface.XAxis1.WorldMin -= 1.0;
-			plotSurface.XAxis1.WorldMax += 1.0;
+			plotCanvas.Title = "Markers";
+			plotCanvas.YAxis1.Label = "Index";
+			plotCanvas.XAxis1.Label = "Marker";
+			plotCanvas.YAxis1.WorldMin = 0.0;
+			plotCanvas.YAxis1.WorldMax = 2.0;
+			plotCanvas.XAxis1.WorldMin -= 1.0;
+			plotCanvas.XAxis1.WorldMax += 1.0;
 
 			Legend legend = new Legend();
 			legend.AttachTo( XAxisPosition.Top, YAxisPosition.Right );
@@ -46,9 +46,9 @@ namespace Samples
 			legend.HorizontalEdgePlacement = Legend.Placement.Inside;
 			legend.XOffset = 5; // note that these numbers can be negative.
 			legend.YOffset = 0;
-			plotSurface.Legend = legend;
+			plotCanvas.Legend = legend;
 
-			PackStart (plotSurface.Canvas, true);
+			PackStart (plotCanvas.Canvas, true);
 			Label la = new Label (infoText);
 			PackStart (la);
 		
