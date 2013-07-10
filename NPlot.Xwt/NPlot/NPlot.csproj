@@ -74,6 +74,7 @@
     <Compile Include="Interactions\Interaction.cs" />
     <Compile Include="NPlot\Modifier.cs" />
     <Compile Include="NPlot\PlotCanvas.cs" />
+    <Compile Include="NPlot\CandlePlot.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
