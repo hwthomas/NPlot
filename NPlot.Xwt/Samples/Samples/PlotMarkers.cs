@@ -8,9 +8,9 @@ using NPlot;
 
 namespace Samples
 {
-	public class PlotMarkers : PlotSample
+	public class PlotMarkerSample : PlotSample
 	{
-		public PlotMarkers () : base ()
+		public PlotMarkerSample () : base ()
 		{
 			infoText = "";
 			infoText += "Markers Example. Demonstrates - \n";

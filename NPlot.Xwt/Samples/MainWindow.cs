@@ -53,11 +53,11 @@ namespace Samples
 			samplesTree.Columns.Add ("Name", iconCol, nameCol);
 			
 			var staticPlots = AddSample (null, "Static Plots", null);
-			AddSample (staticPlots, "Plot Markers", typeof (PlotMarkers));
+			AddSample (staticPlots, "Plot Markers", typeof (PlotMarkerSample));
 			AddSample (staticPlots, "Waveform Step Plot", typeof (StepPlotSample));
-			AddSample (staticPlots, "Point Plot", typeof (PointPlots));
+			AddSample (staticPlots, "Point Plot", typeof (PointPlotSample));
 			AddSample (staticPlots, "Histogram Plot", typeof (HistogramSample));
-			AddSample (staticPlots, "Candle Plot", typeof (PointPlots));
+			AddSample (staticPlots, "Candle Plot", typeof (CandlePlotSample));
 
 			var interactivePlots = AddSample (null, "Interactive Plots", null);
 			AddSample (interactivePlots, "Waveform Plot", typeof (StepPlotSample));

@@ -53,7 +53,6 @@ namespace NPlot
 			color_ = Colors.Black;
 		}
 
-
 		/// <summary>
 		/// Constructor
 		/// </summary>
@@ -64,7 +63,6 @@ namespace NPlot
 			value_ = ordinateValue;
 			color_ = color;
 		}
-
 
 		/// <summary>
 		/// Draws a representation of the horizontal line in the legend.
@@ -81,7 +79,6 @@ namespace NPlot
 			ctx.Restore ();
 		}
 
-
 		/// <summary>
 		/// The Color to draw the line with
 		/// </summary>
@@ -91,7 +88,6 @@ namespace NPlot
 			set { color_ = value; }
 		}
 		private Color color_ = Colors.Black;
-
 
 		/// <summary>
 		/// A label to associate with the plot - used in the legend.
@@ -103,7 +99,6 @@ namespace NPlot
 		}
 		private string label_ = "";
 
-
 		/// <summary>
 		/// Whether or not to include an entry for this plot in the legend if it exists.
 		/// </summary>
@@ -114,7 +109,6 @@ namespace NPlot
 		}
 		private bool showInLegend_ = false;
 
-
 		/// <summary>
 		/// Returns null indicating that x extremities of the line are variable.
 		/// </summary>
@@ -124,7 +118,6 @@ namespace NPlot
 			return null;
 		}
 
-
 		/// <summary>
 		/// Returns a y-axis that is suitable for drawing this plot.
 		/// </summary>
@@ -133,7 +126,6 @@ namespace NPlot
 		{
 			return new LinearAxis( value_, value_ );
 		}
-
 
 		/// <summary>
 		/// Writes text data describing the horizontal line object to the supplied string builder. It is 
@@ -158,7 +150,6 @@ namespace NPlot
 			sb.Append ( value_.ToString() );
 			sb.Append ( "\r\n" );
 		}
-
 
 		/// <summary>
 		/// Draws the horizontal line plot using the Context and the x and y axes specified
@@ -193,7 +184,6 @@ namespace NPlot
 			// todo:  clip and proper logic for flipped axis min max.
 		}
 
-
 		/// <summary>
 		/// ordinate (Y) value to draw horizontal line at.
 		/// </summary>
@@ -204,7 +194,6 @@ namespace NPlot
 		}
 		private double value_;
 
-
 		/// <summary>
 		/// Each end of the line is indented by this many pixels. 
 		/// </summary>
@@ -214,7 +203,6 @@ namespace NPlot
 			set { pixelIndent_ = value; }
 		}
 		private double pixelIndent_ = 0;
-
 
 		/// <summary>
 		/// The line length is multiplied by this amount. Default

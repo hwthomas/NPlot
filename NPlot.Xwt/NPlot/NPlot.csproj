@@ -75,6 +75,7 @@
     <Compile Include="NPlot\Modifier.cs" />
     <Compile Include="NPlot\PlotCanvas.cs" />
     <Compile Include="NPlot\CandlePlot.cs" />
+    <Compile Include="NPlot\TradingDateTimeAxis.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

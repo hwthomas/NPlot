@@ -9,9 +9,9 @@ using NPlot;
 
 namespace Samples
 {
-	public class PointPlots : PlotSample
+	public class PointPlotSample : PlotSample
 	{
-		public PointPlots () : base ()
+		public PointPlotSample () : base ()
 		{
 			infoText = "";
 			infoText += "Sinc Function Example. Demonstrates - \n";
