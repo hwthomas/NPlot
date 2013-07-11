@@ -673,9 +673,10 @@ namespace NPlot
 
 			Size titleSize;
 			// determine title size
+			double scale = DetermineScaleFactor (bounds.Width, bounds.Height);
 			using (ImageBuilder ib = new ImageBuilder (1,1)) {
 				using (Context ic = ib.Context) {
-					titleSize = DrawTitle (ic, bounds);
+					titleSize = DrawTitle (ic, Point.Zero, scale);
 				}
 			}
 			double topIndent = padding;
@@ -726,6 +727,8 @@ namespace NPlot
 		/// <param name="bounds">The rectangle within which to draw</param>
 		public void Draw (Context ctx, Rectangle bounds)
 		{
+			Point titleOrigin = Point.Zero;
+
 			ctx.Save ();
 
 			// determine font sizes and tick scale factor.
@@ -734,7 +737,10 @@ namespace NPlot
 			// if there is nothing to plot, draw title and return.
 			if (drawables.Count == 0) {
 				// draw title
-				DrawTitle (ctx, bounds);
+				Point origin = Point.Zero;
+				titleOrigin.X = bounds.Width/2;
+				titleOrigin.Y = bounds.Height/2;
+				DrawTitle (ctx, titleOrigin, scale);
 				ctx.Restore ();
 				return;
 			}
@@ -833,11 +839,12 @@ namespace NPlot
 			}
 
 			// draw title
-			double xt = (pXAxis2.PhysicalMax.X + pXAxis2.PhysicalMin.X)/2.0;
-			double yt = bounds.Top + padding - titleExtraOffset;
-			Size s = DrawTitle (ctx, (Rectangle)plotAreaBoundingBoxCache);
 
-			bbTitleCache = new Rectangle (xt-s.Width/2, yt, s.Width, s.Height);
+			titleOrigin.X = (pXAxis2.PhysicalMax.X + pXAxis2.PhysicalMin.X)/2.0;
+			titleOrigin.Y = bounds.Top + padding - titleExtraOffset;
+			Size s = DrawTitle (ctx, titleOrigin, scale);
+
+			bbTitleCache = new Rectangle (titleOrigin.X-s.Width/2, titleOrigin.Y, s.Width, s.Height);
 
 			// draw drawables..
 			bool legendDrawn = false;
@@ -916,18 +923,17 @@ namespace NPlot
 		}
 
 		/// <summary>
-		/// Draws the title using the Drawing Context and bounds supplied
+		/// Draws the title using the Drawing Context and Origin (y,y)
 		/// </summary>
 		/// <returns>
 		/// The Size required for the title
 		/// </returns>
-		private Size DrawTitle (Context ctx, Rectangle bounds)
+		private Size DrawTitle (Context ctx, Point origin, double scale)
 		{
-			double scale = DetermineScaleFactor (bounds.Width, bounds.Height);
+			//double x_center = (bounds.Left + bounds.Right)/2;
+			//double y_center = (bounds.Top + bounds.Bottom)/2;
 
 			// draw title
-			double x_center = (bounds.Left + bounds.Right)/2;
-			double y_center = (bounds.Top + bounds.Bottom)/2;
 			Font scaled_font;
 			if (AutoScaleTitle) {
 				scaled_font = titleFont.WithScaledSize (scale);
@@ -939,7 +945,7 @@ namespace NPlot
 			TextLayout layout = new TextLayout ();
 			layout.Font = scaled_font;
 			layout.Text = title;
-			ctx.DrawTextLayout (layout, x_center, y_center);
+			ctx.DrawTextLayout (layout, origin);
 
 			return layout.GetSize ();
 		}

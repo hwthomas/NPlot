@@ -166,6 +166,7 @@ namespace NPlot
 			}
 
 			ctx.Save ();
+			ctx.SetLineWidth (1);
 
 			/*
 			// brant hyatt proposed.
@@ -231,12 +232,12 @@ namespace NPlot
 						}
 						else if (yOpn < yCls) {
 							ctx.SetColor (BearishColor);
-							ctx.Rectangle (xPos-addAmount+offset, yCls, stickWidth, yCls - yOpn);
+							ctx.Rectangle (xPos-addAmount+offset, yOpn, stickWidth, yCls - yOpn);
 							ctx.FillPreserve ();
 							ctx.SetColor (Color);
 							ctx.Stroke ();
 						}
-						else {
+						else {	// Cls == Opn
 							ctx.MoveTo (xPos-addAmount+offset, yOpn);
 							ctx.LineTo (xPos-addAmount+stickWidth+offset, yCls);
 							ctx.Stroke ();
@@ -279,6 +280,7 @@ namespace NPlot
 		public virtual void DrawInLegend (Context ctx, Rectangle startEnd)
 		{
 			ctx.Save ();
+			ctx.SetLineWidth (1);
 			ctx.SetColor (Color);
 			ctx.MoveTo (startEnd.Left,  (startEnd.Top + startEnd.Bottom)/2);
 			ctx.LineTo (startEnd.Right, (startEnd.Top + startEnd.Bottom)/2);

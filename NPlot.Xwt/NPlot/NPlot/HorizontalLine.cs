@@ -73,6 +73,7 @@ namespace NPlot
 		{
 			ctx.Save ();
 			ctx.SetColor (color_);
+			ctx.SetLineWidth (1);
 			ctx.MoveTo (startEnd.Left, (startEnd.Top + startEnd.Bottom)/2);
 			ctx.LineTo (startEnd.Right, (startEnd.Top + startEnd.Bottom)/2);
 			ctx.Stroke ();
@@ -175,6 +176,7 @@ namespace NPlot
 			double yPos = yAxis.WorldToPhysical (value_, false).Y;
 
 			ctx.Save ();
+			ctx.SetLineWidth (1);
 			ctx.SetColor (color_);
 			ctx.MoveTo (xMin, yPos);
 			ctx.LineTo (xMax, yPos);
