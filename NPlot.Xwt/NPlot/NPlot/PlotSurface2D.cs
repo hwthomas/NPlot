@@ -671,14 +671,22 @@ namespace NPlot
 				leftIndent = leftIndent - bb.Left + cb.Left;
 			}
 
-			Size titleSize;
 			// determine title size
 			double scale = DetermineScaleFactor (bounds.Width, bounds.Height);
-			using (ImageBuilder ib = new ImageBuilder (1,1)) {
-				using (Context ic = ib.Context) {
-					titleSize = DrawTitle (ic, Point.Zero, scale);
-				}
+			Font scaled_font;
+			if (AutoScaleTitle) {
+				scaled_font = titleFont.WithScaledSize (scale);
 			}
+			else {
+				scaled_font = titleFont;
+			}
+
+			Size titleSize;
+			using (TextLayout layout = new TextLayout ()) {
+				layout.Font = scaled_font;
+				layout.Text = Title;
+				titleSize = layout.GetSize ();
+			};
 			double topIndent = padding;
 
 			if (!pXAxis2.Axis.Hidden) {
@@ -737,6 +745,7 @@ namespace NPlot
 			// if there is nothing to plot, draw title and return.
 			if (drawables.Count == 0) {
 				// draw title
+				//TODO: Title should be centred here - not its origin
 				Point origin = Point.Zero;
 				titleOrigin.X = bounds.Width/2;
 				titleOrigin.Y = bounds.Height/2;
@@ -838,7 +847,7 @@ namespace NPlot
 				ctx.Fill ();
 			}
 
-			// draw title
+			// draw title at centre of Physical X-axis and at top of plot
 
 			titleOrigin.X = (pXAxis2.PhysicalMax.X + pXAxis2.PhysicalMin.X)/2.0;
 			titleOrigin.Y = bounds.Top + padding - titleExtraOffset;
@@ -923,17 +932,17 @@ namespace NPlot
 		}
 
 		/// <summary>
-		/// Draws the title using the Drawing Context and Origin (y,y)
+		/// Draws the title using the Drawing Context, Origin (x,y) and scale
 		/// </summary>
 		/// <returns>
 		/// The Size required for the title
 		/// </returns>
+		/// TODO: Add a MeasureTitle routine, since can measure TextLayout now
+		/// 
 		private Size DrawTitle (Context ctx, Point origin, double scale)
 		{
-			//double x_center = (bounds.Left + bounds.Right)/2;
-			//double y_center = (bounds.Top + bounds.Bottom)/2;
-
-			// draw title
+			ctx.Save ();
+			ctx.SetColor (TitleColor);
 			Font scaled_font;
 			if (AutoScaleTitle) {
 				scaled_font = titleFont.WithScaledSize (scale);
@@ -944,10 +953,14 @@ namespace NPlot
 
 			TextLayout layout = new TextLayout ();
 			layout.Font = scaled_font;
-			layout.Text = title;
-			ctx.DrawTextLayout (layout, origin);
+			layout.Text = Title;
+			Size titleSize = layout.GetSize ();
+			origin.X -= titleSize.Width/2;
 
-			return layout.GetSize ();
+			ctx.DrawTextLayout (layout, origin);
+			ctx.Restore ();
+
+			return titleSize;
 		}
 
 

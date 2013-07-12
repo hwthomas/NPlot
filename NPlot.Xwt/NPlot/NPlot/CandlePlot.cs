@@ -143,8 +143,8 @@ namespace NPlot
 		/// <param name="yAxis">The physical Y-Axis to draw against</param>
 		public void Draw (Context ctx, PhysicalAxis xAxis, PhysicalAxis yAxis)
 		{
-			CandleDataAdapter cd = new CandleDataAdapter( DataSource, DataMember, 
-				AbscissaData, OpenData, LowData, HighData, CloseData );
+			CandleDataAdapter cd = new CandleDataAdapter (DataSource, DataMember, 
+				AbscissaData, OpenData, LowData, HighData, CloseData);
 
 			double offset = 0;
 			if (Centered) {
@@ -577,7 +577,7 @@ namespace NPlot
 			/// Returns a y-axis that is suitable for drawing the data.
 			/// </summary>
 			/// <returns>A suitable y-axis.</returns>
-			public Axis SuggestYAxis()
+			public Axis SuggestYAxis ()
 			{
 				double min_l;
 				double max_l;
@@ -585,12 +585,12 @@ namespace NPlot
 				double max_h;
 
 				if (rows_ == null) {
-					Utils.ArrayMinMax((System.Collections.IList)lowData_, out min_l, out max_l);
-					Utils.ArrayMinMax((System.Collections.IList)highData_, out min_h, out max_h);
+					Utils.ArrayMinMax ((System.Collections.IList)lowData_, out min_l, out max_l);
+					Utils.ArrayMinMax ((System.Collections.IList)highData_, out min_h, out max_h);
 				}
 				else {
-					Utils.RowArrayMinMax(rows_, out min_l, out max_l, (string)lowData_);
-					Utils.RowArrayMinMax(rows_, out min_h, out max_h, (string)highData_);
+					Utils.RowArrayMinMax (rows_, out min_l, out max_l, (string)lowData_);
+					Utils.RowArrayMinMax (rows_, out min_h, out max_h, (string)highData_);
 				}
 
 				Axis a = new LinearAxis (min_l, max_h);
@@ -629,7 +629,7 @@ namespace NPlot
 			/// <returns></returns>
 			public override CandleStyle Create (CandleDataAdapter d)
 			{
-				return new Stick();
+				return new Stick ();
 			}
 		}
 		
