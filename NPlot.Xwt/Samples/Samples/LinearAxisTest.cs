@@ -78,7 +78,8 @@ namespace Samples
 		private void DrawAxisTests (Context ctx, Rectangle bounds)
 		{
 			Rectangle boundingBox;
-			Point tl, br;
+			Point tl = Point.Zero;
+			Point br = Point.Zero;;
 
 			tl.X = bounds.Left + 30;	tl.Y = bounds.Top + 10;
 			br.X = tl.X;				br.Y = bounds.Bottom - 100;

@@ -76,7 +76,7 @@ namespace NPlot
 				}
 				
 				// (2) determine the top right hand point of the bar (assuming not centered)
-				Point p2;
+				Point p2 = Point.Zero;;
 				if (i+1 != data.Count) {
 					p2 = data[i+1];
 					if (double.IsNaN(p2.X) || double.IsNaN(p2.Y)) {
