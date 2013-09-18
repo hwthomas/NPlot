@@ -48,7 +48,7 @@ namespace NPlot
 		/// <summary>
 		/// Constructor.
 		/// </summary>
-		public StepPlot()
+		public StepPlot ()
 		{
 			Center = false;
 		}

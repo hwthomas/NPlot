@@ -31,7 +31,7 @@ namespace GtkHost
 {
 	class MainClass
 	{
-        [STAThread]
+		[STAThread]
 		public static void Main (string[] args)
 		{
 			App.Run (ToolkitType.Gtk);

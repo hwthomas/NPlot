@@ -27,9 +27,9 @@ namespace Samples
 			System.Int16[] w = new short[5000];
 			byte[] a = new byte[10000];
 
-			file.Read( a, 0, 10000 );
+			file.Read (a, 0, 10000);
 			for (int i=100; i<5000; ++i) {
-				w[i] = BitConverter.ToInt16(a,i*2);
+				w[i] = BitConverter.ToInt16 (a,i*2);
 			}
 			file.Close();
 

@@ -43,6 +43,7 @@
     <Compile Include="Samples\CandlePlotSample.cs" />
     <Compile Include="Samples\PointPlotSample.cs" />
     <Compile Include="Samples\StepPlotSample.cs" />
+    <Compile Include="Samples\TradingSample.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xwt">

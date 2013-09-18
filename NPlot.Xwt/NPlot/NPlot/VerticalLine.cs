@@ -1,7 +1,7 @@
 //
 // NPlot - A charting library for .NET
 // 
-// HorizontalLine.cs
+// VerticalLine.cs
 // Copyright (C) 2003-2006 Matt Howlett and others
 // Port to Xwt 2012-2013 : Hywel Thomas <hywel.w.thomas@gmail.com>
 // All rights reserved.
@@ -38,58 +38,38 @@ namespace NPlot
 {
 
 	/// <summary>
-	/// Encapsulates functionality for drawing a horizontal line on a plot surface
+	/// Encapsulates functionality for drawing a vertical line on a plot surface.
 	/// </summary>
-	public class HorizontalLine : IPlot
+	public class VerticalLine : IPlot
 	{
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		/// <param name="ordinateValue">ordinate (Y) value of line.</param>
-		/// <param name="color">line color.</param>
-		public HorizontalLine (double ordinateValue, Color color)
+		/// <param name="abscissaValue">abscissa (X) value of line.</param>
+		/// <param name="color">draw the line using this color.</param>
+		public VerticalLine (double abscissaValue, Color color)
 		{
-			value_ = ordinateValue;
-			color_ = color;
-			Label = "";
+			AbscissaValue = abscissaValue;
+			Color = color;
+			PixelIndent = 0;
+			LengthScale = 1;
 		}
 
 		/// <summary>
 		/// Constructor
 		/// </summary>
-		/// <param name="ordinateValue">ordinate (Y) value of line</param>
-		public HorizontalLine (double ordinateValue)
-		{
-			value_ = ordinateValue;
-			color_ = Colors.Black;
-			Label = "";
-		}
+		/// <param name="abscissaValue">abscissa (X) value of line.</param>
+		public VerticalLine (double abscissaValue) : this (abscissaValue, Colors.Black) { }
 
 		/// <summary>
-		/// Draws a representation of the horizontal line in the legend.
+		/// abscissa (X) value to draw horizontal line at.
 		/// </summary>
-		/// <param name="ctx">The Drawing Context with which to draw</param>
-		/// <param name="startEnd">A rectangle specifying the bounds of the area in the legend set aside for drawing</param>
-		public void DrawInLegend (Context ctx, Rectangle startEnd)
-		{
-			ctx.Save ();
-			ctx.MoveTo (startEnd.Left, (startEnd.Top + startEnd.Bottom)/2);
-			ctx.LineTo (startEnd.Right, (startEnd.Top + startEnd.Bottom)/2);
-			ctx.SetColor (color_);
-			ctx.SetLineWidth (1);
-			ctx.Stroke ();
-			ctx.Restore ();
-		}
+		public double AbscissaValue { get; set; }
 
 		/// <summary>
-		/// The Color to draw the line with
+		/// Color used to draw the vertical line.
 		/// </summary>
-		public Color Color
-		{
-			get { return color_; }
-			set { color_ = value; }
-		}
-		private Color color_ = Colors.Black;
+		public Color Color { get; set; }
 
 		/// <summary>
 		/// A label to associate with the plot - used in the legend.
@@ -102,25 +82,41 @@ namespace NPlot
 		public bool ShowInLegend { get; set; }
 
 		/// <summary>
-		/// Returns null indicating that x extremities of the line are variable.
+		/// Draws a representation of the line in the legend
+		/// </summary>
+		/// <param name="ctx">The Drawing Context with which to draw</param>
+		/// <param name="startEnd">A rectangle specifying the bounds of the area in the legend set aside for drawing</param>
+		public void DrawInLegend (Context ctx, Rectangle startEnd)
+		{
+			ctx.Save ();
+			ctx.MoveTo (startEnd.Left, (startEnd.Top + startEnd.Bottom)/2);
+			ctx.LineTo (startEnd.Right, (startEnd.Top + startEnd.Bottom)/2);
+			ctx.SetColor (Color);
+			ctx.SetLineWidth (1);
+			ctx.Stroke ();
+			ctx.Restore ();
+		}
+
+		/// <summary>
+		/// Returns an x-axis that is suitable for drawing this plot.
+		/// </summary>
+		/// <returns>A suitable x-axis.</returns>
+		public Axis SuggestXAxis ()
+		{
+			return new LinearAxis (AbscissaValue, AbscissaValue);
+		}
+
+		/// <summary>
+		/// Returns null indicating that y extremities of the line are variable.
 		/// </summary>
 		/// <returns>null</returns>
-		public Axis SuggestXAxis()
+		public Axis SuggestYAxis()
 		{
 			return null;
 		}
 
 		/// <summary>
-		/// Returns a y-axis that is suitable for drawing this plot.
-		/// </summary>
-		/// <returns>A suitable y-axis.</returns>
-		public Axis SuggestYAxis()
-		{
-			return new LinearAxis( value_, value_ );
-		}
-
-		/// <summary>
-		/// Writes text data describing the horizontal line object to the supplied string builder. It is 
+		/// Writes text data describing the vertical line object to the supplied string builder. It is 
 		/// possible to specify that the data will be written only if the line is in the specified 
 		/// region.
 		/// </summary>
@@ -130,82 +126,63 @@ namespace NPlot
 		public void WriteData (System.Text.StringBuilder sb, Rectangle region, bool onlyInRegion)
 		{
 			// return if line is not in plot region and 
-			if (value_ > region.Y+region.Height || value_ < region.Y) {
+			if (AbscissaValue > region.X+region.Width || AbscissaValue < region.X) {
 				if (onlyInRegion) {
 					return;
 				}
 			}
 
-			sb.Append ( "Label: " );
-			sb.Append ( Label );
-			sb.Append ( "\r\n" );
-			sb.Append ( value_.ToString() );
-			sb.Append ( "\r\n" );
+			sb.Append ("Label: ");
+			sb.Append (Label);
+			sb.Append ("\r\n");
+			sb.Append (AbscissaValue.ToString());
+			sb.Append ("\r\n");
 		}
 
+
 		/// <summary>
-		/// Draws the horizontal line plot using the Context and the x and y axes specified
+		/// Draws the vertical line using the Context and the x and y axes specified
 		/// </summary>
 		/// <param name="ctx">The Context with which to draw.</param>
 		/// <param name="xAxis">The X-Axis to draw against.</param>
 		/// <param name="yAxis">The Y-Axis to draw against.</param>
 		public void Draw (Context ctx, PhysicalAxis xAxis, PhysicalAxis yAxis)
 		{
-			double xMin = xAxis.PhysicalMin.X;
-			double xMax = xAxis.PhysicalMax.X;
+			double yMin = yAxis.PhysicalMin.Y;
+			double yMax = yAxis.PhysicalMax.Y;
 			
-			xMin += pixelIndent_;
-			xMax -= pixelIndent_;
+			yMin -= PixelIndent;
+			yMax += PixelIndent;
 
-			double length = Math.Abs (xMax - xMin);
-			double lengthDiff = length - length*scale_;
+			double length = Math.Abs (yMax - yMin);
+			double lengthDiff = length - length*LengthScale;
 			double indentAmount = lengthDiff/2;
 
-			xMin += indentAmount;
-			xMax -= indentAmount;
+			yMin -= indentAmount;
+			yMax += indentAmount;
 
-			double yPos = yAxis.WorldToPhysical (value_, false).Y;
-
+			double xPos = xAxis.WorldToPhysical (AbscissaValue, false).X;
+		
 			ctx.Save ();
 			ctx.SetLineWidth (1);
-			ctx.SetColor (color_);
-			ctx.MoveTo (xMin, yPos);
-			ctx.LineTo (xMax, yPos);
+			ctx.SetColor (Color);
+			ctx.MoveTo (xPos, yMin);
+			ctx.LineTo (xPos, yMax);
 			ctx.Stroke ();
 			ctx.Restore ();
-
 			// todo:  clip and proper logic for flipped axis min max.
 		}
 
 		/// <summary>
-		/// ordinate (Y) value to draw horizontal line at.
-		/// </summary>
-		public double OrdinateValue
-		{
-			get { return value_; }
-			set { value_ = value; }
-		}
-		private double value_;
-
-		/// <summary>
 		/// Each end of the line is indented by this many pixels. 
 		/// </summary>
-		public double PixelIndent
-		{
-			get { return pixelIndent_; }
-			set { pixelIndent_ = value; }
-		}
-		private double pixelIndent_ = 0;
+		public double PixelIndent { get; set; }
 
 		/// <summary>
 		/// The line length is multiplied by this amount. Default
 		/// corresponds to a value of 1.0.
 		/// </summary>
-		public double LengthScale
-		{
-			get { return scale_; }
-			set { scale_ = value; }
-		}
-		private double scale_ = 1.0;
+		public double LengthScale { get; set; }
+
 	}
 }
