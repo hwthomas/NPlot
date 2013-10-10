@@ -41,6 +41,11 @@ namespace NPlot
 	/// <summary>
 	/// A quick and dirty Filled region plottable object
 	/// </summary>
+	/// <remarks>
+	/// This could be integrated with LinePlot at some stage since a FilledRegion
+	/// can be bounded by two LinePlots.  Describing the Paths once and then both
+	/// doing a FillPreserve () and a Stroke () would be more efficient
+	/// </remarks>
 	public class FilledRegion : IDrawable
 	{
 		private VerticalLine vl1_;

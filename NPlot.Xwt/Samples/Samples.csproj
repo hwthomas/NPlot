@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -33,17 +33,39 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Compile Include="App.cs" />
-    <Compile Include="MainWindow.cs" />
-    <Compile Include="Samples\LinearAxisTest.cs" />
-    <Compile Include="Samples\LogAxisTest.cs" />
-    <Compile Include="Samples\DateTimeAxisTest.cs" />
-    <Compile Include="Samples\PlotSample.cs" />
-    <Compile Include="Samples\PlotMarkers.cs" />
-    <Compile Include="Samples\HistogramSample.cs" />
-    <Compile Include="Samples\CandlePlotSample.cs" />
-    <Compile Include="Samples\PointPlotSample.cs" />
-    <Compile Include="Samples\StepPlotSample.cs" />
-    <Compile Include="Samples\TradingSample.cs" />
+    <Compile Include="MainWindow.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\LinearAxisTest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\LogAxisTest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\DateTimeAxisTest.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\PlotSample.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\PlotMarkers.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\HistogramSample.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\CandlePlotSample.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\PointPlotSample.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\StepPlotSample.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Samples\TradingSample.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xwt">
@@ -52,10 +74,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Samples\" />
-    <Folder Include="Resources\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <EmbeddedResource Include="class.png">
       <LogicalName>class.png</LogicalName>

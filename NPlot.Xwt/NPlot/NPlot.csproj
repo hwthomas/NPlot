@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -31,11 +31,9 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="NPlot\" />
-    <Folder Include="Interactions\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Compile Include="NPlot\FilledRegion.cs" />
     <Compile Include="NPlot\Utils.cs" />
     <Compile Include="NPlot\Transform2D.cs" />
     <Compile Include="NPlot\ITransform2D.cs" />

@@ -134,7 +134,7 @@ namespace NPlot
 		/// <param name="horizontal">true if want horizontal lines, false otherwise.</param>
 		/// <param name="color">the color to draw the grid lines.</param>
 		private void DrawGridLines (Context ctx,
-		    PhysicalAxis axis, PhysicalAxis orthogonalAxis,
+			PhysicalAxis axis, PhysicalAxis orthogonalAxis,
 			System.Collections.ArrayList a, bool horizontal)
 		{
 			for (int i=0; i<a.Count; ++i) {
