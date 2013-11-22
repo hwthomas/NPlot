@@ -7,10 +7,10 @@ using NPlot;
 
 namespace SwfSamples
 {
-    public class PlotImage : PlotSample
-    {
-        public PlotImage ()
-        {
+	public class PlotImage : PlotSample
+	{
+		public PlotImage ()
+		{
 			infoText = "";
 			infoText += "Image Example. Demonstrates - \n";
 			infoText += " * ImagePlot IDrawable \n";
@@ -37,42 +37,42 @@ namespace SwfSamples
 			"-2.085637E-3 -1.084531E-3 -1.251382E-3 -1.112340E-3 -1.223573E-3 -7.786377E-4 -8.620631E-4 -3.893189E-4 -4.449358E-4 3.337019E-4 1.167957E-3 9.454886E-4 3.893189E-4 -8.342547E-4 -9.176802E-4 -1.195765E-3 -1.306999E-3 -1.585084E-3 -1.696318E-3 " +
 			"-2.113445E-3 -1.140148E-3 -1.195765E-3 -1.140148E-3 -1.167957E-3 -7.786377E-4 -8.342547E-4 -3.893189E-4 -4.171273E-4 -1.279191E-3 -1.251382E-3 -1.195765E-3 -1.195765E-3 -8.342547E-4 -8.620631E-4 -1.223573E-3 -1.251382E-3 -1.612892E-3 -1.668509E-3";
 
-            string [] tokens = myfile.Split(new char [1] {' '});
-            double [,] map = new double [19,19];
-            for (int i=0; i < 19; ++i)
-            {
-                for (int j=0; j < 19; ++j)
-                {
-                    map[i,j] = Convert.ToDouble(tokens[i*19+j], new
-                        System.Globalization.CultureInfo("en-US"));
-                }
-            }
+			string [] tokens = myfile.Split(new char [1] {' '});
+			double [,] map = new double [19,19];
+			for (int i=0; i < 19; ++i)
+			{
+				for (int j=0; j < 19; ++j)
+				{
+					map[i,j] = Convert.ToDouble(tokens[i*19+j], new
+						System.Globalization.CultureInfo("en-US"));
+				}
+			}
 
-            plotSurface.Clear();
-            
-            plotSurface.Title = "Cathode 11.2 QE Map";
-            
-            ImagePlot ip = new ImagePlot(map, -9.0f, 1.0f, -9.0f, 1.0f);
-            //ip.Gradient = new StepGradient( StepGradient.Type.Rainbow );
-            ip.Gradient = new LinearGradient( Color.Gold, Color.Black );
+			plotSurface.Clear();
+			
+			plotSurface.Title = "Cathode 11.2 QE Map";
+			
+			ImagePlot ip = new ImagePlot(map, -9.0f, 1.0f, -9.0f, 1.0f);
+			//ip.Gradient = new StepGradient( StepGradient.Type.Rainbow );
+			ip.Gradient = new LinearGradient( Color.Gold, Color.Black );
 
-            plotSurface.Add(ip);
-            plotSurface.XAxis1.Label = "x [mm]";
-            plotSurface.YAxis1.Label = "y [mm]";
+			plotSurface.Add(ip);
+			plotSurface.XAxis1.Label = "x [mm]";
+			plotSurface.YAxis1.Label = "y [mm]";
 
-            plotSurface.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
+			plotSurface.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.None;
 
-            //plotSurface.AddAxesConstraint( new AxesConstraint.AxisPosition( PlotSurface2D.YAxisPosition.Left, 0) );
-            //plotSurface.AddAxesConstraint( new AxesConstraint.AxisPosition( PlotSurface2D.XAxisPosition.Top, 0) );
-            //plotSurface.AddAxesConstraint(
-            //new AxesConstraint.YPixelWorldLength(0.1f,PlotSurface2D.XAxisPosition.Bottom) );
-            //plotSurface.AddAxesConstraint( new AxesConstraint.AspectRatio(1.0,PlotSurface2D.XAxisPosition.Top,PlotSurface2D.YAxisPosition.Left) );
-            plotSurface.AddInteraction (new KeyActions());
-            plotSurface.AddInteraction (new PlotSelection(Color.White));
+			//plotSurface.AddAxesConstraint( new AxesConstraint.AxisPosition( PlotSurface2D.YAxisPosition.Left, 0) );
+			//plotSurface.AddAxesConstraint( new AxesConstraint.AxisPosition( PlotSurface2D.XAxisPosition.Top, 0) );
+			//plotSurface.AddAxesConstraint(
+			//new AxesConstraint.YPixelWorldLength(0.1f,PlotSurface2D.XAxisPosition.Bottom) );
+			//plotSurface.AddAxesConstraint( new AxesConstraint.AspectRatio(1.0,PlotSurface2D.XAxisPosition.Top,PlotSurface2D.YAxisPosition.Left) );
+			plotSurface.AddInteraction (new KeyActions());
+			plotSurface.AddInteraction (new PlotSelection(Color.White));
 
-            plotSurface.Refresh();
+			plotSurface.Refresh();
 
-        }
-    }
+		}
+	}
 }
 

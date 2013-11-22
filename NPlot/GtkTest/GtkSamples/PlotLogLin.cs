@@ -13,7 +13,8 @@ namespace GtkSamples
 		{
 			infoText = "";
 			infoText += "LogLin Example. Demonstrates - \n";
-			infoText += "  * How to chart data against log axes and linear axes at the same time.";
+			infoText += "  * How to chart data against log axes and linear axes at the same time. \n";
+			infoText += "  * Click a Start point and drag to an End point to Measure the plots";
 
 			plotSurface.Clear();
 

@@ -36,10 +36,10 @@ namespace SwfSamples
 			get { return infoText; }
 		}
 
-        public Control Canvas
-        {
-            get {return plotSurface.Canvas;}
-        }
+		public Control Canvas
+		{
+			get {return plotSurface.Canvas;}
+		}
 
 		public NPlot.Swf.InteractivePlotSurface2D PlotSurface
 		{
