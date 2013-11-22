@@ -49,20 +49,18 @@ namespace NPlot
 		
 		public double Distance 
 		{ 
-			get 
-			{
+			get {
 				double dx = End.X - Start.X;
 				double dy = End.Y - Start.Y;
 				
-				return Math.Sqrt(dx * dx + dy * dy);
+				return Math.Sqrt (dx * dx + dy * dy);
 			}
 		}
 		
 		public double Angle 
 		{ 
-			get 
-			{ 
-				return 180 * Math.Atan2(End.Y - Start.Y, End.X - Start.X) / Math.PI; 
+			get { 
+				return 180 * Math.Atan2 (End.Y - Start.Y, End.X - Start.X) / Math.PI; 
 			}
 		}
 	}
@@ -92,8 +90,8 @@ namespace NPlot
 		public event MeasurementHandler Measurement;
 		
 
-		Rectangle extent 	= Rectangle.Empty;
-		bool active 		= false;
+		Rectangle extent	= Rectangle.Empty;
+		bool active			= false;
 		Color colour;
 		Point start;
 		Point end;
@@ -106,7 +104,7 @@ namespace NPlot
 		/// <param name="colour">
 		/// Colour used to visualise the measurement points and the line connecting them.
 		/// </param>
-		public Measure(Color colour)
+		public Measure (Color colour)
 		{
 			this.colour		= colour;
 			this.MarkerSize	= 7;
@@ -119,27 +117,25 @@ namespace NPlot
 		/// will always read back as odd.
 		/// </summary>
 		public int MarkerSize 
-		{ 	
+		{	
 			get { return this.offset * 2 + 1; }
 			set { this.offset = value > 1 ? value / 2 : 1; }
 		}
 		
 		
-		public override void DoDraw(Graphics g, Rectangle dirtyRect)
+		public override void DoDraw (Graphics g, Rectangle dirtyRect)
 		{
-			if (active)
-			{
-				using (Pen pen = new Pen(this.colour))
-				{
+			if (active) {
+				using (Pen pen = new Pen(this.colour)) {
 					// Set the smoothing mode here since it is not carried over
 					// from the InteractivePlotSurface2D and otherwise the line
 					// connecting start and end points will not look very nice.
 					var smooth		= g.SmoothingMode;
 					g.SmoothingMode = SmoothingMode.AntiAlias;
 					
-					this.DrawCross(g, pen, this.start);
-					this.DrawCross(g, pen, this.end);
-					g.DrawLine(pen, this.start, this.end);
+					this.DrawCross (g, pen, this.start);
+					this.DrawCross (g, pen, this.end);
+					g.DrawLine (pen, this.start, this.end);
 					
 					g.SmoothingMode = smooth;
 				}
@@ -147,10 +143,10 @@ namespace NPlot
 		}
 		
 		
-		void DrawCross(Graphics g, Pen pen, Point p)
+		void DrawCross (Graphics g, Pen pen, Point p)
 		{
-			g.DrawLine(pen, p.X - this.offset, p.Y, p.X + this.offset, p.Y);
-			g.DrawLine(pen, p.X, p.Y - this.offset, p.X, p.Y + this.offset);
+			g.DrawLine (pen, p.X - this.offset, p.Y, p.X + this.offset, p.Y);
+			g.DrawLine (pen, p.X, p.Y - this.offset, p.X, p.Y + this.offset);
 		}
 		
 		
@@ -161,92 +157,84 @@ namespace NPlot
 			// If the mouse is being dragged then set the end point and extent
 			// rectangle accordingly. Otherwise simply set the start coordinates
 			// the current cursor position.
-			if (this.active)
-			{
-				this.end	= new Point(x, y);
-				this.extent	= new Rectangle(
-					Math.Min(this.start.X, this.end.X) - this.offset, 
-					Math.Min(this.start.Y, this.end.Y) - this.offset, 
-					Math.Abs(this.end.X - this.start.X) + this.offset * 2 + 1, 
-					Math.Abs(this.end.Y - this.start.Y) + this.offset * 2 + 1
+			if (this.active) {
+				this.end	= new Point (x, y);
+				this.extent	= new Rectangle (
+					Math.Min (this.start.X, this.end.X) - this.offset, 
+					Math.Min (this.start.Y, this.end.Y) - this.offset, 
+					Math.Abs (this.end.X - this.start.X) + this.offset * 2 + 1, 
+					Math.Abs (this.end.Y - this.start.Y) + this.offset * 2 + 1
 				);
 			}
-			else 
-			{
-				this.start	= new Point(x, y);
+			else {
+				this.start	= new Point (x, y);
 				this.extent = Rectangle.Empty;
 			}
 
 			// If an event handler has been set then throw the latest world
 			// coordinates at it. Start and end points are set the same if
 			// the cursor is not being dragged.
-			if (this.Measurement != null)
-			{
-				if (ps.PhysicalXAxis1Cache != null && ps.PhysicalYAxis1Cache != null)
-				{
+			if (this.Measurement != null) {
+				if (ps.PhysicalXAxis1Cache != null && ps.PhysicalYAxis1Cache != null) {
 					var args	= new MeasurementArgs();
-					args.Start	= new PointF(
-						(float)ps.PhysicalXAxis1Cache.PhysicalToWorld(this.start, true),
-						(float)ps.PhysicalYAxis1Cache.PhysicalToWorld(this.start, true)
+					args.Start	= new PointF (
+						(float)ps.PhysicalXAxis1Cache.PhysicalToWorld (this.start, true),
+						(float)ps.PhysicalYAxis1Cache.PhysicalToWorld (this.start, true)
 					);
 					
-					args.End = !this.active ? args.Start : new PointF(
-						(float)ps.PhysicalXAxis1Cache.PhysicalToWorld(this.end, true),
-						(float)ps.PhysicalYAxis1Cache.PhysicalToWorld(this.end, true)
+					args.End = !this.active ? args.Start : new PointF (
+						(float)ps.PhysicalXAxis1Cache.PhysicalToWorld (this.end, true),
+						(float)ps.PhysicalYAxis1Cache.PhysicalToWorld (this.end, true)
 					);
 					
-					this.Measurement(ps, args);
+					this.Measurement (ps, args);
 				}
 			}
 			
-			ps.QueueDraw(previous);
-			ps.QueueDraw(this.extent);
+			ps.QueueDraw (previous);
+			ps.QueueDraw (this.extent);
 			
 			return false;
 		}
 		
 		
-		public override bool DoMouseDown(int x, int y, Modifier keys, InteractivePlotSurface2D ps)
+		public override bool DoMouseDown (int x, int y, Modifier keys, InteractivePlotSurface2D ps)
 		{
 			Rectangle area = ps.PlotAreaBoundingBoxCache;
 
 			// Left mouse button triggers a drag.
-			if ((keys & Modifier.Button1) > 0)
-			{
-				if (area.Contains(x, y))
-				{
+			if ((keys & Modifier.Button1) > 0) {
+				if (area.Contains(x, y)) {
 					this.active = true;
-					this.start	= new Point(x, y);
+					this.start	= new Point (x, y);
 					this.end	= this.start;
-					this.extent = new Rectangle(x - this.offset, y - this.offset, this.offset * 2 + 1, this.offset * 2);
+					this.extent = new Rectangle (x - this.offset, y - this.offset, this.offset * 2 + 1, this.offset * 2);
 				}
 			}
 			
-			ps.QueueDraw(this.extent);
+			ps.QueueDraw (this.extent);
 			
 			return false;
 		}
 		
 		
-		public override bool DoMouseUp(int x, int y, Modifier keys, InteractivePlotSurface2D ps)
+		public override bool DoMouseUp (int x, int y, Modifier keys, InteractivePlotSurface2D ps)
 		{
-			ps.QueueDraw(this.extent);
+			ps.QueueDraw (this.extent);
 			
 			this.active = false;
 			this.extent = Rectangle.Empty;
 			
-			if (this.Measurement != null)
-			{
-				if (ps.PhysicalXAxis1Cache != null && ps.PhysicalYAxis1Cache != null)
-				{
+			if (this.Measurement != null) {
+				if (ps.PhysicalXAxis1Cache != null && ps.PhysicalYAxis1Cache != null) {
 					var args = new MeasurementArgs();
 					
-					args.End = args.Start = new PointF(
-						(float)ps.PhysicalXAxis1Cache.PhysicalToWorld(this.start, true),
-						(float)ps.PhysicalYAxis1Cache.PhysicalToWorld(this.start, true)
+					args.End = args.Start = new PointF (
+						(float)ps.PhysicalXAxis1Cache.PhysicalToWorld (this.start, true),
+						(float)ps.PhysicalYAxis1Cache.PhysicalToWorld (this.start, true)
 					);
 					
-					this.Measurement(ps, args);
+					this.Measurement (ps, args);
 				}
 			}
 			
