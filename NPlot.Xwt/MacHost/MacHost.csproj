@@ -5,10 +5,10 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>10.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{5415AE99-2877-4730-AF1F-F94DCD12C31A}</ProjectGuid>
+    <ProjectGuid>{3C152C63-2F42-48E1-81E2-E8E542708A7A}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>GtkHost</RootNamespace>
-    <AssemblyName>GtkTest</AssemblyName>
+    <RootNamespace>MacHost</RootNamespace>
+    <AssemblyName>MacHost</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -16,16 +16,14 @@
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <DebugType>none</DebugType>
+    <DebugType>full</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>x86</PlatformTarget>
     <ConsolePause>false</ConsolePause>
@@ -34,21 +32,22 @@
   <ItemGroup>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Main.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral">
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Core" />
     <Reference Include="Xwt">
       <HintPath>..\..\..\xwt\Xwt\bin\Debug\Xwt.dll</HintPath>
     </Reference>
     <Reference Include="Xwt.Mac">
       <HintPath>..\..\..\xwt\Xwt.Mac\bin\Debug\Xwt.Mac.dll</HintPath>
     </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Main.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Samples\Samples.csproj">
-      <Project>{4D53E9E6-0DC3-4C09-ABC3-5BD1D60A5940}</Project>
-      <Name>Samples</Name>
-    </ProjectReference>
+    <Reference Include="Samples">
+      <HintPath>..\Samples\bin\Debug\Samples.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
