@@ -1,7 +1,7 @@
 ﻿// Main.cs
 //  
 // Author:
-//       Luís Reis <luiscubal@gmail.com>
+//       Hywel Thomas <hywel.w.thomas@gmail.com>
 // 
 // Copyright (c) 2012 Luís Reis
 // 

@@ -74,12 +74,6 @@
     <Reference Include="System.Data" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
-    <Reference Include="Xwt.Mac">
-      <HintPath>..\..\..\xwt\Xwt.Mac\bin\Debug\Xwt.Mac.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral">
-      <Private>False</Private>
-    </Reference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
