@@ -3,6 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Data;
 using System.Collections;
+using System.Xml;
 
 using Xwt;
 using Xwt.Drawing;

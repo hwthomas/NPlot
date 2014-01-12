@@ -73,6 +73,10 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Xwt.Mac">
+      <HintPath>..\..\..\xwt\Xwt.Mac\bin\Debug\Xwt.Mac.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
