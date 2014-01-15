@@ -1,10 +1,10 @@
 //
-// NPlot - A charting library for .NET
+// XwPlot - A cross-platform charting library using the Xwt toolkit
 // 
 // DateTimeAxis.cs
 // 
 // Copyright (C) 2003-2006 Matt Howlett and others
-// Port to Xwt 2012-2013 : Hywel Thomas <hywel.w.thomas@gmail.com>
+// Ported from NPlot to Xwt 2012-2014 : Hywel Thomas <hywel.w.thomas@gmail.com>
 //
 // All rights reserved.
 // 

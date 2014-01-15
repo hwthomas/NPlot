@@ -1,5 +1,5 @@
 //
-// NPlot - A charting library for .NET
+// XwPlot - A cross-platform charting library using the Xwt toolkit
 // 
 // MarkerItem.cs
 // Copyright (C) 2003-2006 Matt Howlett and others.

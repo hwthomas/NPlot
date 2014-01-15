@@ -41,10 +41,10 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Xwt">
-      <HintPath>..\..\..\xwt\Xwt\bin\Debug\Xwt.dll</HintPath>
+      <HintPath>..\..\..\..\Projects\xwt\Xwt.Mac\bin\Debug\Xwt.dll</HintPath>
     </Reference>
     <Reference Include="Xwt.Mac">
-      <HintPath>..\..\..\xwt\Xwt.Mac\bin\Debug\Xwt.Mac.dll</HintPath>
+      <HintPath>..\..\..\..\Projects\xwt\Xwt.Mac\bin\Debug\Xwt.Mac.dll</HintPath>
     </Reference>
     <Reference Include="Samples">
       <HintPath>..\Samples\bin\Debug\Samples.dll</HintPath>

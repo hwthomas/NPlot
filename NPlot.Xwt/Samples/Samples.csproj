@@ -66,14 +66,21 @@
     <Compile Include="Samples\TradingSample.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Samples\TradingDateTimeAxisTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xwt">
-      <HintPath>..\..\..\xwt\Xwt\bin\Debug\Xwt.dll</HintPath>
+      <HintPath>..\..\..\..\Projects\xwt\Xwt\bin\Debug\Xwt.dll</HintPath>
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="Xwt.Mac">
+      <HintPath>..\..\..\..\Projects\xwt\Xwt.Mac\bin\Debug\Xwt.Mac.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

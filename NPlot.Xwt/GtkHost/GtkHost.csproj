@@ -36,10 +36,10 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="Xwt">
-      <HintPath>..\..\..\xwt\Xwt\bin\Debug\Xwt.dll</HintPath>
+      <HintPath>..\..\..\..\Projects\xwt\Xwt.Gtk\bin\Debug\Xwt.dll</HintPath>
     </Reference>
     <Reference Include="Xwt.Gtk">
-      <HintPath>..\..\..\xwt\Xwt.Gtk\bin\Debug\Xwt.Gtk.dll</HintPath>
+      <HintPath>..\..\..\..\Projects\xwt\Xwt.Gtk\bin\Debug\Xwt.Gtk.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
