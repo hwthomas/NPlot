@@ -1,10 +1,9 @@
 //
 // XwPlot - A cross-platform charting library using the Xwt toolkit
 // 
-// ITransform2D.cs
-// 
+// TradingDateTimeAxisTest.cs
 // Copyright (C) 2003-2006 Matt Howlett and others
-// Ported from NPlot to Xwt 2012-2014 : Hywel Thomas <hywel.w.thomas@gmail.com>
+// Port to Xwt 2012-2014 : Hywel Thomas <hywel.w.thomas@gmail.com>
 //
 // All rights reserved.
 // 
@@ -33,29 +32,77 @@
 //
 
 using System;
-using Xwt;
 
 using NPlot;
 
-namespace NPlot
-{
+using Xwt;
+using Xwt.Drawing;
 
-	/// <summary>
-	/// This interface is useful in the Plot classes for transforming 
-	/// world to physical coordinates. Create one using the GetTransformer
-	/// static method in Transform2D.
-	/// </summary>
-	public interface ITransform2D
+namespace Samples
+{
+	//
+	// Create a Canvas into which the Axis Tests can be drawn.
+	//
+	public class TradingDateTimeAxisTest : Canvas
 	{
 
+		public TradingDateTimeAxisTest () : base ()
+		{
+			InitializeComponent();	// Setup Axis Tests Window
+		}
+		
 		/// <summary>
-		/// Transforms the given world point to physical coordinates
+		/// Axis Tests Form setup - all done in base ()
 		/// </summary>
-		Point Transform (double x, double y);
+		private void InitializeComponent()
+		{
+		}
+		
 
 		/// <summary>
-		/// Transforms the given world point to physical coordinates
+		/// Handles OnDraw Events by drawing AxisTests to the canvas
 		/// </summary>
-		Point Transform (Point worldPoint);
-	}
-}
+		protected override void OnDraw (Context ctx, Rectangle dirtyRect)
+		{
+			// Get Canvas Bounds as region to draw into
+			Rectangle bounds = this.Bounds;
+
+			DrawAxisTests (ctx, bounds);
+
+			base.OnDraw (ctx, dirtyRect);
+
+		}
+
+		#region Axis Tests
+
+		private void DrawAxisTests (Context ctx, Rectangle bounds)
+		{
+			Rectangle boundingBox;
+			Point tl = Point.Zero;
+			Point br = Point.Zero;
+
+			tl.X = bounds.Left + 30;	tl.Y = bounds.Top + 20;
+			br.X = bounds.Right - 30;	br.Y = bounds.Top + 20;
+
+			DateTime timeMin = new DateTime (2003, 10, 22, 15, 00, 00);
+			DateTime timeMax = new DateTime (2004, 03, 12, 13, 30, 00);
+
+			TradingDateTimeAxis axis = new TradingDateTimeAxis ();
+			axis.WorldMin = (double)timeMin.Ticks;
+			axis.WorldMax = (double)timeMax.Ticks;
+			axis.Draw (ctx, tl, br, out boundingBox);
+
+			timeMin = new DateTime (2013, 09, 17, 12, 30, 10);
+			timeMax = new DateTime (2014, 01, 23, 12, 59, 30);
+			axis.WorldMin = (double)timeMin.Ticks;
+			axis.WorldMax = (double)timeMax.Ticks;
+
+			tl.Y += 50;		br.Y += 50;
+			axis.Draw (ctx, tl, br, out boundingBox);
+
+		}
+		#endregion
+
+	} // class TradingDateTimeAxisTests
+	
+} // namespace Samples

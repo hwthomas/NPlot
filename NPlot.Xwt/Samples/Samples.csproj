@@ -66,6 +66,7 @@
     <Compile Include="Samples\TradingSample.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Samples\TradingDateTimeAxisTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Xwt">

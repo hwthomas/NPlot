@@ -87,9 +87,9 @@ namespace Samples
 			bottom.LineColor = Colors.LightSteelBlue;
 			bottom.LineWidth = 2.0;
 
-			//FilledRegion fr = new FilledRegion (top, bottom);
-			//fr.RectangleBrush = new RectangleBrushes.Vertical( Color.FromArgb(255,255,240), Color.FromArgb(240,255,255) );
-			//plotCanvas.Add (fr);
+			FilledRegion fr = new FilledRegion (top, bottom);
+			fr.FillColor = Colors.GhostWhite;
+			plotCanvas.Add (fr);
 
 			plotCanvas.Add (new Grid());
 
@@ -111,7 +111,7 @@ namespace Samples
 			plotCanvas.XAxis1.WorldMax -= plotCanvas.XAxis1.WorldLength / 2.0;
 			plotCanvas.YAxis1.Label = "Price [$]";
 
-			 plotCanvas.XAxis1 = new TradingDateTimeAxis (plotCanvas.XAxis1);
+			plotCanvas.XAxis1 = new TradingDateTimeAxis (plotCanvas.XAxis1);
 
 			//plotCanvas.AddInteraction (new PlotDrag(true,false));
 			//plotCanvas.AddInteraction (new AxisDrag());
