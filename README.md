@@ -182,6 +182,6 @@ implementation.
 The extensions here remedy that, and provide full demonstrations of interactive plot surfaces that can be used equally
 well in Windows or Gtk#, and which maximise the use of common code.
 
-The intention is also to port the library to Xwt for a more cross-platform experience.  This will, however, require
-porting all the drawing routines from System.Drawing to the more Cairo-like facilities of Xwt.
-
+The library is currently being ported to Xwt for a more cross-platform experience.  This work has been transferred to a
+separate repository XwPlot (see github.com/hwthomas/XwPlot).  Development of the Gtk and Swf platforms will, however,
+continue here.
